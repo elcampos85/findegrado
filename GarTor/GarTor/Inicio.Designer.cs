@@ -40,7 +40,11 @@
             this.consultarIngresosMensualesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarIngresosAnualesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
+            this.pPanelContenedor = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.msMenu.SuspendLayout();
+            this.pPanelContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
             // msMenu
@@ -132,12 +136,43 @@
             this.ssEstado.TabIndex = 1;
             this.ssEstado.Text = "statusStrip1";
             // 
+            // pPanelContenedor
+            // 
+            this.pPanelContenedor.AutoSize = true;
+            this.pPanelContenedor.Controls.Add(this.button2);
+            this.pPanelContenedor.Controls.Add(this.button1);
+            this.pPanelContenedor.Location = new System.Drawing.Point(2, 23);
+            this.pPanelContenedor.Name = "pPanelContenedor";
+            this.pPanelContenedor.Size = new System.Drawing.Size(1145, 475);
+            this.pPanelContenedor.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.Location = new System.Drawing.Point(1067, 449);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.AutoSize = true;
+            this.button2.Location = new System.Drawing.Point(814, 304);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(1144, 517);
+            this.Controls.Add(this.pPanelContenedor);
             this.Controls.Add(this.ssEstado);
             this.Controls.Add(this.msMenu);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -148,6 +183,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.msMenu.ResumeLayout(false);
             this.msMenu.PerformLayout();
+            this.pPanelContenedor.ResumeLayout(false);
+            this.pPanelContenedor.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,6 +204,9 @@
         private System.Windows.Forms.ToolStripMenuItem calcularCosteProduccionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem;
         private System.Windows.Forms.StatusStrip ssEstado;
+        private System.Windows.Forms.Panel pPanelContenedor;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

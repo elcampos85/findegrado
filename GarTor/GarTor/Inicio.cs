@@ -16,7 +16,6 @@ namespace GarTor
         {
             InitializeComponent();
 
-            
             this.MaximizeBox = false;
 
             /*if (this.pPanelContenedor.Controls.Count > 0)

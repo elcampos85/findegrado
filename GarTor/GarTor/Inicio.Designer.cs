@@ -41,6 +41,7 @@
             this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
             this.pPanelContenedor = new System.Windows.Forms.Panel();
+            this.consultaDeUnDiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +85,7 @@
             // 
             this.contabilidadCajaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cierreDeCajaDiariaToolStripMenuItem,
+            this.consultaDeUnDiaToolStripMenuItem,
             this.consultarIngresosMensualesToolStripMenuItem,
             this.consultarIngresosAnualesToolStripMenuItem});
             this.contabilidadCajaToolStripMenuItem.Name = "contabilidadCajaToolStripMenuItem";
@@ -93,20 +95,20 @@
             // cierreDeCajaDiariaToolStripMenuItem
             // 
             this.cierreDeCajaDiariaToolStripMenuItem.Name = "cierreDeCajaDiariaToolStripMenuItem";
-            this.cierreDeCajaDiariaToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.cierreDeCajaDiariaToolStripMenuItem.Text = "Cierre de caja diaria";
+            this.cierreDeCajaDiariaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.cierreDeCajaDiariaToolStripMenuItem.Text = "Balance Diario";
             // 
             // consultarIngresosMensualesToolStripMenuItem
             // 
             this.consultarIngresosMensualesToolStripMenuItem.Name = "consultarIngresosMensualesToolStripMenuItem";
-            this.consultarIngresosMensualesToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.consultarIngresosMensualesToolStripMenuItem.Text = "Consultar Ingresos Mensuales";
+            this.consultarIngresosMensualesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.consultarIngresosMensualesToolStripMenuItem.Text = "Balance Mensual";
             // 
             // consultarIngresosAnualesToolStripMenuItem
             // 
             this.consultarIngresosAnualesToolStripMenuItem.Name = "consultarIngresosAnualesToolStripMenuItem";
-            this.consultarIngresosAnualesToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.consultarIngresosAnualesToolStripMenuItem.Text = "Consultar Ingresos Anuales";
+            this.consultarIngresosAnualesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.consultarIngresosAnualesToolStripMenuItem.Text = "Balance Anual";
             // 
             // preciosProveedoresToolStripMenuItem
             // 
@@ -147,6 +149,12 @@
             this.pPanelContenedor.Size = new System.Drawing.Size(1009, 450);
             this.pPanelContenedor.TabIndex = 2;
             // 
+            // consultaDeUnDiaToolStripMenuItem
+            // 
+            this.consultaDeUnDiaToolStripMenuItem.Name = "consultaDeUnDiaToolStripMenuItem";
+            this.consultaDeUnDiaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.consultaDeUnDiaToolStripMenuItem.Text = "consulta de un dia";
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,6 +193,7 @@
         private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem;
         private System.Windows.Forms.StatusStrip ssEstado;
         private System.Windows.Forms.Panel pPanelContenedor;
+        private System.Windows.Forms.ToolStripMenuItem consultaDeUnDiaToolStripMenuItem;
     }
 }
 

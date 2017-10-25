@@ -45,6 +45,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Acceso.Designer.cs">
+      <DependentUpon>Acceso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CierreCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CierreCaja.Designer.cs">
+      <DependentUpon>CierreCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion.Designer.cs">
+      <DependentUpon>Gestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IngreAnu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IngreAnu.Designer.cs">
+      <DependentUpon>IngreAnu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IngreMen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IngreMen.Designer.cs">
+      <DependentUpon>IngreMen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,19 +87,49 @@
     <Compile Include="Portada.Designer.cs">
       <DependentUpon>Portada.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produccion.Designer.cs">
+      <DependentUpon>Produccion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VentaMayor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentaMayor.Designer.cs">
+      <DependentUpon>VentaMayor.cs</DependentUpon>
+    </Compile>
     <Compile Include="VentaTienda.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VentaTienda.Designer.cs">
       <DependentUpon>VentaTienda.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Acceso.resx">
+      <DependentUpon>Acceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CierreCaja.resx">
+      <DependentUpon>CierreCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion.resx">
+      <DependentUpon>Gestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IngreAnu.resx">
+      <DependentUpon>IngreAnu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IngreMen.resx">
+      <DependentUpon>IngreMen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Portada.resx">
       <DependentUpon>Portada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produccion.resx">
+      <DependentUpon>Produccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,6 +140,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VentaMayor.resx">
+      <DependentUpon>VentaMayor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VentaTienda.resx">
       <DependentUpon>VentaTienda.cs</DependentUpon>
     </EmbeddedResource>

@@ -64,20 +64,20 @@
             this.ventaEnTiendaToolStripMenuItem,
             this.ventaAlPorMayorToolStripMenuItem});
             this.ventaToolStripMenuItem.Name = "ventaToolStripMenuItem";
-            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.ventaToolStripMenuItem.Text = "Venta";
             // 
             // ventaEnTiendaToolStripMenuItem
             // 
             this.ventaEnTiendaToolStripMenuItem.Name = "ventaEnTiendaToolStripMenuItem";
-            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.ventaEnTiendaToolStripMenuItem.Text = "Venta en Tienda";
             this.ventaEnTiendaToolStripMenuItem.Click += new System.EventHandler(this.ventaEnTiendaToolStripMenuItem_Click);
             // 
             // ventaAlPorMayorToolStripMenuItem
             // 
             this.ventaAlPorMayorToolStripMenuItem.Name = "ventaAlPorMayorToolStripMenuItem";
-            this.ventaAlPorMayorToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ventaAlPorMayorToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.ventaAlPorMayorToolStripMenuItem.Text = "Venta al por Mayor";
             // 
             // contabilidadCajaToolStripMenuItem
@@ -151,13 +151,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(1003, 497);
             this.Controls.Add(this.pPanelContenedor);
             this.Controls.Add(this.ssEstado);
             this.Controls.Add(this.msMenu);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.msMenu;
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

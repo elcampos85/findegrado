@@ -30,21 +30,18 @@
         {
             this.msMenu = new System.Windows.Forms.MenuStrip();
             this.ventaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contabilidadCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.preciosProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.calcularCosteProduccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventaEnTiendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventaAlPorMayorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contabilidadCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cierreDeCajaDiariaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarIngresosMensualesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarIngresosAnualesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.preciosProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calcularCosteProduccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
             this.pPanelContenedor = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.msMenu.SuspendLayout();
-            this.pPanelContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
             // msMenu
@@ -57,7 +54,7 @@
             this.gestionToolStripMenuItem});
             this.msMenu.Location = new System.Drawing.Point(0, 0);
             this.msMenu.Name = "msMenu";
-            this.msMenu.Size = new System.Drawing.Size(1144, 24);
+            this.msMenu.Size = new System.Drawing.Size(1003, 24);
             this.msMenu.TabIndex = 0;
             this.msMenu.Text = "menuStrip1";
             // 
@@ -70,6 +67,19 @@
             this.ventaToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.ventaToolStripMenuItem.Text = "Venta";
             // 
+            // ventaEnTiendaToolStripMenuItem
+            // 
+            this.ventaEnTiendaToolStripMenuItem.Name = "ventaEnTiendaToolStripMenuItem";
+            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ventaEnTiendaToolStripMenuItem.Text = "Venta en Tienda";
+            this.ventaEnTiendaToolStripMenuItem.Click += new System.EventHandler(this.ventaEnTiendaToolStripMenuItem_Click);
+            // 
+            // ventaAlPorMayorToolStripMenuItem
+            // 
+            this.ventaAlPorMayorToolStripMenuItem.Name = "ventaAlPorMayorToolStripMenuItem";
+            this.ventaAlPorMayorToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ventaAlPorMayorToolStripMenuItem.Text = "Venta al por Mayor";
+            // 
             // contabilidadCajaToolStripMenuItem
             // 
             this.contabilidadCajaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -79,36 +89,6 @@
             this.contabilidadCajaToolStripMenuItem.Name = "contabilidadCajaToolStripMenuItem";
             this.contabilidadCajaToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
             this.contabilidadCajaToolStripMenuItem.Text = "Contabilidad/Caja";
-            // 
-            // preciosProveedoresToolStripMenuItem
-            // 
-            this.preciosProveedoresToolStripMenuItem.Name = "preciosProveedoresToolStripMenuItem";
-            this.preciosProveedoresToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
-            this.preciosProveedoresToolStripMenuItem.Text = "Precios Proveedores";
-            // 
-            // calcularCosteProduccionToolStripMenuItem
-            // 
-            this.calcularCosteProduccionToolStripMenuItem.Name = "calcularCosteProduccionToolStripMenuItem";
-            this.calcularCosteProduccionToolStripMenuItem.Size = new System.Drawing.Size(159, 20);
-            this.calcularCosteProduccionToolStripMenuItem.Text = "Calcular Coste Produccion";
-            // 
-            // gestionToolStripMenuItem
-            // 
-            this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
-            this.gestionToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.gestionToolStripMenuItem.Text = "Gestion";
-            // 
-            // ventaEnTiendaToolStripMenuItem
-            // 
-            this.ventaEnTiendaToolStripMenuItem.Name = "ventaEnTiendaToolStripMenuItem";
-            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.ventaEnTiendaToolStripMenuItem.Text = "Venta en Tienda";
-            // 
-            // ventaAlPorMayorToolStripMenuItem
-            // 
-            this.ventaAlPorMayorToolStripMenuItem.Name = "ventaAlPorMayorToolStripMenuItem";
-            this.ventaAlPorMayorToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.ventaAlPorMayorToolStripMenuItem.Text = "Venta al por Mayor";
             // 
             // cierreDeCajaDiariaToolStripMenuItem
             // 
@@ -128,50 +108,52 @@
             this.consultarIngresosAnualesToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.consultarIngresosAnualesToolStripMenuItem.Text = "Consultar Ingresos Anuales";
             // 
+            // preciosProveedoresToolStripMenuItem
+            // 
+            this.preciosProveedoresToolStripMenuItem.Name = "preciosProveedoresToolStripMenuItem";
+            this.preciosProveedoresToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
+            this.preciosProveedoresToolStripMenuItem.Text = "Precios Proveedores";
+            // 
+            // calcularCosteProduccionToolStripMenuItem
+            // 
+            this.calcularCosteProduccionToolStripMenuItem.Name = "calcularCosteProduccionToolStripMenuItem";
+            this.calcularCosteProduccionToolStripMenuItem.Size = new System.Drawing.Size(159, 20);
+            this.calcularCosteProduccionToolStripMenuItem.Text = "Calcular Coste Produccion";
+            // 
+            // gestionToolStripMenuItem
+            // 
+            this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
+            this.gestionToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.gestionToolStripMenuItem.Text = "Gestion";
+            this.gestionToolStripMenuItem.Click += new System.EventHandler(this.gestionToolStripMenuItem_Click);
+            // 
             // ssEstado
             // 
-            this.ssEstado.Location = new System.Drawing.Point(0, 495);
+            this.ssEstado.Location = new System.Drawing.Point(0, 475);
             this.ssEstado.Name = "ssEstado";
-            this.ssEstado.Size = new System.Drawing.Size(1144, 22);
+            this.ssEstado.Size = new System.Drawing.Size(1003, 22);
             this.ssEstado.TabIndex = 1;
             this.ssEstado.Text = "statusStrip1";
             // 
             // pPanelContenedor
             // 
+            this.pPanelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pPanelContenedor.AutoSize = true;
-            this.pPanelContenedor.Controls.Add(this.button2);
-            this.pPanelContenedor.Controls.Add(this.button1);
-            this.pPanelContenedor.Location = new System.Drawing.Point(2, 23);
+            this.pPanelContenedor.Location = new System.Drawing.Point(0, 24);
+            this.pPanelContenedor.Margin = new System.Windows.Forms.Padding(0);
             this.pPanelContenedor.Name = "pPanelContenedor";
-            this.pPanelContenedor.Size = new System.Drawing.Size(1145, 475);
+            this.pPanelContenedor.Size = new System.Drawing.Size(1009, 450);
             this.pPanelContenedor.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(1067, 449);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.AutoSize = true;
-            this.button2.Location = new System.Drawing.Point(814, 304);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Green;
-            this.ClientSize = new System.Drawing.Size(1144, 517);
+            this.ClientSize = new System.Drawing.Size(1003, 497);
             this.Controls.Add(this.pPanelContenedor);
             this.Controls.Add(this.ssEstado);
             this.Controls.Add(this.msMenu);
@@ -183,8 +165,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.msMenu.ResumeLayout(false);
             this.msMenu.PerformLayout();
-            this.pPanelContenedor.ResumeLayout(false);
-            this.pPanelContenedor.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,8 +185,6 @@
         private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem;
         private System.Windows.Forms.StatusStrip ssEstado;
         private System.Windows.Forms.Panel pPanelContenedor;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
     }
 }
 

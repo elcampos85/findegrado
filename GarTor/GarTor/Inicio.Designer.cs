@@ -34,6 +34,7 @@
             this.ventaAlPorMayorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contabilidadCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cierreDeCajaDiariaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultaDeUnDiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarIngresosMensualesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarIngresosAnualesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preciosProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +42,6 @@
             this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
             this.pPanelContenedor = new System.Windows.Forms.Panel();
-            this.consultaDeUnDiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +55,7 @@
             this.gestionToolStripMenuItem});
             this.msMenu.Location = new System.Drawing.Point(0, 0);
             this.msMenu.Name = "msMenu";
-            this.msMenu.Size = new System.Drawing.Size(1003, 24);
+            this.msMenu.Size = new System.Drawing.Size(1096, 24);
             this.msMenu.TabIndex = 0;
             this.msMenu.Text = "menuStrip1";
             // 
@@ -65,20 +65,20 @@
             this.ventaEnTiendaToolStripMenuItem,
             this.ventaAlPorMayorToolStripMenuItem});
             this.ventaToolStripMenuItem.Name = "ventaToolStripMenuItem";
-            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.ventaToolStripMenuItem.Text = "Venta";
             // 
             // ventaEnTiendaToolStripMenuItem
             // 
             this.ventaEnTiendaToolStripMenuItem.Name = "ventaEnTiendaToolStripMenuItem";
-            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.ventaEnTiendaToolStripMenuItem.Text = "Venta en Tienda";
             this.ventaEnTiendaToolStripMenuItem.Click += new System.EventHandler(this.ventaEnTiendaToolStripMenuItem_Click);
             // 
             // ventaAlPorMayorToolStripMenuItem
             // 
             this.ventaAlPorMayorToolStripMenuItem.Name = "ventaAlPorMayorToolStripMenuItem";
-            this.ventaAlPorMayorToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.ventaAlPorMayorToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.ventaAlPorMayorToolStripMenuItem.Text = "Venta al por Mayor";
             // 
             // contabilidadCajaToolStripMenuItem
@@ -98,16 +98,22 @@
             this.cierreDeCajaDiariaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.cierreDeCajaDiariaToolStripMenuItem.Text = "Balance Diario";
             // 
+            // consultaDeUnDiaToolStripMenuItem
+            // 
+            this.consultaDeUnDiaToolStripMenuItem.Name = "consultaDeUnDiaToolStripMenuItem";
+            this.consultaDeUnDiaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.consultaDeUnDiaToolStripMenuItem.Text = "consulta de un dia";
+            // 
             // consultarIngresosMensualesToolStripMenuItem
             // 
             this.consultarIngresosMensualesToolStripMenuItem.Name = "consultarIngresosMensualesToolStripMenuItem";
-            this.consultarIngresosMensualesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.consultarIngresosMensualesToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.consultarIngresosMensualesToolStripMenuItem.Text = "Balance Mensual";
             // 
             // consultarIngresosAnualesToolStripMenuItem
             // 
             this.consultarIngresosAnualesToolStripMenuItem.Name = "consultarIngresosAnualesToolStripMenuItem";
-            this.consultarIngresosAnualesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.consultarIngresosAnualesToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.consultarIngresosAnualesToolStripMenuItem.Text = "Balance Anual";
             // 
             // preciosProveedoresToolStripMenuItem
@@ -131,9 +137,9 @@
             // 
             // ssEstado
             // 
-            this.ssEstado.Location = new System.Drawing.Point(0, 475);
+            this.ssEstado.Location = new System.Drawing.Point(0, 571);
             this.ssEstado.Name = "ssEstado";
-            this.ssEstado.Size = new System.Drawing.Size(1003, 22);
+            this.ssEstado.Size = new System.Drawing.Size(1096, 22);
             this.ssEstado.TabIndex = 1;
             this.ssEstado.Text = "statusStrip1";
             // 
@@ -146,31 +152,24 @@
             this.pPanelContenedor.Location = new System.Drawing.Point(0, 24);
             this.pPanelContenedor.Margin = new System.Windows.Forms.Padding(0);
             this.pPanelContenedor.Name = "pPanelContenedor";
-            this.pPanelContenedor.Size = new System.Drawing.Size(1009, 450);
+            this.pPanelContenedor.Size = new System.Drawing.Size(1102, 546);
             this.pPanelContenedor.TabIndex = 2;
-            // 
-            // consultaDeUnDiaToolStripMenuItem
-            // 
-            this.consultaDeUnDiaToolStripMenuItem.Name = "consultaDeUnDiaToolStripMenuItem";
-            this.consultaDeUnDiaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.consultaDeUnDiaToolStripMenuItem.Text = "consulta de un dia";
             // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
-            this.ClientSize = new System.Drawing.Size(1003, 497);
+            this.ClientSize = new System.Drawing.Size(1096, 593);
             this.Controls.Add(this.pPanelContenedor);
             this.Controls.Add(this.ssEstado);
             this.Controls.Add(this.msMenu);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.msMenu;
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pasteleria Marco";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.msMenu.ResumeLayout(false);
             this.msMenu.PerformLayout();
             this.ResumeLayout(false);

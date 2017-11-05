@@ -16,7 +16,20 @@ namespace GarTor
         {
             InitializeComponent();
 
-            this.MaximizeBox = false;
+            this.Height = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height; //Ajusta al alto de la pantalla
+            this.Width = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width; //Ajusta al ancho de la pantalla
+
+
+            int a=DesktopBounds.Height;
+
+
+            //this.MaximizeBox = false;
+
+            MessageBox.Show(a.ToString()); //Obtiene el alto de la pantalla principal en pixeles.
+            //MessageBox.Show(ancho.ToString());
+            //Screen.PrimaryScreen.Bounds.Width;
+
+
 
             /*if (this.pPanelContenedor.Controls.Count > 0)
                 this.pPanelContenedor.Controls.RemoveAt(0);

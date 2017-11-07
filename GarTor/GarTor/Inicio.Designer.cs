@@ -65,20 +65,20 @@
             this.ventaEnTiendaToolStripMenuItem,
             this.ventaAlPorMayorToolStripMenuItem});
             this.ventaToolStripMenuItem.Name = "ventaToolStripMenuItem";
-            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.ventaToolStripMenuItem.Text = "Venta";
             // 
             // ventaEnTiendaToolStripMenuItem
             // 
             this.ventaEnTiendaToolStripMenuItem.Name = "ventaEnTiendaToolStripMenuItem";
-            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.ventaEnTiendaToolStripMenuItem.Text = "Venta en Tienda";
             this.ventaEnTiendaToolStripMenuItem.Click += new System.EventHandler(this.ventaEnTiendaToolStripMenuItem_Click);
             // 
             // ventaAlPorMayorToolStripMenuItem
             // 
             this.ventaAlPorMayorToolStripMenuItem.Name = "ventaAlPorMayorToolStripMenuItem";
-            this.ventaAlPorMayorToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ventaAlPorMayorToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.ventaAlPorMayorToolStripMenuItem.Text = "Venta al por Mayor";
             // 
             // contabilidadCajaToolStripMenuItem

@@ -18,42 +18,24 @@ namespace GarTor
 
             this.Height = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height; //Ajusta al alto de la pantalla
             this.Width = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width; //Ajusta al ancho de la pantalla
-
-
-            int a=DesktopBounds.Height;
-
-
+            
+            //int a=DesktopBounds.Height; //Muestra el alto de la pantalla actual
             //this.MaximizeBox = false;
-
-            MessageBox.Show(a.ToString()); //Obtiene el alto de la pantalla principal en pixeles.
-            //MessageBox.Show(ancho.ToString());
-            //Screen.PrimaryScreen.Bounds.Width;
-
-
-
-            /*if (this.pPanelContenedor.Controls.Count > 0)
-                this.pPanelContenedor.Controls.RemoveAt(0);
-            Portada panel1 = new Portada();
-            panel1.TopLevel = false;
-            panel1.FormBorderStyle = FormBorderStyle.None;
-            panel1.Dock = DockStyle.Fill;
-            this.pPanelContenedor.Controls.Add(panel1);
-            this.pPanelContenedor.Tag = panel1;
-            panel1.Show();*/
+            
 
         }
 
         private void gestionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.pPanelContenedor.Controls.Count > 0)
-                this.pPanelContenedor.Controls.RemoveAt(0);
-            Portada panel1 = new Portada();
-            panel1.TopLevel = false;
-            panel1.FormBorderStyle = FormBorderStyle.None;
-            panel1.Dock = DockStyle.Fill;
-            this.pPanelContenedor.Controls.Add(panel1);
-            this.pPanelContenedor.Tag = panel1;
-            panel1.Show();
+           
+            Acceso panel1 = new Acceso();
+            panel1.MaximizeBox = false;
+            panel1.MinimizeBox = false;
+            panel1.ShowIcon = false;
+            panel1.ShowInTaskbar = false;
+            
+            //panel1.IsRestrictedWindow;
+            panel1.ShowDialog();
         }
 
         private void ventaEnTiendaToolStripMenuItem_Click(object sender, EventArgs e)

@@ -15,6 +15,19 @@ namespace GarTor
         public Acceso()
         {
             InitializeComponent();
+            tbUser.Select();
+
+        }
+
+        private void logIn(object sender, EventArgs e)
+        {
+            string user = tbUser.Text;
+            string pass = tbPass.Text;
+
+            if (pass == "123")
+            {
+                MessageBox.Show("yeah");
+            }
         }
     }
 }

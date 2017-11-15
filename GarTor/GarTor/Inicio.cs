@@ -50,5 +50,10 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
+
+        private void mantener(object sender, EventArgs e)
+        {
+            this.Location = new Point(0, 0);
+        }
     }
 }

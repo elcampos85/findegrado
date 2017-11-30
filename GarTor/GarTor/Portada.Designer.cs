@@ -40,9 +40,9 @@
             this.label1.Location = new System.Drawing.Point(846, 462);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(151, 25);
+            this.label1.Size = new System.Drawing.Size(169, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Abajo derecha";
+            this.label1.Text = "Abajo derecha 1";
             // 
             // Portada
             // 

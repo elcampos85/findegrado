@@ -21,6 +21,9 @@ namespace GarTor
 
         private void logIn(object sender, EventArgs e)
         {
+            
+            
+
             string user = tbUser.Text;
             string pass = tbPass.Text;
 

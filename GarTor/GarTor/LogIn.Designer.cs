@@ -1,6 +1,6 @@
 ﻿namespace GarTor
 {
-    partial class Acceso
+    partial class LogIn
     {
         /// <summary>
         /// Required designer variable.

@@ -63,11 +63,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Acceso.cs">
+    <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Acceso.Designer.cs">
-      <DependentUpon>Acceso.cs</DependentUpon>
+    <Compile Include="LogIn.Designer.cs">
+      <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
     <Compile Include="CierreCaja.cs">
       <SubType>Form</SubType>
@@ -110,6 +110,7 @@
     <Compile Include="Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="MessageBoxTemporal.cs" />
     <Compile Include="Portada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,8 +148,8 @@
     <Compile Include="VentaTienda.Designer.cs">
       <DependentUpon>VentaTienda.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Acceso.resx">
-      <DependentUpon>Acceso.cs</DependentUpon>
+    <EmbeddedResource Include="LogIn.resx">
+      <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CierreCaja.resx">
       <DependentUpon>CierreCaja.cs</DependentUpon>

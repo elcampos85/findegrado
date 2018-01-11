@@ -28,7 +28,7 @@ namespace GarTor
         private void gestionToolStripMenuItem_Click(object sender, EventArgs e)
         {
            
-            Acceso panel1 = new Acceso();
+            LogIn panel1 = new LogIn();
             panel1.MaximizeBox = false;
             panel1.MinimizeBox = false;
             panel1.ShowIcon = false;

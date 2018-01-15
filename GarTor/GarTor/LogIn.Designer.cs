@@ -63,6 +63,7 @@
             this.tbPass.PasswordChar = '★';
             this.tbPass.Size = new System.Drawing.Size(119, 20);
             this.tbPass.TabIndex = 2;
+            this.tbPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Entrar);
             // 
             // lUser
             // 
@@ -82,7 +83,7 @@
             this.lPass.TabIndex = 4;
             this.lPass.Text = "Contraseña:";
             // 
-            // Acceso
+            // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -95,7 +96,7 @@
             this.Controls.Add(this.bEntrar);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Acceso";
+            this.Name = "LogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Acceso";
             this.ResumeLayout(false);

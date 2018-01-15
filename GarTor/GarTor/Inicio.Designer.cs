@@ -97,7 +97,7 @@
             // miBalanceDiario
             // 
             this.miBalanceDiario.Name = "miBalanceDiario";
-            this.miBalanceDiario.Size = new System.Drawing.Size(171, 22);
+            this.miBalanceDiario.Size = new System.Drawing.Size(173, 22);
             this.miBalanceDiario.Text = "Balance Diario";
             this.miBalanceDiario.Click += new System.EventHandler(this.miBalanceDiario_Click);
             // 

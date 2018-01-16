@@ -63,6 +63,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DSIngredientes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSIngredientes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSVentas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSVentas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +211,28 @@
     </None>
     <None Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DSIngredientes.xsc">
+      <DependentUpon>DSIngredientes.xsd</DependentUpon>
+    </None>
+    <None Include="DSIngredientes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSIngredientes.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSIngredientes.xss">
+      <DependentUpon>DSIngredientes.xsd</DependentUpon>
+    </None>
+    <None Include="DSVentas.xsc">
+      <DependentUpon>DSVentas.xsd</DependentUpon>
+    </None>
+    <None Include="DSVentas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSVentas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSVentas.xss">
+      <DependentUpon>DSVentas.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

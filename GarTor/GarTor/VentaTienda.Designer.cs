@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.cesta = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -43,16 +43,20 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "asdf";
             // 
-            // label2
+            // cesta
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(746, 403);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 25);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.cesta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cesta.FormattingEnabled = true;
+            this.cesta.Items.AddRange(new object[] {
+            "tarta",
+            "bollo",
+            "t",
+            "a"});
+            this.cesta.Location = new System.Drawing.Point(624, 30);
+            this.cesta.Name = "cesta";
+            this.cesta.Size = new System.Drawing.Size(273, 420);
+            this.cesta.TabIndex = 1;
             // 
             // VentaTienda
             // 
@@ -62,7 +66,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(900, 490);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cesta);
             this.Controls.Add(this.label1);
             this.Name = "VentaTienda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -76,6 +80,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox cesta;
     }
 }

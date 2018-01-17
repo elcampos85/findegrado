@@ -30,10 +30,11 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.cesta = new System.Windows.Forms.DataGridView();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,18 +52,38 @@
             // cesta
             // 
             this.cesta.AllowUserToAddRows = false;
+            this.cesta.AllowUserToResizeColumns = false;
+            this.cesta.AllowUserToResizeRows = false;
             this.cesta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cesta.BackgroundColor = System.Drawing.Color.Green;
+            this.cesta.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cesta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cesta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Borrar,
             this.Producto,
             this.Unidad,
-            this.Precio,
-            this.Borrar});
-            this.cesta.Location = new System.Drawing.Point(604, 19);
+            this.Precio});
+            this.cesta.GridColor = System.Drawing.Color.Green;
+            this.cesta.Location = new System.Drawing.Point(635, 19);
             this.cesta.Name = "cesta";
-            this.cesta.Size = new System.Drawing.Size(294, 439);
+            this.cesta.RowHeadersVisible = false;
+            this.cesta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.cesta.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
+            this.cesta.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Empty;
+            this.cesta.ShowCellErrors = false;
+            this.cesta.ShowCellToolTips = false;
+            this.cesta.ShowEditingIcon = false;
+            this.cesta.ShowRowErrors = false;
+            this.cesta.Size = new System.Drawing.Size(263, 439);
             this.cesta.TabIndex = 1;
+            this.cesta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Eliminar);
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Name = "Borrar";
+            this.Borrar.Width = 45;
             // 
             // Producto
             // 
@@ -83,11 +104,15 @@
             this.Precio.ReadOnly = true;
             this.Precio.Width = 50;
             // 
-            // Borrar
+            // button1
             // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Name = "Borrar";
-            this.Borrar.Width = 50;
+            this.button1.Location = new System.Drawing.Point(372, 144);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // VentaTienda
             // 
@@ -97,6 +122,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(900, 490);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cesta);
             this.Controls.Add(this.label1);
             this.Name = "VentaTienda";
@@ -113,9 +139,10 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView cesta;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewButtonColumn Borrar;
     }
 }

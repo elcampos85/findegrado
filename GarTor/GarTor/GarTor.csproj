@@ -262,6 +262,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Pasteleria.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\icons8_Trash_3.ico" />
     <None Include="Resources\icons8_Trash_1.ico" />
     <None Include="Resources\icons8_Trash.ico" />
     <None Include="Resources\apple13_42547.ico" />

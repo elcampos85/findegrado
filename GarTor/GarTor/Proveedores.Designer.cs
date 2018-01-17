@@ -28,9 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Proveedores
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Green;
+            this.ClientSize = new System.Drawing.Size(1212, 647);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Name = "Proveedores";
             this.Text = "Proveedores";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -15,6 +15,11 @@ namespace GarTor
         public VentaTienda()
         {
             InitializeComponent();
+            cesta.Rows.Add(1);
+
+            cesta.Rows[0].Cells[0].Value = "tarta";
+            cesta.Rows[0].Cells[1].Value = "1";
+            cesta.Rows[0].Cells[2].Value = "10";
         }
     }
 }

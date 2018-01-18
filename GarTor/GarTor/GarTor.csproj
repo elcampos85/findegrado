@@ -263,14 +263,6 @@
       <DependentUpon>Pasteleria.mdf</DependentUpon>
     </Content>
     <None Include="Resources\icons8_Trash_3.ico" />
-    <None Include="Resources\icons8_Trash_1.ico" />
-    <None Include="Resources\icons8_Trash.ico" />
-    <None Include="Resources\apple13_42547.ico" />
-    <None Include="Resources\icons8-trash-50.ico" />
-    <None Include="Resources\bin_48156.ico" />
-    <None Include="Resources\recycle-bin-full_25191.ico" />
-    <None Include="Resources\bin.ico" />
-    <None Include="Resources\icons8-trash-50.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

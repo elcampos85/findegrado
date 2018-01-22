@@ -48,7 +48,16 @@ namespace GarTor
 
         private void FinalizarCompra(object sender, EventArgs e)
         {
+            cesta.Rows.Add(1);
 
+            cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
+            cesta.Rows[cesta.RowCount - 1].Cells[1].Value = "tarta";
+            cesta.Rows[cesta.RowCount - 1].Cells[2].Value = "88";
+            cesta.Rows[cesta.RowCount - 1].Cells[3].Value = "10";
+
+            cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
+
+            
         }
     }
 }

@@ -38,7 +38,6 @@
             this.miConsultaDia = new System.Windows.Forms.ToolStripMenuItem();
             this.miBalanceMensual = new System.Windows.Forms.ToolStripMenuItem();
             this.miBalanceAnual = new System.Windows.Forms.ToolStripMenuItem();
-            this.miPreciosProveedores = new System.Windows.Forms.ToolStripMenuItem();
             this.miCalcularCosteProduccion = new System.Windows.Forms.ToolStripMenuItem();
             this.miGestion = new System.Windows.Forms.ToolStripMenuItem();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
@@ -51,7 +50,6 @@
             this.msMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ventaToolStripMenuItem,
             this.contabilidadCajaToolStripMenuItem,
-            this.miPreciosProveedores,
             this.miCalcularCosteProduccion,
             this.miGestion});
             this.msMenu.Location = new System.Drawing.Point(0, 0);
@@ -124,13 +122,6 @@
             this.miBalanceAnual.Text = "Balance Anual";
             this.miBalanceAnual.Click += new System.EventHandler(this.miBalanceAnual_Click);
             // 
-            // miPreciosProveedores
-            // 
-            this.miPreciosProveedores.Name = "miPreciosProveedores";
-            this.miPreciosProveedores.Size = new System.Drawing.Size(125, 20);
-            this.miPreciosProveedores.Text = "Precios Proveedores";
-            this.miPreciosProveedores.Click += new System.EventHandler(this.miPreciosProveedores_Click);
-            // 
             // miCalcularCosteProduccion
             // 
             this.miCalcularCosteProduccion.Name = "miCalcularCosteProduccion";
@@ -200,7 +191,6 @@
         private System.Windows.Forms.ToolStripMenuItem miBalanceDiario;
         private System.Windows.Forms.ToolStripMenuItem miBalanceMensual;
         private System.Windows.Forms.ToolStripMenuItem miBalanceAnual;
-        private System.Windows.Forms.ToolStripMenuItem miPreciosProveedores;
         private System.Windows.Forms.ToolStripMenuItem miCalcularCosteProduccion;
         private System.Windows.Forms.ToolStripMenuItem miGestion;
         private System.Windows.Forms.StatusStrip ssEstado;

@@ -52,7 +52,9 @@ namespace GarTor
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+
+        private void FinalizarCompra(object sender, EventArgs e)
         {
             cesta.Rows.Add(1);
 
@@ -61,7 +63,7 @@ namespace GarTor
             cesta.Rows[cesta.RowCount - 1].Cells[2].Value = "88";
             cesta.Rows[cesta.RowCount - 1].Cells[3].Value = "10";
 
-            cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount-1;
+            cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
         }
     }
 }

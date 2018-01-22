@@ -15,6 +15,40 @@ namespace GarTor
         public VentaMayor()
         {
             InitializeComponent();
+            for (int i = 0; i < 50; i++)
+            {
+                cesta.Rows.Add(1);
+
+                cesta.Rows[i].Cells[0].Value = Resource1.bin;
+                cesta.Rows[i].Cells[1].Value = "tarta";
+                cesta.Rows[i].Cells[2].Value = i;
+                cesta.Rows[i].Cells[3].Value = "10";
+                cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
+            }
+        }
+
+        private void Eliminar(object sender, DataGridViewCellEventArgs e)
+        {
+            if (cesta.CurrentCell.ColumnIndex == 0)
+            {
+                int num_fila = cesta.CurrentRow.Index;
+                DialogResult result;
+                MsgBoxUtil.HackMessageBox("Si", "No");
+                result = MessageBox.Show("¿Desea eliminar este producto?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    cesta.Rows.RemoveAt(cesta.CurrentRow.Index);
+                }
+                else if (result == DialogResult.No)
+                {
+                }
+            }
+        }
+
+        private void FinalizarCompra(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -262,6 +262,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Pasteleria.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\comprar.png" />
     <None Include="Resources\portada.jpg" />
     <None Include="Resources\bin.ico" />
   </ItemGroup>

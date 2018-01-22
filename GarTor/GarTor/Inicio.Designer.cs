@@ -72,14 +72,16 @@
             // ventaEnTiendaToolStripMenuItem
             // 
             this.ventaEnTiendaToolStripMenuItem.Name = "ventaEnTiendaToolStripMenuItem";
-            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.ventaEnTiendaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
+            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.ventaEnTiendaToolStripMenuItem.Text = "Venta en Tienda";
             this.ventaEnTiendaToolStripMenuItem.Click += new System.EventHandler(this.ventaEnTiendaToolStripMenuItem_Click);
             // 
             // miVentaMayor
             // 
             this.miVentaMayor.Name = "miVentaMayor";
-            this.miVentaMayor.Size = new System.Drawing.Size(174, 22);
+            this.miVentaMayor.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
+            this.miVentaMayor.Size = new System.Drawing.Size(214, 22);
             this.miVentaMayor.Text = "Venta al por Mayor";
             this.miVentaMayor.Click += new System.EventHandler(this.miVentaMayor_Click);
             // 

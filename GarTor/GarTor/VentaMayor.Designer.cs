@@ -33,6 +33,7 @@
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comprar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             this.Unidad,
             this.Precio});
             this.cesta.GridColor = System.Drawing.Color.Green;
-            this.cesta.Location = new System.Drawing.Point(574, 21);
+            this.cesta.Location = new System.Drawing.Point(753, 21);
             this.cesta.Name = "cesta";
             this.cesta.RowHeadersVisible = false;
             this.cesta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -60,8 +61,9 @@
             this.cesta.ShowCellToolTips = false;
             this.cesta.ShowEditingIcon = false;
             this.cesta.ShowRowErrors = false;
-            this.cesta.Size = new System.Drawing.Size(263, 439);
+            this.cesta.Size = new System.Drawing.Size(263, 561);
             this.cesta.TabIndex = 2;
+            this.cesta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Eliminar);
             // 
             // Borrar
             // 
@@ -88,13 +90,28 @@
             this.Precio.ReadOnly = true;
             this.Precio.Width = 50;
             // 
+            // Comprar
+            // 
+            this.Comprar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Comprar.BackColor = System.Drawing.Color.Honeydew;
+            this.Comprar.BackgroundImage = global::GarTor.Resource1.comprar;
+            this.Comprar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Comprar.Location = new System.Drawing.Point(905, 572);
+            this.Comprar.Margin = new System.Windows.Forms.Padding(0, 0, 10, 5);
+            this.Comprar.Name = "Comprar";
+            this.Comprar.Size = new System.Drawing.Size(93, 37);
+            this.Comprar.TabIndex = 3;
+            this.Comprar.UseVisualStyleBackColor = false;
+            this.Comprar.Click += new System.EventHandler(this.FinalizarCompra);
+            // 
             // VentaMayor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Green;
-            this.ClientSize = new System.Drawing.Size(838, 472);
+            this.ClientSize = new System.Drawing.Size(1017, 623);
+            this.Controls.Add(this.Comprar);
             this.Controls.Add(this.cesta);
             this.Name = "VentaMayor";
             this.Text = "VentaMayor";
@@ -110,5 +127,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.Button Comprar;
     }
 }

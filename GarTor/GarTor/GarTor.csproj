@@ -96,12 +96,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Gestion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gestion.Designer.cs">
-      <DependentUpon>Gestion.cs</DependentUpon>
-    </Compile>
     <Compile Include="IngreAnu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,9 +161,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CierreCaja.resx">
       <DependentUpon>CierreCaja.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gestion.resx">
-      <DependentUpon>Gestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IngreAnu.resx">
       <DependentUpon>IngreAnu.cs</DependentUpon>
@@ -265,6 +256,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Pasteleria.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\Gestion.ico" />
     <None Include="Resources\comprar.png" />
     <None Include="Resources\portada.jpg" />
     <None Include="Resources\bin.ico" />

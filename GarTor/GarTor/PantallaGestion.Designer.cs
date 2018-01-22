@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaGestion));
             this.SuspendLayout();
             // 
             // PantallaGestion
@@ -36,8 +37,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(955, 497);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PantallaGestion";
             this.Text = "PantallaGestion";
+            this.Move += new System.EventHandler(this.Mantener);
             this.ResumeLayout(false);
 
         }

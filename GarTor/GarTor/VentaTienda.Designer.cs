@@ -53,7 +53,7 @@
             this.Unidad,
             this.Precio});
             this.cesta.GridColor = System.Drawing.Color.Green;
-            this.cesta.Location = new System.Drawing.Point(651, 19);
+            this.cesta.Location = new System.Drawing.Point(641, 72);
             this.cesta.Name = "cesta";
             this.cesta.RowHeadersVisible = false;
             this.cesta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -61,7 +61,7 @@
             this.cesta.ShowCellToolTips = false;
             this.cesta.ShowEditingIcon = false;
             this.cesta.ShowRowErrors = false;
-            this.cesta.Size = new System.Drawing.Size(263, 455);
+            this.cesta.Size = new System.Drawing.Size(263, 367);
             this.cesta.TabIndex = 1;
             this.cesta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Eliminar);
             // 
@@ -92,14 +92,15 @@
             // 
             // Comprar
             // 
-            this.Comprar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Comprar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Comprar.BackColor = System.Drawing.Color.Honeydew;
             this.Comprar.BackgroundImage = global::GarTor.Resource1.comprar;
             this.Comprar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Comprar.Location = new System.Drawing.Point(804, 455);
+            this.Comprar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Comprar.Location = new System.Drawing.Point(821, 9);
             this.Comprar.Margin = new System.Windows.Forms.Padding(0, 0, 10, 5);
             this.Comprar.Name = "Comprar";
-            this.Comprar.Size = new System.Drawing.Size(93, 37);
+            this.Comprar.Size = new System.Drawing.Size(76, 33);
             this.Comprar.TabIndex = 2;
             this.Comprar.UseVisualStyleBackColor = false;
             this.Comprar.Click += new System.EventHandler(this.FinalizarCompra);

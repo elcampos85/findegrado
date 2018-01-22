@@ -43,6 +43,8 @@ namespace GarTor
             
             //panel1.IsRestrictedWindow;
             panel1.ShowDialog();
+
+
         }
 
         private void ventaEnTiendaToolStripMenuItem_Click(object sender, EventArgs e)

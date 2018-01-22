@@ -56,8 +56,6 @@ namespace GarTor
             cesta.Rows[cesta.RowCount - 1].Cells[3].Value = "10";
 
             cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
-
-            
         }
     }
 }

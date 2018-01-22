@@ -20,5 +20,10 @@ namespace GarTor
 
 
         }
+
+        private void Mantener(object sender, EventArgs e)
+        {
+            this.Location = new Point(0, 0);
+        }
     }
 }

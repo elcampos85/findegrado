@@ -15,6 +15,7 @@ namespace GarTor
         public Portada()
         {
             InitializeComponent();
+
         }
     }
 }

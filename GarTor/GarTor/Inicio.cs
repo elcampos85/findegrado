@@ -18,10 +18,17 @@ namespace GarTor
 
             this.Height = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height; //Ajusta al alto de la pantalla
             this.Width = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width; //Ajusta al ancho de la pantalla
-            
+
             //int a=DesktopBounds.Height; //Muestra el alto de la pantalla actual
             //this.MaximizeBox = false;
-            
+            if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
+            Portada panel1 = new Portada();
+            panel1.TopLevel = false;
+            panel1.FormBorderStyle = FormBorderStyle.None;
+            panel1.Dock = DockStyle.Fill;
+            this.pPanelContenedor.Controls.Add(panel1);
+            this.pPanelContenedor.Tag = panel1;
+            panel1.Show();
 
         }
 

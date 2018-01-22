@@ -157,6 +157,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pPanelContenedor.AutoSize = true;
+            this.pPanelContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pPanelContenedor.Location = new System.Drawing.Point(0, 24);
             this.pPanelContenedor.Margin = new System.Windows.Forms.Padding(0);
             this.pPanelContenedor.Name = "pPanelContenedor";

@@ -44,7 +44,7 @@ namespace GarTor
                 panel1.MaximizeBox = false;
                 panel1.MinimizeBox = false;
                 panel1.ShowIcon = true;
-                panel1.ShowInTaskbar = true;
+                panel1.ShowInTaskbar = false;
 
                 panel1.ShowDialog();
             }

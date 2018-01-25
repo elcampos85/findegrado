@@ -52,7 +52,22 @@ SELECT Cod_Ingrediente, Nombre_Ingrediente FROM Ingredientes WHERE (Cod_Ingredie
               <Mapping SourceColumn="Cod_Ingrediente" DataSetColumn="Cod_Ingrediente" />
               <Mapping SourceColumn="Nombre_Ingrediente" DataSetColumn="Nombre_Ingrediente" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="PasteleriaConnectionString (Settings)" DbObjectName="dbo.Ingredientes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="ComboboxIngredientes" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="ComboboxIngredientes" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="ComboboxIngredientes" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Nombre_Ingrediente
+FROM            Ingredientes
+WHERE        (Cod_Ingrediente =
+                             (SELECT        cod_Ingrediente
+                               FROM            PrecioIngredientes
+                               WHERE        (Precio_Ingrediente &lt;&gt; 0.00)))
+ORDER BY Nombre_Ingrediente</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PrecioIngredientesTableAdapter" GeneratorDataComponentClassName="PrecioIngredientesTableAdapter" Name="PrecioIngredientes" UserDataComponentName="PrecioIngredientesTableAdapter">
             <MainSource>

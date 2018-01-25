@@ -25,5 +25,7 @@ namespace GarTor
         {
             this.Location = new Point(0, 0);
         }
+
+       
     }
 }

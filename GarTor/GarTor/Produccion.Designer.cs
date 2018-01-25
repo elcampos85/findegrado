@@ -33,6 +33,10 @@
             this.units = new System.Windows.Forms.NumericUpDown();
             this.lista = new System.Windows.Forms.DataGridView();
             this.Agregar = new System.Windows.Forms.Button();
+            this.tbNombre = new System.Windows.Forms.TextBox();
+            this.lNom = new System.Windows.Forms.Label();
+            this.Grupo = new System.Windows.Forms.Label();
+            this.cbGrupo = new System.Windows.Forms.ComboBox();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Ingrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +49,7 @@
             // 
             this.cbIngredientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIngredientes.FormattingEnabled = true;
-            this.cbIngredientes.Location = new System.Drawing.Point(12, 24);
+            this.cbIngredientes.Location = new System.Drawing.Point(12, 73);
             this.cbIngredientes.Name = "cbIngredientes";
             this.cbIngredientes.Size = new System.Drawing.Size(512, 26);
             this.cbIngredientes.TabIndex = 0;
@@ -64,7 +68,7 @@
             "cL",
             "mL",
             "Caja"});
-            this.cbMedidas.Location = new System.Drawing.Point(631, 25);
+            this.cbMedidas.Location = new System.Drawing.Point(629, 72);
             this.cbMedidas.Name = "cbMedidas";
             this.cbMedidas.Size = new System.Drawing.Size(121, 26);
             this.cbMedidas.TabIndex = 2;
@@ -72,7 +76,7 @@
             // units
             // 
             this.units.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.units.Location = new System.Drawing.Point(538, 26);
+            this.units.Location = new System.Drawing.Point(547, 74);
             this.units.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -112,13 +116,58 @@
             // 
             // Agregar
             // 
-            this.Agregar.Location = new System.Drawing.Point(539, 68);
+            this.Agregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Agregar.Location = new System.Drawing.Point(547, 126);
             this.Agregar.Name = "Agregar";
-            this.Agregar.Size = new System.Drawing.Size(75, 23);
+            this.Agregar.Size = new System.Drawing.Size(75, 28);
             this.Agregar.TabIndex = 5;
             this.Agregar.Text = "Agregar";
             this.Agregar.UseVisualStyleBackColor = true;
             this.Agregar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tbNombre
+            // 
+            this.tbNombre.Location = new System.Drawing.Point(122, 26);
+            this.tbNombre.Name = "tbNombre";
+            this.tbNombre.Size = new System.Drawing.Size(439, 20);
+            this.tbNombre.TabIndex = 6;
+            // 
+            // lNom
+            // 
+            this.lNom.AutoSize = true;
+            this.lNom.Location = new System.Drawing.Point(9, 29);
+            this.lNom.Name = "lNom";
+            this.lNom.Size = new System.Drawing.Size(106, 13);
+            this.lNom.TabIndex = 7;
+            this.lNom.Text = "Nombre del producto";
+            // 
+            // Grupo
+            // 
+            this.Grupo.AutoSize = true;
+            this.Grupo.Location = new System.Drawing.Point(594, 29);
+            this.Grupo.Name = "Grupo";
+            this.Grupo.Size = new System.Drawing.Size(28, 13);
+            this.Grupo.TabIndex = 8;
+            this.Grupo.Text = "Tipo";
+            // 
+            // cbGrupo
+            // 
+            this.cbGrupo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGrupo.FormattingEnabled = true;
+            this.cbGrupo.Items.AddRange(new object[] {
+            "Unidad",
+            "Kg",
+            "g",
+            "mg",
+            "L",
+            "cL",
+            "mL",
+            "Caja"});
+            this.cbGrupo.Location = new System.Drawing.Point(629, 19);
+            this.cbGrupo.Name = "cbGrupo";
+            this.cbGrupo.Size = new System.Drawing.Size(121, 26);
+            this.cbGrupo.TabIndex = 9;
             // 
             // Borrar
             // 
@@ -137,6 +186,7 @@
             // 
             this.Unidad.HeaderText = "Unidad";
             this.Unidad.Name = "Unidad";
+            this.Unidad.ReadOnly = true;
             this.Unidad.Width = 80;
             // 
             // Precio
@@ -152,6 +202,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(1221, 632);
+            this.Controls.Add(this.cbGrupo);
+            this.Controls.Add(this.Grupo);
+            this.Controls.Add(this.lNom);
+            this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.Agregar);
             this.Controls.Add(this.lista);
             this.Controls.Add(this.units);
@@ -162,6 +216,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.units)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -172,6 +227,10 @@
         private System.Windows.Forms.NumericUpDown units;
         private System.Windows.Forms.DataGridView lista;
         private System.Windows.Forms.Button Agregar;
+        private System.Windows.Forms.TextBox tbNombre;
+        private System.Windows.Forms.Label lNom;
+        private System.Windows.Forms.Label Grupo;
+        private System.Windows.Forms.ComboBox cbGrupo;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ingrediente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;

@@ -12,8 +12,10 @@ namespace GarTor
 {
     public partial class VentaTienda : Form
     {
+        private const int COLUMNA_PRECIO = 3;
         public VentaTienda()
         {
+
             InitializeComponent();
             for (int i = 0; i < 50; i++)
             {
@@ -25,7 +27,7 @@ namespace GarTor
                 cesta.Rows[i].Cells[3].Value = "10";
                 cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
             }
-            
+            Total();
 
             
 
@@ -43,6 +45,7 @@ namespace GarTor
                 if (result == DialogResult.Yes)
                 {
                     cesta.Rows.RemoveAt(cesta.CurrentRow.Index);
+                    Total();
                 }
                 else if (result == DialogResult.No)
                 {
@@ -64,6 +67,21 @@ namespace GarTor
             cesta.Rows[cesta.RowCount - 1].Cells[3].Value = "10";
 
             cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
+
+            Total();
+
+
+        }
+
+        private void Total()
+        {
+            float suma = 0;
+            foreach (DataGridViewRow row in cesta.Rows)
+            {
+                suma += Convert.ToSingle(row.Cells[COLUMNA_PRECIO].Value.ToString());
+            }
+
+            lPrecio.Text = suma.ToString()+" €";
         }
     }
 }

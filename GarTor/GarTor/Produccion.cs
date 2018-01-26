@@ -12,6 +12,7 @@ namespace GarTor
 {
     public partial class Produccion : Form
     {
+        private const int COLUMNA_PRECIO = 3;
         public Produccion()
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace GarTor
             cbIngredientes.DataSource = ingreTA.ComboboxIngredientes();
 
             cbMedidas.SelectedIndex = 0;
+            Total();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,9 +34,13 @@ namespace GarTor
             lista.Rows[lista.RowCount - 1].Cells[0].Value = Resource1.bin;
             lista.Rows[lista.RowCount - 1].Cells[1].Value = cbIngredientes.SelectedValue.ToString();
             lista.Rows[lista.RowCount - 1].Cells[2].Value = units.Value+" "+ cbMedidas.SelectedItem;
-            lista.Rows[lista.RowCount - 1].Cells[3].Value = "3€";
+            lista.Rows[lista.RowCount - 1].Cells[3].Value = "3.3";
 
             lista.FirstDisplayedScrollingRowIndex = lista.RowCount - 1;
+
+
+
+            Total();
         }
 
         private void Eliminar(object sender, DataGridViewCellEventArgs e)
@@ -49,11 +55,19 @@ namespace GarTor
                 if (result == DialogResult.Yes)
                 {
                     lista.Rows.RemoveAt(lista.CurrentRow.Index);
-                }
-                else if (result == DialogResult.No)
-                {
+                    Total();
                 }
             }
+        }
+        private void Total()
+        {
+            float suma = 0;
+            foreach (DataGridViewRow row in lista.Rows)
+            {
+                suma += Convert.ToSingle(row.Cells[COLUMNA_PRECIO].Value.ToString());
+            }
+
+            lPrecio.Text = suma.ToString("#,##0.##")+" €";
         }
     }
 }

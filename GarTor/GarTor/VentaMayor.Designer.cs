@@ -34,6 +34,7 @@
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lPrecio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +106,15 @@
             this.Precio.ReadOnly = true;
             this.Precio.Width = 50;
             // 
+            // lPrecio
+            // 
+            this.lPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lPrecio.AutoSize = true;
+            this.lPrecio.Location = new System.Drawing.Point(818, 468);
+            this.lPrecio.Name = "lPrecio";
+            this.lPrecio.Size = new System.Drawing.Size(0, 13);
+            this.lPrecio.TabIndex = 5;
+            // 
             // VentaMayor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,12 +122,14 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(916, 506);
+            this.Controls.Add(this.lPrecio);
             this.Controls.Add(this.cesta);
             this.Controls.Add(this.Comprar);
             this.Name = "VentaMayor";
             this.Text = "VentaMayor";
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -129,5 +141,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.Label lPrecio;
     }
 }

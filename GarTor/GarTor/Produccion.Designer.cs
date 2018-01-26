@@ -32,15 +32,16 @@
             this.cbMedidas = new System.Windows.Forms.ComboBox();
             this.units = new System.Windows.Forms.NumericUpDown();
             this.lista = new System.Windows.Forms.DataGridView();
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Ingrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Agregar = new System.Windows.Forms.Button();
             this.tbNombre = new System.Windows.Forms.TextBox();
             this.lNom = new System.Windows.Forms.Label();
             this.Grupo = new System.Windows.Forms.Label();
             this.cbGrupo = new System.Windows.Forms.ComboBox();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Ingrediente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lPrecio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.units)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.SuspendLayout();
@@ -102,7 +103,7 @@
             this.Unidad,
             this.Precio});
             this.lista.GridColor = System.Drawing.Color.Green;
-            this.lista.Location = new System.Drawing.Point(811, 26);
+            this.lista.Location = new System.Drawing.Point(835, 29);
             this.lista.Name = "lista";
             this.lista.RowHeadersVisible = false;
             this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -110,14 +111,41 @@
             this.lista.ShowCellToolTips = false;
             this.lista.ShowEditingIcon = false;
             this.lista.ShowRowErrors = false;
-            this.lista.Size = new System.Drawing.Size(385, 565);
+            this.lista.Size = new System.Drawing.Size(385, 554);
             this.lista.TabIndex = 4;
             this.lista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Eliminar);
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Name = "Borrar";
+            this.Borrar.Width = 45;
+            // 
+            // Ingrediente
+            // 
+            this.Ingrediente.HeaderText = "Ingrediente";
+            this.Ingrediente.Name = "Ingrediente";
+            this.Ingrediente.ReadOnly = true;
+            this.Ingrediente.Width = 190;
+            // 
+            // Unidad
+            // 
+            this.Unidad.HeaderText = "Unidad";
+            this.Unidad.Name = "Unidad";
+            this.Unidad.ReadOnly = true;
+            this.Unidad.Width = 80;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Width = 50;
             // 
             // Agregar
             // 
             this.Agregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Agregar.Location = new System.Drawing.Point(547, 126);
+            this.Agregar.Location = new System.Drawing.Point(675, 127);
             this.Agregar.Name = "Agregar";
             this.Agregar.Size = new System.Drawing.Size(75, 28);
             this.Agregar.TabIndex = 5;
@@ -169,32 +197,15 @@
             this.cbGrupo.Size = new System.Drawing.Size(121, 26);
             this.cbGrupo.TabIndex = 9;
             // 
-            // Borrar
+            // lPrecio
             // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Name = "Borrar";
-            this.Borrar.Width = 45;
-            // 
-            // Ingrediente
-            // 
-            this.Ingrediente.HeaderText = "Ingrediente";
-            this.Ingrediente.Name = "Ingrediente";
-            this.Ingrediente.ReadOnly = true;
-            this.Ingrediente.Width = 190;
-            // 
-            // Unidad
-            // 
-            this.Unidad.HeaderText = "Unidad";
-            this.Unidad.Name = "Unidad";
-            this.Unidad.ReadOnly = true;
-            this.Unidad.Width = 80;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            this.Precio.Width = 50;
+            this.lPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lPrecio.AutoEllipsis = true;
+            this.lPrecio.AutoSize = true;
+            this.lPrecio.Location = new System.Drawing.Point(1076, 596);
+            this.lPrecio.Name = "lPrecio";
+            this.lPrecio.Size = new System.Drawing.Size(0, 13);
+            this.lPrecio.TabIndex = 10;
             // 
             // Produccion
             // 
@@ -202,12 +213,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(1221, 632);
+            this.Controls.Add(this.lPrecio);
+            this.Controls.Add(this.lista);
             this.Controls.Add(this.cbGrupo);
             this.Controls.Add(this.Grupo);
             this.Controls.Add(this.lNom);
             this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.Agregar);
-            this.Controls.Add(this.lista);
             this.Controls.Add(this.units);
             this.Controls.Add(this.cbMedidas);
             this.Controls.Add(this.cbIngredientes);
@@ -235,5 +247,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ingrediente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.Label lPrecio;
     }
 }

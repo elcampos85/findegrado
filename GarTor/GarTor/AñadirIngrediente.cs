@@ -19,7 +19,7 @@ namespace GarTor
             InitializeComponent();
 
             cbProveedores.DisplayMember = "Nombre_Proveedor";
-            cbProveedores.ValueMember = "Nombre_Proveedor";
+            cbProveedores.ValueMember = "Cod_Proveedor";
 
             cbProveedores.DataSource = provTA.GetData();
         }
@@ -45,7 +45,7 @@ namespace GarTor
 
             }
 
-            MessageBox.Show(Convert.ToString(precio)+" € el kg/L/unidad "+ cbMedidas.SelectedItem);
+            MessageBox.Show(Convert.ToString(precio)+" € el kg/L/unidad "+ cbMedidas.SelectedItem+"    Cod "+ cbProveedores.SelectedValue.ToString());
         }
     }
 }

@@ -38,7 +38,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImage = global::GarTor.Resource1.portada;
-            this.ClientSize = new System.Drawing.Size(1604, 882);
+            this.ClientSize = new System.Drawing.Size(1915, 962);
             this.Name = "Portada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Portada";

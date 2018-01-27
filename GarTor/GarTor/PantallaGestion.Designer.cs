@@ -44,8 +44,11 @@
             this.añadirToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesPorMayorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.añadirToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
             this.cierre = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pPanelContenedor = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.ssEstado.SuspendLayout();
             this.SuspendLayout();
@@ -78,13 +81,13 @@
             // añadirToolStripMenuItem
             // 
             this.añadirToolStripMenuItem.Name = "añadirToolStripMenuItem";
-            this.añadirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.añadirToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.añadirToolStripMenuItem.Text = "Añadir";
             // 
             // modificarToolStripMenuItem
             // 
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.modificarToolStripMenuItem.Text = "Modificar";
             // 
             // ingredientesToolStripMenuItem
@@ -101,6 +104,7 @@
             this.añadirToolStripMenuItem1.Name = "añadirToolStripMenuItem1";
             this.añadirToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.añadirToolStripMenuItem1.Text = "Añadir";
+            this.añadirToolStripMenuItem1.Click += new System.EventHandler(this.añadirToolStripMenuItem1_Click);
             // 
             // modificarToolStripMenuItem2
             // 
@@ -159,9 +163,24 @@
             // 
             // clientesPorMayorToolStripMenuItem
             // 
+            this.clientesPorMayorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.añadirToolStripMenuItem3,
+            this.modificarToolStripMenuItem4});
             this.clientesPorMayorToolStripMenuItem.Name = "clientesPorMayorToolStripMenuItem";
             this.clientesPorMayorToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
             this.clientesPorMayorToolStripMenuItem.Text = "Clientes Por Mayor";
+            // 
+            // añadirToolStripMenuItem3
+            // 
+            this.añadirToolStripMenuItem3.Name = "añadirToolStripMenuItem3";
+            this.añadirToolStripMenuItem3.Size = new System.Drawing.Size(125, 22);
+            this.añadirToolStripMenuItem3.Text = "Añadir";
+            // 
+            // modificarToolStripMenuItem4
+            // 
+            this.modificarToolStripMenuItem4.Name = "modificarToolStripMenuItem4";
+            this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(125, 22);
+            this.modificarToolStripMenuItem4.Text = "Modificar";
             // 
             // ssEstado
             // 
@@ -180,12 +199,26 @@
             this.cierre.Size = new System.Drawing.Size(332, 17);
             this.cierre.Text = "Recuerde cerrar esta pantalla si no va a modificar ningún dato";
             // 
+            // pPanelContenedor
+            // 
+            this.pPanelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pPanelContenedor.AutoSize = true;
+            this.pPanelContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pPanelContenedor.Location = new System.Drawing.Point(0, 24);
+            this.pPanelContenedor.Margin = new System.Windows.Forms.Padding(0);
+            this.pPanelContenedor.Name = "pPanelContenedor";
+            this.pPanelContenedor.Size = new System.Drawing.Size(955, 451);
+            this.pPanelContenedor.TabIndex = 2;
+            // 
             // PantallaGestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(955, 497);
+            this.Controls.Add(this.pPanelContenedor);
             this.Controls.Add(this.ssEstado);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -221,5 +254,8 @@
         private System.Windows.Forms.ToolStripMenuItem añadirToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem clientesPorMayorToolStripMenuItem;
+        private System.Windows.Forms.Panel pPanelContenedor;
+        private System.Windows.Forms.ToolStripMenuItem añadirToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem4;
     }
 }

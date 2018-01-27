@@ -110,9 +110,10 @@
             // 
             this.lPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lPrecio.AutoSize = true;
+            this.lPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lPrecio.Location = new System.Drawing.Point(1121, 593);
             this.lPrecio.Name = "lPrecio";
-            this.lPrecio.Size = new System.Drawing.Size(0, 13);
+            this.lPrecio.Size = new System.Drawing.Size(0, 20);
             this.lPrecio.TabIndex = 3;
             // 
             // VentaTienda

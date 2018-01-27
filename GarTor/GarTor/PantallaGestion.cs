@@ -26,6 +26,17 @@ namespace GarTor
             this.Location = new Point(0, 0);
         }
 
-       
+        //AÑADIR INGREDIENTE
+        private void añadirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
+            AñadirIngrediente panel1 = new AñadirIngrediente();
+            panel1.TopLevel = false;
+            panel1.FormBorderStyle = FormBorderStyle.None;
+            panel1.Dock = DockStyle.Fill;
+            this.pPanelContenedor.Controls.Add(panel1);
+            this.pPanelContenedor.Tag = panel1;
+            panel1.Show();
+        }
     }
 }

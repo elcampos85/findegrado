@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AñadirIngrediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AñadirIngrediente.Designer.cs">
+      <DependentUpon>AñadirIngrediente.cs</DependentUpon>
+    </Compile>
     <Compile Include="DSIngredientes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,6 +159,9 @@
     <Compile Include="VentaTienda.Designer.cs">
       <DependentUpon>VentaTienda.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AñadirIngrediente.resx">
+      <DependentUpon>AñadirIngrediente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsultaDia.resx">
       <DependentUpon>ConsultaDia.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +265,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Pasteleria.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\fder.png" />
     <None Include="Resources\Gestion.ico" />
     <None Include="Resources\comprar.png" />
     <None Include="Resources\portada.jpg" />

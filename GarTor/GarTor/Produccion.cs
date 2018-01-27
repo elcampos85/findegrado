@@ -13,11 +13,13 @@ namespace GarTor
     public partial class Produccion : Form
     {
         private const int COLUMNA_PRECIO = 3;
+        private DSIngredientesTableAdapters.IngredientesTableAdapter ingreTA = new DSIngredientesTableAdapters.IngredientesTableAdapter();
+        private DSIngredientesTableAdapters.PrecioIngredientesTableAdapter precioTA = new DSIngredientesTableAdapters.PrecioIngredientesTableAdapter();
         public Produccion()
         {
             InitializeComponent();
-            DSIngredientesTableAdapters.IngredientesTableAdapter ingreTA = new DSIngredientesTableAdapters.IngredientesTableAdapter();
             
+
             cbIngredientes.DisplayMember = "Nombre_Ingrediente";
             cbIngredientes.ValueMember = "Nombre_Ingrediente";
 
@@ -29,12 +31,36 @@ namespace GarTor
 
         private void button1_Click(object sender, EventArgs e)
         {
+            float precio; 
+
             lista.Rows.Add(1);
 
             lista.Rows[lista.RowCount - 1].Cells[0].Value = Resource1.bin;
             lista.Rows[lista.RowCount - 1].Cells[1].Value = cbIngredientes.SelectedValue.ToString();
-            lista.Rows[lista.RowCount - 1].Cells[2].Value = units.Value+" "+ cbMedidas.SelectedItem;
-            lista.Rows[lista.RowCount - 1].Cells[3].Value = "3.3";
+            lista.Rows[lista.RowCount - 1].Cells[2].Value = units.Value + " " + cbMedidas.SelectedItem;
+            precio = (float)(Math.Round((double)Convert.ToSingle(units.Value) * Convert.ToSingle(precioTA.PrecioIngrediente(cbIngredientes.SelectedValue.ToString())), 2));
+            switch (cbMedidas.SelectedIndex)
+            {
+                case 2://g
+                    precio = precio / 1000;
+                    break;
+                case 3://mg
+                    precio = precio / 1000000;
+                    break;
+                case 5://cL
+                    precio = precio / 100;
+                    break;
+                case 6://mL
+                    precio = precio / 1000;
+                    break;
+
+            }
+
+
+
+            
+            //(float)(Math.Round((double)float, 2);
+            lista.Rows[lista.RowCount - 1].Cells[3].Value = precio;
 
             lista.FirstDisplayedScrollingRowIndex = lista.RowCount - 1;
 

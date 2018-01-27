@@ -61,14 +61,13 @@
             this.cbMedidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMedidas.FormattingEnabled = true;
             this.cbMedidas.Items.AddRange(new object[] {
-            "Unidad",
+            "Unidad/es",
             "Kg",
             "g",
             "mg",
             "L",
             "cL",
-            "mL",
-            "Caja"});
+            "mL"});
             this.cbMedidas.Location = new System.Drawing.Point(629, 72);
             this.cbMedidas.Name = "cbMedidas";
             this.cbMedidas.Size = new System.Drawing.Size(121, 26);
@@ -76,16 +75,18 @@
             // 
             // units
             // 
+            this.units.DecimalPlaces = 2;
             this.units.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.units.Location = new System.Drawing.Point(547, 74);
             this.units.Maximum = new decimal(new int[] {
-            9999,
+            9999999,
             0,
             0,
             0});
             this.units.Name = "units";
             this.units.Size = new System.Drawing.Size(76, 24);
             this.units.TabIndex = 3;
+            this.units.ThousandsSeparator = true;
             // 
             // lista
             // 
@@ -103,7 +104,7 @@
             this.Unidad,
             this.Precio});
             this.lista.GridColor = System.Drawing.Color.Green;
-            this.lista.Location = new System.Drawing.Point(835, 29);
+            this.lista.Location = new System.Drawing.Point(878, 29);
             this.lista.Name = "lista";
             this.lista.RowHeadersVisible = false;
             this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -144,12 +145,13 @@
             // 
             // Agregar
             // 
+            this.Agregar.BackgroundImage = global::GarTor.Resource1.fder;
+            this.Agregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Agregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Agregar.Location = new System.Drawing.Point(675, 127);
+            this.Agregar.Location = new System.Drawing.Point(775, 72);
             this.Agregar.Name = "Agregar";
-            this.Agregar.Size = new System.Drawing.Size(75, 28);
+            this.Agregar.Size = new System.Drawing.Size(40, 27);
             this.Agregar.TabIndex = 5;
-            this.Agregar.Text = "Agregar";
             this.Agregar.UseVisualStyleBackColor = true;
             this.Agregar.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -202,9 +204,10 @@
             this.lPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lPrecio.AutoEllipsis = true;
             this.lPrecio.AutoSize = true;
-            this.lPrecio.Location = new System.Drawing.Point(1076, 596);
+            this.lPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lPrecio.Location = new System.Drawing.Point(1119, 596);
             this.lPrecio.Name = "lPrecio";
-            this.lPrecio.Size = new System.Drawing.Size(0, 13);
+            this.lPrecio.Size = new System.Drawing.Size(0, 20);
             this.lPrecio.TabIndex = 10;
             // 
             // Produccion
@@ -212,7 +215,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
-            this.ClientSize = new System.Drawing.Size(1221, 632);
+            this.ClientSize = new System.Drawing.Size(1264, 632);
             this.Controls.Add(this.lPrecio);
             this.Controls.Add(this.lista);
             this.Controls.Add(this.cbGrupo);

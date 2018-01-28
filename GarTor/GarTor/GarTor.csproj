@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -124,6 +124,12 @@
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxTemporal.cs" />
+    <Compile Include="ModificarIngrediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarIngrediente.Designer.cs">
+      <DependentUpon>ModificarIngrediente.cs</DependentUpon>
+    </Compile>
     <Compile Include="MsgBoxUtil.cs" />
     <Compile Include="PantallaGestion.cs">
       <SubType>Form</SubType>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarIngrediente.resx">
+      <DependentUpon>ModificarIngrediente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaGestion.resx">
       <DependentUpon>PantallaGestion.cs</DependentUpon>
@@ -277,7 +286,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

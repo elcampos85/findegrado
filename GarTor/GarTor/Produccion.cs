@@ -30,7 +30,7 @@ namespace GarTor
             lista.Rows[lista.RowCount - 1].Cells[0].Value = Resource1.bin;
             lista.Rows[lista.RowCount - 1].Cells[1].Value = cbIngredientes.SelectedValue.ToString();
             lista.Rows[lista.RowCount - 1].Cells[2].Value = units.Value + " " + cbMedidas.SelectedItem;
-            precio = (float)(Math.Round((double)Convert.ToSingle(units.Value) * Convert.ToSingle(precioTA.PrecioIngrediente(cbIngredientes.SelectedValue.ToString())), 2));
+            precio = (float)(Math.Round((double)Convert.ToSingle(units.Value) * (float) Convert.ToSingle(precioTA.PrecioIngrediente(cbIngredientes.SelectedValue.ToString())), 2));
             switch (cbMedidas.SelectedIndex)
             {
                 case 2://g

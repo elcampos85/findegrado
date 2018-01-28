@@ -1676,7 +1676,7 @@ SELECT Cod_Ingrediente, Nombre_Ingrediente FROM Ingredientes WHERE (Cod_Ingredie
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = @"SELECT        Nombre_Ingrediente
 FROM            Ingredientes
-WHERE        (Cod_Ingrediente NOT IN
+WHERE        (Cod_Ingrediente IN
                              (SELECT        cod_Ingrediente
                                FROM            PrecioIngredientes
                                WHERE        (Precio_Ingrediente <> 0.00)))

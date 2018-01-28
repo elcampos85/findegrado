@@ -69,6 +69,9 @@
     <Compile Include="AñadirIngrediente.Designer.cs">
       <DependentUpon>AñadirIngrediente.cs</DependentUpon>
     </Compile>
+    <Compile Include="DSIngredientes.cs">
+      <DependentUpon>DSIngredientes.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSIngredientes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

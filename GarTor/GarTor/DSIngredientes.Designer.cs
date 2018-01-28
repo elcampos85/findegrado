@@ -1667,7 +1667,7 @@ SELECT Cod_Ingrediente, Nombre_Ingrediente FROM Ingredientes WHERE (Cod_Ingredie
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Cod_Ingrediente, Nombre_Ingrediente FROM dbo.Ingredientes";
@@ -1676,12 +1676,18 @@ SELECT Cod_Ingrediente, Nombre_Ingrediente FROM Ingredientes WHERE (Cod_Ingredie
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = @"SELECT        Nombre_Ingrediente
 FROM            Ingredientes
-WHERE        (Cod_Ingrediente =
+WHERE        (Cod_Ingrediente NOT IN
                              (SELECT        cod_Ingrediente
                                FROM            PrecioIngredientes
                                WHERE        (Precio_Ingrediente <> 0.00)))
 ORDER BY Nombre_Ingrediente";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        Cod_Ingrediente\r\nFROM            Ingredientes\r\nWHERE        (Nombre" +
+                "_Ingrediente = @ingre)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ingre", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre_Ingrediente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1857,6 +1863,40 @@ ORDER BY Nombre_Ingrediente";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Nombre_Ingrediente, int Original_Cod_Ingrediente, string Original_Nombre_Ingrediente) {
             return this.Update(Nombre_Ingrediente, Original_Cod_Ingrediente, Original_Nombre_Ingrediente, Original_Cod_Ingrediente);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual object GetCodIngrediente(string ingre) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((ingre == null)) {
+                throw new global::System.ArgumentNullException("ingre");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(ingre));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((object)(returnValue));
+            }
         }
     }
     

@@ -19,14 +19,6 @@ namespace GarTor
         {
             InitializeComponent();
             
-
-            cbIngredientes.DisplayMember = "Nombre_Ingrediente";
-            cbIngredientes.ValueMember = "Nombre_Ingrediente";
-
-            cbIngredientes.DataSource = ingreTA.ComboboxIngredientes();
-
-            cbMedidas.SelectedIndex = 0;
-            Total();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -55,10 +47,6 @@ namespace GarTor
                     break;
 
             }
-
-
-
-            
             //(float)(Math.Round((double)float, 2);
             lista.Rows[lista.RowCount - 1].Cells[3].Value = precio;
 
@@ -94,6 +82,17 @@ namespace GarTor
             }
 
             lPrecio.Text = suma.ToString("#,##0.##")+" €";
+        }
+
+        private void OnLoad(object sender, EventArgs e)
+        {
+            cbIngredientes.DisplayMember = "Nombre_Ingrediente";
+            cbIngredientes.ValueMember = "Nombre_Ingrediente";
+
+            cbIngredientes.DataSource = ingreTA.ComboboxIngredientes();
+
+            cbMedidas.SelectedIndex = 0;
+            Total();
         }
     }
 }

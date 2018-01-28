@@ -228,6 +228,7 @@
             this.Controls.Add(this.cbIngredientes);
             this.Name = "Produccion";
             this.Text = "Produccion";
+            this.Load += new System.EventHandler(this.OnLoad);
             ((System.ComponentModel.ISupportInitialize)(this.units)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
             this.ResumeLayout(false);

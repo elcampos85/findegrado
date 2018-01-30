@@ -31,6 +31,7 @@ namespace GarTor
             lista.Rows[lista.RowCount - 1].Cells[1].Value = cbIngredientes.SelectedValue.ToString();
             lista.Rows[lista.RowCount - 1].Cells[2].Value = units.Value + " " + cbMedidas.SelectedItem;
             precio = (float)(Math.Round((double)Convert.ToSingle(units.Value) * (float) Convert.ToSingle(precioTA.PrecioIngrediente(cbIngredientes.SelectedValue.ToString())), 2));
+
             switch (cbMedidas.SelectedIndex)
             {
                 case 2://g
@@ -48,8 +49,7 @@ namespace GarTor
 
             }
             //(float)(Math.Round((double)float, 2);
-            lista.Rows[lista.RowCount - 1].Cells[3].Value = precio;
-
+            lista.Rows[lista.RowCount - 1].Cells[3].Value = (float)(Math.Round((double)precio, 2)); 
             lista.FirstDisplayedScrollingRowIndex = lista.RowCount - 1;
 
 

@@ -53,7 +53,7 @@ namespace GarTor
             precio = (float) precio / (float)(Math.Round((double)Convert.ToSingle(cantidad.Value)));
             precio=(float)(Math.Round((double)precio, 2));
             ingreTA.Insert(tbNombre.Text.ToString());
-            ingreTA.GetCodIngrediente(tbNombre.Text);
+            //ingreTA.GetCodIngrediente(tbNombre.Text);
             preTA.Insert((Convert.ToInt32(cbProveedores.SelectedValue.ToString())), (Convert.ToInt32(ingreTA.GetCodIngrediente(tbNombre.Text.ToString()))), precio);
 
 

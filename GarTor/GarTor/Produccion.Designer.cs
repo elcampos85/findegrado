@@ -77,14 +77,14 @@
             // 
             this.units.DecimalPlaces = 2;
             this.units.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.units.Location = new System.Drawing.Point(547, 74);
+            this.units.Location = new System.Drawing.Point(530, 72);
             this.units.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
             this.units.Name = "units";
-            this.units.Size = new System.Drawing.Size(76, 24);
+            this.units.Size = new System.Drawing.Size(92, 24);
             this.units.TabIndex = 3;
             this.units.ThousandsSeparator = true;
             // 
@@ -185,15 +185,6 @@
             this.cbGrupo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbGrupo.FormattingEnabled = true;
-            this.cbGrupo.Items.AddRange(new object[] {
-            "Unidad",
-            "Kg",
-            "g",
-            "mg",
-            "L",
-            "cL",
-            "mL",
-            "Caja"});
             this.cbGrupo.Location = new System.Drawing.Point(629, 19);
             this.cbGrupo.Name = "cbGrupo";
             this.cbGrupo.Size = new System.Drawing.Size(121, 26);

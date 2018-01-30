@@ -15,6 +15,7 @@ namespace GarTor
         private const int COLUMNA_PRECIO = 3;
         private DSIngredientesTableAdapters.IngredientesTableAdapter ingreTA = new DSIngredientesTableAdapters.IngredientesTableAdapter();
         private DSIngredientesTableAdapters.PrecioIngredientesTableAdapter precioTA = new DSIngredientesTableAdapters.PrecioIngredientesTableAdapter();
+        private DSVentasTableAdapters.ProductosTableAdapter producTA = new DSVentasTableAdapters.ProductosTableAdapter();
         public Produccion()
         {
             InitializeComponent();
@@ -86,6 +87,13 @@ namespace GarTor
 
         private void OnLoad(object sender, EventArgs e)
         {
+            
+
+            cbGrupo.DisplayMember = "Categoria_Producto";
+            cbGrupo.ValueMember = "Categoria_Producto";
+
+            cbGrupo.DataSource = producTA.GetGrupos();
+
             cbIngredientes.DisplayMember = "Nombre_Ingrediente";
             cbIngredientes.ValueMember = "Nombre_Ingrediente";
 

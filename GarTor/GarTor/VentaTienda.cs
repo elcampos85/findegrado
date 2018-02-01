@@ -80,8 +80,36 @@ namespace GarTor
             {
                 suma += Convert.ToSingle(row.Cells[COLUMNA_PRECIO].Value.ToString());
             }
+            
+            lPrecio.Text = "Total: " + suma.ToString() + " €";
+        }
 
-            lPrecio.Text = suma.ToString()+" €";
+        private void EliminarCestaCompleta(object sender, EventArgs e)
+        {
+            DialogResult result;
+            MsgBoxUtil.HackMessageBox("Si", "No");
+            result = MessageBox.Show("¿Desea eliminar TODOS los articulos?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                cesta.Rows.Clear();
+                Total();
+            }
+            else if (result == DialogResult.No)
+            {
+            }
+        }
+
+        private void PasarPagProductos(object sender, EventArgs e)
+        {
+            btAtrasVTienda.Visible = true;
+            btAdelanteVTienda.Visible = false;
+        }
+
+        private void RetroPagProductos(object sender, EventArgs e)
+        {
+            btAtrasVTienda.Visible = false;
+            btAdelanteVTienda.Visible = true;
         }
     }
 }

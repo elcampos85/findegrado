@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace GarTor
             }
             Total();
 
-            
+
 
         }
 
@@ -40,7 +41,7 @@ namespace GarTor
                 int num_fila = cesta.CurrentRow.Index;
                 DialogResult result;
                 MsgBoxUtil.HackMessageBox("Si", "No");
-                result = MessageBox.Show("¿Desea eliminar este producto?", "Eliminar",  MessageBoxButtons.YesNo, MessageBoxIcon.Question );
+                result = MessageBox.Show("¿Desea eliminar este producto?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -51,11 +52,11 @@ namespace GarTor
                 {
                 }
             }
-            
-            
+
+
         }
 
-       
+
 
         private void FinalizarCompra(object sender, EventArgs e)
         {
@@ -80,7 +81,7 @@ namespace GarTor
             {
                 suma += Convert.ToSingle(row.Cells[COLUMNA_PRECIO].Value.ToString());
             }
-            
+
             lPrecio.Text = "Total: " + suma.ToString() + " €";
         }
 
@@ -110,6 +111,44 @@ namespace GarTor
         {
             btAtrasVTienda.Visible = false;
             btAdelanteVTienda.Visible = true;
+        }
+
+        private void BusquedaProducto(object sender, EventArgs e)
+        {
+
+        }
+
+        private void VentaTienda_Load(object sender, EventArgs e)
+        {
+            DirectoryInfo dir = new DirectoryInfo("L:/DAM/2/Proyecto Fin de Curso/Fotos Pasteleria");
+
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                try
+                {
+                    this.imageList1.Images.Add(Image.FromFile(file.FullName));
+                }
+                catch
+                {
+                    Console.WriteLine("No es un archivo de imagen");
+                }
+
+                this.listView1.View = View.LargeIcon;
+
+                this.imageList1.ImageSize = new Size(100, 100);
+
+                this.listView1.LargeImageList = this.imageList1;
+
+                for (int j = 0; j < this.imageList1.Images.Count; j++)
+                {
+                    ListViewItem item = new ListViewItem();
+
+                    item.ImageIndex = j;
+
+                    this.listView1.Items.Add(item);
+                    Console.WriteLine(j);
+                }
+            }
         }
     }
 }

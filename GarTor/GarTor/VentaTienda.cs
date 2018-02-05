@@ -104,50 +104,50 @@ namespace GarTor
         private void PasarPagProductos(object sender, EventArgs e)
         {
             btAtrasVTienda.Visible = true;
-            btAdelanteVTienda.Visible = false;
         }
 
         private void RetroPagProductos(object sender, EventArgs e)
         {
             btAtrasVTienda.Visible = false;
-            btAdelanteVTienda.Visible = true;
         }
-
-        private void BusquedaProducto(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void VentaTienda_Load(object sender, EventArgs e)
         {
-            DirectoryInfo dir = new DirectoryInfo("L:/DAM/2/Proyecto Fin de Curso/Fotos Pasteleria");
-
+            DirectoryInfo dir = new DirectoryInfo("C:/Users/Public/Pictures/Sample Pictures");
+            int j = 0;
             foreach (FileInfo file in dir.GetFiles())
             {
+                this.listView1.View = View.LargeIcon;
+
+                this.imageList1.ImageSize = new Size(150, 150);
+
                 try
                 {
                     this.imageList1.Images.Add(Image.FromFile(file.FullName));
+
+                    this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
+                    j++;
                 }
                 catch
                 {
                     Console.WriteLine("No es un archivo de imagen");
                 }
 
-                this.listView1.View = View.LargeIcon;
 
-                this.imageList1.ImageSize = new Size(100, 100);
 
                 this.listView1.LargeImageList = this.imageList1;
 
-                for (int j = 0; j < this.imageList1.Images.Count; j++)
-                {
-                    ListViewItem item = new ListViewItem();
 
-                    item.ImageIndex = j;
+            }
+        }
+        private void Seleccion(object sender, EventArgs e)
+        {
+            ListView.SelectedIndexCollection seleccionado = this.listView1.SelectedIndices;
+            foreach(int index in seleccionado)
+            {
+                MessageBox.Show(this.listView1.Items[index].Text);
 
-                    this.listView1.Items.Add(item);
-                    Console.WriteLine(j);
-                }
             }
         }
     }

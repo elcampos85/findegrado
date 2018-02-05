@@ -79,6 +79,7 @@
     <Compile Include="AñadirIngrediente.Designer.cs">
       <DependentUpon>AñadirIngrediente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Constantes.cs" />
     <Compile Include="DSIngredientes.cs">
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
     </Compile>

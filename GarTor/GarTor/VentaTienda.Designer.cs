@@ -36,6 +36,7 @@
             this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelProdVentaTienda = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lPrecio = new System.Windows.Forms.Label();
             this.panelSeparadorVTienda = new System.Windows.Forms.Panel();
@@ -44,11 +45,8 @@
             this.btEliminarCesta = new System.Windows.Forms.Button();
             this.Comprar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btAtrasVTienda = new System.Windows.Forms.Button();
-            this.btAdelanteVTienda = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btAtrasVTienda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.panelProdVentaTienda.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,7 +79,7 @@
             this.cesta.ShowCellToolTips = false;
             this.cesta.ShowEditingIcon = false;
             this.cesta.ShowRowErrors = false;
-            this.cesta.Size = new System.Drawing.Size(263, 453);
+            this.cesta.Size = new System.Drawing.Size(263, 537);
             this.cesta.TabIndex = 1;
             this.cesta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Eliminar);
             // 
@@ -120,6 +118,18 @@
             this.panelProdVentaTienda.Name = "panelProdVentaTienda";
             this.panelProdVentaTienda.Size = new System.Drawing.Size(1234, 634);
             this.panelProdVentaTienda.TabIndex = 4;
+            // 
+            // listView1
+            // 
+            this.listView1.BackColor = System.Drawing.Color.ForestGreen;
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Location = new System.Drawing.Point(0, 42);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(960, 592);
+            this.listView1.TabIndex = 6;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.Seleccion);
             // 
             // panel1
             // 
@@ -200,59 +210,12 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.btAtrasVTienda);
-            this.panel2.Controls.Add(this.btAdelanteVTienda);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(243, 42);
+            this.panel2.Size = new System.Drawing.Size(63, 42);
             this.panel2.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(0, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(152, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.BusquedaProducto);
-            // 
-            // btAtrasVTienda
-            // 
-            this.btAtrasVTienda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btAtrasVTienda.BackgroundImage")));
-            this.btAtrasVTienda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btAtrasVTienda.FlatAppearance.BorderColor = System.Drawing.Color.PaleGreen;
-            this.btAtrasVTienda.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btAtrasVTienda.Location = new System.Drawing.Point(158, 0);
-            this.btAtrasVTienda.Name = "btAtrasVTienda";
-            this.btAtrasVTienda.Size = new System.Drawing.Size(38, 36);
-            this.btAtrasVTienda.TabIndex = 1;
-            this.btAtrasVTienda.UseVisualStyleBackColor = true;
-            this.btAtrasVTienda.Visible = false;
-            this.btAtrasVTienda.Click += new System.EventHandler(this.RetroPagProductos);
-            // 
-            // btAdelanteVTienda
-            // 
-            this.btAdelanteVTienda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btAdelanteVTienda.BackgroundImage")));
-            this.btAdelanteVTienda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btAdelanteVTienda.FlatAppearance.BorderColor = System.Drawing.Color.PaleGreen;
-            this.btAdelanteVTienda.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btAdelanteVTienda.Location = new System.Drawing.Point(202, 0);
-            this.btAdelanteVTienda.Name = "btAdelanteVTienda";
-            this.btAdelanteVTienda.Size = new System.Drawing.Size(38, 36);
-            this.btAdelanteVTienda.TabIndex = 0;
-            this.btAdelanteVTienda.UseVisualStyleBackColor = true;
-            this.btAdelanteVTienda.Click += new System.EventHandler(this.PasarPagProductos);
-            // 
-            // listView1
-            // 
-            this.listView1.BackColor = System.Drawing.Color.ForestGreen;
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Location = new System.Drawing.Point(0, 42);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(960, 592);
-            this.listView1.TabIndex = 6;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // imageList1
             // 
@@ -265,6 +228,20 @@
             this.imageList1.Images.SetKeyName(4, "2012-11-15 19.57.28.jpg");
             this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
             this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
+            // 
+            // btAtrasVTienda
+            // 
+            this.btAtrasVTienda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btAtrasVTienda.BackgroundImage")));
+            this.btAtrasVTienda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btAtrasVTienda.FlatAppearance.BorderColor = System.Drawing.Color.PaleGreen;
+            this.btAtrasVTienda.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btAtrasVTienda.Location = new System.Drawing.Point(3, 0);
+            this.btAtrasVTienda.Name = "btAtrasVTienda";
+            this.btAtrasVTienda.Size = new System.Drawing.Size(38, 36);
+            this.btAtrasVTienda.TabIndex = 1;
+            this.btAtrasVTienda.UseVisualStyleBackColor = true;
+            this.btAtrasVTienda.Visible = false;
+            this.btAtrasVTienda.Click += new System.EventHandler(this.RetroPagProductos);
             // 
             // VentaTienda
             // 
@@ -287,7 +264,6 @@
             this.panelToolboxVTienda.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -301,16 +277,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.Panel panelProdVentaTienda;
         private System.Windows.Forms.Panel panelToolboxVTienda;
-        private System.Windows.Forms.Button btAdelanteVTienda;
         private System.Windows.Forms.Panel panelSeparadorVTienda;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btAtrasVTienda;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btEliminarCesta;
         private System.Windows.Forms.Label lPrecio;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button btAtrasVTienda;
     }
 }

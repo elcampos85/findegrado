@@ -45,8 +45,8 @@
             this.btEliminarCesta = new System.Windows.Forms.Button();
             this.Comprar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btAtrasVTienda = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.panelProdVentaTienda.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -146,10 +146,10 @@
             // 
             this.lPrecio.AutoSize = true;
             this.lPrecio.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lPrecio.Font = new System.Drawing.Font("Rockwell Extra Bold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lPrecio.Location = new System.Drawing.Point(8, 570);
+            this.lPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lPrecio.Location = new System.Drawing.Point(8, 568);
             this.lPrecio.Name = "lPrecio";
-            this.lPrecio.Size = new System.Drawing.Size(0, 22);
+            this.lPrecio.Size = new System.Drawing.Size(0, 24);
             this.lPrecio.TabIndex = 2;
             // 
             // panelSeparadorVTienda
@@ -217,18 +217,6 @@
             this.panel2.Size = new System.Drawing.Size(63, 42);
             this.panel2.TabIndex = 1;
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "2012-11-15 12.42.26.jpg");
-            this.imageList1.Images.SetKeyName(1, "2012-11-15 12.44.13.jpg");
-            this.imageList1.Images.SetKeyName(2, "2012-11-15 19.36.18.jpg");
-            this.imageList1.Images.SetKeyName(3, "2012-11-15 19.55.18.jpg");
-            this.imageList1.Images.SetKeyName(4, "2012-11-15 19.57.28.jpg");
-            this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
-            this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
-            // 
             // btAtrasVTienda
             // 
             this.btAtrasVTienda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btAtrasVTienda.BackgroundImage")));
@@ -242,6 +230,18 @@
             this.btAtrasVTienda.UseVisualStyleBackColor = true;
             this.btAtrasVTienda.Visible = false;
             this.btAtrasVTienda.Click += new System.EventHandler(this.RetroPagProductos);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "2012-11-15 12.42.26.jpg");
+            this.imageList1.Images.SetKeyName(1, "2012-11-15 12.44.13.jpg");
+            this.imageList1.Images.SetKeyName(2, "2012-11-15 19.36.18.jpg");
+            this.imageList1.Images.SetKeyName(3, "2012-11-15 19.55.18.jpg");
+            this.imageList1.Images.SetKeyName(4, "2012-11-15 19.57.28.jpg");
+            this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
+            this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
             // 
             // VentaTienda
             // 

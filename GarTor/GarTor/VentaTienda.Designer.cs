@@ -229,7 +229,18 @@
             this.btAtrasVTienda.TabIndex = 1;
             this.btAtrasVTienda.UseVisualStyleBackColor = true;
             this.btAtrasVTienda.Visible = false;
-            this.btAtrasVTienda.Click += new System.EventHandler(this.RetroPagProductos);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "2012-11-15 12.42.26.jpg");
+            this.imageList1.Images.SetKeyName(1, "2012-11-15 12.44.13.jpg");
+            this.imageList1.Images.SetKeyName(2, "2012-11-15 19.36.18.jpg");
+            this.imageList1.Images.SetKeyName(3, "2012-11-15 19.55.18.jpg");
+            this.imageList1.Images.SetKeyName(4, "2012-11-15 19.57.28.jpg");
+            this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
+            this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
             // 
             // imageList1
             // 

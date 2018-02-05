@@ -101,20 +101,12 @@ namespace GarTor
             }
         }
 
-        private void PasarPagProductos(object sender, EventArgs e)
-        {
-            btAtrasVTienda.Visible = true;
-        }
-
-        private void RetroPagProductos(object sender, EventArgs e)
-        {
-            btAtrasVTienda.Visible = false;
-        }
+        
         
 
         private void VentaTienda_Load(object sender, EventArgs e)
         {
-            DirectoryInfo dir = new DirectoryInfo("C:/Users/Public/Pictures/Sample Pictures");
+            DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
             int j = 0;
             foreach (FileInfo file in dir.GetFiles())
             {
@@ -149,6 +141,7 @@ namespace GarTor
                 MessageBox.Show(this.listView1.Items[index].Text);
 
             }
+            btAtrasVTienda.Visible = true;
         }
     }
 }

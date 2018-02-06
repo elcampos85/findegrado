@@ -9,7 +9,7 @@ namespace GarTor
     class Constantes
     {
         public const string MAIN_RUTA= "C:/Program Files (x86)/GarTor";
+        public const string PRODUCTOS_RUTA = "C:/Program Files (x86)/GarTor/Productos";
         public const string CATEGORIAS_RUTA = "C:/Program Files (x86)/GarTor/Productos/Categorias";
-
     }
 }

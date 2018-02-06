@@ -61,6 +61,7 @@
       <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -87,6 +88,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSProductos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSProductos.xsd</DependentUpon>
     </Compile>
     <Compile Include="DSVentas.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -173,12 +179,6 @@
     <Compile Include="VentaMayor.Designer.cs">
       <DependentUpon>VentaMayor.cs</DependentUpon>
     </Compile>
-    <Compile Include="VentaTienda.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VentaTienda.Designer.cs">
-      <DependentUpon>VentaTienda.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AñadirIngrediente.resx">
       <DependentUpon>AñadirIngrediente.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,9 +229,6 @@
     <EmbeddedResource Include="VentaMayor.resx">
       <DependentUpon>VentaMayor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VentaTienda.resx">
-      <DependentUpon>VentaTienda.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
@@ -253,6 +250,17 @@
     </None>
     <None Include="DSIngredientes.xss">
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
+    </None>
+    <None Include="DSProductos.xsc">
+      <DependentUpon>DSProductos.xsd</DependentUpon>
+    </None>
+    <None Include="DSProductos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSProductos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSProductos.xss">
+      <DependentUpon>DSProductos.xsd</DependentUpon>
     </None>
     <None Include="DSVentas.xsc">
       <DependentUpon>DSVentas.xsd</DependentUpon>

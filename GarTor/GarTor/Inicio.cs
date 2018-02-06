@@ -22,7 +22,16 @@ namespace GarTor
             InitializeComponent();
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");//Cambia el uso de , y . para millar y decimas
             stringConexion = ConfigurationManager.ConnectionStrings["GarTor.Properties.Settings.PasteleriaConnectionString"].ConnectionString;//Se crea la conexion de configuracion del proyecto para utilizar la base de datos
-            //crearDirectorios();//Metodo que lleva a cabo la creacion de los directorios de recursos necesarios para la aplicacion si no existen
+            try
+            {
+                crearDirectorios();//Metodo que lleva a cabo la creacion de los directorios de recursos necesarios para la aplicacion si no existen
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Se requieren permisos de administrador");
+                this.Close();
+            }
+            
 
             this.Height = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height; //Ajusta al alto de la pantalla
             this.Width = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width; //Ajusta al ancho de la pantalla

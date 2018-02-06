@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,11 +17,12 @@ namespace GarTor
         private const int COLUMNA_PRECIO = 3;
         private DSIngredientesTableAdapters.IngredientesTableAdapter ingreTA = new DSIngredientesTableAdapters.IngredientesTableAdapter();
         private DSIngredientesTableAdapters.PrecioIngredientesTableAdapter precioTA = new DSIngredientesTableAdapters.PrecioIngredientesTableAdapter();
-        private DSVentasTableAdapters.ProductosTableAdapter producTA = new DSVentasTableAdapters.ProductosTableAdapter();
+        private SqlConnection conexion;
+        private string stringConexion;
         public Produccion()
         {
             InitializeComponent();
-            
+            stringConexion = ConfigurationManager.ConnectionStrings["GarTor.Properties.Settings.PasteleriaConnectionString"].ConnectionString;//Se crea la conexion de configuracion del proyecto para utilizar la base de datos
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -92,7 +95,17 @@ namespace GarTor
             cbGrupo.DisplayMember = "Categoria_Producto";
             cbGrupo.ValueMember = "Categoria_Producto";
 
-            cbGrupo.DataSource = producTA.GetGrupos();
+            // cbGrupo.DataSource = producTA.GetCategoria();
+
+
+
+            using (conexion = new SqlConnection(stringConexion))//Se crea la conexion a la base de datos y se realiza la consulta de las distintas categorias
+            using (SqlDataAdapter adaptador = new SqlDataAdapter("SELECT DISTINCT Categoria_Producto FROM Productos", conexion))//Se almacena el resultado en un adaptador
+            {
+                DataTable dt = new DataTable();
+                adaptador.Fill(dt);//Rellenamos el DataTable con las filas de la consulta en una unica columna
+                cbGrupo.DataSource = dt;
+            }
 
             cbIngredientes.DisplayMember = "Nombre_Ingrediente";
             cbIngredientes.ValueMember = "Nombre_Ingrediente";

@@ -89,15 +89,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSProductos.cs">
+      <DependentUpon>DSProductos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSProductos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSProductos.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DSVentas.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DSVentas.xsd</DependentUpon>
     </Compile>
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
@@ -270,17 +268,6 @@
     </None>
     <None Include="DSProductos.xss">
       <DependentUpon>DSProductos.xsd</DependentUpon>
-    </None>
-    <None Include="DSVentas.xsc">
-      <DependentUpon>DSVentas.xsd</DependentUpon>
-    </None>
-    <None Include="DSVentas.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSVentas.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DSVentas.xss">
-      <DependentUpon>DSVentas.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

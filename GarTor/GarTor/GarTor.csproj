@@ -61,6 +61,7 @@
       <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -79,6 +80,7 @@
     <Compile Include="AñadirIngrediente.Designer.cs">
       <DependentUpon>AñadirIngrediente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Constantes.cs" />
     <Compile Include="DSIngredientes.cs">
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
     </Compile>
@@ -86,6 +88,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSProductos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSProductos.xsd</DependentUpon>
     </Compile>
     <Compile Include="DSVentas.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -243,6 +250,17 @@
     </None>
     <None Include="DSIngredientes.xss">
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
+    </None>
+    <None Include="DSProductos.xsc">
+      <DependentUpon>DSProductos.xsd</DependentUpon>
+    </None>
+    <None Include="DSProductos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSProductos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSProductos.xss">
+      <DependentUpon>DSProductos.xsd</DependentUpon>
     </None>
     <None Include="DSVentas.xsc">
       <DependentUpon>DSVentas.xsd</DependentUpon>

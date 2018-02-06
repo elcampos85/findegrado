@@ -7,16 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace GarTor
 {
     public partial class Inicio : Form
     {
+        SqlConnection conexion;
+        string stringConexion;
+
         public Inicio()
         {
             InitializeComponent();
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");//Cambia el uso de , y . para millar y decimas
-        
+            stringConexion = ConfigurationManager.ConnectionStrings["GarTor.Properties.Settings.PasteleriaConnectionString"].ConnectionString;//Se crea la conexion de configuracion del proyecto para utilizar la base de datos
+            crearDirectorios();//Metodo que lleva a cabo la creacion de los directorios de recursos necesarios para la aplicacion si no existen
 
             this.Height = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height; //Ajusta al alto de la pantalla
             this.Width = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width; //Ajusta al ancho de la pantalla
@@ -137,9 +143,40 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
         
+        private void crearDirectorios()
+        {
+            string rutaPrincipal = Constantes.MAIN_RUTA;
+            string rutaProductos = Constantes.PRODUCTOS_RUTA;
+            string rutaCategorias = Constantes.CATEGORIAS_RUTA;
+            string[] categorias = null;//Array para almacenar las categorias de la consulta Sql
 
-        
+            if (!System.IO.File.Exists(rutaPrincipal))
+            {
+                System.IO.Directory.CreateDirectory(rutaPrincipal);//Se crea el directorio principal si no existe
+            }
+            if (!System.IO.File.Exists(rutaProductos))
+            {
+                System.IO.Directory.CreateDirectory(rutaProductos);//Se crea el directorio de Productos dentro del principal si no existe
+            }
+            if (!System.IO.File.Exists(rutaCategorias))
+            {
+                System.IO.Directory.CreateDirectory(rutaCategorias);//Se crea el directorio de Categorias dentro del directorio de Productos si no existe
+            }
+            using (conexion = new SqlConnection(stringConexion))//Se crea la conexion a la base de datos y se realiza la consulta de las distintas categorias
+            using (SqlDataAdapter adaptador = new SqlDataAdapter("SELECT DISTINCT Categoria_Producto FROM Productos", conexion))//Se almacena el resultado en un adaptador
+            {
+                DataTable dt = new DataTable();
+                adaptador.Fill(dt);//Rellenamos el DataTable con las filas de la consulta en una unica columna
+                categorias = dt.Rows.OfType<DataRow>().Select(x => x[0].ToString()).ToArray();//Rellenamos el array de categorias con los datos de las filas pasadas a string y posteriormente a un array
+            }
+            foreach (string cat in categorias)//Recorremos el array de categorias
+            {
+                if (!System.IO.File.Exists(rutaProductos + "/" + cat))//Comprobamos si existen los directorios de las diferentes categorias en el directorio de productos
+                {
+                    System.IO.Directory.CreateDirectory(rutaProductos + "/" + cat);//Si no existe alguno se crea
+                }
+            }
+        }
     }
 }

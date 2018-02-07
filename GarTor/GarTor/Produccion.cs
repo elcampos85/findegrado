@@ -153,7 +153,7 @@ namespace GarTor
                 DSProductosTableAdapters.ProductosTableAdapter producTA = new DSProductosTableAdapters.ProductosTableAdapter();
 
                 producTA.Insert(tbNombre.Text, cbGrupo.Text);
-                precMayorTA.Insert();
+                //precMayorTA.Insert();
 
 
                 MessageBox.Show(tbNombre.Text + " " + cbGrupo.Text);

@@ -229,6 +229,7 @@
             this.btAtrasVTienda.TabIndex = 1;
             this.btAtrasVTienda.UseVisualStyleBackColor = true;
             this.btAtrasVTienda.Visible = false;
+            this.btAtrasVTienda.Click += new System.EventHandler(this.volverACategoria);
             // 
             // imageList1
             // 

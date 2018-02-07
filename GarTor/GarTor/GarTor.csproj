@@ -292,6 +292,22 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Pasteleria.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\Varios.jpg" />
+    <None Include="Resources\Tartas.jpg" />
+    <None Include="Resources\Salado.jpg" />
+    <None Include="Resources\Roscones.jpg" />
+    <None Include="Resources\Postres.jpg" />
+    <None Include="Resources\Pasteles.jpg" />
+    <None Include="Resources\Pastas.jpg" />
+    <None Include="Resources\Pascua.jpg" />
+    <None Include="Resources\Navidad.jpg" />
+    <None Include="Resources\Hojaldre.jpg" />
+    <None Include="Resources\Festividades.jpg" />
+    <None Include="Resources\Corona Almudena.jpg" />
+    <None Include="Resources\Bombones.jpg" />
+    <None Include="Resources\Bolleria.jpg" />
+    <None Include="Resources\Bebida.jpg" />
+    <None Include="Resources\Anguilas.jpg" />
     <None Include="Resources\Delete.ico" />
     <None Include="Resources\Next_arrow1.ico" />
     <None Include="Resources\Above_arrow1.ico" />

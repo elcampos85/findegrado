@@ -127,4 +127,52 @@
   <data name="Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Delete.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Anguilas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Anguilas.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bebida" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bebida.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bolleria" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bolleria.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bombones" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bombones.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Corona_Almudena" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Corona Almudena.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Festividades" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Festividades.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hojaldre" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hojaldre.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Navidad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Navidad.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pascua" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pascua.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pastas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pastas.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pasteles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pasteles.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Postres" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Postres.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Roscones" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Roscones.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Salado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Salado.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tartas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tartas.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Varios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Varios.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

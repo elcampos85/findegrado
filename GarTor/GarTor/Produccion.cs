@@ -100,7 +100,7 @@ namespace GarTor
 
 
             using (conexion = new SqlConnection(stringConexion))//Se crea la conexion a la base de datos y se realiza la consulta de las distintas categorias
-            using (SqlDataAdapter adaptador = new SqlDataAdapter("SELECT DISTINCT Categoria_Producto FROM Productos", conexion))//Se almacena el resultado en un adaptador
+            using (SqlDataAdapter adaptador = new SqlDataAdapter(Constantes.QUERY_CONSULTA_CATEGORIAS, conexion))//Se almacena el resultado en un adaptador
             {
                 DataTable dt = new DataTable();
                 adaptador.Fill(dt);//Rellenamos el DataTable con las filas de la consulta en una unica columna

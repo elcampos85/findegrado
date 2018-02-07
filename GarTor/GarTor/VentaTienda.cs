@@ -207,7 +207,12 @@ namespace GarTor
 
         private void cambioPrecio(object sender, DataGridViewCellEventArgs e)
         {
-
+            for (int i = 0; i < cesta.Rows.Count; i++)
+            {
+                cesta.Rows[i].Cells[3].Value = Convert.ToSingle(cesta.Rows[i].Cells[2].Value) * (float)cesta.Rows[i].Cells[3].Value;
+            }
+            Total();
+            
         }
     }    
 }

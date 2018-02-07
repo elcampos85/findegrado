@@ -15,13 +15,14 @@ namespace GarTor
     {
         private const int COLUMNA_PRECIO = 3;
         private bool listaCategoria = true;
+        private bool vacia = true;
         DSProductosTableAdapters.ProductosTableAdapter prodTA = new DSProductosTableAdapters.ProductosTableAdapter();
         DSProductosTableAdapters.PreciosVentaTableAdapter ventTA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
         public VentaTienda()
         {
 
             InitializeComponent();
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 5; i++)
             {
                 cesta.Rows.Add(1);
 
@@ -32,7 +33,7 @@ namespace GarTor
                 cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
             }
             Total();
-
+            vacia = false;
 
 
         }
@@ -207,12 +208,24 @@ namespace GarTor
 
         private void cambioPrecio(object sender, DataGridViewCellEventArgs e)
         {
+            if (!vacia)
+            {
+               // float a = (float)Convert.ToSingle(cesta.Rows[0].Cells[3].Value);
+                MessageBox.Show(Convert.ToSingle(cesta.Rows[0].Cells[3].Value).ToString());
+
+            
+                Total();
+            }
+            
+            /*
             for (int i = 0; i < cesta.Rows.Count; i++)
             {
-                cesta.Rows[i].Cells[3].Value = Convert.ToSingle(cesta.Rows[i].Cells[2].Value) * (float)cesta.Rows[i].Cells[3].Value;
+                float a = (float)Convert.ToSingle(cesta.Rows[i].Cells[3].Value);
+                MessageBox.Show(a.ToString());
+                cesta.Rows[i].Cells[3].Value = Convert.ToSingle(cesta.Rows[i].Cells[2].Value) * a; 
             }
-            Total();
-            
+            Total();*/
+
         }
     }    
 }

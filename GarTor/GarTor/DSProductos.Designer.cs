@@ -20,11 +20,13 @@ namespace GarTor {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DSVentas")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DSProductos")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DSVentas : global::System.Data.DataSet {
+    public partial class DSProductos : global::System.Data.DataSet {
         
         private ClientesMayorDataTable tableClientesMayor;
+        
+        private ContabilidadDataTable tableContabilidad;
         
         private DetalleFacMayorDataTable tableDetalleFacMayor;
         
@@ -50,9 +52,13 @@ namespace GarTor {
         
         private global::System.Data.DataRelation relationFK_DetalleFacMayor_Cod_Pre_May;
         
+        private global::System.Data.DataRelation relationFK_DetalleFacMayor_Cod_Pro;
+        
         private global::System.Data.DataRelation relationFK_DetallePedidos_Cod_Fac_Ven;
         
         private global::System.Data.DataRelation relationFK_DetallePedidos_Cod_Pre_Ven;
+        
+        private global::System.Data.DataRelation relationFK_DetallePedidos_Cod_Pro;
         
         private global::System.Data.DataRelation relationFK_FacturasMayor_Cod_Cli;
         
@@ -60,11 +66,17 @@ namespace GarTor {
         
         private global::System.Data.DataRelation relationFK_PedidosMayor_cliente;
         
+        private global::System.Data.DataRelation relationFK_PreciosMayor_CodProd;
+        
+        private global::System.Data.DataRelation relationFK_PreciosVenta_CodPro;
+        
+        private global::System.Data.DataRelation relationFK_VentaProductos_CodProd;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public DSVentas() {
+        public DSProductos() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -75,7 +87,7 @@ namespace GarTor {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected DSVentas(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DSProductos(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -90,6 +102,9 @@ namespace GarTor {
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
                 if ((ds.Tables["ClientesMayor"] != null)) {
                     base.Tables.Add(new ClientesMayorDataTable(ds.Tables["ClientesMayor"]));
+                }
+                if ((ds.Tables["Contabilidad"] != null)) {
+                    base.Tables.Add(new ContabilidadDataTable(ds.Tables["Contabilidad"]));
                 }
                 if ((ds.Tables["DetalleFacMayor"] != null)) {
                     base.Tables.Add(new DetalleFacMayorDataTable(ds.Tables["DetalleFacMayor"]));
@@ -146,6 +161,16 @@ namespace GarTor {
         public ClientesMayorDataTable ClientesMayor {
             get {
                 return this.tableClientesMayor;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ContabilidadDataTable Contabilidad {
+            get {
+                return this.tableContabilidad;
             }
         }
         
@@ -291,7 +316,7 @@ namespace GarTor {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DSVentas cln = ((DSVentas)(base.Clone()));
+            DSProductos cln = ((DSProductos)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -318,6 +343,9 @@ namespace GarTor {
                 ds.ReadXml(reader);
                 if ((ds.Tables["ClientesMayor"] != null)) {
                     base.Tables.Add(new ClientesMayorDataTable(ds.Tables["ClientesMayor"]));
+                }
+                if ((ds.Tables["Contabilidad"] != null)) {
+                    base.Tables.Add(new ContabilidadDataTable(ds.Tables["Contabilidad"]));
                 }
                 if ((ds.Tables["DetalleFacMayor"] != null)) {
                     base.Tables.Add(new DetalleFacMayorDataTable(ds.Tables["DetalleFacMayor"]));
@@ -388,6 +416,12 @@ namespace GarTor {
                     this.tableClientesMayor.InitVars();
                 }
             }
+            this.tableContabilidad = ((ContabilidadDataTable)(base.Tables["Contabilidad"]));
+            if ((initTable == true)) {
+                if ((this.tableContabilidad != null)) {
+                    this.tableContabilidad.InitVars();
+                }
+            }
             this.tableDetalleFacMayor = ((DetalleFacMayorDataTable)(base.Tables["DetalleFacMayor"]));
             if ((initTable == true)) {
                 if ((this.tableDetalleFacMayor != null)) {
@@ -450,23 +484,30 @@ namespace GarTor {
             }
             this.relationFK_DetalleFacMayor_Cod_Fac_May = this.Relations["FK_DetalleFacMayor_Cod_Fac_May"];
             this.relationFK_DetalleFacMayor_Cod_Pre_May = this.Relations["FK_DetalleFacMayor_Cod_Pre_May"];
+            this.relationFK_DetalleFacMayor_Cod_Pro = this.Relations["FK_DetalleFacMayor_Cod_Pro"];
             this.relationFK_DetallePedidos_Cod_Fac_Ven = this.Relations["FK_DetallePedidos_Cod_Fac_Ven"];
             this.relationFK_DetallePedidos_Cod_Pre_Ven = this.Relations["FK_DetallePedidos_Cod_Pre_Ven"];
+            this.relationFK_DetallePedidos_Cod_Pro = this.Relations["FK_DetallePedidos_Cod_Pro"];
             this.relationFK_FacturasMayor_Cod_Cli = this.Relations["FK_FacturasMayor_Cod_Cli"];
             this.relationFK_FacturasVenta_CodPed = this.Relations["FK_FacturasVenta_CodPed"];
             this.relationFK_PedidosMayor_cliente = this.Relations["FK_PedidosMayor_cliente"];
+            this.relationFK_PreciosMayor_CodProd = this.Relations["FK_PreciosMayor_CodProd"];
+            this.relationFK_PreciosVenta_CodPro = this.Relations["FK_PreciosVenta_CodPro"];
+            this.relationFK_VentaProductos_CodProd = this.Relations["FK_VentaProductos_CodProd"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DSVentas";
+            this.DataSetName = "DSProductos";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DSVentas.xsd";
+            this.Namespace = "http://tempuri.org/DSProductos.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableClientesMayor = new ClientesMayorDataTable();
             base.Tables.Add(this.tableClientesMayor);
+            this.tableContabilidad = new ContabilidadDataTable();
+            base.Tables.Add(this.tableContabilidad);
             this.tableDetalleFacMayor = new DetalleFacMayorDataTable();
             base.Tables.Add(this.tableDetalleFacMayor);
             this.tableDetallePedidos = new DetallePedidosDataTable();
@@ -495,6 +536,10 @@ namespace GarTor {
                         this.tablePreciosMayor.Cod_Precios_MayorColumn}, new global::System.Data.DataColumn[] {
                         this.tableDetalleFacMayor.Cod_Precios_MayorColumn}, false);
             this.Relations.Add(this.relationFK_DetalleFacMayor_Cod_Pre_May);
+            this.relationFK_DetalleFacMayor_Cod_Pro = new global::System.Data.DataRelation("FK_DetalleFacMayor_Cod_Pro", new global::System.Data.DataColumn[] {
+                        this.tableProductos.Cod_ProductoColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDetalleFacMayor.Cod_ProductoColumn}, false);
+            this.Relations.Add(this.relationFK_DetalleFacMayor_Cod_Pro);
             this.relationFK_DetallePedidos_Cod_Fac_Ven = new global::System.Data.DataRelation("FK_DetallePedidos_Cod_Fac_Ven", new global::System.Data.DataColumn[] {
                         this.tableFacturasVenta.Cod_Facturas_VentaColumn}, new global::System.Data.DataColumn[] {
                         this.tableDetallePedidos.Cod_Facturas_VentaColumn}, false);
@@ -503,6 +548,10 @@ namespace GarTor {
                         this.tablePreciosVenta.Cod_Precios_ventaColumn}, new global::System.Data.DataColumn[] {
                         this.tableDetallePedidos.Cod_Precios_VentaColumn}, false);
             this.Relations.Add(this.relationFK_DetallePedidos_Cod_Pre_Ven);
+            this.relationFK_DetallePedidos_Cod_Pro = new global::System.Data.DataRelation("FK_DetallePedidos_Cod_Pro", new global::System.Data.DataColumn[] {
+                        this.tableProductos.Cod_ProductoColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDetallePedidos.Cod_ProductoColumn}, false);
+            this.Relations.Add(this.relationFK_DetallePedidos_Cod_Pro);
             this.relationFK_FacturasMayor_Cod_Cli = new global::System.Data.DataRelation("FK_FacturasMayor_Cod_Cli", new global::System.Data.DataColumn[] {
                         this.tablePedidosMayor.Cod_PedidosMayorColumn}, new global::System.Data.DataColumn[] {
                         this.tableFacturasMayor.Cod_PedidosMayorColumn}, false);
@@ -515,11 +564,29 @@ namespace GarTor {
                         this.tableClientesMayor.Cod_ClienteColumn}, new global::System.Data.DataColumn[] {
                         this.tablePedidosMayor.Cod_ClienteColumn}, false);
             this.Relations.Add(this.relationFK_PedidosMayor_cliente);
+            this.relationFK_PreciosMayor_CodProd = new global::System.Data.DataRelation("FK_PreciosMayor_CodProd", new global::System.Data.DataColumn[] {
+                        this.tableProductos.Cod_ProductoColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePreciosMayor.Cod_ProductoColumn}, false);
+            this.Relations.Add(this.relationFK_PreciosMayor_CodProd);
+            this.relationFK_PreciosVenta_CodPro = new global::System.Data.DataRelation("FK_PreciosVenta_CodPro", new global::System.Data.DataColumn[] {
+                        this.tableProductos.Cod_ProductoColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePreciosVenta.Cod_ProductoColumn}, false);
+            this.Relations.Add(this.relationFK_PreciosVenta_CodPro);
+            this.relationFK_VentaProductos_CodProd = new global::System.Data.DataRelation("FK_VentaProductos_CodProd", new global::System.Data.DataColumn[] {
+                        this.tableProductos.Cod_ProductoColumn}, new global::System.Data.DataColumn[] {
+                        this.tableVentaProductos.Cod_ProductoColumn}, false);
+            this.Relations.Add(this.relationFK_VentaProductos_CodProd);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializeClientesMayor() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeContabilidad() {
             return false;
         }
         
@@ -594,7 +661,7 @@ namespace GarTor {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DSVentas ds = new DSVentas();
+            DSProductos ds = new DSProductos();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -640,6 +707,9 @@ namespace GarTor {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void ClientesMayorRowChangeEventHandler(object sender, ClientesMayorRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void ContabilidadRowChangeEventHandler(object sender, ContabilidadRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void DetalleFacMayorRowChangeEventHandler(object sender, DetalleFacMayorRowChangeEvent e);
@@ -908,7 +978,7 @@ namespace GarTor {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas ds = new DSVentas();
+                DSProductos ds = new DSProductos();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -927,6 +997,313 @@ namespace GarTor {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "ClientesMayorDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ContabilidadDataTable : global::System.Data.TypedTableBase<ContabilidadRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnFecha;
+            
+            private global::System.Data.DataColumn columnGastos;
+            
+            private global::System.Data.DataColumn columnIngresos;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ContabilidadDataTable() {
+                this.TableName = "Contabilidad";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal ContabilidadDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected ContabilidadDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FechaColumn {
+                get {
+                    return this.columnFecha;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn GastosColumn {
+                get {
+                    return this.columnGastos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IngresosColumn {
+                get {
+                    return this.columnIngresos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ContabilidadRow this[int index] {
+                get {
+                    return ((ContabilidadRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ContabilidadRowChangeEventHandler ContabilidadRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ContabilidadRowChangeEventHandler ContabilidadRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ContabilidadRowChangeEventHandler ContabilidadRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ContabilidadRowChangeEventHandler ContabilidadRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddContabilidadRow(ContabilidadRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ContabilidadRow AddContabilidadRow(System.DateTime Fecha, double Gastos, double Ingresos) {
+                ContabilidadRow rowContabilidadRow = ((ContabilidadRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Fecha,
+                        Gastos,
+                        Ingresos};
+                rowContabilidadRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowContabilidadRow);
+                return rowContabilidadRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ContabilidadRow FindById(int Id) {
+                return ((ContabilidadRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ContabilidadDataTable cln = ((ContabilidadDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ContabilidadDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnFecha = base.Columns["Fecha"];
+                this.columnGastos = base.Columns["Gastos"];
+                this.columnIngresos = base.Columns["Ingresos"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFecha);
+                this.columnGastos = new global::System.Data.DataColumn("Gastos", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGastos);
+                this.columnIngresos = new global::System.Data.DataColumn("Ingresos", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIngresos);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
+                this.columnId.Unique = true;
+                this.columnFecha.AllowDBNull = false;
+                this.columnGastos.AllowDBNull = false;
+                this.columnIngresos.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ContabilidadRow NewContabilidadRow() {
+                return ((ContabilidadRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ContabilidadRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ContabilidadRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ContabilidadRowChanged != null)) {
+                    this.ContabilidadRowChanged(this, new ContabilidadRowChangeEvent(((ContabilidadRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ContabilidadRowChanging != null)) {
+                    this.ContabilidadRowChanging(this, new ContabilidadRowChangeEvent(((ContabilidadRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ContabilidadRowDeleted != null)) {
+                    this.ContabilidadRowDeleted(this, new ContabilidadRowChangeEvent(((ContabilidadRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ContabilidadRowDeleting != null)) {
+                    this.ContabilidadRowDeleting(this, new ContabilidadRowChangeEvent(((ContabilidadRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveContabilidadRow(ContabilidadRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DSProductos ds = new DSProductos();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ContabilidadDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1104,7 +1481,7 @@ namespace GarTor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DetalleFacMayorRow AddDetalleFacMayorRow(int Id, FacturasMayorRow parentFacturasMayorRowByFK_DetalleFacMayor_Cod_Fac_May, int Num_Detalle, int Cantidad, PreciosMayorRow parentPreciosMayorRowByFK_DetalleFacMayor_Cod_Pre_May, int Cod_Producto) {
+            public DetalleFacMayorRow AddDetalleFacMayorRow(int Id, FacturasMayorRow parentFacturasMayorRowByFK_DetalleFacMayor_Cod_Fac_May, int Num_Detalle, int Cantidad, PreciosMayorRow parentPreciosMayorRowByFK_DetalleFacMayor_Cod_Pre_May, ProductosRow parentProductosRowByFK_DetalleFacMayor_Cod_Pro) {
                 DetalleFacMayorRow rowDetalleFacMayorRow = ((DetalleFacMayorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -1112,12 +1489,15 @@ namespace GarTor {
                         Num_Detalle,
                         Cantidad,
                         null,
-                        Cod_Producto};
+                        null};
                 if ((parentFacturasMayorRowByFK_DetalleFacMayor_Cod_Fac_May != null)) {
                     columnValuesArray[1] = parentFacturasMayorRowByFK_DetalleFacMayor_Cod_Fac_May[0];
                 }
                 if ((parentPreciosMayorRowByFK_DetalleFacMayor_Cod_Pre_May != null)) {
                     columnValuesArray[4] = parentPreciosMayorRowByFK_DetalleFacMayor_Cod_Pre_May[0];
+                }
+                if ((parentProductosRowByFK_DetalleFacMayor_Cod_Pro != null)) {
+                    columnValuesArray[5] = parentProductosRowByFK_DetalleFacMayor_Cod_Pro[0];
                 }
                 rowDetalleFacMayorRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDetalleFacMayorRow);
@@ -1247,7 +1627,7 @@ namespace GarTor {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas ds = new DSVentas();
+                DSProductos ds = new DSProductos();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1443,7 +1823,7 @@ namespace GarTor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DetallePedidosRow AddDetallePedidosRow(int Id, FacturasVentaRow parentFacturasVentaRowByFK_DetallePedidos_Cod_Fac_Ven, int Num_Detalle, int Cantidad, PreciosVentaRow parentPreciosVentaRowByFK_DetallePedidos_Cod_Pre_Ven, int Cod_Producto) {
+            public DetallePedidosRow AddDetallePedidosRow(int Id, FacturasVentaRow parentFacturasVentaRowByFK_DetallePedidos_Cod_Fac_Ven, int Num_Detalle, int Cantidad, PreciosVentaRow parentPreciosVentaRowByFK_DetallePedidos_Cod_Pre_Ven, ProductosRow parentProductosRowByFK_DetallePedidos_Cod_Pro) {
                 DetallePedidosRow rowDetallePedidosRow = ((DetallePedidosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -1451,12 +1831,15 @@ namespace GarTor {
                         Num_Detalle,
                         Cantidad,
                         null,
-                        Cod_Producto};
+                        null};
                 if ((parentFacturasVentaRowByFK_DetallePedidos_Cod_Fac_Ven != null)) {
                     columnValuesArray[1] = parentFacturasVentaRowByFK_DetallePedidos_Cod_Fac_Ven[0];
                 }
                 if ((parentPreciosVentaRowByFK_DetallePedidos_Cod_Pre_Ven != null)) {
                     columnValuesArray[4] = parentPreciosVentaRowByFK_DetallePedidos_Cod_Pre_Ven[0];
+                }
+                if ((parentProductosRowByFK_DetallePedidos_Cod_Pro != null)) {
+                    columnValuesArray[5] = parentProductosRowByFK_DetallePedidos_Cod_Pro[0];
                 }
                 rowDetallePedidosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDetallePedidosRow);
@@ -1586,7 +1969,7 @@ namespace GarTor {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas ds = new DSVentas();
+                DSProductos ds = new DSProductos();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1881,7 +2264,7 @@ namespace GarTor {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas ds = new DSVentas();
+                DSProductos ds = new DSProductos();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2176,7 +2559,7 @@ namespace GarTor {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas ds = new DSVentas();
+                DSProductos ds = new DSProductos();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2468,7 +2851,7 @@ namespace GarTor {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas ds = new DSVentas();
+                DSProductos ds = new DSProductos();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2778,7 +3161,7 @@ namespace GarTor {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas ds = new DSVentas();
+                DSProductos ds = new DSProductos();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2944,12 +3327,15 @@ namespace GarTor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PreciosMayorRow AddPreciosMayorRow(int Cod_Producto, double PrecioMayor) {
+            public PreciosMayorRow AddPreciosMayorRow(ProductosRow parentProductosRowByFK_PreciosMayor_CodProd, double PrecioMayor) {
                 PreciosMayorRow rowPreciosMayorRow = ((PreciosMayorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Cod_Producto,
+                        null,
                         PrecioMayor};
+                if ((parentProductosRowByFK_PreciosMayor_CodProd != null)) {
+                    columnValuesArray[1] = parentProductosRowByFK_PreciosMayor_CodProd[0];
+                }
                 rowPreciosMayorRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPreciosMayorRow);
                 return rowPreciosMayorRow;
@@ -3070,7 +3456,7 @@ namespace GarTor {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas ds = new DSVentas();
+                DSProductos ds = new DSProductos();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3236,12 +3622,15 @@ namespace GarTor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PreciosVentaRow AddPreciosVentaRow(int Cod_Producto, double PrecioVenta) {
+            public PreciosVentaRow AddPreciosVentaRow(ProductosRow parentProductosRowByFK_PreciosVenta_CodPro, double PrecioVenta) {
                 PreciosVentaRow rowPreciosVentaRow = ((PreciosVentaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Cod_Producto,
+                        null,
                         PrecioVenta};
+                if ((parentProductosRowByFK_PreciosVenta_CodPro != null)) {
+                    columnValuesArray[1] = parentProductosRowByFK_PreciosVenta_CodPro[0];
+                }
                 rowPreciosVentaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPreciosVentaRow);
                 return rowPreciosVentaRow;
@@ -3362,7 +3751,7 @@ namespace GarTor {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas ds = new DSVentas();
+                DSProductos ds = new DSProductos();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3428,6 +3817,10 @@ namespace GarTor {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ProductosDataTable : global::System.Data.TypedTableBase<ProductosRow> {
             
+            private global::System.Data.DataColumn columnCod_Producto;
+            
+            private global::System.Data.DataColumn columnNombre_Producto;
+            
             private global::System.Data.DataColumn columnCategoria_Producto;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3461,6 +3854,22 @@ namespace GarTor {
             protected ProductosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Cod_ProductoColumn {
+                get {
+                    return this.columnCod_Producto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Nombre_ProductoColumn {
+                get {
+                    return this.columnNombre_Producto;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3508,13 +3917,22 @@ namespace GarTor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProductosRow AddProductosRow(string Categoria_Producto) {
+            public ProductosRow AddProductosRow(string Nombre_Producto, string Categoria_Producto) {
                 ProductosRow rowProductosRow = ((ProductosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        null,
+                        Nombre_Producto,
                         Categoria_Producto};
                 rowProductosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProductosRow);
                 return rowProductosRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProductosRow FindByCod_Producto(int Cod_Producto) {
+                return ((ProductosRow)(this.Rows.Find(new object[] {
+                            Cod_Producto})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3534,14 +3952,30 @@ namespace GarTor {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
+                this.columnCod_Producto = base.Columns["Cod_Producto"];
+                this.columnNombre_Producto = base.Columns["Nombre_Producto"];
                 this.columnCategoria_Producto = base.Columns["Categoria_Producto"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
+                this.columnCod_Producto = new global::System.Data.DataColumn("Cod_Producto", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCod_Producto);
+                this.columnNombre_Producto = new global::System.Data.DataColumn("Nombre_Producto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNombre_Producto);
                 this.columnCategoria_Producto = new global::System.Data.DataColumn("Categoria_Producto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCategoria_Producto);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnCod_Producto}, true));
+                this.columnCod_Producto.AutoIncrement = true;
+                this.columnCod_Producto.AutoIncrementSeed = -1;
+                this.columnCod_Producto.AutoIncrementStep = -1;
+                this.columnCod_Producto.AllowDBNull = false;
+                this.columnCod_Producto.ReadOnly = true;
+                this.columnCod_Producto.Unique = true;
+                this.columnNombre_Producto.AllowDBNull = false;
+                this.columnNombre_Producto.MaxLength = 50;
                 this.columnCategoria_Producto.AllowDBNull = false;
                 this.columnCategoria_Producto.MaxLength = 50;
             }
@@ -3611,7 +4045,7 @@ namespace GarTor {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas ds = new DSVentas();
+                DSProductos ds = new DSProductos();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3787,13 +4221,16 @@ namespace GarTor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public VentaProductosRow AddVentaProductosRow(int Cod_Producto, int Unidad_Producto, System.DateTime FechaVenta) {
+            public VentaProductosRow AddVentaProductosRow(ProductosRow parentProductosRowByFK_VentaProductos_CodProd, int Unidad_Producto, System.DateTime FechaVenta) {
                 VentaProductosRow rowVentaProductosRow = ((VentaProductosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Cod_Producto,
+                        null,
                         Unidad_Producto,
                         FechaVenta};
+                if ((parentProductosRowByFK_VentaProductos_CodProd != null)) {
+                    columnValuesArray[1] = parentProductosRowByFK_VentaProductos_CodProd[0];
+                }
                 rowVentaProductosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowVentaProductosRow);
                 return rowVentaProductosRow;
@@ -3918,7 +4355,7 @@ namespace GarTor {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas ds = new DSVentas();
+                DSProductos ds = new DSProductos();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4039,6 +4476,65 @@ namespace GarTor {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class ContabilidadRow : global::System.Data.DataRow {
+            
+            private ContabilidadDataTable tableContabilidad;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal ContabilidadRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableContabilidad = ((ContabilidadDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableContabilidad.IdColumn]));
+                }
+                set {
+                    this[this.tableContabilidad.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime Fecha {
+                get {
+                    return ((global::System.DateTime)(this[this.tableContabilidad.FechaColumn]));
+                }
+                set {
+                    this[this.tableContabilidad.FechaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double Gastos {
+                get {
+                    return ((double)(this[this.tableContabilidad.GastosColumn]));
+                }
+                set {
+                    this[this.tableContabilidad.GastosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double Ingresos {
+                get {
+                    return ((double)(this[this.tableContabilidad.IngresosColumn]));
+                }
+                set {
+                    this[this.tableContabilidad.IngresosColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class DetalleFacMayorRow : global::System.Data.DataRow {
             
             private DetalleFacMayorDataTable tableDetalleFacMayor;
@@ -4135,6 +4631,17 @@ namespace GarTor {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_DetalleFacMayor_Cod_Pre_May"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProductosRow ProductosRow {
+                get {
+                    return ((ProductosRow)(this.GetParentRow(this.Table.ParentRelations["FK_DetalleFacMayor_Cod_Pro"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DetalleFacMayor_Cod_Pro"]);
                 }
             }
         }
@@ -4238,6 +4745,17 @@ namespace GarTor {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_DetallePedidos_Cod_Pre_Ven"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProductosRow ProductosRow {
+                get {
+                    return ((ProductosRow)(this.GetParentRow(this.Table.ParentRelations["FK_DetallePedidos_Cod_Pro"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_DetallePedidos_Cod_Pro"]);
                 }
             }
         }
@@ -4571,6 +5089,17 @@ namespace GarTor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProductosRow ProductosRow {
+                get {
+                    return ((ProductosRow)(this.GetParentRow(this.Table.ParentRelations["FK_PreciosMayor_CodProd"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PreciosMayor_CodProd"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public DetalleFacMayorRow[] GetDetalleFacMayorRows() {
                 if ((this.Table.ChildRelations["FK_DetalleFacMayor_Cod_Pre_May"] == null)) {
                     return new DetalleFacMayorRow[0];
@@ -4630,6 +5159,17 @@ namespace GarTor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProductosRow ProductosRow {
+                get {
+                    return ((ProductosRow)(this.GetParentRow(this.Table.ParentRelations["FK_PreciosVenta_CodPro"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PreciosVenta_CodPro"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public DetallePedidosRow[] GetDetallePedidosRows() {
                 if ((this.Table.ChildRelations["FK_DetallePedidos_Cod_Pre_Ven"] == null)) {
                     return new DetallePedidosRow[0];
@@ -4656,12 +5196,89 @@ namespace GarTor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Cod_Producto {
+                get {
+                    return ((int)(this[this.tableProductos.Cod_ProductoColumn]));
+                }
+                set {
+                    this[this.tableProductos.Cod_ProductoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Nombre_Producto {
+                get {
+                    return ((string)(this[this.tableProductos.Nombre_ProductoColumn]));
+                }
+                set {
+                    this[this.tableProductos.Nombre_ProductoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Categoria_Producto {
                 get {
                     return ((string)(this[this.tableProductos.Categoria_ProductoColumn]));
                 }
                 set {
                     this[this.tableProductos.Categoria_ProductoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DetalleFacMayorRow[] GetDetalleFacMayorRows() {
+                if ((this.Table.ChildRelations["FK_DetalleFacMayor_Cod_Pro"] == null)) {
+                    return new DetalleFacMayorRow[0];
+                }
+                else {
+                    return ((DetalleFacMayorRow[])(base.GetChildRows(this.Table.ChildRelations["FK_DetalleFacMayor_Cod_Pro"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DetallePedidosRow[] GetDetallePedidosRows() {
+                if ((this.Table.ChildRelations["FK_DetallePedidos_Cod_Pro"] == null)) {
+                    return new DetallePedidosRow[0];
+                }
+                else {
+                    return ((DetallePedidosRow[])(base.GetChildRows(this.Table.ChildRelations["FK_DetallePedidos_Cod_Pro"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public PreciosMayorRow[] GetPreciosMayorRows() {
+                if ((this.Table.ChildRelations["FK_PreciosMayor_CodProd"] == null)) {
+                    return new PreciosMayorRow[0];
+                }
+                else {
+                    return ((PreciosMayorRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PreciosMayor_CodProd"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public PreciosVentaRow[] GetPreciosVentaRows() {
+                if ((this.Table.ChildRelations["FK_PreciosVenta_CodPro"] == null)) {
+                    return new PreciosVentaRow[0];
+                }
+                else {
+                    return ((PreciosVentaRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PreciosVenta_CodPro"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public VentaProductosRow[] GetVentaProductosRows() {
+                if ((this.Table.ChildRelations["FK_VentaProductos_CodProd"] == null)) {
+                    return new VentaProductosRow[0];
+                }
+                else {
+                    return ((VentaProductosRow[])(base.GetChildRows(this.Table.ChildRelations["FK_VentaProductos_CodProd"])));
                 }
             }
         }
@@ -4723,6 +5340,17 @@ namespace GarTor {
                     this[this.tableVentaProductos.FechaVentaColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProductosRow ProductosRow {
+                get {
+                    return ((ProductosRow)(this.GetParentRow(this.Table.ParentRelations["FK_VentaProductos_CodProd"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_VentaProductos_CodProd"]);
+                }
+            }
         }
         
         /// <summary>
@@ -4745,6 +5373,40 @@ namespace GarTor {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ClientesMayorRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class ContabilidadRowChangeEvent : global::System.EventArgs {
+            
+            private ContabilidadRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ContabilidadRowChangeEvent(ContabilidadRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ContabilidadRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -5100,7 +5762,7 @@ namespace GarTor {
         }
     }
 }
-namespace GarTor.DSVentasTableAdapters {
+namespace GarTor.DSProductosTableAdapters {
     
     
     /// <summary>
@@ -5278,7 +5940,7 @@ SELECT Cod_Cliente, Nombre_Cliente, [CIF/NIF] FROM ClientesMayor WHERE (Cod_Clie
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas.ClientesMayorDataTable dataTable) {
+        public virtual int Fill(DSProductos.ClientesMayorDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5291,9 +5953,9 @@ SELECT Cod_Cliente, Nombre_Cliente, [CIF/NIF] FROM ClientesMayor WHERE (Cod_Clie
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas.ClientesMayorDataTable GetData() {
+        public virtual DSProductos.ClientesMayorDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas.ClientesMayorDataTable dataTable = new DSVentas.ClientesMayorDataTable();
+            DSProductos.ClientesMayorDataTable dataTable = new DSProductos.ClientesMayorDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5301,14 +5963,14 @@ SELECT Cod_Cliente, Nombre_Cliente, [CIF/NIF] FROM ClientesMayor WHERE (Cod_Clie
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas.ClientesMayorDataTable dataTable) {
+        public virtual int Update(DSProductos.ClientesMayorDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas dataSet) {
+        public virtual int Update(DSProductos dataSet) {
             return this.Adapter.Update(dataSet, "ClientesMayor");
         }
         
@@ -5447,6 +6109,323 @@ SELECT Cod_Cliente, Nombre_Cliente, [CIF/NIF] FROM ClientesMayor WHERE (Cod_Clie
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Nombre_Cliente, string p1, int Original_Cod_Cliente, string Original_Nombre_Cliente, string p2) {
             return this.Update(Nombre_Cliente, p1, Original_Cod_Cliente, Original_Nombre_Cliente, p2, Original_Cod_Cliente);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ContabilidadTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public ContabilidadTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Contabilidad";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("Fecha", "Fecha");
+            tableMapping.ColumnMappings.Add("Gastos", "Gastos");
+            tableMapping.ColumnMappings.Add("Ingresos", "Ingresos");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Contabilidad] WHERE (([Id] = @Original_Id) AND ([Fecha] = @Ori" +
+                "ginal_Fecha) AND ([Gastos] = @Original_Gastos) AND ([Ingresos] = @Original_Ingre" +
+                "sos))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Fecha", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gastos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gastos", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ingresos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingresos", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Contabilidad] ([Fecha], [Gastos], [Ingresos]) VALUES (@Fecha, " +
+                "@Gastos, @Ingresos);\r\nSELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE" +
+                " (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Fecha", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gastos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gastos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ingresos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingresos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Contabilidad] SET [Fecha] = @Fecha, [Gastos] = @Gastos, [Ingresos] = @Ingresos WHERE (([Id] = @Original_Id) AND ([Fecha] = @Original_Fecha) AND ([Gastos] = @Original_Gastos) AND ([Ingresos] = @Original_Ingresos));
+SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Fecha", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gastos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gastos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ingresos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingresos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Fecha", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gastos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gastos", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ingresos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingresos", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::GarTor.Properties.Settings.Default.PasteleriaConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Id, Fecha, Gastos, Ingresos FROM dbo.Contabilidad";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DSProductos.ContabilidadDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DSProductos.ContabilidadDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DSProductos.ContabilidadDataTable dataTable = new DSProductos.ContabilidadDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DSProductos.ContabilidadDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DSProductos dataSet) {
+            return this.Adapter.Update(dataSet, "Contabilidad");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Id, System.DateTime Original_Fecha, double Original_Gastos, double Original_Ingresos) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_Fecha));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_Gastos));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_Ingresos));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(System.DateTime Fecha, double Gastos, double Ingresos) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(Fecha));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((double)(Gastos));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((double)(Ingresos));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(System.DateTime Fecha, double Gastos, double Ingresos, int Original_Id, System.DateTime Original_Fecha, double Original_Gastos, double Original_Ingresos, int Id) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(Fecha));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(Gastos));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(Ingresos));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Original_Fecha));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(Original_Gastos));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(Original_Ingresos));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(System.DateTime Fecha, double Gastos, double Ingresos, int Original_Id, System.DateTime Original_Fecha, double Original_Gastos, double Original_Ingresos) {
+            return this.Update(Fecha, Gastos, Ingresos, Original_Id, Original_Fecha, Original_Gastos, Original_Ingresos, Original_Id);
         }
     }
     
@@ -5640,7 +6619,7 @@ SELECT Id, Cod_Facturas_Mayor, Num_Detalle, Cantidad, Cod_Precios_Mayor, Cod_Pro
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas.DetalleFacMayorDataTable dataTable) {
+        public virtual int Fill(DSProductos.DetalleFacMayorDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5653,9 +6632,9 @@ SELECT Id, Cod_Facturas_Mayor, Num_Detalle, Cantidad, Cod_Precios_Mayor, Cod_Pro
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas.DetalleFacMayorDataTable GetData() {
+        public virtual DSProductos.DetalleFacMayorDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas.DetalleFacMayorDataTable dataTable = new DSVentas.DetalleFacMayorDataTable();
+            DSProductos.DetalleFacMayorDataTable dataTable = new DSProductos.DetalleFacMayorDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5663,14 +6642,14 @@ SELECT Id, Cod_Facturas_Mayor, Num_Detalle, Cantidad, Cod_Precios_Mayor, Cod_Pro
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas.DetalleFacMayorDataTable dataTable) {
+        public virtual int Update(DSProductos.DetalleFacMayorDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas dataSet) {
+        public virtual int Update(DSProductos dataSet) {
             return this.Adapter.Update(dataSet, "DetalleFacMayor");
         }
         
@@ -5975,7 +6954,7 @@ SELECT Id, Cod_Facturas_Venta, Num_Detalle, Cantidad, Cod_Precios_Venta, Cod_Pro
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas.DetallePedidosDataTable dataTable) {
+        public virtual int Fill(DSProductos.DetallePedidosDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5988,9 +6967,9 @@ SELECT Id, Cod_Facturas_Venta, Num_Detalle, Cantidad, Cod_Precios_Venta, Cod_Pro
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas.DetallePedidosDataTable GetData() {
+        public virtual DSProductos.DetallePedidosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas.DetallePedidosDataTable dataTable = new DSVentas.DetallePedidosDataTable();
+            DSProductos.DetallePedidosDataTable dataTable = new DSProductos.DetallePedidosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5998,14 +6977,14 @@ SELECT Id, Cod_Facturas_Venta, Num_Detalle, Cantidad, Cod_Precios_Venta, Cod_Pro
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas.DetallePedidosDataTable dataTable) {
+        public virtual int Update(DSProductos.DetallePedidosDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas dataSet) {
+        public virtual int Update(DSProductos dataSet) {
             return this.Adapter.Update(dataSet, "DetallePedidos");
         }
         
@@ -6297,7 +7276,7 @@ SELECT Cod_Facturas_Mayor, Cod_PedidosMayor, Fecha_Factura FROM FacturasMayor WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas.FacturasMayorDataTable dataTable) {
+        public virtual int Fill(DSProductos.FacturasMayorDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6310,9 +7289,9 @@ SELECT Cod_Facturas_Mayor, Cod_PedidosMayor, Fecha_Factura FROM FacturasMayor WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas.FacturasMayorDataTable GetData() {
+        public virtual DSProductos.FacturasMayorDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas.FacturasMayorDataTable dataTable = new DSVentas.FacturasMayorDataTable();
+            DSProductos.FacturasMayorDataTable dataTable = new DSProductos.FacturasMayorDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6320,14 +7299,14 @@ SELECT Cod_Facturas_Mayor, Cod_PedidosMayor, Fecha_Factura FROM FacturasMayor WH
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas.FacturasMayorDataTable dataTable) {
+        public virtual int Update(DSProductos.FacturasMayorDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas dataSet) {
+        public virtual int Update(DSProductos dataSet) {
             return this.Adapter.Update(dataSet, "FacturasMayor");
         }
         
@@ -6605,7 +7584,7 @@ SELECT Cod_Facturas_Venta, Cod_Pedido, Fecha_Factura FROM FacturasVenta WHERE (C
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas.FacturasVentaDataTable dataTable) {
+        public virtual int Fill(DSProductos.FacturasVentaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6618,9 +7597,9 @@ SELECT Cod_Facturas_Venta, Cod_Pedido, Fecha_Factura FROM FacturasVenta WHERE (C
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas.FacturasVentaDataTable GetData() {
+        public virtual DSProductos.FacturasVentaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas.FacturasVentaDataTable dataTable = new DSVentas.FacturasVentaDataTable();
+            DSProductos.FacturasVentaDataTable dataTable = new DSProductos.FacturasVentaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6628,14 +7607,14 @@ SELECT Cod_Facturas_Venta, Cod_Pedido, Fecha_Factura FROM FacturasVenta WHERE (C
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas.FacturasVentaDataTable dataTable) {
+        public virtual int Update(DSProductos.FacturasVentaDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas dataSet) {
+        public virtual int Update(DSProductos dataSet) {
             return this.Adapter.Update(dataSet, "FacturasVenta");
         }
         
@@ -6913,7 +7892,7 @@ SELECT Cod_Pedido, Num_Pedido, Fecha_Pedido FROM Pedidos WHERE (Cod_Pedido = @Co
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas.PedidosDataTable dataTable) {
+        public virtual int Fill(DSProductos.PedidosDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6926,9 +7905,9 @@ SELECT Cod_Pedido, Num_Pedido, Fecha_Pedido FROM Pedidos WHERE (Cod_Pedido = @Co
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas.PedidosDataTable GetData() {
+        public virtual DSProductos.PedidosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas.PedidosDataTable dataTable = new DSVentas.PedidosDataTable();
+            DSProductos.PedidosDataTable dataTable = new DSProductos.PedidosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6936,14 +7915,14 @@ SELECT Cod_Pedido, Num_Pedido, Fecha_Pedido FROM Pedidos WHERE (Cod_Pedido = @Co
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas.PedidosDataTable dataTable) {
+        public virtual int Update(DSProductos.PedidosDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas dataSet) {
+        public virtual int Update(DSProductos dataSet) {
             return this.Adapter.Update(dataSet, "Pedidos");
         }
         
@@ -7226,7 +8205,7 @@ SELECT Cod_PedidosMayor, fecha, Num_Pedido, Cod_Cliente FROM PedidosMayor WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas.PedidosMayorDataTable dataTable) {
+        public virtual int Fill(DSProductos.PedidosMayorDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7239,9 +8218,9 @@ SELECT Cod_PedidosMayor, fecha, Num_Pedido, Cod_Cliente FROM PedidosMayor WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas.PedidosMayorDataTable GetData() {
+        public virtual DSProductos.PedidosMayorDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas.PedidosMayorDataTable dataTable = new DSVentas.PedidosMayorDataTable();
+            DSProductos.PedidosMayorDataTable dataTable = new DSProductos.PedidosMayorDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7249,14 +8228,14 @@ SELECT Cod_PedidosMayor, fecha, Num_Pedido, Cod_Cliente FROM PedidosMayor WHERE 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas.PedidosMayorDataTable dataTable) {
+        public virtual int Update(DSProductos.PedidosMayorDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas dataSet) {
+        public virtual int Update(DSProductos dataSet) {
             return this.Adapter.Update(dataSet, "PedidosMayor");
         }
         
@@ -7538,7 +8517,7 @@ SELECT Cod_Precios_Mayor, Cod_Producto, PrecioMayor FROM PreciosMayor WHERE (Cod
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas.PreciosMayorDataTable dataTable) {
+        public virtual int Fill(DSProductos.PreciosMayorDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7551,9 +8530,9 @@ SELECT Cod_Precios_Mayor, Cod_Producto, PrecioMayor FROM PreciosMayor WHERE (Cod
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas.PreciosMayorDataTable GetData() {
+        public virtual DSProductos.PreciosMayorDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas.PreciosMayorDataTable dataTable = new DSVentas.PreciosMayorDataTable();
+            DSProductos.PreciosMayorDataTable dataTable = new DSProductos.PreciosMayorDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7561,14 +8540,14 @@ SELECT Cod_Precios_Mayor, Cod_Producto, PrecioMayor FROM PreciosMayor WHERE (Cod
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas.PreciosMayorDataTable dataTable) {
+        public virtual int Update(DSProductos.PreciosMayorDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas dataSet) {
+        public virtual int Update(DSProductos dataSet) {
             return this.Adapter.Update(dataSet, "PreciosMayor");
         }
         
@@ -7846,7 +8825,7 @@ SELECT Cod_Precios_venta, Cod_Producto, PrecioVenta FROM PreciosVenta WHERE (Cod
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas.PreciosVentaDataTable dataTable) {
+        public virtual int Fill(DSProductos.PreciosVentaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7859,9 +8838,9 @@ SELECT Cod_Precios_venta, Cod_Producto, PrecioVenta FROM PreciosVenta WHERE (Cod
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas.PreciosVentaDataTable GetData() {
+        public virtual DSProductos.PreciosVentaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas.PreciosVentaDataTable dataTable = new DSVentas.PreciosVentaDataTable();
+            DSProductos.PreciosVentaDataTable dataTable = new DSProductos.PreciosVentaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7869,14 +8848,14 @@ SELECT Cod_Precios_venta, Cod_Producto, PrecioVenta FROM PreciosVenta WHERE (Cod
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas.PreciosVentaDataTable dataTable) {
+        public virtual int Update(DSProductos.PreciosVentaDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas dataSet) {
+        public virtual int Update(DSProductos dataSet) {
             return this.Adapter.Update(dataSet, "PreciosVenta");
         }
         
@@ -8099,8 +9078,38 @@ SELECT Cod_Precios_venta, Cod_Producto, PrecioVenta FROM PreciosVenta WHERE (Cod
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Productos";
+            tableMapping.ColumnMappings.Add("Cod_Producto", "Cod_Producto");
+            tableMapping.ColumnMappings.Add("Nombre_Producto", "Nombre_Producto");
             tableMapping.ColumnMappings.Add("Categoria_Producto", "Categoria_Producto");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Productos] WHERE (([Cod_Producto] = @Original_Cod_Producto) AN" +
+                "D ([Nombre_Producto] = @Original_Nombre_Producto) AND ([Categoria_Producto] = @O" +
+                "riginal_Categoria_Producto))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cod_Producto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cod_Producto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nombre_Producto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre_Producto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Categoria_Producto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Categoria_Producto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Productos] ([Nombre_Producto], [Categoria_Producto]) VALUES (@" +
+                "Nombre_Producto, @Categoria_Producto);\r\nSELECT Cod_Producto, Nombre_Producto, Ca" +
+                "tegoria_Producto FROM Productos WHERE (Cod_Producto = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre_Producto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Categoria_Producto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Categoria_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Productos] SET [Nombre_Producto] = @Nombre_Producto, [Categoria_Producto] = @Categoria_Producto WHERE (([Cod_Producto] = @Original_Cod_Producto) AND ([Nombre_Producto] = @Original_Nombre_Producto) AND ([Categoria_Producto] = @Original_Categoria_Producto));
+SELECT Cod_Producto, Nombre_Producto, Categoria_Producto FROM Productos WHERE (Cod_Producto = @Cod_Producto)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre_Producto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Categoria_Producto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Categoria_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cod_Producto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cod_Producto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nombre_Producto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre_Producto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Categoria_Producto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Categoria_Producto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cod_Producto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cod_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8116,7 +9125,7 @@ SELECT Cod_Precios_venta, Cod_Producto, PrecioVenta FROM PreciosVenta WHERE (Cod
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT DISTINCT Categoria_Producto\r\nFROM            Productos";
+            this._commandCollection[0].CommandText = "SELECT Cod_Producto, Nombre_Producto, Categoria_Producto FROM dbo.Productos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8124,7 +9133,7 @@ SELECT Cod_Precios_venta, Cod_Producto, PrecioVenta FROM PreciosVenta WHERE (Cod
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas.ProductosDataTable dataTable) {
+        public virtual int Fill(DSProductos.ProductosDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8137,11 +9146,162 @@ SELECT Cod_Precios_venta, Cod_Producto, PrecioVenta FROM PreciosVenta WHERE (Cod
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas.ProductosDataTable GetGrupos() {
+        public virtual DSProductos.ProductosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas.ProductosDataTable dataTable = new DSVentas.ProductosDataTable();
+            DSProductos.ProductosDataTable dataTable = new DSProductos.ProductosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DSProductos.ProductosDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DSProductos dataSet) {
+            return this.Adapter.Update(dataSet, "Productos");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Cod_Producto, string Original_Nombre_Producto, string Original_Categoria_Producto) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Cod_Producto));
+            if ((Original_Nombre_Producto == null)) {
+                throw new global::System.ArgumentNullException("Original_Nombre_Producto");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Nombre_Producto));
+            }
+            if ((Original_Categoria_Producto == null)) {
+                throw new global::System.ArgumentNullException("Original_Categoria_Producto");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Categoria_Producto));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string Nombre_Producto, string Categoria_Producto) {
+            if ((Nombre_Producto == null)) {
+                throw new global::System.ArgumentNullException("Nombre_Producto");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Nombre_Producto));
+            }
+            if ((Categoria_Producto == null)) {
+                throw new global::System.ArgumentNullException("Categoria_Producto");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Categoria_Producto));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string Nombre_Producto, string Categoria_Producto, int Original_Cod_Producto, string Original_Nombre_Producto, string Original_Categoria_Producto, int Cod_Producto) {
+            if ((Nombre_Producto == null)) {
+                throw new global::System.ArgumentNullException("Nombre_Producto");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Nombre_Producto));
+            }
+            if ((Categoria_Producto == null)) {
+                throw new global::System.ArgumentNullException("Categoria_Producto");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Categoria_Producto));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Cod_Producto));
+            if ((Original_Nombre_Producto == null)) {
+                throw new global::System.ArgumentNullException("Original_Nombre_Producto");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_Nombre_Producto));
+            }
+            if ((Original_Categoria_Producto == null)) {
+                throw new global::System.ArgumentNullException("Original_Categoria_Producto");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Categoria_Producto));
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Cod_Producto));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string Nombre_Producto, string Categoria_Producto, int Original_Cod_Producto, string Original_Nombre_Producto, string Original_Categoria_Producto) {
+            return this.Update(Nombre_Producto, Categoria_Producto, Original_Cod_Producto, Original_Nombre_Producto, Original_Categoria_Producto, Original_Cod_Producto);
         }
     }
     
@@ -8326,7 +9486,7 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas.VentaProductosDataTable dataTable) {
+        public virtual int Fill(DSProductos.VentaProductosDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8339,9 +9499,9 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas.VentaProductosDataTable GetData() {
+        public virtual DSProductos.VentaProductosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas.VentaProductosDataTable dataTable = new DSVentas.VentaProductosDataTable();
+            DSProductos.VentaProductosDataTable dataTable = new DSProductos.VentaProductosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8349,14 +9509,14 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas.VentaProductosDataTable dataTable) {
+        public virtual int Update(DSProductos.VentaProductosDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DSVentas dataSet) {
+        public virtual int Update(DSProductos dataSet) {
             return this.Adapter.Update(dataSet, "VentaProductos");
         }
         
@@ -8476,6 +9636,8 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
         
         private ClientesMayorTableAdapter _clientesMayorTableAdapter;
         
+        private ContabilidadTableAdapter _contabilidadTableAdapter;
+        
         private DetalleFacMayorTableAdapter _detalleFacMayorTableAdapter;
         
         private DetallePedidosTableAdapter _detallePedidosTableAdapter;
@@ -8491,6 +9653,8 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
         private PreciosMayorTableAdapter _preciosMayorTableAdapter;
         
         private PreciosVentaTableAdapter _preciosVentaTableAdapter;
+        
+        private ProductosTableAdapter _productosTableAdapter;
         
         private VentaProductosTableAdapter _ventaProductosTableAdapter;
         
@@ -8520,6 +9684,20 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
             }
             set {
                 this._clientesMayorTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public ContabilidadTableAdapter ContabilidadTableAdapter {
+            get {
+                return this._contabilidadTableAdapter;
+            }
+            set {
+                this._contabilidadTableAdapter = value;
             }
         }
         
@@ -8640,6 +9818,20 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
+        public ProductosTableAdapter ProductosTableAdapter {
+            get {
+                return this._productosTableAdapter;
+            }
+            set {
+                this._productosTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
         public VentaProductosTableAdapter VentaProductosTableAdapter {
             get {
                 return this._ventaProductosTableAdapter;
@@ -8671,6 +9863,10 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                 if (((this._clientesMayorTableAdapter != null) 
                             && (this._clientesMayorTableAdapter.Connection != null))) {
                     return this._clientesMayorTableAdapter.Connection;
+                }
+                if (((this._contabilidadTableAdapter != null) 
+                            && (this._contabilidadTableAdapter.Connection != null))) {
+                    return this._contabilidadTableAdapter.Connection;
                 }
                 if (((this._detalleFacMayorTableAdapter != null) 
                             && (this._detalleFacMayorTableAdapter.Connection != null))) {
@@ -8704,6 +9900,10 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                             && (this._preciosVentaTableAdapter.Connection != null))) {
                     return this._preciosVentaTableAdapter.Connection;
                 }
+                if (((this._productosTableAdapter != null) 
+                            && (this._productosTableAdapter.Connection != null))) {
+                    return this._productosTableAdapter.Connection;
+                }
                 if (((this._ventaProductosTableAdapter != null) 
                             && (this._ventaProductosTableAdapter.Connection != null))) {
                     return this._ventaProductosTableAdapter.Connection;
@@ -8722,6 +9922,9 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
             get {
                 int count = 0;
                 if ((this._clientesMayorTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._contabilidadTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._detalleFacMayorTableAdapter != null)) {
@@ -8748,6 +9951,9 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                 if ((this._preciosVentaTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._productosTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 if ((this._ventaProductosTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -8760,7 +9966,7 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateUpdatedRows(DSVentas dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DSProductos dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._clientesMayorTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ClientesMayor.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -8786,6 +9992,15 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._pedidosMayorTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._productosTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Productos.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._productosTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -8825,6 +10040,15 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._contabilidadTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Contabilidad.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._contabilidadTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._detalleFacMayorTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.DetalleFacMayor.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -8860,7 +10084,7 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateInsertedRows(DSVentas dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DSProductos dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._clientesMayorTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ClientesMayor.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -8883,6 +10107,14 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._pedidosMayorTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._productosTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Productos.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._productosTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -8918,6 +10150,14 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._contabilidadTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Contabilidad.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._contabilidadTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._detalleFacMayorTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.DetalleFacMayor.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -8950,7 +10190,7 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateDeletedRows(DSVentas dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DSProductos dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._ventaProductosTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.VentaProductos.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -8973,6 +10213,14 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._detalleFacMayorTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._contabilidadTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Contabilidad.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._contabilidadTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -9005,6 +10253,14 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._facturasMayorTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._productosTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Productos.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._productosTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -9064,7 +10320,7 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public virtual int UpdateAll(DSVentas dataSet) {
+        public virtual int UpdateAll(DSProductos dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
@@ -9073,6 +10329,11 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
             }
             if (((this._clientesMayorTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._clientesMayorTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._contabilidadTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._contabilidadTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -9113,6 +10374,11 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
             }
             if (((this._preciosVentaTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._preciosVentaTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._productosTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._productosTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -9160,6 +10426,15 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                     if (this._clientesMayorTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._clientesMayorTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._clientesMayorTableAdapter.Adapter);
+                    }
+                }
+                if ((this._contabilidadTableAdapter != null)) {
+                    revertConnections.Add(this._contabilidadTableAdapter, this._contabilidadTableAdapter.Connection);
+                    this._contabilidadTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._contabilidadTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._contabilidadTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._contabilidadTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._contabilidadTableAdapter.Adapter);
                     }
                 }
                 if ((this._detalleFacMayorTableAdapter != null)) {
@@ -9234,6 +10509,15 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                         adaptersWithAcceptChangesDuringUpdate.Add(this._preciosVentaTableAdapter.Adapter);
                     }
                 }
+                if ((this._productosTableAdapter != null)) {
+                    revertConnections.Add(this._productosTableAdapter, this._productosTableAdapter.Connection);
+                    this._productosTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._productosTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._productosTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._productosTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._productosTableAdapter.Adapter);
+                    }
+                }
                 if ((this._ventaProductosTableAdapter != null)) {
                     revertConnections.Add(this._ventaProductosTableAdapter, this._ventaProductosTableAdapter.Connection);
                     this._ventaProductosTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -9305,6 +10589,10 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                     this._clientesMayorTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._clientesMayorTableAdapter]));
                     this._clientesMayorTableAdapter.Transaction = null;
                 }
+                if ((this._contabilidadTableAdapter != null)) {
+                    this._contabilidadTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._contabilidadTableAdapter]));
+                    this._contabilidadTableAdapter.Transaction = null;
+                }
                 if ((this._detalleFacMayorTableAdapter != null)) {
                     this._detalleFacMayorTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._detalleFacMayorTableAdapter]));
                     this._detalleFacMayorTableAdapter.Transaction = null;
@@ -9336,6 +10624,10 @@ SELECT Cod_Venta_Producto, Cod_Producto, Unidad_Producto, FechaVenta FROM VentaP
                 if ((this._preciosVentaTableAdapter != null)) {
                     this._preciosVentaTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._preciosVentaTableAdapter]));
                     this._preciosVentaTableAdapter.Transaction = null;
+                }
+                if ((this._productosTableAdapter != null)) {
+                    this._productosTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._productosTableAdapter]));
+                    this._productosTableAdapter.Transaction = null;
                 }
                 if ((this._ventaProductosTableAdapter != null)) {
                     this._ventaProductosTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._ventaProductosTableAdapter]));

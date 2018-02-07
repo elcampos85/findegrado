@@ -82,6 +82,7 @@
             this.cesta.Size = new System.Drawing.Size(263, 537);
             this.cesta.TabIndex = 1;
             this.cesta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Eliminar);
+            this.cesta.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.cambioPrecio);
             // 
             // Borrar
             // 

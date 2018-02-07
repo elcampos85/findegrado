@@ -89,6 +89,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSProductos.cs">
+      <DependentUpon>DSProductos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSProductos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -146,24 +147,23 @@ namespace GarTor
 
         private void bAgregar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DSProductosTableAdapters.PreciosMayorTableAdapter precMayorTA = new DSProductosTableAdapters.PreciosMayorTableAdapter();
-                DSProductosTableAdapters.PreciosVentaTableAdapter precVentaTA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
-                DSProductosTableAdapters.ProductosTableAdapter producTA = new DSProductosTableAdapters.ProductosTableAdapter();
+            
+            DSProductosTableAdapters.PreciosMayorTableAdapter precMayorTA = new DSProductosTableAdapters.PreciosMayorTableAdapter();
+            DSProductosTableAdapters.PreciosVentaTableAdapter precVentaTA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
+            DSProductosTableAdapters.ProductosTableAdapter producTA = new DSProductosTableAdapters.ProductosTableAdapter();
 
-                producTA.Insert(tbNombre.Text, cbGrupo.Text);
-                precMayorTA.Insert();
+            producTA.Insert(tbNombre.Text, cbGrupo.Text);
+            precMayorTA.Insert((int) producTA.GetCodProducto(tbNombre.Text),(Double) nMayor.Value);
+            precVentaTA.Insert((int)producTA.GetCodProducto(tbNombre.Text), (Double) nTienda.Value);
+
+            imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbGrupo.Text.ToString()+"/"+tbNombre.Text+Constantes.EXTENSION, ImageFormat.Png);
 
 
-                MessageBox.Show(tbNombre.Text + " " + cbGrupo.Text);
+            MessageBox.Show(producTA.GetCodProducto(tbNombre.Text) + " " + nMayor.Value);
                 
                 
 
-            }catch(Exception exc)
-            {
-
-            }
+            
 
 
         }

@@ -12,5 +12,6 @@ namespace GarTor
         public const string PRODUCTOS_RUTA = "C:/Program Files (x86)/GarTor/Productos";
         public const string CATEGORIAS_RUTA = "C:/Program Files (x86)/GarTor/Productos/Categorias";
         public const string QUERY_CONSULTA_CATEGORIAS = "SELECT DISTINCT Categoria_Producto FROM Productos";
+        public const string EXTENSION = ".png";
     }
 }

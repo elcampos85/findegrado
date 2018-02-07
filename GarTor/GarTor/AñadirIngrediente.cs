@@ -55,9 +55,7 @@ namespace GarTor
             ingreTA.Insert(tbNombre.Text.ToString());
             //ingreTA.GetCodIngrediente(tbNombre.Text);
             preTA.Insert((Convert.ToInt32(cbProveedores.SelectedValue.ToString())), (Convert.ToInt32(ingreTA.GetCodIngrediente(tbNombre.Text.ToString()))), precio);
-
-
-
+            
             MessageBox.Show("Ingrediente "+tbNombre.Text+" Cod Ingre: "+ ingreTA.GetCodIngrediente(tbNombre.Text.ToString()) + " "+Convert.ToString(precio)+" € el kg/L/unidad "+ cbMedidas.SelectedItem+"    Cod "+ cbProveedores.SelectedValue.ToString());
         }
     }

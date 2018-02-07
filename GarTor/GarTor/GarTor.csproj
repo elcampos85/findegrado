@@ -261,7 +261,6 @@
     <None Include="DSProductos.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSProductos.Designer.cs</LastGenOutput>
     </None>
     <None Include="DSProductos.xss">
       <DependentUpon>DSProductos.xsd</DependentUpon>

@@ -14,9 +14,10 @@ namespace GarTor
 {
     public partial class Inicio : Form
     {
-        private SqlConnection conexion;
-        private string stringConexion;
-
+        #region DECLARACION DE VARIABLES
+            private SqlConnection conexion;
+            private string stringConexion;
+        #endregion
         public Inicio()
         {
             InitializeComponent();

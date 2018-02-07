@@ -15,6 +15,8 @@ namespace GarTor
     {
         private const int COLUMNA_PRECIO = 3;
         private bool listaCategoria = true;
+        DSProductosTableAdapters.ProductosTableAdapter prodTA = new DSProductosTableAdapters.ProductosTableAdapter();
+        DSProductosTableAdapters.PreciosVentaTableAdapter ventTA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
         public VentaTienda()
         {
 
@@ -164,7 +166,7 @@ namespace GarTor
                     cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
                     cesta.Rows[cesta.RowCount - 1].Cells[1].Value = this.listView1.Items[index].Text;
                     cesta.Rows[cesta.RowCount - 1].Cells[2].Value = "1";
-                    cesta.Rows[cesta.RowCount - 1].Cells[3].Value = this.listView1.Items[index].Text;
+                    cesta.Rows[cesta.RowCount - 1].Cells[3].Value = (float) ventTA.GetPrecioVenta((int) prodTA.GetCodProducto(this.listView1.Items[index].Text));
 
                     cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
 
@@ -180,6 +182,8 @@ namespace GarTor
 
             DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
             int j = 0;
+            this.listView1.Items.Clear();
+            this.imageList1.Images.Clear();
             foreach (FileInfo file in dir.GetFiles())
             {
                 this.listView1.View = View.LargeIcon;
@@ -199,6 +203,11 @@ namespace GarTor
                 }
                 this.listView1.LargeImageList = this.imageList1;
             }
+        }
+
+        private void cambioPrecio(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }    
 }

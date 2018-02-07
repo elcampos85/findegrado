@@ -13,7 +13,7 @@ namespace GarTor
         public const string CATEGORIAS_RUTA = "C:/GarTor/Productos/Categorias";
         public const string EXTENSION = ".png";
         public const string QUERY_CONSULTA_CATEGORIAS = "SELECT DISTINCT Categoria_Producto FROM Productos";
-        public const string QUERY_CONSULTA_PRECIOVENTA = "SELECT PrecioVenta FROM PreciosVenta WHERE Cod_Producto=(" + QUERY_CONSULTA_CODPRODUCTO + ")";
-        public const string QUERY_CONSULTA_CODPRODUCTO = "SELECT Cod_Producto FROM Productos WHERE Nombre_Producto=";
+        public const string QUERY_CONSULTA_PRECIOVENTA = "SELECT PrecioVenta FROM PreciosVenta WHERE Cod_Producto=(SELECT Cod_Producto FROM Productos WHERE Nombre_Producto =)";
+        public const string QUERY_CONSULTA_CODPRODUCTO = "";
     }
 }

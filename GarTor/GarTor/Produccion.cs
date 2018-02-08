@@ -20,8 +20,6 @@ namespace GarTor
         #region
             private string ruta_foto = "";
             private const int COLUMNA_PRECIO = 3;
-            private DSIngredientesTableAdapters.IngredientesTableAdapter ingreTA = new DSIngredientesTableAdapters.IngredientesTableAdapter();
-            private DSIngredientesTableAdapters.PrecioIngredientesTableAdapter precioTA = new DSIngredientesTableAdapters.PrecioIngredientesTableAdapter();
             private SqlConnection conexion;
             private string stringConexion;
         #endregion
@@ -42,7 +40,7 @@ namespace GarTor
             lista.Rows[lista.RowCount - 1].Cells[0].Value = Resource1.bin;
             lista.Rows[lista.RowCount - 1].Cells[1].Value = cbIngredientes.SelectedValue.ToString();
             lista.Rows[lista.RowCount - 1].Cells[2].Value = units.Value + " " + cbMedidas.SelectedItem;
-            precio = (float)(Math.Round((double)Convert.ToSingle(units.Value) * (float) Convert.ToSingle(precioTA.PrecioIngrediente(cbIngredientes.SelectedValue.ToString())), 2));
+            precio = (float)(Math.Round((double)Convert.ToSingle(units.Value) * (float) Convert.ToSingle(Constantes.precioIngredientes_TA.PrecioIngrediente(cbIngredientes.SelectedValue.ToString())), 2));
 
             switch (cbMedidas.SelectedIndex)
             {
@@ -121,7 +119,7 @@ namespace GarTor
             cbIngredientes.DisplayMember = "Nombre_Ingrediente";
             cbIngredientes.ValueMember = "Nombre_Ingrediente";
 
-            cbIngredientes.DataSource = ingreTA.ComboboxIngredientes();
+            cbIngredientes.DataSource = Constantes.ingredientes_TA.GetData();
 
             cbMedidas.SelectedIndex = 0;
             Total();
@@ -148,18 +146,16 @@ namespace GarTor
         private void bAgregar_Click(object sender, EventArgs e)
         {
             
-            DSProductosTableAdapters.PreciosMayorTableAdapter precMayorTA = new DSProductosTableAdapters.PreciosMayorTableAdapter();
-            DSProductosTableAdapters.PreciosVentaTableAdapter precVentaTA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
-            DSProductosTableAdapters.ProductosTableAdapter producTA = new DSProductosTableAdapters.ProductosTableAdapter();
+            
 
-            producTA.Insert(tbNombre.Text, cbGrupo.Text);
-            precMayorTA.Insert((int) producTA.GetCodProducto(tbNombre.Text),(Double) nMayor.Value);
-            precVentaTA.Insert((int)producTA.GetCodProducto(tbNombre.Text), (Double) nTienda.Value);
+            Constantes.productos_TA.Insert(tbNombre.Text, cbGrupo.Text);
+            Constantes.preciosMayor_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text),(Double) nMayor.Value);
+            Constantes.preciosVenta_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text), (Double) nTienda.Value);
 
             imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbGrupo.Text.ToString()+"/"+tbNombre.Text+Constantes.EXTENSION, ImageFormat.Png);
 
 
-            MessageBox.Show(producTA.GetCodProducto(tbNombre.Text) + " " + nMayor.Value);
+            MessageBox.Show(Constantes.productos_TA.GetCodProducto(tbNombre.Text) + " " + nMayor.Value);
                 
                 
 

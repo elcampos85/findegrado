@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,20 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    
+
     public partial class Produccion : Form
     {
-        private const int COLUMNA_PRECIO = 3;
-        private DSIngredientesTableAdapters.IngredientesTableAdapter ingreTA = new DSIngredientesTableAdapters.IngredientesTableAdapter();
-        private DSIngredientesTableAdapters.PrecioIngredientesTableAdapter precioTA = new DSIngredientesTableAdapters.PrecioIngredientesTableAdapter();
-        private SqlConnection conexion;
-        private string stringConexion;
+        #region
+            private string ruta_foto = "";
+            private const int COLUMNA_PRECIO = 3;
+            private DSIngredientesTableAdapters.IngredientesTableAdapter ingreTA = new DSIngredientesTableAdapters.IngredientesTableAdapter();
+            private DSIngredientesTableAdapters.PrecioIngredientesTableAdapter precioTA = new DSIngredientesTableAdapters.PrecioIngredientesTableAdapter();
+            private SqlConnection conexion;
+            private string stringConexion;
+        #endregion
+
+
         public Produccion()
         {
             InitializeComponent();
@@ -86,6 +94,9 @@ namespace GarTor
             }
 
             lPrecio.Text = suma.ToString("#,##0.##")+" €";
+
+            nMayor.Value = (decimal)suma +10;
+            nTienda.Value= (decimal)suma +20;
         }
 
         private void OnLoad(object sender, EventArgs e)
@@ -114,6 +125,47 @@ namespace GarTor
 
             cbMedidas.SelectedIndex = 0;
             Total();
+        }
+
+        private void bImage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string imagen = openFileDialog1.FileName;
+                    ruta_foto = imagen;
+                    this.imagen.Image = Image.FromFile(imagen);
+                    this.imagen.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
+            }
+        }
+
+        private void bAgregar_Click(object sender, EventArgs e)
+        {
+            
+            DSProductosTableAdapters.PreciosMayorTableAdapter precMayorTA = new DSProductosTableAdapters.PreciosMayorTableAdapter();
+            DSProductosTableAdapters.PreciosVentaTableAdapter precVentaTA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
+            DSProductosTableAdapters.ProductosTableAdapter producTA = new DSProductosTableAdapters.ProductosTableAdapter();
+
+            producTA.Insert(tbNombre.Text, cbGrupo.Text);
+            precMayorTA.Insert((int) producTA.GetCodProducto(tbNombre.Text),(Double) nMayor.Value);
+            precVentaTA.Insert((int)producTA.GetCodProducto(tbNombre.Text), (Double) nTienda.Value);
+
+            imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbGrupo.Text.ToString()+"/"+tbNombre.Text+Constantes.EXTENSION, ImageFormat.Png);
+
+
+            MessageBox.Show(producTA.GetCodProducto(tbNombre.Text) + " " + nMayor.Value);
+                
+                
+
+            
+
+
         }
     }
 }

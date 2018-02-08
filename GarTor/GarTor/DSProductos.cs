@@ -10,6 +10,6 @@
 namespace GarTor.DSProductosTableAdapters {
     
     
-    public partial class ProductosTableAdapter {
+    public partial class PreciosVentaTableAdapter {
     }
 }

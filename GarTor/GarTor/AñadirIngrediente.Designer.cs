@@ -135,7 +135,7 @@
             // Añadir
             // 
             this.Añadir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Añadir.Location = new System.Drawing.Point(291, 245);
+            this.Añadir.Location = new System.Drawing.Point(477, 200);
             this.Añadir.Name = "Añadir";
             this.Añadir.Size = new System.Drawing.Size(92, 28);
             this.Añadir.TabIndex = 8;

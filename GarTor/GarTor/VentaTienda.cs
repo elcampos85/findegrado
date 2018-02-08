@@ -66,8 +66,15 @@ namespace GarTor
             float suma = 0;
             foreach (DataGridViewRow row in cesta.Rows)
             {
-                suma += (float)Convert.ToSingle(row.Cells[Constantes.COLUMNA_UNIDADES].Value) * (float)Convert.ToSingle(row.Cells[Constantes.COLUMNA_PRECIO].Value);
-            }
+                try
+                {
+                    suma += (float)Convert.ToSingle(row.Cells[Constantes.COLUMNA_UNIDADES].Value) * (float)Convert.ToSingle(row.Cells[Constantes.COLUMNA_PRECIO].Value);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("El campo debe contener algun numero");
+                }
+                }
             lPrecio.Text = "Total: " + Math.Round(suma, 2).ToString() + " €";
         }
 

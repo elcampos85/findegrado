@@ -119,7 +119,7 @@ namespace GarTor
             cbIngredientes.DisplayMember = "Nombre_Ingrediente";
             cbIngredientes.ValueMember = "Nombre_Ingrediente";
 
-            cbIngredientes.DataSource = Constantes.ingredientes_TA.GetData();
+            cbIngredientes.DataSource = Constantes.ingredientes_TA.ComboboxIngredientes();
 
             cbMedidas.SelectedIndex = 0;
             Total();

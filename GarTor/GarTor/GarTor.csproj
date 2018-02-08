@@ -97,6 +97,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSProductos.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Intro_Peso_UD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Intro_Peso_UD.Designer.cs">
+      <DependentUpon>Intro_Peso_UD.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultaDia.resx">
       <DependentUpon>ConsultaDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Intro_Peso_UD.resx">
+      <DependentUpon>Intro_Peso_UD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>

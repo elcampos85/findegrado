@@ -13,19 +13,16 @@ namespace GarTor
 {
     public partial class VentaTienda : Form
     {
-        private const int COLUMNA_PRECIO = 3;
         private bool listaCategoria = true;
-        private bool vacia = true;
+        private bool introducidoCantidad = false;
         DSProductosTableAdapters.ProductosTableAdapter prodTA = new DSProductosTableAdapters.ProductosTableAdapter();
         DSProductosTableAdapters.PreciosVentaTableAdapter ventTA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
         public VentaTienda()
         {
-
             InitializeComponent();
             for (int i = 0; i < 5; i++)
             {
                 cesta.Rows.Add(1);
-
                 cesta.Rows[i].Cells[0].Value = Resource1.bin;
                 cesta.Rows[i].Cells[1].Value = "tarta";
                 cesta.Rows[i].Cells[2].Value = i;
@@ -33,9 +30,6 @@ namespace GarTor
                 cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
             }
             Total();
-            vacia = false;
-
-
         }
 
         private void Eliminar(object sender, DataGridViewCellEventArgs e)
@@ -56,11 +50,7 @@ namespace GarTor
                 {
                 }
             }
-
-
         }
-
-
 
         private void FinalizarCompra(object sender, EventArgs e)
         {
@@ -74,10 +64,9 @@ namespace GarTor
             float suma = 0;
             foreach (DataGridViewRow row in cesta.Rows)
             {
-                suma += Convert.ToSingle(row.Cells[COLUMNA_PRECIO].Value.ToString());
+                suma += (float)Convert.ToSingle(row.Cells[Constantes.COLUMNA_UNIDADES].Value) * (float)Convert.ToSingle(row.Cells[Constantes.COLUMNA_PRECIO].Value);
             }
-
-            lPrecio.Text = "Total: " + suma.ToString() + " €";
+            lPrecio.Text = "Total: " + Math.Round(suma, 2).ToString() + " €";
         }
 
         private void EliminarCestaCompleta(object sender, EventArgs e)
@@ -85,7 +74,6 @@ namespace GarTor
             DialogResult result;
             MsgBoxUtil.HackMessageBox("Si", "No");
             result = MessageBox.Show("¿Desea eliminar TODOS los articulos?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
             if (result == DialogResult.Yes)
             {
                 cesta.Rows.Clear();
@@ -95,10 +83,7 @@ namespace GarTor
             {
             }
         }
-
-
-
-
+        
         private void VentaTienda_Load(object sender, EventArgs e)
         {
             DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
@@ -107,7 +92,7 @@ namespace GarTor
             {
                 this.listView1.View = View.LargeIcon;
 
-                this.imageList1.ImageSize = new Size(150, 150);
+                this.imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
 
                 try
                 {
@@ -123,8 +108,45 @@ namespace GarTor
                 this.listView1.LargeImageList = this.imageList1;
             }
         }
-        private void Seleccion(object sender, EventArgs e)
+
+        private void volverACategoria(object sender, EventArgs e)
         {
+            btAtrasVTienda.Visible = false;
+            listaCategoria = true;
+
+            DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
+            int j = 0;
+            this.listView1.Items.Clear();
+            this.imageList1.Images.Clear();
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                this.listView1.View = View.LargeIcon;
+
+                this.imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
+
+                try
+                {
+                    this.imageList1.Images.Add(Image.FromFile(file.FullName));
+
+                    this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
+                    j++;
+                }
+                catch
+                {
+                    Console.WriteLine("No es un archivo de imagen");
+                }
+                this.listView1.LargeImageList = this.imageList1;
+            }
+        }
+
+        private void cambioPrecio(object sender, DataGridViewCellEventArgs e)
+        {
+            Total();
+        }
+
+        private void Seleccion(object sender, MouseEventArgs e)
+        {
+            introducidoCantidad = false;
             if (listaCategoria)
             {
                 ListView.SelectedIndexCollection seleccionado = this.listView1.SelectedIndices;
@@ -138,7 +160,7 @@ namespace GarTor
                     {
                         this.listView1.View = View.LargeIcon;
 
-                        this.imageList1.ImageSize = new Size(150, 150);
+                        this.imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
 
                         try
                         {
@@ -159,73 +181,31 @@ namespace GarTor
             }
             else
             {
+                if (!introducidoCantidad)
+                {
+                    Intro_Peso_UD panel1 = new Intro_Peso_UD();
+                    panel1.ControlBox = false;
+                    panel1.ShowIcon = false;
+                    panel1.ShowInTaskbar = false;
+                    panel1.ShowDialog();
+                    introducidoCantidad = true;
+                }
                 ListView.SelectedIndexCollection seleccionado = this.listView1.SelectedIndices;
                 foreach (int index in seleccionado)
                 {
                     cesta.Rows.Add(1);
-
                     cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
-                    cesta.Rows[cesta.RowCount - 1].Cells[1].Value = this.listView1.Items[index].Text;
-                    cesta.Rows[cesta.RowCount - 1].Cells[2].Value = "1";
-                    cesta.Rows[cesta.RowCount - 1].Cells[3].Value = (float) ventTA.GetPrecioVenta((int) prodTA.GetCodProducto(this.listView1.Items[index].Text));
-
+                    cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = this.listView1.Items[index].Text;
+                    cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = Constantes.PESO_UD_PRODUCTO;
+                    cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)ventTA.GetPrecioVenta((int)prodTA.GetCodProducto(this.listView1.Items[index].Text));
                     cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
-
                     Total();
                 }
-            }
-        }
-
-        private void volverACategoria(object sender, EventArgs e)
-        {
-            btAtrasVTienda.Visible = false;
-            listaCategoria = true;
-
-            DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
-            int j = 0;
-            this.listView1.Items.Clear();
-            this.imageList1.Images.Clear();
-            foreach (FileInfo file in dir.GetFiles())
-            {
-                this.listView1.View = View.LargeIcon;
-
-                this.imageList1.ImageSize = new Size(150, 150);
-
-                try
+                foreach (ListViewItem item in listView1.SelectedItems)
                 {
-                    this.imageList1.Images.Add(Image.FromFile(file.FullName));
-
-                    this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
-                    j++;
+                    item.Selected = false;
                 }
-                catch
-                {
-                    Console.WriteLine("No es un archivo de imagen");
-                }
-                this.listView1.LargeImageList = this.imageList1;
             }
-        }
-
-        private void cambioPrecio(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!vacia)
-            {
-               // float a = (float)Convert.ToSingle(cesta.Rows[0].Cells[3].Value);
-                MessageBox.Show(Convert.ToSingle(cesta.Rows[0].Cells[3].Value).ToString());
-
-            
-                Total();
-            }
-            
-            /*
-            for (int i = 0; i < cesta.Rows.Count; i++)
-            {
-                float a = (float)Convert.ToSingle(cesta.Rows[i].Cells[3].Value);
-                MessageBox.Show(a.ToString());
-                cesta.Rows[i].Cells[3].Value = Convert.ToSingle(cesta.Rows[i].Cells[2].Value) * a; 
-            }
-            Total();*/
-
         }
     }    
 }

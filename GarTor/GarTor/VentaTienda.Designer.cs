@@ -122,7 +122,9 @@
             // 
             // listView1
             // 
+            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listView1.BackColor = System.Drawing.Color.ForestGreen;
+            this.listView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Location = new System.Drawing.Point(0, 42);
             this.listView1.MultiSelect = false;
@@ -130,7 +132,7 @@
             this.listView1.Size = new System.Drawing.Size(960, 592);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.Seleccion);
+            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Seleccion);
             // 
             // panel1
             // 

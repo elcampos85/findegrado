@@ -8,6 +8,13 @@ namespace GarTor
 {
     class Constantes
     {
+        public static DSIngredientesTableAdapters.IngredientesTableAdapter ingredientes_TA = new DSIngredientesTableAdapters.IngredientesTableAdapter();
+        public static DSIngredientesTableAdapters.ProveedoresTableAdapter proveedores_TA = new DSIngredientesTableAdapters.ProveedoresTableAdapter();
+        public static DSIngredientesTableAdapters.PrecioIngredientesTableAdapter precioIngredientes_TA = new DSIngredientesTableAdapters.PrecioIngredientesTableAdapter();
+
+
+
+
         public const int COLUMNA_PRECIO = 3;
         public const int COLUMNA_UNIDADES = 2;
         public const int COLUMNA_NOMBRE = 1;

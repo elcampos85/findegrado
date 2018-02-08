@@ -27,7 +27,7 @@ namespace GarTor
         }
 
         //AÑADIR INGREDIENTE
-        private void añadirToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void añadirToolStripMenuItem1_Click(object sender, EventArgs e)//Añadir Ingrediente
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
             AñadirIngrediente panel1 = new AñadirIngrediente();
@@ -39,10 +39,22 @@ namespace GarTor
             panel1.Show();
         }
 
-        private void modificarToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void modificarToolStripMenuItem2_Click(object sender, EventArgs e)//Modificar Ingrediente
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
             ModificarIngrediente panel1 = new ModificarIngrediente();
+            panel1.TopLevel = false;
+            panel1.FormBorderStyle = FormBorderStyle.None;
+            panel1.Dock = DockStyle.Fill;
+            this.pPanelContenedor.Controls.Add(panel1);
+            this.pPanelContenedor.Tag = panel1;
+            panel1.Show();
+        }
+
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)//Agregar Producto
+        {
+            if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
+            Produccion panel1 = new Produccion();
             panel1.TopLevel = false;
             panel1.FormBorderStyle = FormBorderStyle.None;
             panel1.Dock = DockStyle.Fill;

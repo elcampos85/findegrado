@@ -30,15 +30,15 @@
         {
             this.cantidad = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.Añadir = new System.Windows.Forms.Button();
+            this.Modificar = new System.Windows.Forms.Button();
             this.cbMedidas = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.units = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbNombre = new System.Windows.Forms.TextBox();
             this.cbProveedores = new System.Windows.Forms.ComboBox();
+            this.cbIngrediente = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.cantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.units)).BeginInit();
             this.SuspendLayout();
@@ -67,15 +67,15 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "Cantidad";
             // 
-            // Añadir
+            // Modificar
             // 
-            this.Añadir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Añadir.Location = new System.Drawing.Point(471, 168);
-            this.Añadir.Name = "Añadir";
-            this.Añadir.Size = new System.Drawing.Size(92, 28);
-            this.Añadir.TabIndex = 19;
-            this.Añadir.Text = "Añadir";
-            this.Añadir.UseVisualStyleBackColor = true;
+            this.Modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Modificar.Location = new System.Drawing.Point(471, 168);
+            this.Modificar.Name = "Modificar";
+            this.Modificar.Size = new System.Drawing.Size(92, 28);
+            this.Modificar.TabIndex = 19;
+            this.Modificar.Text = "Modificar";
+            this.Modificar.UseVisualStyleBackColor = true;
             // 
             // cbMedidas
             // 
@@ -149,14 +149,6 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Nombre de Ingrediente";
             // 
-            // tbNombre
-            // 
-            this.tbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNombre.Location = new System.Drawing.Point(175, 32);
-            this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(491, 24);
-            this.tbNombre.TabIndex = 12;
-            // 
             // cbProveedores
             // 
             this.cbProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -166,22 +158,32 @@
             this.cbProveedores.Size = new System.Drawing.Size(321, 26);
             this.cbProveedores.TabIndex = 11;
             // 
+            // cbIngrediente
+            // 
+            this.cbIngrediente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIngrediente.FormattingEnabled = true;
+            this.cbIngrediente.Location = new System.Drawing.Point(175, 29);
+            this.cbIngrediente.Name = "cbIngrediente";
+            this.cbIngrediente.Size = new System.Drawing.Size(491, 26);
+            this.cbIngrediente.TabIndex = 22;
+            this.cbIngrediente.Leave += new System.EventHandler(this.CambioPrecio);
+            // 
             // ModificarIngrediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(1110, 512);
+            this.Controls.Add(this.cbIngrediente);
             this.Controls.Add(this.cantidad);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.Añadir);
+            this.Controls.Add(this.Modificar);
             this.Controls.Add(this.cbMedidas);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.units);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.cbProveedores);
             this.Name = "ModificarIngrediente";
             this.Text = "ModificarIngrediente";
@@ -196,14 +198,14 @@
 
         private System.Windows.Forms.NumericUpDown cantidad;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button Añadir;
+        private System.Windows.Forms.Button Modificar;
         private System.Windows.Forms.ComboBox cbMedidas;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown units;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbNombre;
         private System.Windows.Forms.ComboBox cbProveedores;
+        private System.Windows.Forms.ComboBox cbIngrediente;
     }
 }

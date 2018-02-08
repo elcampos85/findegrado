@@ -39,6 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbProveedores = new System.Windows.Forms.ComboBox();
             this.cbIngrediente = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbNuevoNombre = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.cantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.units)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +48,7 @@
             // cantidad
             // 
             this.cantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantidad.Location = new System.Drawing.Point(389, 88);
+            this.cantidad.Location = new System.Drawing.Point(392, 144);
             this.cantidad.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -56,12 +58,17 @@
             this.cantidad.Size = new System.Drawing.Size(120, 24);
             this.cantidad.TabIndex = 21;
             this.cantidad.ThousandsSeparator = true;
+            this.cantidad.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(317, 90);
+            this.label5.Location = new System.Drawing.Point(320, 146);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 18);
             this.label5.TabIndex = 20;
@@ -70,12 +77,13 @@
             // Modificar
             // 
             this.Modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Modificar.Location = new System.Drawing.Point(471, 168);
+            this.Modificar.Location = new System.Drawing.Point(474, 224);
             this.Modificar.Name = "Modificar";
             this.Modificar.Size = new System.Drawing.Size(92, 28);
             this.Modificar.TabIndex = 19;
             this.Modificar.Text = "Modificar";
             this.Modificar.UseVisualStyleBackColor = true;
+            this.Modificar.Click += new System.EventHandler(this.Modificar_Click);
             // 
             // cbMedidas
             // 
@@ -89,7 +97,7 @@
             "L",
             "cL",
             "mL"});
-            this.cbMedidas.Location = new System.Drawing.Point(608, 87);
+            this.cbMedidas.Location = new System.Drawing.Point(611, 143);
             this.cbMedidas.Name = "cbMedidas";
             this.cbMedidas.Size = new System.Drawing.Size(121, 26);
             this.cbMedidas.TabIndex = 18;
@@ -98,7 +106,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(537, 90);
+            this.label4.Location = new System.Drawing.Point(540, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 18);
             this.label4.TabIndex = 17;
@@ -108,7 +116,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(118, 90);
+            this.label3.Location = new System.Drawing.Point(121, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 18);
             this.label3.TabIndex = 16;
@@ -118,7 +126,7 @@
             // 
             this.units.DecimalPlaces = 2;
             this.units.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.units.Location = new System.Drawing.Point(175, 88);
+            this.units.Location = new System.Drawing.Point(178, 144);
             this.units.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -166,7 +174,25 @@
             this.cbIngrediente.Name = "cbIngrediente";
             this.cbIngrediente.Size = new System.Drawing.Size(491, 26);
             this.cbIngrediente.TabIndex = 22;
-            this.cbIngrediente.Leave += new System.EventHandler(this.CambioPrecio);
+            this.cbIngrediente.SelectedValueChanged += new System.EventHandler(this.CambioPrecio);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(109, 18);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Nuevo Nombre";
+            // 
+            // tbNuevoNombre
+            // 
+            this.tbNuevoNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNuevoNombre.Location = new System.Drawing.Point(175, 78);
+            this.tbNuevoNombre.Name = "tbNuevoNombre";
+            this.tbNuevoNombre.Size = new System.Drawing.Size(491, 24);
+            this.tbNuevoNombre.TabIndex = 24;
             // 
             // ModificarIngrediente
             // 
@@ -174,6 +200,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(1110, 512);
+            this.Controls.Add(this.tbNuevoNombre);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.cbIngrediente);
             this.Controls.Add(this.cantidad);
             this.Controls.Add(this.label5);
@@ -207,5 +235,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbProveedores;
         private System.Windows.Forms.ComboBox cbIngrediente;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbNuevoNombre;
     }
 }

@@ -54,8 +54,10 @@ namespace GarTor
 
         private void FinalizarCompra(object sender, EventArgs e)
         {
-            
-
+            foreach (DataGridViewRow row in cesta.Rows)
+            {
+                MessageBox.Show(row.Cells[Constantes.COLUMNA_PRECIO].Value.ToString());
+            }
 
         }
 
@@ -141,7 +143,7 @@ namespace GarTor
 
         private void cambioPrecio(object sender, DataGridViewCellEventArgs e)
         {
-            Total();
+           Total();
         }
 
         private void Seleccion(object sender, MouseEventArgs e)

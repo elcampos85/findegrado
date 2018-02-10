@@ -77,6 +77,7 @@ namespace GarTor
 
             MessageBox.Show(" 1: " + Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString())));
             MessageBox.Show( " 2: " + Convert.ToInt32(cbProveedores.SelectedValue).ToString());
+
             MessageBox.Show(Convert.ToInt32(Constantes.precioIngredientes_TA.GetCodPrecioIngrediente(Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString())), Convert.ToInt32(cbProveedores.SelectedValue))).ToString());
 
             /*Constantes.precioIngredientes_TA.Update(

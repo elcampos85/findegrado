@@ -68,18 +68,31 @@ namespace GarTor
             precio = (float)precio / (float)(Math.Round((double)Convert.ToSingle(cantidad.Value)));
             precio = (float)(Math.Round((double)precio, 2));
 
-            
+            String nuevoNombre;
+            String nombre;
+            int codProv= (int) cbProveedores.SelectedValue;
+            int codIng= (int) Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString());
+            int codPrecio = (int)Constantes.precioIngredientes_TA.GetCodPrecioIngrediente(codIng, codProv);
+            float precioNuevo=(float) units.Value;
+            float precioActual;
+
 
 
             Constantes.ingredientes_TA.Update(tbNuevoNombre.Text.ToString(),Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString())),cbIngrediente.SelectedValue.ToString());
-            Constantes.precioIngredientes_TA.UpdatePrecioIngrediente(Convert.ToDouble(units.Value), Convert.ToInt32(Constantes.precioIngredientes_TA.GetCodPrecioIngrediente(Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString())),Convert.ToInt32(cbProveedores.SelectedValue))));
+            // Constantes.precioIngredientes_TA.UpdatePrecioIngrediente(Convert.ToDouble(units.Value), Convert.ToInt32(Constantes.precioIngredientes_TA.GetCodPrecioIngrediente(Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString())),Convert.ToInt32(cbProveedores.SelectedValue))));
+            Constantes.precioIngredientes_TA.UpdatePrecioIngrediente(precioNuevo, codPrecio);
             MessageBox.Show(units.Value.ToString());
 
             MessageBox.Show(" 1: " + Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString())));
             MessageBox.Show( " 2: " + Convert.ToInt32(cbProveedores.SelectedValue).ToString());
 
-            MessageBox.Show(Convert.ToInt32(Constantes.precioIngredientes_TA.GetCodPrecioIngrediente(Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString())), Convert.ToInt32(cbProveedores.SelectedValue))).ToString());
 
+
+            codPrecio = (int)Constantes.precioIngredientes_TA.GetCodPrecioIngrediente(codIng, codProv);
+            MessageBox.Show(codPrecio.ToString());
+
+            //MessageBox.Show(Convert.ToInt32(Constantes.precioIngredientes_TA.GetCodPrecioIngrediente(Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString())), Convert.ToInt32(cbProveedores.SelectedValue))).ToString());
+           
             /*Constantes.precioIngredientes_TA.Update(
                 Convert.ToInt32(cbProveedores.SelectedValue), 
                 Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString())),

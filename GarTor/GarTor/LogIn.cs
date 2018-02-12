@@ -30,13 +30,11 @@ namespace GarTor
             string user = tbUser.Text.ToString();
             string pass = tbPass.Text.ToString();
 
+            
 
-            DataSet1TableAdapters.AccesoTableAdapter ata1;
-            ata1 = new DataSet1TableAdapters.AccesoTableAdapter();
+            String a = Constantes.acceso_TA.GetUser(user);
 
-            String a = ata1.GetUser(user);
-
-            if (user.Equals(ata1.GetUser(user)) && pass.Equals(ata1.GetPass(pass)))
+            if (user.Equals(Constantes.acceso_TA.GetUser(user)) && pass.Equals(Constantes.acceso_TA.GetPass(pass)))
             {
                 MessageBoxTemporal.Show("Usuario y contraseña correctos", "Acceso Permitido", 2, true);
                 this.Close();

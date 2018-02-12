@@ -22,6 +22,12 @@ namespace GarTor
 
         #endregion
 
+        #region DS_DATASET1
+        public static DataSet1TableAdapters.SuplementoTableAdapter suplemento_TA = new DataSet1TableAdapters.SuplementoTableAdapter();
+        public static DataSet1TableAdapters.AccesoTableAdapter acceso_TA = new DataSet1TableAdapters.AccesoTableAdapter();
+        #endregion
+
+
         #region QUERYS
         public const string QUERY_CONSULTA_CATEGORIAS = "SELECT DISTINCT Categoria_Producto FROM Productos";
         #endregion

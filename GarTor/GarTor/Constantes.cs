@@ -32,7 +32,7 @@ namespace GarTor
         public const int COLUMNA_NOMBRE = 1;
         public const int TAMANO_IMAGENES = 175;
         public static string PESO_UD_PRODUCTO = "0";
-
+        public static string IMPORTE = "0";
 
 
         public const string MAIN_RUTA= "C:/GarTor";

@@ -54,11 +54,11 @@ namespace GarTor
 
         private void FinalizarCompra(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in cesta.Rows)
-            {
-                MessageBox.Show(row.Cells[Constantes.COLUMNA_PRECIO].Value.ToString());
-            }
-
+            Finalizar_Compra panel1 = new Finalizar_Compra();
+            panel1.ShowIcon = false;
+            panel1.ShowInTaskbar = false;
+            panel1.ShowDialog();
+            introducidoCantidad = true;
         }
 
         private void Total()
@@ -76,6 +76,7 @@ namespace GarTor
                 }
                 }
             lPrecio.Text = "Total: " + Math.Round(suma, 2).ToString() + " €";
+            Constantes.IMPORTE = Math.Round(suma, 2).ToString();
         }
 
         private void EliminarCestaCompleta(object sender, EventArgs e)

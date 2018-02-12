@@ -83,7 +83,6 @@
             this.Modificar.TabIndex = 19;
             this.Modificar.Text = "Modificar";
             this.Modificar.UseVisualStyleBackColor = true;
-            this.Modificar.Click += new System.EventHandler(this.Modificar_Click);
             // 
             // cbMedidas
             // 
@@ -174,7 +173,7 @@
             this.cbIngrediente.Name = "cbIngrediente";
             this.cbIngrediente.Size = new System.Drawing.Size(491, 26);
             this.cbIngrediente.TabIndex = 22;
-            this.cbIngrediente.SelectedValueChanged += new System.EventHandler(this.CambioPrecio);
+            this.cbIngrediente.SelectedValueChanged += new System.EventHandler(this.cbIngrediente_SelectedValueChanged);
             // 
             // label6
             // 

@@ -194,6 +194,12 @@
     <Compile Include="SuplementoAñadir.Designer.cs">
       <DependentUpon>SuplementoAñadir.cs</DependentUpon>
     </Compile>
+    <Compile Include="SuplementoModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuplementoModificar.Designer.cs">
+      <DependentUpon>SuplementoModificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="VentaMayor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SuplementoAñadir.resx">
       <DependentUpon>SuplementoAñadir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuplementoModificar.resx">
+      <DependentUpon>SuplementoModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentaMayor.resx">
       <DependentUpon>VentaMayor.cs</DependentUpon>

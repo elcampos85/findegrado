@@ -182,6 +182,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
+    <Compile Include="SuplementoAñadir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuplementoAñadir.Designer.cs">
+      <DependentUpon>SuplementoAñadir.cs</DependentUpon>
+    </Compile>
     <Compile Include="VentaMayor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +253,9 @@
     <EmbeddedResource Include="Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuplementoAñadir.resx">
+      <DependentUpon>SuplementoAñadir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentaMayor.resx">
       <DependentUpon>VentaMayor.cs</DependentUpon>

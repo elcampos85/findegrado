@@ -22,13 +22,17 @@ namespace GarTor
             lbImporte.Text = Constantes.IMPORTE + "€";
             lbEntregado.Text = "";
             lbCambio.Text = "";
+
+
         }
 
         private void finalizarCompra(object sender, EventArgs e)
         {
             entregado = entregado + Convert.ToSingle(numEntrega.Value);
-            lbEntregado.Text = entregado.ToString();
-            lbCambio.Text = (entregado - importe).ToString();
+            lbEntregado.Text = entregado.ToString("#,##0.##");
+            //lbEntregado.Text = entregado.ToString();
+            //lbCambio.Text = (entregado - importe).ToString();
+            lbCambio.Text = (entregado - importe).ToString("#,##0.##");
             if (Convert.ToSingle(lbCambio.Text) >= 0)
             {
                 btFinalizar.Text = "Finalizar";

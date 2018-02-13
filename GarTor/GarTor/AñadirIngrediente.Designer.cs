@@ -39,6 +39,7 @@
             this.Añadir = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cantidad = new System.Windows.Forms.NumericUpDown();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.units)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cantidad)).BeginInit();
             this.SuspendLayout();
@@ -167,6 +168,14 @@
             this.cantidad.TabIndex = 10;
             this.cantidad.ThousandsSeparator = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(526, 297);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(256, 20);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
             // AñadirIngrediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,6 +183,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(1110, 592);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cantidad);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Añadir);
@@ -207,5 +217,6 @@
         private System.Windows.Forms.Button Añadir;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown cantidad;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

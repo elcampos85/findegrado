@@ -122,6 +122,7 @@
             this.btFinalizar.TabIndex = 20;
             this.btFinalizar.Text = "Introducir";
             this.btFinalizar.UseVisualStyleBackColor = true;
+            this.btFinalizar.Click += new System.EventHandler(this.finalizarCompra);
             // 
             // numEntrega
             // 

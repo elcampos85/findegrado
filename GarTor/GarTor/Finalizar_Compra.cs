@@ -18,6 +18,7 @@ namespace GarTor
         private float importe = Convert.ToSingle(Constantes.IMPORTE);
         public Finalizar_Compra()
         {
+            Constantes.VENTA_HECHA = false;
             InitializeComponent();
             lbImporte.Text = Constantes.IMPORTE + "€";
             lbEntregado.Text = "";
@@ -26,6 +27,11 @@ namespace GarTor
 
         private void finalizarCompra(object sender, EventArgs e)
         {
+            if (acabado)
+            {
+                Constantes.VENTA_HECHA = true;
+                this.Close();
+            }
             entregado = entregado + Convert.ToSingle(numEntrega.Value);
             lbEntregado.Text = entregado.ToString();
             lbCambio.Text = (entregado - importe).ToString();
@@ -33,10 +39,6 @@ namespace GarTor
             {
                 btFinalizar.Text = "Finalizar";
                 acabado = true;
-            }
-            if (acabado)
-            {
-                this.Close();
             }
         }
     }

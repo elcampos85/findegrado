@@ -23,7 +23,7 @@ namespace GarTor
             {
                 Constantes.suplemento_TA.Insert(tbNombre.Text, Convert.ToDouble(NPrecio.Value));
                 MessageBox.Show("Suplemento agregado correctamente");
-            }catch(Exception e)
+            }catch(Exception ex)
             {
                 MessageBox.Show("El suplemento no se agregó");
             }

@@ -55,10 +55,21 @@ namespace GarTor
         private void FinalizarCompra(object sender, EventArgs e)
         {
             Finalizar_Compra panel1 = new Finalizar_Compra();
+            panel1.MinimizeBox = false;
+            panel1.MaximizeBox = false;
             panel1.ShowIcon = false;
             panel1.ShowInTaskbar = false;
             panel1.ShowDialog();
             introducidoCantidad = true;
+            if (Constantes.VENTA_HECHA)
+            {
+                this.listView1.Items.Clear();
+                this.imageList1.Images.Clear();
+                btAtrasVTienda.Visible = false;
+                cargarListaVenta();
+                cesta.Rows.Clear();
+                Total();
+            }
         }
 
         private void Total()
@@ -94,7 +105,7 @@ namespace GarTor
             }
         }
         
-        private void VentaTienda_Load(object sender, EventArgs e)
+        private void cargarListaVenta()
         {
             DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
             int j = 0;
@@ -117,6 +128,11 @@ namespace GarTor
                 }
                 this.listView1.LargeImageList = this.imageList1;
             }
+        }
+
+        private void VentaTienda_Load(object sender, EventArgs e)
+        {
+            cargarListaVenta();
         }
 
         private void volverACategoria(object sender, EventArgs e)

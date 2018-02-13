@@ -39,7 +39,7 @@ namespace GarTor
         public const int TAMANO_IMAGENES = 175;
         public static string PESO_UD_PRODUCTO = "0";
         public static string IMPORTE = "0";
-
+        public static bool VENTA_HECHA = false;
 
         public const string MAIN_RUTA= "C:/GarTor";
         public const string PRODUCTOS_RUTA = "C:/GarTor/Productos";

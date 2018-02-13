@@ -50,14 +50,14 @@
             this.panel1.Controls.Add(this.lbNomCambio);
             this.panel1.Location = new System.Drawing.Point(153, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(224, 250);
+            this.panel1.Size = new System.Drawing.Size(269, 250);
             this.panel1.TabIndex = 1;
             // 
             // lbEntregado
             // 
             this.lbEntregado.AutoSize = true;
             this.lbEntregado.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEntregado.Location = new System.Drawing.Point(17, 44);
+            this.lbEntregado.Location = new System.Drawing.Point(3, 50);
             this.lbEntregado.Name = "lbEntregado";
             this.lbEntregado.Size = new System.Drawing.Size(180, 63);
             this.lbEntregado.TabIndex = 18;
@@ -67,7 +67,7 @@
             // 
             this.lbNomEntregado.AutoSize = true;
             this.lbNomEntregado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNomEntregado.Location = new System.Drawing.Point(49, 10);
+            this.lbNomEntregado.Location = new System.Drawing.Point(72, 10);
             this.lbNomEntregado.Name = "lbNomEntregado";
             this.lbNomEntregado.Size = new System.Drawing.Size(125, 20);
             this.lbNomEntregado.TabIndex = 17;
@@ -77,7 +77,7 @@
             // 
             this.lbCambio.AutoSize = true;
             this.lbCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCambio.Location = new System.Drawing.Point(17, 170);
+            this.lbCambio.Location = new System.Drawing.Point(3, 166);
             this.lbCambio.Name = "lbCambio";
             this.lbCambio.Size = new System.Drawing.Size(202, 63);
             this.lbCambio.TabIndex = 16;
@@ -87,7 +87,7 @@
             // 
             this.lbNomCambio.AutoSize = true;
             this.lbNomCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNomCambio.Location = new System.Drawing.Point(72, 141);
+            this.lbNomCambio.Location = new System.Drawing.Point(84, 130);
             this.lbNomCambio.Name = "lbNomCambio";
             this.lbNomCambio.Size = new System.Drawing.Size(83, 20);
             this.lbNomCambio.TabIndex = 15;
@@ -142,7 +142,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
-            this.ClientSize = new System.Drawing.Size(384, 362);
+            this.ClientSize = new System.Drawing.Size(434, 362);
             this.Controls.Add(this.numEntrega);
             this.Controls.Add(this.btFinalizar);
             this.Controls.Add(this.lbEntrega);

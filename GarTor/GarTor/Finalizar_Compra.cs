@@ -35,10 +35,10 @@ namespace GarTor
                 this.Close();
             }
             entregado = entregado + Convert.ToSingle(numEntrega.Value);
-            //lbEntregado.Text = entregado.ToString("#,##0.##");
-            lbEntregado.Text = entregado.ToString();
-            lbCambio.Text = (entregado - importe).ToString();
-            //lbCambio.Text = (entregado - importe).ToString("#,##0.##");
+            lbEntregado.Text = entregado.ToString("#,##0.##");
+            //lbEntregado.Text = entregado.ToString();
+            //lbCambio.Text = (entregado - importe).ToString();
+            lbCambio.Text = (entregado - importe).ToString("#,##0.##");
             if (Convert.ToSingle(lbCambio.Text) >= 0.00)
             {
                 btFinalizar.Text = "Finalizar";

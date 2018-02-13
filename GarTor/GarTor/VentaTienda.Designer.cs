@@ -31,10 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentaTienda));
             this.cesta = new System.Windows.Forms.DataGridView();
-            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelProdVentaTienda = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -47,6 +43,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btAtrasVTienda = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.panelProdVentaTienda.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -71,7 +71,7 @@
             this.Unidad,
             this.Precio});
             this.cesta.GridColor = System.Drawing.Color.Green;
-            this.cesta.Location = new System.Drawing.Point(8, 0);
+            this.cesta.Location = new System.Drawing.Point(14, 0);
             this.cesta.Name = "cesta";
             this.cesta.RowHeadersVisible = false;
             this.cesta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -79,35 +79,10 @@
             this.cesta.ShowCellToolTips = false;
             this.cesta.ShowEditingIcon = false;
             this.cesta.ShowRowErrors = false;
-            this.cesta.Size = new System.Drawing.Size(263, 537);
+            this.cesta.Size = new System.Drawing.Size(367, 537);
             this.cesta.TabIndex = 1;
             this.cesta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Eliminar);
             this.cesta.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.cambioPrecio);
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Name = "Borrar";
-            this.Borrar.Width = 45;
-            // 
-            // Producto
-            // 
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            // 
-            // Unidad
-            // 
-            this.Unidad.HeaderText = "Unidad";
-            this.Unidad.Name = "Unidad";
-            this.Unidad.Width = 50;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            this.Precio.Width = 50;
             // 
             // panelProdVentaTienda
             // 
@@ -129,7 +104,7 @@
             this.listView1.Location = new System.Drawing.Point(0, 42);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(960, 592);
+            this.listView1.Size = new System.Drawing.Size(850, 592);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Seleccion);
@@ -140,9 +115,9 @@
             this.panel1.Controls.Add(this.cesta);
             this.panel1.Controls.Add(this.panelSeparadorVTienda);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(960, 42);
+            this.panel1.Location = new System.Drawing.Point(850, 42);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(274, 592);
+            this.panel1.Size = new System.Drawing.Size(384, 592);
             this.panel1.TabIndex = 5;
             // 
             // lPrecio
@@ -246,6 +221,32 @@
             this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
             this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
             // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Name = "Borrar";
+            this.Borrar.Width = 45;
+            // 
+            // Producto
+            // 
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            this.Producto.Width = 180;
+            // 
+            // Unidad
+            // 
+            this.Unidad.HeaderText = "Unidad";
+            this.Unidad.Name = "Unidad";
+            this.Unidad.Width = 70;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Width = 50;
+            // 
             // VentaTienda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,10 +275,6 @@
         #endregion
         private System.Windows.Forms.DataGridView cesta;
         private System.Windows.Forms.Button Comprar;
-        private System.Windows.Forms.DataGridViewImageColumn Borrar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.Panel panelProdVentaTienda;
         private System.Windows.Forms.Panel panelToolboxVTienda;
         private System.Windows.Forms.Panel panelSeparadorVTienda;
@@ -289,5 +286,9 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btAtrasVTienda;
+        private System.Windows.Forms.DataGridViewImageColumn Borrar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
     }
 }

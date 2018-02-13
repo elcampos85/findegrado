@@ -30,8 +30,7 @@
         {
             this.bIntro = new System.Windows.Forms.Button();
             this.lPass = new System.Windows.Forms.Label();
-            this.tbPeso_UD = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.tbPeso_UD)).BeginInit();
+            this.tbPeso_UD = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // bIntro
@@ -56,18 +55,13 @@
             // 
             // tbPeso_UD
             // 
-            this.tbPeso_UD.DecimalPlaces = 3;
             this.tbPeso_UD.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPeso_UD.Location = new System.Drawing.Point(50, 39);
-            this.tbPeso_UD.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
+            this.tbPeso_UD.Location = new System.Drawing.Point(43, 39);
             this.tbPeso_UD.Name = "tbPeso_UD";
-            this.tbPeso_UD.Size = new System.Drawing.Size(92, 24);
+            this.tbPeso_UD.Size = new System.Drawing.Size(100, 24);
             this.tbPeso_UD.TabIndex = 0;
-            this.tbPeso_UD.ThousandsSeparator = true;
+            this.tbPeso_UD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPeso_UD_KeyDown);
+            this.tbPeso_UD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // Intro_Peso_UD
             // 
@@ -83,7 +77,6 @@
             this.Name = "Intro_Peso_UD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Peso_UD";
-            ((System.ComponentModel.ISupportInitialize)(this.tbPeso_UD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,6 +86,6 @@
 
         private System.Windows.Forms.Button bIntro;
         private System.Windows.Forms.Label lPass;
-        private System.Windows.Forms.NumericUpDown tbPeso_UD;
+        private System.Windows.Forms.TextBox tbPeso_UD;
     }
 }

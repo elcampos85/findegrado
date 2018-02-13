@@ -36,9 +36,8 @@
             this.lbImporte = new System.Windows.Forms.Label();
             this.lbEntrega = new System.Windows.Forms.Label();
             this.btFinalizar = new System.Windows.Forms.Button();
-            this.numEntrega = new System.Windows.Forms.NumericUpDown();
+            this.tbEntrega = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numEntrega)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -48,7 +47,7 @@
             this.panel1.Controls.Add(this.lbNomEntregado);
             this.panel1.Controls.Add(this.lbCambio);
             this.panel1.Controls.Add(this.lbNomCambio);
-            this.panel1.Location = new System.Drawing.Point(153, 15);
+            this.panel1.Location = new System.Drawing.Point(163, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(269, 250);
             this.panel1.TabIndex = 1;
@@ -97,7 +96,7 @@
             // 
             this.lbImporte.AutoSize = true;
             this.lbImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImporte.Location = new System.Drawing.Point(12, 25);
+            this.lbImporte.Location = new System.Drawing.Point(1, 25);
             this.lbImporte.Name = "lbImporte";
             this.lbImporte.Size = new System.Drawing.Size(137, 39);
             this.lbImporte.TabIndex = 2;
@@ -124,18 +123,15 @@
             this.btFinalizar.UseVisualStyleBackColor = true;
             this.btFinalizar.Click += new System.EventHandler(this.finalizarCompra);
             // 
-            // numEntrega
+            // tbEntrega
             // 
-            this.numEntrega.DecimalPlaces = 2;
-            this.numEntrega.Location = new System.Drawing.Point(12, 168);
-            this.numEntrega.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numEntrega.Name = "numEntrega";
-            this.numEntrega.Size = new System.Drawing.Size(120, 20);
-            this.numEntrega.TabIndex = 21;
+            this.tbEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbEntrega.Location = new System.Drawing.Point(19, 181);
+            this.tbEntrega.Name = "tbEntrega";
+            this.tbEntrega.Size = new System.Drawing.Size(100, 24);
+            this.tbEntrega.TabIndex = 0;
+            this.tbEntrega.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbEntrega_KeyDown);
+            this.tbEntrega.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // Finalizar_Compra
             // 
@@ -143,7 +139,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(434, 362);
-            this.Controls.Add(this.numEntrega);
+            this.Controls.Add(this.tbEntrega);
             this.Controls.Add(this.btFinalizar);
             this.Controls.Add(this.lbEntrega);
             this.Controls.Add(this.lbImporte);
@@ -155,7 +151,6 @@
             this.Text = "Peso_UD";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numEntrega)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,6 +165,6 @@
         private System.Windows.Forms.Label lbImporte;
         private System.Windows.Forms.Label lbEntrega;
         private System.Windows.Forms.Button btFinalizar;
-        private System.Windows.Forms.NumericUpDown numEntrega;
+        private System.Windows.Forms.TextBox tbEntrega;
     }
 }

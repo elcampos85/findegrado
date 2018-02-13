@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,15 +30,18 @@ namespace GarTor
 
         private void finalizarCompra(object sender, EventArgs e)
         {
+            introducir();
+        }
+
+        private void introducir()
+        {
             if (acabado)
             {
                 Constantes.VENTA_HECHA = true;
                 this.Close();
             }
-            entregado = entregado + Convert.ToSingle(numEntrega.Value);
+            entregado = entregado + Convert.ToSingle(tbEntrega.Text.ToString());
             lbEntregado.Text = entregado.ToString("#,##0.##");
-            //lbEntregado.Text = entregado.ToString();
-            //lbCambio.Text = (entregado - importe).ToString();
             lbCambio.Text = (entregado - importe).ToString("#,##0.##");
             if (Convert.ToSingle(lbCambio.Text) >= 0.00)
             {
@@ -45,6 +49,27 @@ namespace GarTor
                 acabado = true;
             }
         }
-        
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
+
+            if (char.IsNumber(e.KeyChar) || e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbEntrega_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                introducir();
+            }
+        }
     }
 }

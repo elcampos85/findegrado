@@ -35,11 +35,7 @@ namespace GarTor
         {
             float precio; 
 
-            lista.Rows.Add(1);
-
-            lista.Rows[lista.RowCount - 1].Cells[0].Value = Resource1.bin;
-            lista.Rows[lista.RowCount - 1].Cells[1].Value = cbIngredientes.SelectedValue.ToString();
-            lista.Rows[lista.RowCount - 1].Cells[2].Value = units.Value + " " + cbMedidas.SelectedItem;
+            
             precio = (float)(Math.Round((double)Convert.ToSingle(units.Value) * (float) Convert.ToSingle(Constantes.precioIngredientes_TA.PrecioIngrediente(cbIngredientes.SelectedValue.ToString())), 2));
 
             switch (cbMedidas.SelectedIndex)
@@ -59,8 +55,17 @@ namespace GarTor
 
             }
             //(float)(Math.Round((double)float, 2);
-            lista.Rows[lista.RowCount - 1].Cells[3].Value = (float)(Math.Round((double)precio, 2)); 
-            lista.FirstDisplayedScrollingRowIndex = lista.RowCount - 1;
+            if ((float)(Math.Round((double)precio, 2))>0)
+            {
+                lista.Rows.Add(1);
+
+                lista.Rows[lista.RowCount - 1].Cells[0].Value = Resource1.bin;
+                lista.Rows[lista.RowCount - 1].Cells[1].Value = cbIngredientes.SelectedValue.ToString();
+                lista.Rows[lista.RowCount - 1].Cells[2].Value = units.Value + " " + cbMedidas.SelectedItem;
+                lista.Rows[lista.RowCount - 1].Cells[3].Value = (float)(Math.Round((double)precio, 2));
+                lista.FirstDisplayedScrollingRowIndex = lista.RowCount - 1;
+            }
+            
 
 
 

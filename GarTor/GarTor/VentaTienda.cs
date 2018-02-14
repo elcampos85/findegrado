@@ -20,15 +20,6 @@ namespace GarTor
         public VentaTienda()
         {
             InitializeComponent();
-            for (int i = 0; i < 5; i++)
-            {
-                cesta.Rows.Add(1);
-                cesta.Rows[i].Cells[0].Value = Resource1.bin;
-                cesta.Rows[i].Cells[1].Value = "tarta";
-                cesta.Rows[i].Cells[2].Value = i;
-                cesta.Rows[i].Cells[3].Value = "10";
-                cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
-            }
             Total();
         }
 

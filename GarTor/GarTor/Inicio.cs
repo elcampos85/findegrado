@@ -171,43 +171,7 @@ namespace GarTor
             }
             if (!System.IO.File.Exists(rutaCategorias))
             {
-                Image miimagen;
-
                 System.IO.Directory.CreateDirectory(rutaCategorias);//Se crea el directorio de Categorias dentro del directorio de Productos si no existe
-                #region ESCRITURA DE IMAGENES DE CATEGORIAS
-                miimagen = Categorias_Res.Anguilas;
-                miimagen.Save(rutaCategorias + "/Anguilas.png");
-                miimagen = Categorias_Res.Bebida;
-                miimagen.Save(rutaCategorias + "/Bebida.png");
-                miimagen = Categorias_Res.Bolleria;
-                miimagen.Save(rutaCategorias + "/Bolleria.png");
-                miimagen = Categorias_Res.Bombones;
-                miimagen.Save(rutaCategorias + "/Bombones.png");
-                miimagen = Categorias_Res.Corona_Almudena;
-                miimagen.Save(rutaCategorias + "/Corona Almudena.png");
-                miimagen = Categorias_Res.Festividades;
-                miimagen.Save(rutaCategorias + "/Festividades.png");
-                miimagen = Categorias_Res.Hojaldre;
-                miimagen.Save(rutaCategorias + "/Hojaldre.png");
-                miimagen = Categorias_Res.Navidad;
-                miimagen.Save(rutaCategorias + "/Navidad.png");
-                miimagen = Categorias_Res.Pascua;
-                miimagen.Save(rutaCategorias + "/Pascua.png");
-                miimagen = Categorias_Res.Pastas;
-                miimagen.Save(rutaCategorias + "/Pastas.png");
-                miimagen = Categorias_Res.Pasteles;
-                miimagen.Save(rutaCategorias + "/Pasteles.png");
-                miimagen = Categorias_Res.Postres;
-                miimagen.Save(rutaCategorias + "/Postres.png");
-                miimagen = Categorias_Res.Roscones;
-                miimagen.Save(rutaCategorias + "/Roscones.png");
-                miimagen = Categorias_Res.Salado;
-                miimagen.Save(rutaCategorias + "/Salado.png");
-                miimagen = Categorias_Res.Tartas;
-                miimagen.Save(rutaCategorias + "/Tartas.png");
-                miimagen = Categorias_Res.Varios;
-                miimagen.Save(rutaCategorias + "/Varios.png");
-                #endregion
             }
             using (conexion = new SqlConnection(stringConexion))//Se crea la conexion a la base de datos y se realiza la consulta de las distintas categorias
             using (SqlDataAdapter adaptador = new SqlDataAdapter(Constantes.QUERY_CONSULTA_CATEGORIAS, conexion))//Se almacena el resultado en un adaptador

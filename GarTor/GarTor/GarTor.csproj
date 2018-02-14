@@ -80,11 +80,6 @@
     <Compile Include="AñadirIngrediente.Designer.cs">
       <DependentUpon>AñadirIngrediente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Categorias_Res.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Categorias_Res.resx</DependentUpon>
-    </Compile>
     <Compile Include="Constantes.cs" />
     <Compile Include="DSIngredientes.cs">
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
@@ -214,10 +209,6 @@
     </Compile>
     <EmbeddedResource Include="AñadirIngrediente.resx">
       <DependentUpon>AñadirIngrediente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Categorias_Res.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Categorias_Res.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultaDia.resx">
       <DependentUpon>ConsultaDia.cs</DependentUpon>

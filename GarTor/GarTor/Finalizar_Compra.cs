@@ -40,14 +40,28 @@ namespace GarTor
                 Constantes.VENTA_HECHA = true;
                 this.Close();
             }
-            entregado = entregado + Convert.ToSingle(tbEntrega.Text.ToString());
-            lbEntregado.Text = entregado.ToString("#,##0.##");
-            lbCambio.Text = (entregado - importe).ToString("#,##0.##");
-            if (Convert.ToSingle(lbCambio.Text) >= 0.00)
+            try
             {
-                btFinalizar.Text = "Finalizar";
-                acabado = true;
+                if (Convert.ToSingle(tbEntrega.Text.ToString()) < 999999)
+                {
+                    entregado = entregado + Convert.ToSingle(tbEntrega.Text.ToString());
+                    lbEntregado.Text = entregado.ToString("#,##0.##");
+                    lbCambio.Text = (entregado - importe).ToString("#,##0.##");
+                    if (Convert.ToSingle(lbCambio.Text) >= 0.00)
+                    {
+                        btFinalizar.Text = "Finalizar";
+                        acabado = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se puede introducir una cantidad mayor a 999.999€");
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("No se puede introducir una cantidad mayor a 999.999€");
             }
+            
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)

@@ -177,6 +177,7 @@
             // lNom
             // 
             this.lNom.AutoSize = true;
+            this.lNom.BackColor = System.Drawing.Color.Transparent;
             this.lNom.Location = new System.Drawing.Point(9, 29);
             this.lNom.Name = "lNom";
             this.lNom.Size = new System.Drawing.Size(106, 13);
@@ -186,6 +187,7 @@
             // Grupo
             // 
             this.Grupo.AutoSize = true;
+            this.Grupo.BackColor = System.Drawing.Color.Transparent;
             this.Grupo.Location = new System.Drawing.Point(594, 29);
             this.Grupo.Name = "Grupo";
             this.Grupo.Size = new System.Drawing.Size(28, 13);
@@ -217,6 +219,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(1037, 678);
             this.label1.Name = "label1";
@@ -240,6 +243,7 @@
             // 
             // imagen
             // 
+            this.imagen.BackColor = System.Drawing.Color.Transparent;
             this.imagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.imagen.Location = new System.Drawing.Point(15, 162);
             this.imagen.Name = "imagen";
@@ -292,6 +296,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(9, 673);
             this.label2.Name = "label2";
@@ -302,6 +307,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(243, 673);
             this.label3.Name = "label3";
@@ -314,6 +320,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
+            this.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
             this.ClientSize = new System.Drawing.Size(1264, 714);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

@@ -125,6 +125,8 @@
             // 
             this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listView1.BackColor = System.Drawing.Color.ForestGreen;
+            this.listView1.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
+            this.listView1.BackgroundImageTiled = true;
             this.listView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Location = new System.Drawing.Point(0, 42);
@@ -137,6 +139,8 @@
             // 
             // panel1
             // 
+            this.panel1.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.lPrecio);
             this.panel1.Controls.Add(this.cesta);
             this.panel1.Controls.Add(this.panelSeparadorVTienda);
@@ -149,6 +153,7 @@
             // lPrecio
             // 
             this.lPrecio.AutoSize = true;
+            this.lPrecio.BackColor = System.Drawing.Color.Transparent;
             this.lPrecio.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lPrecio.Location = new System.Drawing.Point(8, 568);

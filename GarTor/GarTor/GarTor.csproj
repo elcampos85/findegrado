@@ -340,6 +340,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Pasteleria.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\Fondo.jpg" />
     <None Include="Resources\Varios.jpg" />
     <None Include="Resources\Tartas.jpg" />
     <None Include="Resources\Salado.jpg" />

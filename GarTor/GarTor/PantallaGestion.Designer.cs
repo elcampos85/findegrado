@@ -154,14 +154,14 @@
             // añadirToolStripMenuItem2
             // 
             this.añadirToolStripMenuItem2.Name = "añadirToolStripMenuItem2";
-            this.añadirToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.añadirToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
             this.añadirToolStripMenuItem2.Text = "Añadir";
             this.añadirToolStripMenuItem2.Click += new System.EventHandler(this.añadirToolStripMenuItem2_Click);
             // 
             // modificarToolStripMenuItem3
             // 
             this.modificarToolStripMenuItem3.Name = "modificarToolStripMenuItem3";
-            this.modificarToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.modificarToolStripMenuItem3.Size = new System.Drawing.Size(125, 22);
             this.modificarToolStripMenuItem3.Text = "Modificar";
             this.modificarToolStripMenuItem3.Click += new System.EventHandler(this.modificarToolStripMenuItem3_Click);
             // 
@@ -209,7 +209,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pPanelContenedor.AutoSize = true;
-            this.pPanelContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pPanelContenedor.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
             this.pPanelContenedor.Location = new System.Drawing.Point(0, 24);
             this.pPanelContenedor.Margin = new System.Windows.Forms.Padding(0);
             this.pPanelContenedor.Name = "pPanelContenedor";
@@ -221,6 +221,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
+            this.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
             this.ClientSize = new System.Drawing.Size(955, 497);
             this.Controls.Add(this.pPanelContenedor);
             this.Controls.Add(this.ssEstado);

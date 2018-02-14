@@ -27,23 +27,30 @@ namespace GarTor
         private void introducir()
         {
             string peso_UD = tbPeso_UD.Text.ToString();
-            Constantes.PESO_UD_PRODUCTO = peso_UD;
-            this.Close();
+            if(Convert.ToDouble(peso_UD) > 1000)
+            {
+                MessageBox.Show("La cantidad máxima a introducir es: 1000");
+                tbPeso_UD.Text = "";
+                tbPeso_UD.Select();
+            }
+            else
+            {
+                Constantes.PESO_UD_PRODUCTO = peso_UD;
+                this.Close();
+            }
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
 
-            if (char.IsNumber(e.KeyChar) || e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
+            if (((e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
+                    && tbPeso_UD.Text.Contains('.')) || e.KeyChar =='\b' || char.IsNumber(e.KeyChar) || e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
             {
-
                 e.Handled = false;
-
             }
             else
             {
-
                 e.Handled = true;
             }
         }

@@ -83,7 +83,7 @@ namespace GarTor
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("El campo debe contener algun numero");
+
                 }
                 }
             lPrecio.Text = "Total: " + Math.Round(suma, 2).ToString() + " €";
@@ -207,29 +207,43 @@ namespace GarTor
             }
             else
             {
-                if (!introducidoCantidad)
+                try
                 {
-                    Intro_Peso_UD panel1 = new Intro_Peso_UD();
-                    panel1.ControlBox = false;
-                    panel1.ShowIcon = false;
-                    panel1.ShowInTaskbar = false;
-                    panel1.ShowDialog();
-                    introducidoCantidad = true;
+                    if (!introducidoCantidad)
+                    {
+                        Intro_Peso_UD panel1 = new Intro_Peso_UD();
+                        panel1.MinimizeBox = false;
+                        panel1.MaximizeBox = false;
+                        panel1.ShowIcon = false;
+                        panel1.ShowInTaskbar = false;
+                        panel1.ShowDialog();
+                        introducidoCantidad = true;
+                    }
+                    if (Constantes.PESO_UD_PRODUCTO != null && Convert.ToDouble(Constantes.PESO_UD_PRODUCTO) > 0 && Convert.ToDouble(Constantes.PESO_UD_PRODUCTO) > 0.000)
+                    {
+                        ListView.SelectedIndexCollection seleccionado = this.listView1.SelectedIndices;
+                        foreach (int index in seleccionado)
+                        {
+                            cesta.Rows.Add(1);
+                            cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
+                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = this.listView1.Items[index].Text;
+                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = Constantes.PESO_UD_PRODUCTO;
+                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)ventTA.GetPrecioVenta((int)prodTA.GetCodProducto(this.listView1.Items[index].Text));
+                            cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
+                            Total();
+                        }
+                        Constantes.PESO_UD_PRODUCTO = "0.000";
+                    }
+                }catch(Exception ex)
+                {
+
                 }
-                ListView.SelectedIndexCollection seleccionado = this.listView1.SelectedIndices;
-                foreach (int index in seleccionado)
+                finally
                 {
-                    cesta.Rows.Add(1);
-                    cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
-                    cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = this.listView1.Items[index].Text;
-                    cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = Constantes.PESO_UD_PRODUCTO;
-                    cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)ventTA.GetPrecioVenta((int)prodTA.GetCodProducto(this.listView1.Items[index].Text));
-                    cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
-                    Total();
-                }
-                foreach (ListViewItem item in listView1.SelectedItems)
-                {
-                    item.Selected = false;
+                    foreach (ListViewItem item in listView1.SelectedItems)
+                    {
+                        item.Selected = false;
+                    }
                 }
             }
         }

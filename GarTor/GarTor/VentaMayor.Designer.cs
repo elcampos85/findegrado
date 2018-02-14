@@ -153,10 +153,10 @@
             // 
             this.lPrecio.AutoSize = true;
             this.lPrecio.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lPrecio.Font = new System.Drawing.Font("Rockwell Extra Bold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lPrecio.Location = new System.Drawing.Point(8, 606);
+            this.lPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lPrecio.Location = new System.Drawing.Point(8, 604);
             this.lPrecio.Name = "lPrecio";
-            this.lPrecio.Size = new System.Drawing.Size(0, 22);
+            this.lPrecio.Size = new System.Drawing.Size(0, 24);
             this.lPrecio.TabIndex = 2;
             // 
             // cesta

@@ -79,6 +79,10 @@ namespace GarTor
                 float precioNuevo = (float)units.Value;
                 float precioActual = Convert.ToSingle(Constantes.precioIngredientes_TA.GetPrecio(Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString()))));
 
+                /*SELECT 
+IF((SELECT COUNT(*) FROM tEmpresa WHERE rfc = 'DMC750410C41' = 0 ) > 0, true, false
+FROM tEmpresa
+LIMIT 1*/
 
 
                 Constantes.ingredientes_TA.Update(nuevoNombre, codIng, nombre);//update del nombre del ingrediente

@@ -176,6 +176,12 @@
     <Compile Include="Produccion.Designer.cs">
       <DependentUpon>Produccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProduccionModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProduccionModificar.Designer.cs">
+      <DependentUpon>ProduccionModificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource1.Designer.cs">
@@ -245,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Produccion.resx">
       <DependentUpon>Produccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProduccionModificar.resx">
+      <DependentUpon>ProduccionModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

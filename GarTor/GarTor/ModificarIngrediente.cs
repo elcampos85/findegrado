@@ -69,7 +69,7 @@ namespace GarTor
                 }
                 precio = (float)precio / (float)(Math.Round((double)Convert.ToSingle(cantidad.Value)));
                 precio = (float)(Math.Round((double)precio, 2));
-
+                
                 String nuevoNombre = tbNuevoNombre.Text;
                 String nombre = cbIngrediente.SelectedValue.ToString();
                 int codProv = Convert.ToInt32(Constantes.precioIngredientes_TA.GetCodProveedor(Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString()))));
@@ -78,14 +78,23 @@ namespace GarTor
                 int codPrecio = (int)Constantes.precioIngredientes_TA.GetCodPrecioIngrediente(codIng, codProv);
                 float precioNuevo = (float)units.Value;
                 float precioActual = Convert.ToSingle(Constantes.precioIngredientes_TA.GetPrecio(Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString()))));
+                
 
 
 
-                Constantes.ingredientes_TA.Update(nuevoNombre, codIng, nombre);//update del nombre del ingrediente
-                Constantes.precioIngredientes_TA.UpdatePrecioIngrediente(precioNuevo, codProvNew, codPrecio);//update del precio y/o el proveedor
+                if (verificar(nuevoNombre)|| nombre.Equals(nuevoNombre))
+                {
+                    Constantes.ingredientes_TA.Update(nuevoNombre, codIng, nombre);//update del nombre del ingrediente
+                    Constantes.precioIngredientes_TA.UpdatePrecioIngrediente(precioNuevo, codProvNew, codPrecio);//update del precio y/o el proveedor
 
-                cbIngrediente.DataSource = Constantes.ingredientes_TA.ComboboxIngredientes();//Rellena el comboBox de ingredientes por si se modifico el nombre
-                MessageBox.Show("El ingrediente se modifico correctamente");
+                    cbIngrediente.DataSource = Constantes.ingredientes_TA.ComboboxIngredientes();//Rellena el comboBox de ingredientes por si se modifico el nombre
+                    MessageBox.Show("El ingrediente se modifico correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("El ingrediente ya existe");
+                }
+                
             }
             catch (Exception exc)
             {
@@ -93,8 +102,17 @@ namespace GarTor
             }
         }
             
+        public bool verificar(string nombre)
+        {
+            if (Constantes.ingredientes_TA.Verificacion(nombre) == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
             
-
-
+        }
     }
 }

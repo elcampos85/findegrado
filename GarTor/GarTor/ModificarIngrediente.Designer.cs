@@ -84,6 +84,7 @@
             this.Modificar.TabIndex = 19;
             this.Modificar.Text = "Modificar";
             this.Modificar.UseVisualStyleBackColor = true;
+            this.Modificar.Click += new System.EventHandler(this.Modificar_Click);
             // 
             // cbMedidas
             // 

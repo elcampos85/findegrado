@@ -37,15 +37,35 @@ namespace GarTor
                 String nombreNuevo= tbNombre.Text;
                 float precio=Convert.ToSingle(NPrecio.Value);
                 int codSuplemento= Convert.ToInt32(cbSuplemento.SelectedValue);
-                
 
-                Constantes.suplemento_TA.UpdateSuplemento(nombreNuevo, Convert.ToDouble(precio),codSuplemento,nombre);
-                MessageBox.Show("Suplemento modificado correctamente");
+                if (verificar(nombreNuevo) || nombre.Equals(nombreNuevo))
+                {
+                    Constantes.suplemento_TA.UpdateSuplemento(nombreNuevo, Convert.ToDouble(precio), codSuplemento, nombre);
+                    MessageBox.Show("Suplemento modificado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("El suplemento ya existe");
+                }
+
+                    
             }
             catch(Exception ex)
             {
                 MessageBox.Show("No se pudo modificar el suplemento");
             }
+        }
+        public bool verificar(string nombre)
+        {
+            if (Constantes.suplemento_TA.Verificacion(nombre) == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }

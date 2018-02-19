@@ -52,11 +52,19 @@ namespace GarTor
                 }
                 precio = (float)precio / (float)(Math.Round((double)Convert.ToSingle(cantidad.Value)));
                 precio = (float)(Math.Round((double)precio, 2));
-                Constantes.ingredientes_TA.Insert(tbNombre.Text.ToString());//Inserta un nuevo ingrediente
-                                                                            //Añade un precio y una union con un proveedor
-                Constantes.precioIngredientes_TA.Insert((Convert.ToInt32(cbProveedores.SelectedValue.ToString())), (Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(tbNombre.Text.ToString()))), precio);
 
-                MessageBox.Show("Ingrediente Agregado correctamente");
+                if (verificar(tbNombre.Text.ToString()))
+                {
+                    Constantes.ingredientes_TA.Insert(tbNombre.Text.ToString());//Inserta un nuevo ingrediente
+                                                                                //Añade un precio y una union con un proveedor
+                    Constantes.precioIngredientes_TA.Insert((Convert.ToInt32(cbProveedores.SelectedValue.ToString())), (Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(tbNombre.Text.ToString()))), precio);
+
+                    MessageBox.Show("Ingrediente Agregado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("El ingrediente ya existe");
+                }
             } catch (Exception ex)
             {
                 MessageBox.Show("No se pudo agregar el ingrediente");
@@ -64,14 +72,20 @@ namespace GarTor
 
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
 
-                
+        public bool verificar(string nombre)
+        {
+            if (Constantes.ingredientes_TA.Verificacion(nombre) == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
-    
+
         /* if(Char.IsDigit(e.KeyChar))
          {
              e.Handled = false;

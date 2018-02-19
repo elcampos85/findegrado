@@ -150,22 +150,37 @@ namespace GarTor
 
         private void bAgregar_Click(object sender, EventArgs e)
         {
+
+
+            if (verificar(tbNombre.Text))
+            {
+                Constantes.productos_TA.Insert(tbNombre.Text, cbGrupo.Text);
+                Constantes.preciosMayor_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text), (Double)nMayor.Value);
+                Constantes.preciosVenta_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text), (Double)nTienda.Value);
+
+                imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbGrupo.Text.ToString() + "/" + tbNombre.Text + Constantes.EXTENSION, ImageFormat.Png);
+
+                MessageBox.Show("Producto agregado correctamente");
+                //MessageBox.Show(Constantes.productos_TA.GetCodProducto(tbNombre.Text) + " " + nMayor.Value);
+            }
+            else
+            {
+                MessageBox.Show("El producto ya existe");
+            }
             
-            
-
-            Constantes.productos_TA.Insert(tbNombre.Text, cbGrupo.Text);
-            Constantes.preciosMayor_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text),(Double) nMayor.Value);
-            Constantes.preciosVenta_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text), (Double) nTienda.Value);
-
-            imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbGrupo.Text.ToString()+"/"+tbNombre.Text+Constantes.EXTENSION, ImageFormat.Png);
-
-
-            MessageBox.Show(Constantes.productos_TA.GetCodProducto(tbNombre.Text) + " " + nMayor.Value);
                 
-                
+        }
 
-            
-
+        public bool verificar(string nombre)
+        {
+            if (Constantes.productos_TA.Verificacion(nombre) == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
     }

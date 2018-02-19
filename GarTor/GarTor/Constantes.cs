@@ -42,6 +42,9 @@ namespace GarTor
         public static bool VENTA_HECHA = false;
 
         public const string MAIN_RUTA= "C:/GarTor";
+        public const string FACTURAS_RUTA = "C:/GarTor/Facturas";
+        public const string FACTURAS_VT = "C:/GarTor/Facturas/VentasTienda";
+        public const string FACTURAS_VM = "C:/GarTor/Facturas/VentasMayor";
         public const string PRODUCTOS_RUTA = "C:/GarTor/Productos";
         public const string CATEGORIAS_RUTA = "C:/GarTor/Productos/Categorias";
         public const string EXTENSION = ".png";

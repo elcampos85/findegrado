@@ -57,8 +57,9 @@ namespace GarTor
             introducidoCantidad = true;
             if (Constantes.VENTA_HECHA)
             {
+                //Se genera una factura con la compra realizada y la guarda en su carpeta correspondiente
                 #region Generar Factura
-                string factura = @"C:\GarTor\Factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".docx";
+                string factura = @"C:\GarTor\Facturas\VentasTienda\Factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".txt";
                 string texto = null;
 
                 System.IO.StreamWriter sw = new System.IO.StreamWriter(factura);

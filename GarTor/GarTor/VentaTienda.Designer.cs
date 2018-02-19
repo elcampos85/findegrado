@@ -58,6 +58,7 @@
             // cesta
             // 
             this.cesta.AllowUserToAddRows = false;
+            this.cesta.AllowUserToDeleteRows = false;
             this.cesta.AllowUserToResizeColumns = false;
             this.cesta.AllowUserToResizeRows = false;
             this.cesta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -73,6 +74,7 @@
             this.cesta.GridColor = System.Drawing.Color.Green;
             this.cesta.Location = new System.Drawing.Point(14, 0);
             this.cesta.Name = "cesta";
+            this.cesta.ReadOnly = true;
             this.cesta.RowHeadersVisible = false;
             this.cesta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.cesta.ShowCellErrors = false;

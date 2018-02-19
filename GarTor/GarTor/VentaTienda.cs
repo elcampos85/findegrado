@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Word = Microsoft.Office;
 
 namespace GarTor
 {
     public partial class VentaTienda : Form
     {
+        private Image modeloFactura = Properties.Resources.modeloFactura;
         private bool listaCategoria = true;
         private bool introducidoCantidad = false;
         DSProductosTableAdapters.ProductosTableAdapter prodTA = new DSProductosTableAdapters.ProductosTableAdapter();
@@ -54,6 +57,16 @@ namespace GarTor
             introducidoCantidad = true;
             if (Constantes.VENTA_HECHA)
             {
+                #region Generar Factura
+                string factura = @"C:\GarTor\Factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".docx";
+                string texto = null;
+
+                System.IO.StreamWriter sw = new System.IO.StreamWriter(factura);
+                texto = "FACTURA SIMPLIFICADA";
+                sw.WriteLine(texto);
+                sw.Close();
+                #endregion
+
                 this.listView1.Items.Clear();
                 this.imageList1.Images.Clear();
                 btAtrasVTienda.Visible = false;

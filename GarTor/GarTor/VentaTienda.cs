@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Word = Microsoft.Office;
 
 namespace GarTor
 {
     public partial class VentaTienda : Form
     {
+        private Image modeloFactura = Properties.Resources.modeloFactura;
         private bool listaCategoria = true;
         private bool introducidoCantidad = false;
         DSProductosTableAdapters.ProductosTableAdapter prodTA = new DSProductosTableAdapters.ProductosTableAdapter();
@@ -54,11 +57,23 @@ namespace GarTor
             introducidoCantidad = true;
             if (Constantes.VENTA_HECHA)
             {
+                //Se genera una factura con la compra realizada y la guarda en su carpeta correspondiente
+                #region Generar Factura
+                string factura = @"C:\GarTor\Facturas\VentasTienda\Factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".txt";
+                string texto = null;
+
+                System.IO.StreamWriter sw = new System.IO.StreamWriter(factura);
+                texto = "FACTURA SIMPLIFICADA";
+                sw.WriteLine(texto);
+                sw.Close();
+                #endregion
+
                 this.listView1.Items.Clear();
                 this.imageList1.Images.Clear();
                 btAtrasVTienda.Visible = false;
                 cargarListaVenta();
                 cesta.Rows.Clear();
+                listaCategoria = true;
                 Total();
             }
         }
@@ -219,7 +234,7 @@ namespace GarTor
                             cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = this.listView1.Items[index].Text;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = Constantes.PESO_UD_PRODUCTO;
-                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)ventTA.GetPrecioVenta((int)prodTA.GetCodProducto(this.listView1.Items[index].Text));
+                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.preciosVenta_TA.GetPrecioVenta((int)Constantes.productos_TA.GetCodProducto(this.listView1.Items[index].Text));
                             cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
                             Total();
                         }

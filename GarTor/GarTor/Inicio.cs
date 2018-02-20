@@ -159,11 +159,26 @@ namespace GarTor
             string rutaPrincipal = Constantes.MAIN_RUTA;
             string rutaProductos = Constantes.PRODUCTOS_RUTA;
             string rutaCategorias = Constantes.CATEGORIAS_RUTA;
+            string rutaFacturas = Constantes.FACTURAS_RUTA;
+            string rutaFacturasVT = Constantes.FACTURAS_VT;
+            string rutaFacturasVM = Constantes.FACTURAS_VM;
             string[] categorias = null;//Array para almacenar las categorias de la consulta Sql
 
             if (!System.IO.File.Exists(rutaPrincipal))
             {
                 System.IO.Directory.CreateDirectory(rutaPrincipal);//Se crea el directorio principal si no existe
+            }
+            if (!System.IO.File.Exists(rutaFacturas))
+            {
+                System.IO.Directory.CreateDirectory(rutaFacturas);//Se crea el directorio de Facturas dentro del principal si no existe
+            }
+            if (!System.IO.File.Exists(rutaFacturasVT))
+            {
+                System.IO.Directory.CreateDirectory(rutaFacturasVT);//Se crea el directorio de FacturasVentaTienda dentro de Facturas si no existe
+            }
+            if (!System.IO.File.Exists(rutaFacturasVM))
+            {
+                System.IO.Directory.CreateDirectory(rutaFacturasVM);//Se crea el directorio de FacturasVentaMayor dentro de Facturas si no existe
             }
             if (!System.IO.File.Exists(rutaProductos))
             {

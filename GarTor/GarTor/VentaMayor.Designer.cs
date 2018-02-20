@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentaTienda));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentaMayor));
             this.cesta = new System.Windows.Forms.DataGridView();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,12 +47,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btAtrasVTienda = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lbTitulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.panelProdVentaTienda.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelToolboxVTienda.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // cesta
@@ -173,6 +176,7 @@
             // panelToolboxVTienda
             // 
             this.panelToolboxVTienda.BackColor = System.Drawing.Color.PaleGreen;
+            this.panelToolboxVTienda.Controls.Add(this.panel4);
             this.panelToolboxVTienda.Controls.Add(this.panel3);
             this.panelToolboxVTienda.Controls.Add(this.panel2);
             this.panelToolboxVTienda.Dock = System.Windows.Forms.DockStyle.Top;
@@ -252,7 +256,27 @@
             this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
             this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
             // 
-            // VentaTienda
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lbTitulo);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(63, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1022, 42);
+            this.panel4.TabIndex = 4;
+            // 
+            // lbTitulo
+            // 
+            this.lbTitulo.AutoSize = true;
+            this.lbTitulo.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitulo.ForeColor = System.Drawing.Color.Red;
+            this.lbTitulo.Location = new System.Drawing.Point(6, 4);
+            this.lbTitulo.Name = "lbTitulo";
+            this.lbTitulo.Size = new System.Drawing.Size(208, 29);
+            this.lbTitulo.TabIndex = 0;
+            this.lbTitulo.Text = "VENTA MAYOR";
+            // 
+            // VentaMayor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -261,9 +285,9 @@
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(1234, 634);
             this.Controls.Add(this.panelProdVentaTienda);
-            this.Name = "VentaTienda";
+            this.Name = "VentaMayor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VentaTienda";
+            this.Text = "VentaMayor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VentaTienda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).EndInit();
@@ -273,6 +297,8 @@
             this.panelToolboxVTienda.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -295,5 +321,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lbTitulo;
     }
 }

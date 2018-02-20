@@ -68,7 +68,8 @@ namespace GarTor
         {
             CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
 
-            if (char.IsNumber(e.KeyChar) || e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
+            if (((e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
+                    && tbEntrega.Text.Contains('.')) || e.KeyChar == '\b' || char.IsNumber(e.KeyChar) || e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
             {
                 e.Handled = false;
             }

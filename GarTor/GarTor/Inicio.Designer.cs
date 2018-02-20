@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.msMenu = new System.Windows.Forms.MenuStrip();
             this.ventaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,7 +43,10 @@
             this.miGestion = new System.Windows.Forms.ToolStripMenuItem();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
             this.pPanelContenedor = new System.Windows.Forms.Panel();
+            this.timFechayHora = new System.Windows.Forms.Timer(this.components);
+            this.tslbFechayHora = new System.Windows.Forms.ToolStripStatusLabel();
             this.msMenu.SuspendLayout();
+            this.ssEstado.SuspendLayout();
             this.SuspendLayout();
             // 
             // msMenu
@@ -64,14 +68,14 @@
             this.ventaEnTiendaToolStripMenuItem,
             this.miVentaMayor});
             this.ventaToolStripMenuItem.Name = "ventaToolStripMenuItem";
-            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.ventaToolStripMenuItem.Text = "Venta";
             // 
             // ventaEnTiendaToolStripMenuItem
             // 
             this.ventaEnTiendaToolStripMenuItem.Name = "ventaEnTiendaToolStripMenuItem";
             this.ventaEnTiendaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.ventaEnTiendaToolStripMenuItem.Text = "Venta en Tienda";
             this.ventaEnTiendaToolStripMenuItem.Click += new System.EventHandler(this.ventaEnTiendaToolStripMenuItem_Click);
             // 
@@ -79,7 +83,7 @@
             // 
             this.miVentaMayor.Name = "miVentaMayor";
             this.miVentaMayor.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.miVentaMayor.Size = new System.Drawing.Size(213, 22);
+            this.miVentaMayor.Size = new System.Drawing.Size(214, 22);
             this.miVentaMayor.Text = "Venta al por Mayor";
             this.miVentaMayor.Click += new System.EventHandler(this.miVentaMayor_Click);
             // 
@@ -138,6 +142,8 @@
             // 
             // ssEstado
             // 
+            this.ssEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslbFechayHora});
             this.ssEstado.Location = new System.Drawing.Point(0, 571);
             this.ssEstado.Name = "ssEstado";
             this.ssEstado.Size = new System.Drawing.Size(1096, 22);
@@ -156,6 +162,18 @@
             this.pPanelContenedor.Name = "pPanelContenedor";
             this.pPanelContenedor.Size = new System.Drawing.Size(1102, 546);
             this.pPanelContenedor.TabIndex = 2;
+            // 
+            // timFechayHora
+            // 
+            this.timFechayHora.Enabled = true;
+            this.timFechayHora.Interval = 1000;
+            this.timFechayHora.Tick += new System.EventHandler(this.mostrarHora);
+            // 
+            // tslbFechayHora
+            // 
+            this.tslbFechayHora.BackColor = System.Drawing.Color.Transparent;
+            this.tslbFechayHora.Name = "tslbFechayHora";
+            this.tslbFechayHora.Size = new System.Drawing.Size(0, 17);
             // 
             // Inicio
             // 
@@ -176,6 +194,8 @@
             this.Move += new System.EventHandler(this.mantener);
             this.msMenu.ResumeLayout(false);
             this.msMenu.PerformLayout();
+            this.ssEstado.ResumeLayout(false);
+            this.ssEstado.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,6 +216,8 @@
         private System.Windows.Forms.StatusStrip ssEstado;
         private System.Windows.Forms.Panel pPanelContenedor;
         private System.Windows.Forms.ToolStripMenuItem miConsultaDia;
+        private System.Windows.Forms.Timer timFechayHora;
+        private System.Windows.Forms.ToolStripStatusLabel tslbFechayHora;
     }
 }
 

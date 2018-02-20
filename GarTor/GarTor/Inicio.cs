@@ -203,5 +203,10 @@ namespace GarTor
                 }
             }
         }
+
+        private void mostrarHora(object sender, EventArgs e)
+        {
+            tslbFechayHora.Text = DateTime.Now.ToString();
+        }
     }
 }

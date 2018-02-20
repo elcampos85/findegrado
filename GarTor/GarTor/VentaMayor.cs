@@ -13,10 +13,9 @@ namespace GarTor
 {
     public partial class VentaMayor : Form
     {
+        private Image modeloFactura = Properties.Resources.modeloFactura;
         private bool listaCategoria = true;
         private bool introducidoCantidad = false;
-        DSProductosTableAdapters.ProductosTableAdapter prodTA = new DSProductosTableAdapters.ProductosTableAdapter();
-        DSProductosTableAdapters.PreciosVentaTableAdapter ventTA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
         public VentaMayor()
         {
             InitializeComponent();
@@ -54,11 +53,23 @@ namespace GarTor
             introducidoCantidad = true;
             if (Constantes.VENTA_HECHA)
             {
+                //Se genera una factura con la compra realizada y la guarda en su carpeta correspondiente
+                #region Generar Factura
+                string factura = @"C:\GarTor\Facturas\VentasMayor\Factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".txt";
+                string texto = null;
+
+                System.IO.StreamWriter sw = new System.IO.StreamWriter(factura);
+                texto = "FACTURA SIMPLIFICADA";
+                sw.WriteLine(texto);
+                sw.Close();
+                #endregion
+
                 this.listView1.Items.Clear();
                 this.imageList1.Images.Clear();
                 btAtrasVTienda.Visible = false;
                 cargarListaVenta();
                 cesta.Rows.Clear();
+                listaCategoria = true;
                 Total();
             }
         }
@@ -76,7 +87,7 @@ namespace GarTor
                 {
 
                 }
-                }
+            }
             lPrecio.Text = "Total: " + Math.Round(suma, 2).ToString() + " €";
             Constantes.IMPORTE = Math.Round(suma, 2).ToString();
         }
@@ -95,7 +106,7 @@ namespace GarTor
             {
             }
         }
-        
+
         private void cargarListaVenta()
         {
             DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
@@ -158,7 +169,7 @@ namespace GarTor
 
         private void cambioPrecio(object sender, DataGridViewCellEventArgs e)
         {
-           Total();
+            Total();
         }
 
         private void Seleccion(object sender, MouseEventArgs e)
@@ -219,13 +230,14 @@ namespace GarTor
                             cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = this.listView1.Items[index].Text;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = Constantes.PESO_UD_PRODUCTO;
-                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)ventTA.GetPrecioVenta((int)prodTA.GetCodProducto(this.listView1.Items[index].Text));
+                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.preciosMayor_TA.getPrecioMayor((int)Constantes.productos_TA.GetCodProducto(this.listView1.Items[index].Text));
                             cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
                             Total();
                         }
                         Constantes.PESO_UD_PRODUCTO = "0.000";
                     }
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
 
                 }
@@ -238,5 +250,5 @@ namespace GarTor
                 }
             }
         }
-    }    
+    }
 }

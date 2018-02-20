@@ -18,8 +18,6 @@ namespace GarTor
         private Image modeloFactura = Properties.Resources.modeloFactura;
         private bool listaCategoria = true;
         private bool introducidoCantidad = false;
-        DSProductosTableAdapters.ProductosTableAdapter prodTA = new DSProductosTableAdapters.ProductosTableAdapter();
-        DSProductosTableAdapters.PreciosVentaTableAdapter ventTA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
         public VentaTienda()
         {
             InitializeComponent();

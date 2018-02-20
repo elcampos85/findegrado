@@ -103,6 +103,12 @@
     <Compile Include="Finalizar_Compra.Designer.cs">
       <DependentUpon>Finalizar_Compra.cs</DependentUpon>
     </Compile>
+    <Compile Include="DescuentoExtra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DescuentoExtra.Designer.cs">
+      <DependentUpon>DescuentoExtra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Intro_Peso_UD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     <EmbeddedResource Include="Finalizar_Compra.resx">
       <DependentUpon>Finalizar_Compra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DescuentoExtra.resx">
+      <DependentUpon>DescuentoExtra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Intro_Peso_UD.resx">
       <DependentUpon>Intro_Peso_UD.cs</DependentUpon>
     </EmbeddedResource>
@@ -340,6 +349,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Pasteleria.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\Descuento.PNG" />
     <None Include="Resources\modeloFactura.jpg" />
     <None Include="Resources\Fondo.jpg" />
     <None Include="Resources\Varios.jpg" />

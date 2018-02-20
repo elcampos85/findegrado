@@ -133,6 +133,16 @@ namespace GarTor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Descuento {
+            get {
+                object obj = ResourceManager.GetObject("Descuento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Festividades {
             get {
                 object obj = ResourceManager.GetObject("Festividades", resourceCulture);

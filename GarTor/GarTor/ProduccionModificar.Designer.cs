@@ -34,13 +34,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Modificar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.units = new System.Windows.Forms.NumericUpDown();
+            this.precioTienda = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.cbTipo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.units)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.precioMayor = new System.Windows.Forms.NumericUpDown();
+            this.imagen = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.precioTienda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.precioMayor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagen)).BeginInit();
             this.SuspendLayout();
             // 
             // tbNuevoNombre
@@ -70,13 +73,14 @@
             this.cbProducto.Name = "cbProducto";
             this.cbProducto.Size = new System.Drawing.Size(491, 26);
             this.cbProducto.TabIndex = 35;
+            this.cbProducto.SelectedValueChanged += new System.EventHandler(this.cbProducto_SelectedValueChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(22, 213);
+            this.label5.Location = new System.Drawing.Point(763, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 18);
             this.label5.TabIndex = 33;
@@ -85,7 +89,7 @@
             // Modificar
             // 
             this.Modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Modificar.Location = new System.Drawing.Point(484, 220);
+            this.Modificar.Location = new System.Drawing.Point(766, 118);
             this.Modificar.Name = "Modificar";
             this.Modificar.Size = new System.Drawing.Size(92, 28);
             this.Modificar.TabIndex = 32;
@@ -97,26 +101,26 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 175);
+            this.label3.Location = new System.Drawing.Point(763, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 18);
             this.label3.TabIndex = 29;
             this.label3.Text = "Precio Tienda";
             // 
-            // units
+            // precioTienda
             // 
-            this.units.DecimalPlaces = 2;
-            this.units.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.units.Location = new System.Drawing.Point(185, 173);
-            this.units.Maximum = new decimal(new int[] {
+            this.precioTienda.DecimalPlaces = 2;
+            this.precioTienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.precioTienda.Location = new System.Drawing.Point(926, 26);
+            this.precioTienda.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
-            this.units.Name = "units";
-            this.units.Size = new System.Drawing.Size(120, 24);
-            this.units.TabIndex = 28;
-            this.units.ThousandsSeparator = true;
+            this.precioTienda.Name = "precioTienda";
+            this.precioTienda.Size = new System.Drawing.Size(120, 24);
+            this.precioTienda.TabIndex = 28;
+            this.precioTienda.ThousandsSeparator = true;
             // 
             // label1
             // 
@@ -149,20 +153,38 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "Tipo";
             // 
-            // numericUpDown1
+            // precioMayor
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(185, 213);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.precioMayor.DecimalPlaces = 2;
+            this.precioMayor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.precioMayor.Location = new System.Drawing.Point(926, 66);
+            this.precioMayor.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 24);
-            this.numericUpDown1.TabIndex = 38;
-            this.numericUpDown1.ThousandsSeparator = true;
+            this.precioMayor.Name = "precioMayor";
+            this.precioMayor.Size = new System.Drawing.Size(120, 24);
+            this.precioMayor.TabIndex = 38;
+            this.precioMayor.ThousandsSeparator = true;
+            // 
+            // imagen
+            // 
+            this.imagen.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
+            this.imagen.Location = new System.Drawing.Point(25, 204);
+            this.imagen.Name = "imagen";
+            this.imagen.Size = new System.Drawing.Size(715, 415);
+            this.imagen.TabIndex = 39;
+            this.imagen.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(25, 175);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(715, 23);
+            this.button1.TabIndex = 40;
+            this.button1.Text = "Cambiar imagen";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // ProduccionModificar
             // 
@@ -171,21 +193,25 @@
             this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
             this.ClientSize = new System.Drawing.Size(1149, 631);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.imagen);
+            this.Controls.Add(this.precioMayor);
             this.Controls.Add(this.tbNuevoNombre);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cbProducto);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Modificar);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.units);
+            this.Controls.Add(this.precioTienda);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbTipo);
             this.Name = "ProduccionModificar";
             this.Text = "ProduccionModificar";
-            ((System.ComponentModel.ISupportInitialize)(this.units)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.Load += new System.EventHandler(this.ProduccionModificar_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.precioTienda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.precioMayor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,10 +225,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Modificar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown units;
+        private System.Windows.Forms.NumericUpDown precioTienda;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbTipo;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown precioMayor;
+        private System.Windows.Forms.PictureBox imagen;
+        private System.Windows.Forms.Button button1;
     }
 }

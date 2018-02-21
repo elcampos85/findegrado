@@ -18,8 +18,9 @@ namespace GarTor
         public static DSProductosTableAdapters.PreciosMayorTableAdapter preciosMayor_TA = new DSProductosTableAdapters.PreciosMayorTableAdapter();
         public static DSProductosTableAdapters.PreciosVentaTableAdapter preciosVenta_TA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
         public static DSProductosTableAdapters.ProductosTableAdapter productos_TA = new DSProductosTableAdapters.ProductosTableAdapter();
-
-
+        public static DSProductosTableAdapters.PedidosTableAdapter pedidos_TA = new DSProductosTableAdapters.PedidosTableAdapter();
+        public static DSProductosTableAdapters.FacturasVentaTableAdapter factVenta_TA = new DSProductosTableAdapters.FacturasVentaTableAdapter();
+        public static DSProductosTableAdapters.DetallePedidosTableAdapter detaPedidosVenta_TA = new DSProductosTableAdapters.DetallePedidosTableAdapter();
         #endregion
 
         #region DS_DATASET1
@@ -42,6 +43,7 @@ namespace GarTor
         public static string CONCEPTO_ESTRELLA = "";
         public static string IMPORTE = "0";
         public static bool VENTA_HECHA = false;
+        public static int Num_Pedido = 0;
 
         public const string MAIN_RUTA= "C:/GarTor";
         public const string FACTURAS_RUTA = "C:/GarTor/Facturas";

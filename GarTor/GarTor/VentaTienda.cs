@@ -59,9 +59,37 @@ namespace GarTor
                 #region Generar Factura
                 string factura = @"C:\GarTor\Facturas\VentasTienda\Factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".txt";
                 string texto = null;
+                string format = "%-40s%s%n";//Formato de la factura con columnas
+                DateTime fecha_dia = DateTime.Now.Date;
+                DateTime fechaHora_dia = DateTime.Now;
+                int cod_Pedido = Convert.ToInt32(Constantes.pedidos_TA.getPedidosDia(fecha_dia));
+                int num_detalle = 1;
+                int cod_Factura=0;
+                float cantidad = 0;
+                int cod_Precio = 0;
+                int cod_Prod = 0;
 
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(factura);
-                texto = "FACTURA SIMPLIFICADA";
+                Constantes.pedidos_TA.Insert(cod_Pedido + 1, fecha_dia);
+                Constantes.factVenta_TA.Insert(cod_Pedido+1,fechaHora_dia);
+                cod_Factura = Convert.ToInt32(Constantes.factVenta_TA.getCodigoFactura(cod_Pedido + 1, fechaHora_dia));
+                foreach (DataGridViewRow row in cesta.Rows)
+                {
+                    cantidad = Convert.ToSingle(row.Cells[Constantes.COLUMNA_UNIDADES].Value);
+                    cod_Prod = Convert.ToInt32(Constantes.productos_TA.GetCodProducto(Convert.ToString(row.Cells[Constantes.COLUMNA_NOMBRE].Value)));
+                    cod_Precio = Convert.ToInt32(Constantes.preciosVenta_TA.getCodPrecioVenta(cod_Prod));
+                    //Constantes.detaPedidosVenta_TA.Insert(cod_Factura,num_detalle,cantidad,cod_Precio,cod_Prod); FALLO AQUI
+                    num_detalle += 1;
+                }
+
+                StreamWriter sw = new StreamWriter(factura);
+                texto = "FACTURA SIMPLIFICADA" +
+                    "/nPasteleria MARCO" +
+                    "/nPaseo de los Jesuitas 18, Madrid" +
+                    "/nTelf. 91 463 99 82" +
+                    "/nN.I.F. 48708715D" +
+                    Constantes.detaPedidosVenta_TA.GetData().ToString() +
+                    "/n" + Constantes.factVenta_TA.getCodigoFactura(cod_Pedido,fechaHora_dia).ToString() +
+                    "/n" + Constantes.pedidos_TA.getCodigoPedido(num_detalle,fecha_dia).ToString();
                 sw.WriteLine(texto);
                 sw.Close();
                 #endregion
@@ -89,7 +117,7 @@ namespace GarTor
                 {
 
                 }
-                }
+            }
             lPrecio.Text = "Total: " + Math.Round(suma, 2).ToString() + " €";
             Constantes.IMPORTE = Math.Round(suma, 2).ToString();
         }

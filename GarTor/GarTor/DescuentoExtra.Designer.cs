@@ -33,12 +33,13 @@
             this.tbPrecio = new System.Windows.Forms.TextBox();
             this.tbConcepto = new System.Windows.Forms.TextBox();
             this.lConcepto = new System.Windows.Forms.Label();
+            this.lInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bIntro
             // 
             this.bIntro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bIntro.Location = new System.Drawing.Point(93, 167);
+            this.bIntro.Location = new System.Drawing.Point(95, 200);
             this.bIntro.Name = "bIntro";
             this.bIntro.Size = new System.Drawing.Size(99, 38);
             this.bIntro.TabIndex = 0;
@@ -68,7 +69,7 @@
             // tbConcepto
             // 
             this.tbConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbConcepto.Location = new System.Drawing.Point(15, 106);
+            this.tbConcepto.Location = new System.Drawing.Point(15, 137);
             this.tbConcepto.Name = "tbConcepto";
             this.tbConcepto.Size = new System.Drawing.Size(257, 24);
             this.tbConcepto.TabIndex = 5;
@@ -77,11 +78,20 @@
             // 
             this.lConcepto.AutoSize = true;
             this.lConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lConcepto.Location = new System.Drawing.Point(12, 85);
+            this.lConcepto.Location = new System.Drawing.Point(12, 116);
             this.lConcepto.Name = "lConcepto";
             this.lConcepto.Size = new System.Drawing.Size(86, 18);
             this.lConcepto.TabIndex = 6;
             this.lConcepto.Text = "Concepto:";
+            // 
+            // lInfo
+            // 
+            this.lInfo.AutoSize = true;
+            this.lInfo.Location = new System.Drawing.Point(12, 72);
+            this.lInfo.Name = "lInfo";
+            this.lInfo.Size = new System.Drawing.Size(271, 13);
+            this.lInfo.TabIndex = 7;
+            this.lInfo.Text = "Para DESCUENTO introduzca menos ( - ) delante del nº";
             // 
             // DescuentoExtra
             // 
@@ -89,6 +99,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.lInfo);
             this.Controls.Add(this.tbConcepto);
             this.Controls.Add(this.lConcepto);
             this.Controls.Add(this.tbPrecio);
@@ -111,5 +122,6 @@
         private System.Windows.Forms.TextBox tbPrecio;
         private System.Windows.Forms.TextBox tbConcepto;
         private System.Windows.Forms.Label lConcepto;
+        private System.Windows.Forms.Label lInfo;
     }
 }

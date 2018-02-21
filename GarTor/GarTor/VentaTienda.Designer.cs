@@ -30,33 +30,85 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentaTienda));
+            this.panelProdVentaTienda = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lPrecio = new System.Windows.Forms.Label();
             this.cesta = new System.Windows.Forms.DataGridView();
             this.Borrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelProdVentaTienda = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lPrecio = new System.Windows.Forms.Label();
             this.panelSeparadorVTienda = new System.Windows.Forms.Panel();
             this.panelToolboxVTienda = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btEstrella = new System.Windows.Forms.Button();
+            this.lbTitulo = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btEliminarCesta = new System.Windows.Forms.Button();
             this.Comprar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btAtrasVTienda = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lbTitulo = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.panelProdVentaTienda.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.panelToolboxVTienda.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panelProdVentaTienda
+            // 
+            this.panelProdVentaTienda.Controls.Add(this.listView1);
+            this.panelProdVentaTienda.Controls.Add(this.panel1);
+            this.panelProdVentaTienda.Controls.Add(this.panelToolboxVTienda);
+            this.panelProdVentaTienda.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelProdVentaTienda.Location = new System.Drawing.Point(0, 0);
+            this.panelProdVentaTienda.Name = "panelProdVentaTienda";
+            this.panelProdVentaTienda.Size = new System.Drawing.Size(1234, 634);
+            this.panelProdVentaTienda.TabIndex = 4;
+            // 
+            // listView1
+            // 
+            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listView1.BackColor = System.Drawing.Color.ForestGreen;
+            this.listView1.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
+            this.listView1.BackgroundImageTiled = true;
+            this.listView1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Location = new System.Drawing.Point(0, 42);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(850, 592);
+            this.listView1.TabIndex = 6;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Seleccion);
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.lPrecio);
+            this.panel1.Controls.Add(this.cesta);
+            this.panel1.Controls.Add(this.panelSeparadorVTienda);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(850, 42);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(384, 592);
+            this.panel1.TabIndex = 5;
+            // 
+            // lPrecio
+            // 
+            this.lPrecio.AutoSize = true;
+            this.lPrecio.BackColor = System.Drawing.Color.Transparent;
+            this.lPrecio.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lPrecio.Location = new System.Drawing.Point(8, 568);
+            this.lPrecio.Name = "lPrecio";
+            this.lPrecio.Size = new System.Drawing.Size(0, 24);
+            this.lPrecio.TabIndex = 2;
             // 
             // cesta
             // 
@@ -117,57 +169,6 @@
             this.Precio.ReadOnly = true;
             this.Precio.Width = 50;
             // 
-            // panelProdVentaTienda
-            // 
-            this.panelProdVentaTienda.Controls.Add(this.listView1);
-            this.panelProdVentaTienda.Controls.Add(this.panel1);
-            this.panelProdVentaTienda.Controls.Add(this.panelToolboxVTienda);
-            this.panelProdVentaTienda.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelProdVentaTienda.Location = new System.Drawing.Point(0, 0);
-            this.panelProdVentaTienda.Name = "panelProdVentaTienda";
-            this.panelProdVentaTienda.Size = new System.Drawing.Size(1234, 634);
-            this.panelProdVentaTienda.TabIndex = 4;
-            // 
-            // listView1
-            // 
-            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.listView1.BackColor = System.Drawing.Color.ForestGreen;
-            this.listView1.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
-            this.listView1.BackgroundImageTiled = true;
-            this.listView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Location = new System.Drawing.Point(0, 42);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(850, 592);
-            this.listView1.TabIndex = 6;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Seleccion);
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.lPrecio);
-            this.panel1.Controls.Add(this.cesta);
-            this.panel1.Controls.Add(this.panelSeparadorVTienda);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(850, 42);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(384, 592);
-            this.panel1.TabIndex = 5;
-            // 
-            // lPrecio
-            // 
-            this.lPrecio.AutoSize = true;
-            this.lPrecio.BackColor = System.Drawing.Color.Transparent;
-            this.lPrecio.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lPrecio.Location = new System.Drawing.Point(8, 568);
-            this.lPrecio.Name = "lPrecio";
-            this.lPrecio.Size = new System.Drawing.Size(0, 24);
-            this.lPrecio.TabIndex = 2;
-            // 
             // panelSeparadorVTienda
             // 
             this.panelSeparadorVTienda.BackColor = System.Drawing.Color.DarkGreen;
@@ -188,6 +189,39 @@
             this.panelToolboxVTienda.Name = "panelToolboxVTienda";
             this.panelToolboxVTienda.Size = new System.Drawing.Size(1234, 42);
             this.panelToolboxVTienda.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btEstrella);
+            this.panel4.Controls.Add(this.lbTitulo);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(63, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1022, 42);
+            this.panel4.TabIndex = 3;
+            // 
+            // btEstrella
+            // 
+            this.btEstrella.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btEstrella.BackgroundImage = global::GarTor.Properties.Resources.Descuento;
+            this.btEstrella.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btEstrella.Location = new System.Drawing.Point(960, 3);
+            this.btEstrella.Name = "btEstrella";
+            this.btEstrella.Size = new System.Drawing.Size(42, 36);
+            this.btEstrella.TabIndex = 1;
+            this.btEstrella.UseVisualStyleBackColor = true;
+            this.btEstrella.Click += new System.EventHandler(this.descuentoExtra);
+            // 
+            // lbTitulo
+            // 
+            this.lbTitulo.AutoSize = true;
+            this.lbTitulo.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitulo.ForeColor = System.Drawing.Color.Red;
+            this.lbTitulo.Location = new System.Drawing.Point(6, 7);
+            this.lbTitulo.Name = "lbTitulo";
+            this.lbTitulo.Size = new System.Drawing.Size(210, 29);
+            this.lbTitulo.TabIndex = 0;
+            this.lbTitulo.Text = "VENTA TIENDA";
             // 
             // panel3
             // 
@@ -260,26 +294,6 @@
             this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
             this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.lbTitulo);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(63, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1022, 42);
-            this.panel4.TabIndex = 3;
-            // 
-            // lbTitulo
-            // 
-            this.lbTitulo.AutoSize = true;
-            this.lbTitulo.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitulo.ForeColor = System.Drawing.Color.Red;
-            this.lbTitulo.Location = new System.Drawing.Point(6, 4);
-            this.lbTitulo.Name = "lbTitulo";
-            this.lbTitulo.Size = new System.Drawing.Size(210, 29);
-            this.lbTitulo.TabIndex = 0;
-            this.lbTitulo.Text = "VENTA TIENDA";
-            // 
             // VentaTienda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,15 +308,15 @@
             this.Text = "VentaTienda";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VentaTienda_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cesta)).EndInit();
             this.panelProdVentaTienda.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cesta)).EndInit();
             this.panelToolboxVTienda.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -327,5 +341,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lbTitulo;
+        private System.Windows.Forms.Button btEstrella;
     }
 }

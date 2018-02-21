@@ -12,6 +12,7 @@ namespace GarTor
 {
     public partial class SuplementoModificar : Form
     {
+        private string grupo = "Suplementos";
         public SuplementoModificar()
         {
             InitializeComponent();
@@ -25,8 +26,15 @@ namespace GarTor
 
         private void cbSuplemento_SelectedValueChanged(object sender, EventArgs e)
         {
-            tbNombre.Text = Constantes.suplemento_TA.GetNombreSuplemento(Convert.ToInt32(cbSuplemento.SelectedValue));
-            NPrecio.Value =Convert.ToDecimal(Constantes.suplemento_TA.GetPrecioSuplemento(Convert.ToInt32(cbSuplemento.SelectedValue)));
+            if (cbSuplemento.SelectedItem != null)
+            {
+                tbNombre.Text = Constantes.suplemento_TA.GetNombreSuplemento(Convert.ToInt32(cbSuplemento.SelectedValue));
+                NPrecio.Value = Convert.ToDecimal(Constantes.suplemento_TA.GetPrecioSuplemento(Convert.ToInt32(cbSuplemento.SelectedValue)));
+
+                //Rellena la imagen
+                this.imagen.Image = Image.FromFile(Constantes.PRODUCTOS_RUTA + "/" + grupo + "/" + Constantes.suplemento_TA.GetNombreSuplemento(Convert.ToInt32(Convert.ToInt32(cbSuplemento.SelectedValue)))+ Constantes.EXTENSION);
+                this.imagen.SizeMode = PictureBoxSizeMode.Zoom;
+            }
         }
 
         private void bModificar_Click(object sender, EventArgs e)
@@ -65,6 +73,11 @@ namespace GarTor
             {
                 return false;
             }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
 
         }
     }

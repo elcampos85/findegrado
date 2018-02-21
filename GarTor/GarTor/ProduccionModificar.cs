@@ -66,15 +66,11 @@ namespace GarTor
                 cbTipo.SelectedValue = Constantes.productos_TA.GetCategoria(cod);
 
                 //Rellena la imagen
-                MessageBox.Show(Constantes.PRODUCTOS_RUTA + "/" + cbTipo.SelectedValue + "/" + cbProducto.SelectedValue + Constantes.EXTENSION);
+                //MessageBox.Show(Constantes.PRODUCTOS_RUTA + "/" + cbTipo.SelectedValue + "/" + cbProducto.SelectedValue + Constantes.EXTENSION);
                 this.imagen.Image = Image.FromFile(Constantes.PRODUCTOS_RUTA+"/"+cbTipo.SelectedValue+"/"+cbProducto.SelectedValue+Constantes.EXTENSION);
                 this.imagen.SizeMode = PictureBoxSizeMode.Zoom;
 
-                /*//Introduce el precio actual del ingrediente
-                 units.Value = Convert.ToDecimal(Constantes.precioIngredientes_TA.GetPrecio(Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString()))));
-                 //Introduce el proveedor actual del ingrediente
-                 cbProveedores.SelectedIndex = Convert.ToInt32(Constantes.precioIngredientes_TA.GetCodProveedor(Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString())))) - 1;
-                 */
+                
             }
         }
     }

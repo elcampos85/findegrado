@@ -33,7 +33,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.NPrecio = new System.Windows.Forms.NumericUpDown();
             this.bAgregar = new System.Windows.Forms.Button();
+            this.imagen = new System.Windows.Forms.PictureBox();
+            this.bImage = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.NPrecio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagen)).BeginInit();
             this.SuspendLayout();
             // 
             // tbNombre
@@ -83,7 +87,7 @@
             // bAgregar
             // 
             this.bAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bAgregar.Location = new System.Drawing.Point(175, 136);
+            this.bAgregar.Location = new System.Drawing.Point(306, 613);
             this.bAgregar.Name = "bAgregar";
             this.bAgregar.Size = new System.Drawing.Size(120, 26);
             this.bAgregar.TabIndex = 5;
@@ -91,13 +95,39 @@
             this.bAgregar.UseVisualStyleBackColor = true;
             this.bAgregar.Click += new System.EventHandler(this.bAgregar_Click);
             // 
+            // imagen
+            // 
+            this.imagen.BackColor = System.Drawing.Color.Transparent;
+            this.imagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.imagen.Location = new System.Drawing.Point(6, 139);
+            this.imagen.Name = "imagen";
+            this.imagen.Size = new System.Drawing.Size(800, 458);
+            this.imagen.TabIndex = 15;
+            this.imagen.TabStop = false;
+            // 
+            // bImage
+            // 
+            this.bImage.Location = new System.Drawing.Point(6, 110);
+            this.bImage.Name = "bImage";
+            this.bImage.Size = new System.Drawing.Size(803, 23);
+            this.bImage.TabIndex = 14;
+            this.bImage.Text = "Añadir Imagen";
+            this.bImage.UseVisualStyleBackColor = true;
+            this.bImage.Click += new System.EventHandler(this.bImage_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // SuplementoAñadir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
-            this.ClientSize = new System.Drawing.Size(1088, 454);
+            this.ClientSize = new System.Drawing.Size(1152, 671);
+            this.Controls.Add(this.imagen);
+            this.Controls.Add(this.bImage);
             this.Controls.Add(this.bAgregar);
             this.Controls.Add(this.NPrecio);
             this.Controls.Add(this.label2);
@@ -106,6 +136,7 @@
             this.Name = "SuplementoAñadir";
             this.Text = "SuplementoAñadir";
             ((System.ComponentModel.ISupportInitialize)(this.NPrecio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +149,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown NPrecio;
         private System.Windows.Forms.Button bAgregar;
+        private System.Windows.Forms.PictureBox imagen;
+        private System.Windows.Forms.Button bImage;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

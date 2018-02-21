@@ -62,22 +62,28 @@ namespace GarTor
                 string format = "%-40s%s%n";//Formato de la factura con columnas
                 DateTime fecha_dia = DateTime.Now.Date;
                 DateTime fechaHora_dia = DateTime.Now;
-                int cod_Pedido = Convert.ToInt32(Constantes.pedidos_TA.getPedidosDia(fecha_dia));
+                int num_Pedido = Convert.ToInt32(Constantes.pedidos_TA.getPedidosDia(fecha_dia));
+                int cod_Pedido = 0;
                 int num_detalle = 1;
                 int cod_Factura=0;
                 float cantidad = 0;
                 int cod_Precio = 0;
                 int cod_Prod = 0;
 
-                Constantes.pedidos_TA.Insert(cod_Pedido + 1, fecha_dia);
-                Constantes.factVenta_TA.Insert(cod_Pedido+1,fechaHora_dia);
-                cod_Factura = Convert.ToInt32(Constantes.factVenta_TA.getCodigoFactura(cod_Pedido + 1, fechaHora_dia));
+                Constantes.pedidos_TA.Insert(num_Pedido, fecha_dia);
+                cod_Pedido = Convert.ToInt32(Constantes.pedidos_TA.getCodigoPedido(num_Pedido, fecha_dia));//Cod pedido introducido
+                Constantes.factVenta_TA.Insert(cod_Pedido,fechaHora_dia);
+                
+                
+
+                MessageBox.Show("cod: "+cod_Pedido+" cod2: " +cod_Pedido);
+                cod_Factura = Convert.ToInt32(Constantes.factVenta_TA.getCodigoFactura(cod_Pedido, fechaHora_dia));
                 foreach (DataGridViewRow row in cesta.Rows)
                 {
                     cantidad = Convert.ToSingle(row.Cells[Constantes.COLUMNA_UNIDADES].Value);
                     cod_Prod = Convert.ToInt32(Constantes.productos_TA.GetCodProducto(Convert.ToString(row.Cells[Constantes.COLUMNA_NOMBRE].Value)));
                     cod_Precio = Convert.ToInt32(Constantes.preciosVenta_TA.getCodPrecioVenta(cod_Prod));
-                    //Constantes.detaPedidosVenta_TA.Insert(cod_Factura,num_detalle,cantidad,cod_Precio,cod_Prod); FALLO AQUI
+                    Constantes.detaPedidosVenta_TA.Insert(cod_Factura,num_detalle,cantidad,cod_Precio,cod_Prod); 
                     num_detalle += 1;
                 }
 
@@ -86,7 +92,7 @@ namespace GarTor
                     "/nPasteleria MARCO" +
                     "/nPaseo de los Jesuitas 18, Madrid" +
                     "/nTelf. 91 463 99 82" +
-                    "/nN.I.F. 48708715D" +
+                    "/nN.I.F. 07487245D" +
                     Constantes.detaPedidosVenta_TA.GetData().ToString() +
                     "/n" + Constantes.factVenta_TA.getCodigoFactura(cod_Pedido,fechaHora_dia).ToString() +
                     "/n" + Constantes.pedidos_TA.getCodigoPedido(num_detalle,fecha_dia).ToString();

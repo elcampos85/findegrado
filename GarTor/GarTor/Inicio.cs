@@ -32,7 +32,6 @@ namespace GarTor
                 MessageBox.Show("Se requieren permisos de administrador");
                 this.Close();
             }
-            
 
             this.Height = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height; //Ajusta al alto de la pantalla
             this.Width = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width; //Ajusta al ancho de la pantalla

@@ -31,12 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentaTienda));
             this.panelProdVentaTienda = new System.Windows.Forms.Panel();
-            this.panelToolboxVTienda = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lbTitulo = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lPrecio = new System.Windows.Forms.Label();
@@ -46,17 +40,23 @@
             this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSeparadorVTienda = new System.Windows.Forms.Panel();
+            this.panelToolboxVTienda = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.btEstrella = new System.Windows.Forms.Button();
+            this.lbTitulo = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btEliminarCesta = new System.Windows.Forms.Button();
             this.Comprar = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btAtrasVTienda = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panelProdVentaTienda.SuspendLayout();
-            this.panelToolboxVTienda.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
+            this.panelToolboxVTienda.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelProdVentaTienda
@@ -69,70 +69,6 @@
             this.panelProdVentaTienda.Name = "panelProdVentaTienda";
             this.panelProdVentaTienda.Size = new System.Drawing.Size(1234, 634);
             this.panelProdVentaTienda.TabIndex = 4;
-            // 
-            // panelToolboxVTienda
-            // 
-            this.panelToolboxVTienda.BackColor = System.Drawing.Color.PaleGreen;
-            this.panelToolboxVTienda.Controls.Add(this.panel4);
-            this.panelToolboxVTienda.Controls.Add(this.panel3);
-            this.panelToolboxVTienda.Controls.Add(this.panel2);
-            this.panelToolboxVTienda.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelToolboxVTienda.Location = new System.Drawing.Point(0, 0);
-            this.panelToolboxVTienda.Name = "panelToolboxVTienda";
-            this.panelToolboxVTienda.Size = new System.Drawing.Size(1234, 42);
-            this.panelToolboxVTienda.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btEliminarCesta);
-            this.panel3.Controls.Add(this.Comprar);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1085, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(149, 42);
-            this.panel3.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btAtrasVTienda);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(63, 42);
-            this.panel2.TabIndex = 1;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "2012-11-15 12.42.26.jpg");
-            this.imageList1.Images.SetKeyName(1, "2012-11-15 12.44.13.jpg");
-            this.imageList1.Images.SetKeyName(2, "2012-11-15 19.36.18.jpg");
-            this.imageList1.Images.SetKeyName(3, "2012-11-15 19.55.18.jpg");
-            this.imageList1.Images.SetKeyName(4, "2012-11-15 19.57.28.jpg");
-            this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
-            this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btEstrella);
-            this.panel4.Controls.Add(this.lbTitulo);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(63, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1022, 42);
-            this.panel4.TabIndex = 3;
-            // 
-            // lbTitulo
-            // 
-            this.lbTitulo.AutoSize = true;
-            this.lbTitulo.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitulo.ForeColor = System.Drawing.Color.Red;
-            this.lbTitulo.Location = new System.Drawing.Point(6, 7);
-            this.lbTitulo.Name = "lbTitulo";
-            this.lbTitulo.Size = new System.Drawing.Size(210, 29);
-            this.lbTitulo.TabIndex = 0;
-            this.lbTitulo.Text = "VENTA TIENDA";
             // 
             // listView1
             // 
@@ -242,6 +178,28 @@
             this.panelSeparadorVTienda.Size = new System.Drawing.Size(8, 592);
             this.panelSeparadorVTienda.TabIndex = 0;
             // 
+            // panelToolboxVTienda
+            // 
+            this.panelToolboxVTienda.BackColor = System.Drawing.Color.PaleGreen;
+            this.panelToolboxVTienda.Controls.Add(this.panel4);
+            this.panelToolboxVTienda.Controls.Add(this.panel3);
+            this.panelToolboxVTienda.Controls.Add(this.panel2);
+            this.panelToolboxVTienda.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelToolboxVTienda.Location = new System.Drawing.Point(0, 0);
+            this.panelToolboxVTienda.Name = "panelToolboxVTienda";
+            this.panelToolboxVTienda.Size = new System.Drawing.Size(1234, 42);
+            this.panelToolboxVTienda.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btEstrella);
+            this.panel4.Controls.Add(this.lbTitulo);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(63, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1022, 42);
+            this.panel4.TabIndex = 3;
+            // 
             // btEstrella
             // 
             this.btEstrella.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -253,6 +211,27 @@
             this.btEstrella.TabIndex = 1;
             this.btEstrella.UseVisualStyleBackColor = true;
             this.btEstrella.Click += new System.EventHandler(this.descuentoExtra);
+            // 
+            // lbTitulo
+            // 
+            this.lbTitulo.AutoSize = true;
+            this.lbTitulo.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitulo.ForeColor = System.Drawing.Color.Red;
+            this.lbTitulo.Location = new System.Drawing.Point(6, 7);
+            this.lbTitulo.Name = "lbTitulo";
+            this.lbTitulo.Size = new System.Drawing.Size(210, 29);
+            this.lbTitulo.TabIndex = 0;
+            this.lbTitulo.Text = "VENTA TIENDA";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btEliminarCesta);
+            this.panel3.Controls.Add(this.Comprar);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(1085, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(149, 42);
+            this.panel3.TabIndex = 2;
             // 
             // btEliminarCesta
             // 
@@ -280,6 +259,15 @@
             this.Comprar.UseVisualStyleBackColor = false;
             this.Comprar.Click += new System.EventHandler(this.FinalizarCompra);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btAtrasVTienda);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(63, 42);
+            this.panel2.TabIndex = 1;
+            // 
             // btAtrasVTienda
             // 
             this.btAtrasVTienda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btAtrasVTienda.BackgroundImage")));
@@ -293,6 +281,18 @@
             this.btAtrasVTienda.UseVisualStyleBackColor = true;
             this.btAtrasVTienda.Visible = false;
             this.btAtrasVTienda.Click += new System.EventHandler(this.volverACategoria);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "2012-11-15 12.42.26.jpg");
+            this.imageList1.Images.SetKeyName(1, "2012-11-15 12.44.13.jpg");
+            this.imageList1.Images.SetKeyName(2, "2012-11-15 19.36.18.jpg");
+            this.imageList1.Images.SetKeyName(3, "2012-11-15 19.55.18.jpg");
+            this.imageList1.Images.SetKeyName(4, "2012-11-15 19.57.28.jpg");
+            this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
+            this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
             // 
             // VentaTienda
             // 
@@ -309,14 +309,14 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VentaTienda_Load);
             this.panelProdVentaTienda.ResumeLayout(false);
-            this.panelToolboxVTienda.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).EndInit();
+            this.panelToolboxVTienda.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

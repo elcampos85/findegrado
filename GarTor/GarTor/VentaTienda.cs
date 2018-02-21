@@ -261,7 +261,25 @@ namespace GarTor
 
         private void descuentoExtra(object sender, EventArgs e)
         {
+            DescuentoExtra panel1 = new DescuentoExtra();
+            panel1.MinimizeBox = false;
+            panel1.MaximizeBox = false;
+            panel1.ShowIcon = false;
+            panel1.ShowInTaskbar = false;
+            panel1.ShowDialog();
+            if (Constantes.PRECIO_ESTRELLA != null && Convert.ToDouble(Constantes.PRECIO_ESTRELLA) != 0 && (!Constantes.CONCEPTO_ESTRELLA.Equals("")))
+            {
+                cesta.Rows.Add(1);
+                cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
+                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = Constantes.CONCEPTO_ESTRELLA;
+                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = "1";
+                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = Convert.ToDouble(Constantes.PRECIO_ESTRELLA);
+                cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
+                Total();
+            }
 
+            Constantes.CONCEPTO_ESTRELLA = "";
+            Constantes.PRECIO_ESTRELLA = "0";
         }
     }    
 }

@@ -21,42 +21,30 @@ namespace GarTor
 
         private void intro(object sender, EventArgs e)
         {
-
-        }
-
-        private void introducirDescuento()
-        {
-            string peso_UD = tbPrecio.Text.ToString();
-            if(Convert.ToDouble(peso_UD) > 1000)
-            {
-                MessageBox.Show("La cantidad máxima a introducir es: 1000");
-                tbPrecio.Text = "";
-                tbPrecio.Select();
-            }
-            else
-            {
-                Constantes.PESO_UD_PRODUCTO = peso_UD;
-                this.Close();
-            }
+            introducirExtra();
         }
 
         private void introducirExtra()
         {
-            //Modificar para guardar constantes con el concepto y el precio para pasarlo a la cesta de compra
-            /*
             string precio = tbPrecio.Text.ToString();
-            if (Convert.ToDouble(precio) > 1000)
+            string concepto = tbConcepto.Text.ToString();
+            try
             {
-                MessageBox.Show("La cantidad máxima a introducir es: 1000");
-                tbPrecio.Text = "";
-                tbPrecio.Select();
-            }
-            else
+                if (Convert.ToDouble(precio) > 9999 || concepto.Equals("") || precio.Equals(""))
+                {
+                    MessageBox.Show("La cantidad máxima a introducir es: 9999\nY el concepto no puede quedar vacio");
+                    tbPrecio.Select();
+                }
+                else
+                {
+                    Constantes.PRECIO_ESTRELLA = precio;
+                    Constantes.CONCEPTO_ESTRELLA = concepto;
+                    this.Close();
+                }
+            }catch (Exception ex)
             {
-                Constantes.PESO_UD_PRODUCTO = precio;
-                this.Close();
+                MessageBox.Show("Debes rellenar AMBOS datos correctamente");
             }
-            */
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -64,7 +52,7 @@ namespace GarTor
             CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
 
             if (((e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
-                    && tbPrecio.Text.Contains('.')) || e.KeyChar =='\b' || char.IsNumber(e.KeyChar) || e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
+                    && tbPrecio.Text.Contains('.')) || e.KeyChar =='\b' || e.KeyChar == '-' || char.IsNumber(e.KeyChar) || e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
             {
                 e.Handled = false;
             }

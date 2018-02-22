@@ -41,6 +41,7 @@
             this.precioMayor = new System.Windows.Forms.NumericUpDown();
             this.imagen = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.precioTienda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.precioMayor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagen)).BeginInit();
@@ -95,6 +96,7 @@
             this.Modificar.TabIndex = 32;
             this.Modificar.Text = "Modificar";
             this.Modificar.UseVisualStyleBackColor = true;
+            this.Modificar.Click += new System.EventHandler(this.Modificar_Click);
             // 
             // label3
             // 
@@ -185,6 +187,11 @@
             this.button1.TabIndex = 40;
             this.button1.Text = "Cambiar imagen";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // ProduccionModificar
             // 
@@ -232,5 +239,6 @@
         private System.Windows.Forms.NumericUpDown precioMayor;
         private System.Windows.Forms.PictureBox imagen;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

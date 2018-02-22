@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +72,59 @@ namespace GarTor
                 this.imagen.SizeMode = PictureBoxSizeMode.Zoom;
 
                 
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string imagen = openFileDialog1.FileName;
+                    ruta_foto = imagen;
+                    this.imagen.Image = Image.FromFile(imagen);
+                    this.imagen.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
+            }
+        }
+
+        public bool verificar(string nombre)
+        {
+            if (Constantes.productos_TA.Verificacion(nombre) == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        private void Modificar_Click(object sender, EventArgs e)
+        {
+            if (verificar(tbNuevoNombre.Text))
+            {
+                Constantes.productos_TA.Insert(tbNuevoNombre.Text, cbTipo.Text);
+                Constantes.preciosMayor_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNuevoNombre.Text), (Double)precioMayor.Value);
+                Constantes.preciosVenta_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNuevoNombre.Text), (Double)precioTienda.Value);
+                string path = Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + cbProducto.SelectedValue + Constantes.EXTENSION;
+                imagen.Image.Dispose();
+                imagen.Image = null;
+                System.IO.File.Delete(path); 
+                imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + tbNuevoNombre.Text + Constantes.EXTENSION, ImageFormat.Png);
+
+                MessageBox.Show("Producto agregado correctamente");
+                //MessageBox.Show(Constantes.productos_TA.GetCodProducto(tbNombre.Text) + " " + nMayor.Value);
+            }
+            else
+            {
+                MessageBox.Show("El producto ya existe");
             }
         }
     }

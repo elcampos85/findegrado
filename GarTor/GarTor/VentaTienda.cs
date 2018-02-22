@@ -76,8 +76,7 @@ namespace GarTor
                 
                 
 
-                MessageBox.Show("cod: "+cod_Pedido+" cod2: " +cod_Pedido);
-                cod_Factura = Convert.ToInt32(Constantes.factVenta_TA.getCodigoFactura(cod_Pedido, fechaHora_dia));
+                cod_Factura = Convert.ToInt32(Constantes.factVenta_TA.getCodigoFactura(cod_Pedido));
                 foreach (DataGridViewRow row in cesta.Rows)
                 {
                     cantidad = Convert.ToSingle(row.Cells[Constantes.COLUMNA_UNIDADES].Value);
@@ -86,16 +85,38 @@ namespace GarTor
                     Constantes.detaPedidosVenta_TA.Insert(cod_Factura,num_detalle,cantidad,cod_Precio,cod_Prod); 
                     num_detalle += 1;
                 }
+                DataTable compra = Constantes.detaPedidosVenta_TA.GetDetalleDeFactura(cod_Factura);
+                String CadenaCompra = "";
 
+                foreach (DataRow row in compra.Rows)
+                {
+                    float total = 0.00f;
+                    string nom_Producto = Constantes.productos_TA.GetNombreProducto(Convert.ToInt32(row["Cod_Producto"]));
+                    int unidades = Convert.ToInt32(row["Cantidad"]);
+                    float precio = Convert.ToSingle(Constantes.preciosVenta_TA.GetPrecioVenta(Convert.ToInt32( row["Cod_Precios_Venta"])));
+                    
+                    total = precio * (Convert.ToSingle(unidades));
+
+
+                    CadenaCompra += row["Num_Detalle"] + " | " +nom_Producto +" | "+ unidades + " | "+ precio+" | "+total+"\r\n";
+
+                }
+                //
+                //
+                //NO FUNCIONAN LOS DESCUENTOS ROMPEN LA APLICACION
+                //
+                //
+                //
                 StreamWriter sw = new StreamWriter(factura);
                 texto = "FACTURA SIMPLIFICADA" +
-                    "/nPasteleria MARCO" +
-                    "/nPaseo de los Jesuitas 18, Madrid" +
-                    "/nTelf. 91 463 99 82" +
-                    "/nN.I.F. 07487245D" +
-                    Constantes.detaPedidosVenta_TA.GetData().ToString() +
-                    "/n" + Constantes.factVenta_TA.getCodigoFactura(cod_Pedido,fechaHora_dia).ToString() +
-                    "/n" + Constantes.pedidos_TA.getCodigoPedido(num_detalle,fecha_dia).ToString();
+                    "\r\nPasteleria MARCO" +
+                    "\r\nPaseo de los Jesuitas 18, Madrid" +
+                    "\r\nTelf. 91 463 99 82" +
+                    "\r\nN.I.F. 07487245D" +
+                    "\r\n" + "Detalle" + " | "+"Nombre Articulo"+" | "+"Unidades"+" | "+"Precio"+" | "+"Total"+
+                    "\r\n" + CadenaCompra +
+                    
+                    "\r\n" + "Factura: "+Constantes.factVenta_TA.getCodigoFactura(cod_Pedido).ToString();
                 sw.WriteLine(texto);
                 sw.Close();
                 #endregion

@@ -6918,11 +6918,9 @@ SELECT Cod_Facturas_Venta, Cod_Pedido, Fecha_Factura FROM FacturasVenta WHERE (C
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT Cod_Facturas_Venta FROM FacturasVenta WHERE Cod_Pedido = @codPedido and Fe" +
-                "cha_Factura = @fecha";
+            this._commandCollection[1].CommandText = "SELECT Cod_Facturas_Venta FROM FacturasVenta WHERE Cod_Pedido = @codPedido ";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codPedido", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cod_Pedido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.DateTime, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha_Factura", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7063,10 +7061,9 @@ SELECT Cod_Facturas_Venta, Cod_Pedido, Fecha_Factura FROM FacturasVenta WHERE (C
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> getCodigoFactura(int codPedido, System.DateTime fecha) {
+        public virtual object getCodigoFactura(int codPedido) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
             command.Parameters[0].Value = ((int)(codPedido));
-            command.Parameters[1].Value = ((System.DateTime)(fecha));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7083,10 +7080,10 @@ SELECT Cod_Facturas_Venta, Cod_Pedido, Fecha_Factura FROM FacturasVenta WHERE (C
             }
             if (((returnValue == null) 
                         || (returnValue.GetType() == typeof(global::System.DBNull)))) {
-                return new global::System.Nullable<int>();
+                return null;
             }
             else {
-                return new global::System.Nullable<int>(((int)(returnValue)));
+                return ((object)(returnValue));
             }
         }
     }
@@ -8671,7 +8668,7 @@ SELECT Cod_Producto, Nombre_Producto, Categoria_Producto FROM Productos WHERE (C
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Cod_Producto, Nombre_Producto, Categoria_Producto FROM dbo.Productos";
@@ -8695,10 +8692,16 @@ SELECT Cod_Producto, Nombre_Producto, Categoria_Producto FROM Productos WHERE (C
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT        COUNT(*) AS Expr1\r\nFROM            Productos\r\nWHERE        (Nombre_" +
-                "Producto = @nombre)";
+            this._commandCollection[4].CommandText = "SELECT        Nombre_Producto\r\nFROM            Productos\r\nWHERE        (Cod_Produ" +
+                "cto = @cod)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cod", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cod_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "SELECT        COUNT(*) AS Expr1\r\nFROM            Productos\r\nWHERE        (Nombre_" +
+                "Producto = @nombre)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8966,8 +8969,37 @@ SELECT Cod_Producto, Nombre_Producto, Categoria_Producto FROM Productos WHERE (C
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> Verificacion(string nombre) {
+        public virtual string GetNombreProducto(int cod) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            command.Parameters[0].Value = ((int)(cod));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((string)(returnValue));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<int> Verificacion(string nombre) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             if ((nombre == null)) {
                 throw new global::System.ArgumentNullException("nombre");
             }
@@ -9492,12 +9524,19 @@ SELECT Id, Cod_Facturas_Venta, Num_Detalle, Cantidad, Cod_Precios_Venta, Cod_Pro
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Cod_Facturas_Venta, Num_Detalle, Cantidad, Cod_Precios_Venta, Cod_Prod" +
                 "ucto FROM dbo.DetallePedidos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        Id, Cod_Facturas_Venta, Num_Detalle, Cantidad, Cod_Precios_Venta, C" +
+                "od_Producto\r\nFROM            DetallePedidos\r\nWHERE        (Cod_Facturas_Venta = " +
+                "@codFac)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codFac", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cod_Facturas_Venta", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9519,6 +9558,32 @@ SELECT Id, Cod_Facturas_Venta, Num_Detalle, Cantidad, Cod_Precios_Venta, Cod_Pro
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DSProductos.DetallePedidosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DSProductos.DetallePedidosDataTable dataTable = new DSProductos.DetallePedidosDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(DSProductos.DetallePedidosDataTable dataTable, int codFac) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(codFac));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DSProductos.DetallePedidosDataTable GetDetalleDeFactura(int codFac) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(codFac));
             DSProductos.DetallePedidosDataTable dataTable = new DSProductos.DetallePedidosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

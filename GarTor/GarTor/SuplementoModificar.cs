@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,7 @@ namespace GarTor
                 if (verificar(nombreNuevo) || nombre.Equals(nombreNuevo))
                 {
                     Constantes.suplemento_TA.UpdateSuplemento(nombreNuevo, Convert.ToDouble(precio), codSuplemento, nombre);
+                    imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + grupo + "/" + tbNombre.Text + Constantes.EXTENSION, ImageFormat.Png);
                     MessageBox.Show("Suplemento modificado correctamente");
                 }
                 else
@@ -78,7 +80,21 @@ namespace GarTor
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string ruta_foto = "";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string imagen = openFileDialog1.FileName;
+                    ruta_foto = imagen;
+                    this.imagen.Image = Image.FromFile(imagen);
+                    this.imagen.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
+            }
         }
     }
 }

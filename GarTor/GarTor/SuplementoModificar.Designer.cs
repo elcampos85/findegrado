@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.imagen = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.NPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagen)).BeginInit();
             this.SuspendLayout();
@@ -136,6 +137,10 @@
             this.imagen.TabIndex = 41;
             this.imagen.TabStop = false;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // SuplementoModificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,5 +177,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox imagen;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

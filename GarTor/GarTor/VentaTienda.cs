@@ -51,17 +51,17 @@ namespace GarTor
             iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
             //Añadimos una imagen
-            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Constantes.CATEGORIAS_RUTA+"/Suplementos.png");
+            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Constantes.CATEGORIAS_RUTA + "/Suplementos.png");
             logo.ScaleAbsoluteWidth(100);
             logo.ScaleAbsoluteHeight(100);
-            
+
             doc.Add(logo);
+
             // Escribimos el encabezamiento en el documento
             doc.Add(new Paragraph("Factura 001"));
             doc.Add(Chunk.NEWLINE);
-
-            // Creamos una tabla que contendrá el nombre, apellido y país
-            // de nuestros visitante.
+            
+            // Creamos una tabla 
             PdfPTable tblPrueba = new PdfPTable(3);
             tblPrueba.WidthPercentage = 100;
 

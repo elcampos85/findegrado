@@ -9,20 +9,97 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Word = Microsoft.Office;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace GarTor
 {
     public partial class VentaTienda : Form
     {
-        private Image modeloFactura = Properties.Resources.modeloFactura;
+        private System.Drawing.Image modeloFactura = Properties.Resources.modeloFactura;
         private bool listaCategoria = true;
         private bool introducidoCantidad = false;
         public VentaTienda()
         {
             InitializeComponent();
             Total();
+            facturaPDF();
         }
+        #region FACTURA PDF
+        private void facturaPDF()
+        {
+            /*
+                using System.IO;
+               using iTextSharp.text;
+               using iTextSharp.text.pdf;
+            */
+            // Creamos el documento con el tamaño de página tradicional
+            Document doc = new Document(PageSize.LETTER);
+            // Indicamos donde vamos a guardar el documento
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(Constantes.FACTURAS_RUTA + "/VentasTienda/factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".pdf", FileMode.Create));
+
+            // Le colocamos el título y el autor
+            // **Nota: Esto no será visible en el documento
+            doc.AddTitle("Factura 001");
+            doc.AddCreator("GarTor");
+
+            // Abrimos el archivo
+            doc.Open();
+
+            // Creamos el tipo de Font que vamos utilizar
+            iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+
+            // Escribimos el encabezamiento en el documento
+            doc.Add(new Paragraph("Factura 001"));
+            doc.Add(Chunk.NEWLINE);
+
+            // Creamos una tabla que contendrá el nombre, apellido y país
+            // de nuestros visitante.
+            PdfPTable tblPrueba = new PdfPTable(3);
+            tblPrueba.WidthPercentage = 100;
+
+            // Configuramos el título de las columnas de la tabla
+            PdfPCell detalle = new PdfPCell(new Phrase("Detalle", _standardFont));
+            detalle.BorderWidth = 0;
+            detalle.BorderWidthBottom = 0.75f;
+
+            PdfPCell nombre = new PdfPCell(new Phrase("Nombre Producto", _standardFont));
+            nombre.BorderWidth = 0;
+            nombre.BorderWidthBottom = 0.75f;
+
+            PdfPCell cantidad = new PdfPCell(new Phrase("Cantidad", _standardFont));
+            cantidad.BorderWidth = 0;
+            cantidad.BorderWidthBottom = 0.75f;
+
+            // Añadimos las celdas a la tabla
+            tblPrueba.AddCell(detalle);
+            tblPrueba.AddCell(nombre);
+            tblPrueba.AddCell(cantidad);
+
+            // Llenamos la tabla con información
+            detalle = new PdfPCell(new Phrase("1", _standardFont));
+            detalle.BorderWidth = 0;
+
+            nombre = new PdfPCell(new Phrase("Tortel", _standardFont));
+            nombre.BorderWidth = 0;
+
+            cantidad = new PdfPCell(new Phrase("10", _standardFont));
+            cantidad.BorderWidth = 0;
+
+            // Añadimos las celdas a la tabla
+            tblPrueba.AddCell(detalle);
+            tblPrueba.AddCell(nombre);
+            tblPrueba.AddCell(cantidad);
+
+            // Finalmente, añadimos la tabla al documento PDF y cerramos el documento
+            doc.Add(tblPrueba);
+
+            doc.Close();
+            writer.Close();
+
+        }
+        #endregion
 
         private void Eliminar(object sender, DataGridViewCellEventArgs e)
         {
@@ -176,7 +253,7 @@ namespace GarTor
 
                 try
                 {
-                    this.imageList1.Images.Add(Image.FromFile(file.FullName));
+                    this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
 
                     this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                     j++;
@@ -211,7 +288,7 @@ namespace GarTor
 
                 try
                 {
-                    this.imageList1.Images.Add(Image.FromFile(file.FullName));
+                    this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
 
                     this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                     j++;
@@ -249,7 +326,7 @@ namespace GarTor
 
                         try
                         {
-                            this.imageList1.Images.Add(Image.FromFile(file.FullName));
+                            this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
 
                             this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                             j++;

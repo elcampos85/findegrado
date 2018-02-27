@@ -1,4 +1,6 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +15,6 @@ namespace GarTor
 {
     public partial class VentaMayor : Form
     {
-        private Image modeloFactura = Properties.Resources.modeloFactura;
         private bool listaCategoria = true;
         private bool introducidoCantidad = false;
         public VentaMayor()
@@ -42,6 +43,82 @@ namespace GarTor
             }
         }
 
+        #region FACTURA PDF
+        private void facturaPDF()
+        {
+            // Creamos el documento con el tamaño de página tradicional
+            Document doc = new Document(PageSize.LETTER);
+            // Indicamos donde vamos a guardar el documento
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(Constantes.FACTURAS_VM + "/factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".pdf", FileMode.Create));
+
+            // Le colocamos el título y el autor
+            // **Nota: Esto no será visible en el documento
+            doc.AddTitle("Factura");
+            doc.AddCreator("Pasteleria Marco");
+
+            // Abrimos el archivo
+            doc.Open();
+
+            // Creamos el tipo de Font que vamos utilizar
+            iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+
+            //Añadimos una imagen
+            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Constantes.MAIN_RUTA + "/Logo.PNG");
+            logo.ScaleAbsoluteWidth(100);
+            logo.ScaleAbsoluteHeight(100);
+
+            doc.Add(logo);
+
+            // Escribimos el encabezamiento en el documento
+            doc.Add(new Paragraph("Factura"));
+            doc.Add(Chunk.NEWLINE);
+
+            // Creamos una tabla 
+            PdfPTable tblPrueba = new PdfPTable(3);
+            tblPrueba.WidthPercentage = 100;
+
+            // Configuramos el título de las columnas de la tabla
+            PdfPCell detalle = new PdfPCell(new Phrase("Detalle", _standardFont));
+            detalle.BorderWidth = 0;
+            detalle.BorderWidthBottom = 0.75f;
+
+            PdfPCell nombre = new PdfPCell(new Phrase("Nombre Producto", _standardFont));
+            nombre.BorderWidth = 0;
+            nombre.BorderWidthBottom = 0.75f;
+
+            PdfPCell cantidad = new PdfPCell(new Phrase("Cantidad", _standardFont));
+            cantidad.BorderWidth = 0;
+            cantidad.BorderWidthBottom = 0.75f;
+
+            // Añadimos las celdas a la tabla
+            tblPrueba.AddCell(detalle);
+            tblPrueba.AddCell(nombre);
+            tblPrueba.AddCell(cantidad);
+
+            // Llenamos la tabla con información
+            detalle = new PdfPCell(new Phrase("1", _standardFont));
+            detalle.BorderWidth = 0;
+
+            nombre = new PdfPCell(new Phrase("Tortel", _standardFont));
+            nombre.BorderWidth = 0;
+
+            cantidad = new PdfPCell(new Phrase("10", _standardFont));
+            cantidad.BorderWidth = 0;
+
+            // Añadimos las celdas a la tabla
+            tblPrueba.AddCell(detalle);
+            tblPrueba.AddCell(nombre);
+            tblPrueba.AddCell(cantidad);
+
+            // Finalmente, añadimos la tabla al documento PDF y cerramos el documento
+            doc.Add(tblPrueba);
+
+            doc.Close();
+            writer.Close();
+
+        }
+        #endregion
+
         private void FinalizarCompra(object sender, EventArgs e)
         {
             Finalizar_Compra panel1 = new Finalizar_Compra();
@@ -54,15 +131,7 @@ namespace GarTor
             if (Constantes.VENTA_HECHA)
             {
                 //Se genera una factura con la compra realizada y la guarda en su carpeta correspondiente
-                #region Generar Factura
-                string factura = @"C:\GarTor\Facturas\VentasMayor\Factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".txt";
-                string texto = null;
-
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(factura);
-                texto = "FACTURA SIMPLIFICADA";
-                sw.WriteLine(texto);
-                sw.Close();
-                #endregion
+                facturaPDF();
 
                 this.listView1.Items.Clear();
                 this.imageList1.Images.Clear();
@@ -119,7 +188,7 @@ namespace GarTor
 
                 try
                 {
-                    this.imageList1.Images.Add(Image.FromFile(file.FullName));
+                    this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
 
                     this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                     j++;
@@ -154,7 +223,7 @@ namespace GarTor
 
                 try
                 {
-                    this.imageList1.Images.Add(Image.FromFile(file.FullName));
+                    this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
 
                     this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                     j++;
@@ -192,7 +261,7 @@ namespace GarTor
 
                         try
                         {
-                            this.imageList1.Images.Add(Image.FromFile(file.FullName));
+                            this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
 
                             this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                             j++;
@@ -259,18 +328,25 @@ namespace GarTor
             panel1.ShowIcon = false;
             panel1.ShowInTaskbar = false;
             panel1.ShowDialog();
-            if (Constantes.PRECIO_ESTRELLA != null && Convert.ToDouble(Constantes.PRECIO_ESTRELLA) != 0 && (!Constantes.CONCEPTO_ESTRELLA.Equals("")))
+            if (Constantes.PRECIO_ESTRELLA != null && Convert.ToDouble(Constantes.PRECIO_ESTRELLA) != 0)
             {
+                String concepto = "";
+                if (Convert.ToInt32(Constantes.PRECIO_ESTRELLA) < 0)
+                {
+                    concepto = "Descuento";
+                }
+                else
+                {
+                    concepto = "Extra";
+                }
                 cesta.Rows.Add(1);
                 cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
-                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = Constantes.CONCEPTO_ESTRELLA;
+                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = concepto;
                 cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = "1";
                 cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = Convert.ToDouble(Constantes.PRECIO_ESTRELLA);
                 cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
                 Total();
             }
-
-            Constantes.CONCEPTO_ESTRELLA = "";
             Constantes.PRECIO_ESTRELLA = "0";
         }
     }

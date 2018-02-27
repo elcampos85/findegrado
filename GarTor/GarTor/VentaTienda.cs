@@ -17,95 +17,13 @@ namespace GarTor
 {
     public partial class VentaTienda : Form
     {
-        private System.Drawing.Image modeloFactura = Properties.Resources.modeloFactura;
         private bool listaCategoria = true;
         private bool introducidoCantidad = false;
         public VentaTienda()
         {
             InitializeComponent();
             Total();
-            facturaPDF();
         }
-        #region FACTURA PDF
-        private void facturaPDF()
-        {
-            /*
-                using System.IO;
-               using iTextSharp.text;
-               using iTextSharp.text.pdf;
-            */
-            // Creamos el documento con el tamaño de página tradicional
-            Document doc = new Document(PageSize.LETTER);
-            // Indicamos donde vamos a guardar el documento
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(Constantes.FACTURAS_RUTA + "/VentasTienda/factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".pdf", FileMode.Create));
-
-            // Le colocamos el título y el autor
-            // **Nota: Esto no será visible en el documento
-            doc.AddTitle("Factura");
-            doc.AddCreator("Pasteleria Marco");
-
-            // Abrimos el archivo
-            doc.Open();
-            
-            // Creamos el tipo de Font que vamos utilizar
-            iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-
-            //Añadimos una imagen
-            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Constantes.MAIN_RUTA + "/Logo.PNG");
-            logo.ScaleAbsoluteWidth(100);
-            logo.ScaleAbsoluteHeight(100);
-
-            doc.Add(logo);
-
-            // Escribimos el encabezamiento en el documento
-            doc.Add(new Paragraph("Factura"));
-            doc.Add(Chunk.NEWLINE);
-            
-            // Creamos una tabla 
-            PdfPTable tblPrueba = new PdfPTable(3);
-            tblPrueba.WidthPercentage = 100;
-
-            // Configuramos el título de las columnas de la tabla
-            PdfPCell detalle = new PdfPCell(new Phrase("Detalle", _standardFont));
-            detalle.BorderWidth = 0;
-            detalle.BorderWidthBottom = 0.75f;
-
-            PdfPCell nombre = new PdfPCell(new Phrase("Nombre Producto", _standardFont));
-            nombre.BorderWidth = 0;
-            nombre.BorderWidthBottom = 0.75f;
-
-            PdfPCell cantidad = new PdfPCell(new Phrase("Cantidad", _standardFont));
-            cantidad.BorderWidth = 0;
-            cantidad.BorderWidthBottom = 0.75f;
-
-            // Añadimos las celdas a la tabla
-            tblPrueba.AddCell(detalle);
-            tblPrueba.AddCell(nombre);
-            tblPrueba.AddCell(cantidad);
-
-            // Llenamos la tabla con información
-            detalle = new PdfPCell(new Phrase("1", _standardFont));
-            detalle.BorderWidth = 0;
-
-            nombre = new PdfPCell(new Phrase("Tortel", _standardFont));
-            nombre.BorderWidth = 0;
-
-            cantidad = new PdfPCell(new Phrase("10", _standardFont));
-            cantidad.BorderWidth = 0;
-
-            // Añadimos las celdas a la tabla
-            tblPrueba.AddCell(detalle);
-            tblPrueba.AddCell(nombre);
-            tblPrueba.AddCell(cantidad);
-
-            // Finalmente, añadimos la tabla al documento PDF y cerramos el documento
-            doc.Add(tblPrueba);
-
-            doc.Close();
-            writer.Close();
-
-        }
-        #endregion
 
         private void Eliminar(object sender, DataGridViewCellEventArgs e)
         {
@@ -142,7 +60,6 @@ namespace GarTor
                 #region Generar Factura
                 string factura = @"C:\GarTor\Facturas\VentasTienda\Factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".txt";
                 string texto = null;
-                string format = "%-40s%s%n";//Formato de la factura con columnas
                 DateTime fecha_dia = DateTime.Now.Date;
                 DateTime fechaHora_dia = DateTime.Now;
                 int num_Pedido = Convert.ToInt32(Constantes.pedidos_TA.getPedidosDia(fecha_dia));
@@ -162,27 +79,66 @@ namespace GarTor
                 cod_Factura = Convert.ToInt32(Constantes.factVenta_TA.getCodigoFactura(cod_Pedido));
                 foreach (DataGridViewRow row in cesta.Rows)
                 {
-                    cantidad = Convert.ToSingle(row.Cells[Constantes.COLUMNA_UNIDADES].Value);
-                    cod_Prod = Convert.ToInt32(Constantes.productos_TA.GetCodProducto(Convert.ToString(row.Cells[Constantes.COLUMNA_NOMBRE].Value)));
-                    cod_Precio = Convert.ToInt32(Constantes.preciosVenta_TA.getCodPrecioVenta(cod_Prod));
-                    Constantes.detaPedidosVenta_TA.Insert(cod_Factura,num_detalle,cantidad,cod_Precio,cod_Prod); 
+                    if (row.Cells[Constantes.COLUMNA_NOMBRE].Equals("Descuento"))
+                    {
+                        cantidad = Convert.ToInt32(row.Cells[Constantes.COLUMNA_UNIDADES]);
+                        cod_Prod = 999;
+                        cod_Precio = 999;
+                    }
+                    else if (row.Cells[Constantes.COLUMNA_NOMBRE].Equals("Extra"))
+                    {
+                        cantidad = Convert.ToInt32(row.Cells[Constantes.COLUMNA_UNIDADES]);
+                        cod_Prod = 999;
+                        cod_Precio = 999;
+                        //SEGUIR AQUI
+                        //
+                        //
+                        //
+                    }
+                    else
+                    {
+                        cantidad = Convert.ToSingle(row.Cells[Constantes.COLUMNA_UNIDADES].Value);
+                        cod_Prod = Convert.ToInt32(Constantes.productos_TA.GetCodProducto(Convert.ToString(row.Cells[Constantes.COLUMNA_NOMBRE].Value)));
+                        cod_Precio = Convert.ToInt32(Constantes.preciosVenta_TA.getCodPrecioVenta(cod_Prod));
+                    }
+                    Constantes.detaPedidosVenta_TA.Insert(cod_Factura, num_detalle, cantidad, cod_Precio, cod_Prod);
                     num_detalle += 1;
                 }
                 DataTable compra = Constantes.detaPedidosVenta_TA.GetDetalleDeFactura(cod_Factura);
                 String CadenaCompra = "";
+                float total_factura = 0.00f;
 
                 foreach (DataRow row in compra.Rows)
                 {
                     float total = 0.00f;
-                    string nom_Producto = Constantes.productos_TA.GetNombreProducto(Convert.ToInt32(row["Cod_Producto"]));
+                    string nom_Producto = "";
+                    if (row[Constantes.COLUMNA_NOMBRE].Equals("Descuento"))
+                    {
+                        nom_Producto = "Descuento";
+                    }
+                    else if (row[Constantes.COLUMNA_NOMBRE].Equals("Extra"))
+                    {
+                        nom_Producto = "Extra";
+                    }
+                    else
+                    {
+                        nom_Producto = Constantes.productos_TA.GetNombreProducto(Convert.ToInt32(row["Cod_Producto"]));
+                    }
                     int unidades = Convert.ToInt32(row["Cantidad"]);
                     float precio = Convert.ToSingle(Constantes.preciosVenta_TA.GetPrecioVenta(Convert.ToInt32( row["Cod_Precios_Venta"])));
                     
                     total = precio * (Convert.ToSingle(unidades));
-
-
-                    CadenaCompra += row["Num_Detalle"] + " | " +nom_Producto +" | "+ unidades + " | "+ precio+" | "+total+"\r\n";
-
+                    
+                    //Evaluamos que el nombre del producto sea mayor que 28 caracteres para acortarlo en la factura
+                    if (nom_Producto.Length > 28)
+                    {
+                        CadenaCompra += String.Format("{0,-28}{1,8}{2,8}{3,12}\r\n", nom_Producto.Substring(0, 28), unidades, precio + " €", total.ToString("#,##0.##") + " €") + "\r\n"; //Para aplicar formato de columnas
+                    }
+                    else
+                    {
+                        CadenaCompra += String.Format("{0,-28}{1,8}{2,8}{3,12}\r\n", nom_Producto, unidades, precio + " €", total.ToString("#,##0.##") + " €") + "\r\n"; //Para aplicar formato de columnas
+                    }
+                    total_factura += total;
                 }
                 //
                 //
@@ -195,10 +151,10 @@ namespace GarTor
                     "\r\nPasteleria MARCO" +
                     "\r\nPaseo de los Jesuitas 18, Madrid" +
                     "\r\nTelf. 91 463 99 82" +
-                    "\r\nN.I.F. 07487245D" +
-                    "\r\n" + "Detalle" + " | "+"Nombre Articulo"+" | "+"Unidades"+" | "+"Precio"+" | "+"Total"+
+                    "\r\nN.I.F. 07487245D\r\n\r\n" +
+                    String.Format("\r\n{0,-28}{1,8}{2,8}{3,12}\r\n", "Nombre Articulo", "Unidades", "Precio", "Total") + //Para aplicar formato de columnas
                     "\r\n" + CadenaCompra +
-                    
+                    "\r\n TOTAL DE LA COMPRA: " + total_factura + " €\r\n" +
                     "\r\n" + "Factura: "+Constantes.factVenta_TA.getCodigoFactura(cod_Pedido).ToString();
                 sw.WriteLine(texto);
                 sw.Close();
@@ -405,18 +361,25 @@ namespace GarTor
             panel1.ShowIcon = false;
             panel1.ShowInTaskbar = false;
             panel1.ShowDialog();
-            if (Constantes.PRECIO_ESTRELLA != null && Convert.ToDouble(Constantes.PRECIO_ESTRELLA) != 0 && (!Constantes.CONCEPTO_ESTRELLA.Equals("")))
+            if (Constantes.PRECIO_ESTRELLA != null && Convert.ToDouble(Constantes.PRECIO_ESTRELLA) != 0)
             {
+                String concepto = "";
+                if(Convert.ToInt32(Constantes.PRECIO_ESTRELLA) < 0)
+                {
+                    concepto = "Descuento";
+                }
+                else
+                {
+                    concepto = "Extra";
+                }
                 cesta.Rows.Add(1);
                 cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
-                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = Constantes.CONCEPTO_ESTRELLA;
+                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = concepto;
                 cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = "1";
                 cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = Convert.ToDouble(Constantes.PRECIO_ESTRELLA);
                 cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
                 Total();
             }
-
-            Constantes.CONCEPTO_ESTRELLA = "";
             Constantes.PRECIO_ESTRELLA = "0";
         }
     }    

@@ -40,7 +40,6 @@ namespace GarTor
         public const int TAMANO_IMAGENES = 175;
         public static string PESO_UD_PRODUCTO = "0";
         public static string PRECIO_ESTRELLA = "0";
-        public static string CONCEPTO_ESTRELLA = "";
         public static string IMPORTE = "0";
         public static bool VENTA_HECHA = false;
         public static int Num_Pedido = 0;

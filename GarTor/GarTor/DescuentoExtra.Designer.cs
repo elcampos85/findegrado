@@ -31,15 +31,13 @@
             this.bIntro = new System.Windows.Forms.Button();
             this.lPrecio = new System.Windows.Forms.Label();
             this.tbPrecio = new System.Windows.Forms.TextBox();
-            this.tbConcepto = new System.Windows.Forms.TextBox();
-            this.lConcepto = new System.Windows.Forms.Label();
             this.lInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bIntro
             // 
             this.bIntro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bIntro.Location = new System.Drawing.Point(95, 200);
+            this.bIntro.Location = new System.Drawing.Point(88, 101);
             this.bIntro.Name = "bIntro";
             this.bIntro.Size = new System.Drawing.Size(99, 38);
             this.bIntro.TabIndex = 0;
@@ -51,7 +49,7 @@
             // 
             this.lPrecio.AutoSize = true;
             this.lPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lPrecio.Location = new System.Drawing.Point(12, 23);
+            this.lPrecio.Location = new System.Drawing.Point(9, 23);
             this.lPrecio.Name = "lPrecio";
             this.lPrecio.Size = new System.Drawing.Size(243, 18);
             this.lPrecio.TabIndex = 4;
@@ -60,34 +58,16 @@
             // tbPrecio
             // 
             this.tbPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPrecio.Location = new System.Drawing.Point(15, 44);
+            this.tbPrecio.Location = new System.Drawing.Point(12, 44);
             this.tbPrecio.Name = "tbPrecio";
             this.tbPrecio.Size = new System.Drawing.Size(100, 24);
             this.tbPrecio.TabIndex = 0;
             this.tbPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
-            // tbConcepto
-            // 
-            this.tbConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbConcepto.Location = new System.Drawing.Point(15, 137);
-            this.tbConcepto.Name = "tbConcepto";
-            this.tbConcepto.Size = new System.Drawing.Size(257, 24);
-            this.tbConcepto.TabIndex = 5;
-            // 
-            // lConcepto
-            // 
-            this.lConcepto.AutoSize = true;
-            this.lConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lConcepto.Location = new System.Drawing.Point(12, 116);
-            this.lConcepto.Name = "lConcepto";
-            this.lConcepto.Size = new System.Drawing.Size(86, 18);
-            this.lConcepto.TabIndex = 6;
-            this.lConcepto.Text = "Concepto:";
-            // 
             // lInfo
             // 
             this.lInfo.AutoSize = true;
-            this.lInfo.Location = new System.Drawing.Point(12, 72);
+            this.lInfo.Location = new System.Drawing.Point(1, 71);
             this.lInfo.Name = "lInfo";
             this.lInfo.Size = new System.Drawing.Size(271, 13);
             this.lInfo.TabIndex = 7;
@@ -98,10 +78,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(284, 162);
             this.Controls.Add(this.lInfo);
-            this.Controls.Add(this.tbConcepto);
-            this.Controls.Add(this.lConcepto);
             this.Controls.Add(this.tbPrecio);
             this.Controls.Add(this.lPrecio);
             this.Controls.Add(this.bIntro);
@@ -120,8 +98,6 @@
         private System.Windows.Forms.Button bIntro;
         private System.Windows.Forms.Label lPrecio;
         private System.Windows.Forms.TextBox tbPrecio;
-        private System.Windows.Forms.TextBox tbConcepto;
-        private System.Windows.Forms.Label lConcepto;
         private System.Windows.Forms.Label lInfo;
     }
 }

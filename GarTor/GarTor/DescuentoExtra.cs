@@ -27,23 +27,21 @@ namespace GarTor
         private void introducirExtra()
         {
             string precio = tbPrecio.Text.ToString();
-            string concepto = tbConcepto.Text.ToString();
             try
             {
-                if (Convert.ToDouble(precio) > 9999 || concepto.Equals("") || precio.Equals(""))
+                if (Convert.ToDouble(precio) > 9999 || precio.Equals(""))
                 {
-                    MessageBox.Show("La cantidad máxima a introducir es: 9999\nY el concepto no puede quedar vacio");
+                    MessageBox.Show("La cantidad máxima a introducir es: 9999");
                     tbPrecio.Select();
                 }
                 else
                 {
                     Constantes.PRECIO_ESTRELLA = precio;
-                    Constantes.CONCEPTO_ESTRELLA = concepto;
                     this.Close();
                 }
             }catch (Exception ex)
             {
-                MessageBox.Show("Debes rellenar AMBOS datos correctamente");
+                MessageBox.Show("Debes rellenar el precio correctamente");
             }
         }
 

@@ -41,8 +41,8 @@ namespace GarTor
 
             // Le colocamos el título y el autor
             // **Nota: Esto no será visible en el documento
-            doc.AddTitle("Factura 001");
-            doc.AddCreator("GarTor");
+            doc.AddTitle("Factura");
+            doc.AddCreator("Pasteleria Marco");
 
             // Abrimos el archivo
             doc.Open();
@@ -51,14 +51,14 @@ namespace GarTor
             iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
             //Añadimos una imagen
-            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Constantes.CATEGORIAS_RUTA + "/Suplementos.png");
+            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Constantes.MAIN_RUTA + "/Logo.PNG");
             logo.ScaleAbsoluteWidth(100);
             logo.ScaleAbsoluteHeight(100);
 
             doc.Add(logo);
 
             // Escribimos el encabezamiento en el documento
-            doc.Add(new Paragraph("Factura 001"));
+            doc.Add(new Paragraph("Factura"));
             doc.Add(Chunk.NEWLINE);
             
             // Creamos una tabla 

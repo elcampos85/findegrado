@@ -108,24 +108,31 @@ namespace GarTor
 
         private void Modificar_Click(object sender, EventArgs e)
         {
-            if (verificar(tbNuevoNombre.Text))
+            try
             {
-                Constantes.productos_TA.Insert(tbNuevoNombre.Text, cbTipo.Text);
-                Constantes.preciosMayor_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNuevoNombre.Text), (Double)precioMayor.Value);
-                Constantes.preciosVenta_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNuevoNombre.Text), (Double)precioTienda.Value);
-                string path = Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + cbProducto.SelectedValue + Constantes.EXTENSION;
-                imagen.Image.Dispose();
-                imagen.Image = null;
-                System.IO.File.Delete(path); 
-                imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + tbNuevoNombre.Text + Constantes.EXTENSION, ImageFormat.Png);
+                if (verificar(tbNuevoNombre.Text))
+                {
+                    string path = Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + cbProducto.SelectedValue + Constantes.EXTENSION;
+                    imagen.Image.Dispose();
+                    imagen.Image = null;
+                    System.IO.File.Delete(path);
+                    imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + tbNuevoNombre.Text + Constantes.EXTENSION, ImageFormat.Png);
 
-                MessageBox.Show("Producto agregado correctamente");
-                //MessageBox.Show(Constantes.productos_TA.GetCodProducto(tbNombre.Text) + " " + nMayor.Value);
-            }
-            else
+                    Constantes.productos_TA.Insert(tbNuevoNombre.Text, cbTipo.Text);
+                    Constantes.preciosMayor_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNuevoNombre.Text), (Double)precioMayor.Value);
+                    Constantes.preciosVenta_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNuevoNombre.Text), (Double)precioTienda.Value);
+
+                    MessageBox.Show("Producto Modificado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe un producto con ese nombre");
+                }
+            }catch(Exception ex)
             {
-                MessageBox.Show("El producto ya existe");
+                MessageBox.Show("Error al modificar un producto");
             }
+            
         }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,11 +48,19 @@ namespace GarTor
                 float precio=Convert.ToSingle(NPrecio.Value);
                 int codSuplemento= Convert.ToInt32(cbSuplemento.SelectedValue);
 
-                if (verificar(nombreNuevo) || nombre.Equals(nombreNuevo))
+                
+                string ruta = Constantes.PRODUCTOS_RUTA + "/" + grupo + "/" + nombre + Constantes.EXTENSION;
+                if (verificar(nombreNuevo)|| File.Exists(ruta)|| !File.Exists(ruta))
                 {
+
+                    File.Delete(ruta);
+                   
+                    imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + grupo + "/" + nombreNuevo + Constantes.EXTENSION, ImageFormat.Png);
                     Constantes.suplemento_TA.UpdateSuplemento(nombreNuevo, Convert.ToDouble(precio), codSuplemento, nombre);
-                    imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + grupo + "/" + tbNombre.Text + Constantes.EXTENSION, ImageFormat.Png);
+
                     MessageBox.Show("Suplemento modificado correctamente");
+                    
+                    
                 }
                 else
                 {

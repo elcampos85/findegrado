@@ -42,6 +42,7 @@
             this.panelSeparadorVTienda = new System.Windows.Forms.Panel();
             this.panelToolboxVTienda = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btEstrella = new System.Windows.Forms.Button();
             this.lbTitulo = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btEliminarCesta = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btAtrasVTienda = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.btEstrella = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.panelProdVentaTienda.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -196,6 +196,18 @@
             this.panel4.Size = new System.Drawing.Size(1022, 42);
             this.panel4.TabIndex = 4;
             // 
+            // btEstrella
+            // 
+            this.btEstrella.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btEstrella.BackgroundImage = global::GarTor.Properties.Resources.Descuento;
+            this.btEstrella.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btEstrella.Location = new System.Drawing.Point(960, 3);
+            this.btEstrella.Name = "btEstrella";
+            this.btEstrella.Size = new System.Drawing.Size(42, 36);
+            this.btEstrella.TabIndex = 2;
+            this.btEstrella.UseVisualStyleBackColor = true;
+            this.btEstrella.Click += new System.EventHandler(this.descuentoExtra);
+            // 
             // lbTitulo
             // 
             this.lbTitulo.AutoSize = true;
@@ -277,18 +289,6 @@
             this.imageList1.Images.SetKeyName(4, "2012-11-15 19.57.28.jpg");
             this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
             this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
-            // 
-            // btEstrella
-            // 
-            this.btEstrella.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btEstrella.BackgroundImage = global::GarTor.Properties.Resources.Descuento;
-            this.btEstrella.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btEstrella.Location = new System.Drawing.Point(960, 3);
-            this.btEstrella.Name = "btEstrella";
-            this.btEstrella.Size = new System.Drawing.Size(42, 36);
-            this.btEstrella.TabIndex = 2;
-            this.btEstrella.UseVisualStyleBackColor = true;
-            this.btEstrella.Click += new System.EventHandler(this.descuentoExtra);
             // 
             // VentaMayor
             // 

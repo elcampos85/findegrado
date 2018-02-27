@@ -13,7 +13,7 @@ namespace GarTor
 {
     public partial class VentaMayor : Form
     {
-        private Image modeloFactura = Properties.Resources.modeloFactura;
+
         private bool listaCategoria = true;
         private bool introducidoCantidad = false;
         public VentaMayor()

@@ -44,6 +44,7 @@
             // 
             // cbSuplemento
             // 
+            this.cbSuplemento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSuplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSuplemento.FormattingEnabled = true;
             this.cbSuplemento.Location = new System.Drawing.Point(178, 22);

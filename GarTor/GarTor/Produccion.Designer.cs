@@ -60,6 +60,7 @@
             // 
             // cbIngredientes
             // 
+            this.cbIngredientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbIngredientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIngredientes.FormattingEnabled = true;
             this.cbIngredientes.Location = new System.Drawing.Point(12, 73);
@@ -70,6 +71,7 @@
             // cbMedidas
             // 
             this.cbMedidas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbMedidas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMedidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMedidas.FormattingEnabled = true;
             this.cbMedidas.Items.AddRange(new object[] {
@@ -197,6 +199,7 @@
             // cbGrupo
             // 
             this.cbGrupo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbGrupo.FormattingEnabled = true;
             this.cbGrupo.Location = new System.Drawing.Point(629, 19);

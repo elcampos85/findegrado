@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
 
+
+
 namespace GarTor
 {
     public partial class Inicio : Form
@@ -47,6 +49,7 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
 
+           
         }
 
         private void gestionToolStripMenuItem_Click(object sender, EventArgs e)

@@ -154,13 +154,32 @@ namespace GarTor
 
             if (verificar(tbNombre.Text))
             {
-                Constantes.productos_TA.Insert(tbNombre.Text, cbGrupo.Text);
-                Constantes.preciosMayor_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text), (Double)nMayor.Value);
-                Constantes.preciosVenta_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text), (Double)nTienda.Value);
+                if (tbNombre.Text.Length <= 0)
+                {
+                    MessageBox.Show("El producto debe tener un nombre");
+                    MessageBox.Show(cbGrupo.Text.ToString());
+                }
+                else if(imagen.Image == null)
+                {
+                    MessageBox.Show("El producto debe contener una imagen que lo haga referencia");
+                }
+                else
+                {
+                    try
+                    {
 
-                imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbGrupo.Text.ToString() + "/" + tbNombre.Text + Constantes.EXTENSION, ImageFormat.Png);
-
-                MessageBox.Show("Producto agregado correctamente");
+                        imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbGrupo.Text.ToString() + "/" + tbNombre.Text + Constantes.EXTENSION, ImageFormat.Png);
+                        Constantes.productos_TA.Insert(tbNombre.Text, cbGrupo.Text);
+                        Constantes.preciosMayor_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text), (Double)nMayor.Value);
+                        Constantes.preciosVenta_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text), (Double)nTienda.Value);
+                        MessageBox.Show("Producto agregado correctamente");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Debe rellenar correctamente los campos");
+                    }
+                }
+                  
                 //MessageBox.Show(Constantes.productos_TA.GetCodProducto(tbNombre.Text) + " " + nMayor.Value);
             }
             else
@@ -173,7 +192,7 @@ namespace GarTor
 
         public bool verificar(string nombre)
         {
-            if (Constantes.productos_TA.Verificacion(nombre) == 0)
+            if (Constantes.productos_TA.Verificacion(nombre)==0)
             {
                 return true;
             }

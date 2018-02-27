@@ -50,6 +50,27 @@
     <ApplicationIcon>Resources\tarta-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>dll\itextsharp.xfaworker-dll-5.5.10\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>dll\itextsharp.xfaworker-dll-5.5.10\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.licensekey">
+      <HintPath>dll\itextsharp.xfaworker-dll-5.5.10\itextsharp.licensekey.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xfaworker">
+      <HintPath>dll\itextsharp.xfaworker-dll-5.5.10\itextsharp.xfaworker.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker">
+      <HintPath>dll\itextsharp.xfaworker-dll-5.5.10\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="Jint">
+      <HintPath>dll\itextsharp.xfaworker-dll-5.5.10\Jint.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>dll\itextsharp.xfaworker-dll-5.5.10\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
     </Reference>

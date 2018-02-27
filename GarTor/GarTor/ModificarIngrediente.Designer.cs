@@ -88,6 +88,7 @@
             // 
             // cbMedidas
             // 
+            this.cbMedidas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMedidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMedidas.FormattingEnabled = true;
             this.cbMedidas.Items.AddRange(new object[] {
@@ -164,6 +165,7 @@
             // 
             // cbProveedores
             // 
+            this.cbProveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProveedores.FormattingEnabled = true;
             this.cbProveedores.Location = new System.Drawing.Point(755, 30);
@@ -173,6 +175,7 @@
             // 
             // cbIngrediente
             // 
+            this.cbIngrediente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbIngrediente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIngrediente.FormattingEnabled = true;
             this.cbIngrediente.Location = new System.Drawing.Point(175, 29);

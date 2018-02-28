@@ -17,7 +17,7 @@
     <Shape ID="DesignTable:Productos" ZOrder="12" X="70" Y="70" Height="172" Width="203" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:VentaProductos" ZOrder="11" X="343" Y="1019" Height="153" Width="237" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:DetallePedidos" ZOrder="4" X="320" Y="541" Height="191" Width="231" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
-    <Shape ID="DesignTable:DetalleFacMayor" ZOrder="2" X="341" Y="69" Height="191" Width="242" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
+    <Shape ID="DesignTable:DetalleFacMayor" ZOrder="2" X="342" Y="47" Height="191" Width="242" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:FK_FacturasMayor_Cod_Cli" ZOrder="10" LineWidth="11">
@@ -120,11 +120,11 @@
       <RoutePoints>
         <Point>
           <X>655</X>
-          <Y>103</Y>
+          <Y>127</Y>
         </Point>
         <Point>
-          <X>583</X>
-          <Y>103</Y>
+          <X>584</X>
+          <Y>127</Y>
         </Point>
       </RoutePoints>
     </Connector>

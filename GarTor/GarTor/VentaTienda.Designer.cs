@@ -50,6 +50,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btAtrasVTienda = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.lCategoria = new System.Windows.Forms.Label();
+            this.lFlecha = new System.Windows.Forms.Label();
             this.panelProdVentaTienda.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
@@ -192,6 +194,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.lFlecha);
+            this.panel4.Controls.Add(this.lCategoria);
             this.panel4.Controls.Add(this.btEstrella);
             this.panel4.Controls.Add(this.lbTitulo);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -294,6 +298,27 @@
             this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
             this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
             // 
+            // lCategoria
+            // 
+            this.lCategoria.AutoSize = true;
+            this.lCategoria.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lCategoria.ForeColor = System.Drawing.Color.Red;
+            this.lCategoria.Location = new System.Drawing.Point(265, 11);
+            this.lCategoria.Name = "lCategoria";
+            this.lCategoria.Size = new System.Drawing.Size(0, 23);
+            this.lCategoria.TabIndex = 2;
+            // 
+            // lFlecha
+            // 
+            this.lFlecha.AutoSize = true;
+            this.lFlecha.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lFlecha.ForeColor = System.Drawing.Color.Red;
+            this.lFlecha.Location = new System.Drawing.Point(222, 9);
+            this.lFlecha.Name = "lFlecha";
+            this.lFlecha.Size = new System.Drawing.Size(37, 23);
+            this.lFlecha.TabIndex = 3;
+            this.lFlecha.Text = "-->";
+            // 
             // VentaTienda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,5 +367,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lbTitulo;
         private System.Windows.Forms.Button btEstrella;
+        private System.Windows.Forms.Label lFlecha;
+        private System.Windows.Forms.Label lCategoria;
     }
 }

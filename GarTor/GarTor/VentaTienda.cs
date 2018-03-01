@@ -22,6 +22,7 @@ namespace GarTor
         public VentaTienda()
         {
             InitializeComponent();
+            lFlecha.Visible = false;
             Total();
         }
 
@@ -67,8 +68,8 @@ namespace GarTor
                 int num_detalle = 1;
                 int cod_Factura=0;
                 float cantidad = 0;
-                int cod_Precio = 0;
-                int cod_Prod = 0;
+                float precio = 0.00f;
+                string articulo = "";
 
                 Constantes.pedidos_TA.Insert(num_Pedido, fecha_dia);
                 cod_Pedido = Convert.ToInt32(Constantes.pedidos_TA.getCodigoPedido(num_Pedido, fecha_dia));//Cod pedido introducido
@@ -79,64 +80,37 @@ namespace GarTor
                 cod_Factura = Convert.ToInt32(Constantes.factVenta_TA.getCodigoFactura(cod_Pedido));
                 foreach (DataGridViewRow row in cesta.Rows)
                 {
-                    if (row.Cells[Constantes.COLUMNA_NOMBRE].Equals("Descuento"))
-                    {
-                        cantidad = Convert.ToInt32(row.Cells[Constantes.COLUMNA_UNIDADES]);
-                        cod_Prod = 999;
-                        cod_Precio = 999;
-                    }
-                    else if (row.Cells[Constantes.COLUMNA_NOMBRE].Equals("Extra"))
-                    {
-                        cantidad = Convert.ToInt32(row.Cells[Constantes.COLUMNA_UNIDADES]);
-                        cod_Prod = 999;
-                        cod_Precio = 999;
-                        //SEGUIR AQUI
-                        //
-                        //
-                        //
-                    }
-                    else
-                    {
+                  
                         cantidad = Convert.ToSingle(row.Cells[Constantes.COLUMNA_UNIDADES].Value);
-                        cod_Prod = Convert.ToInt32(Constantes.productos_TA.GetCodProducto(Convert.ToString(row.Cells[Constantes.COLUMNA_NOMBRE].Value)));
-                        cod_Precio = Convert.ToInt32(Constantes.preciosVenta_TA.getCodPrecioVenta(cod_Prod));
-                    }
-                    Constantes.detaPedidosVenta_TA.Insert(cod_Factura, num_detalle, cantidad, cod_Precio, cod_Prod);
+                        articulo = Convert.ToString(row.Cells[Constantes.COLUMNA_NOMBRE].Value);
+                        precio = Convert.ToSingle(row.Cells[Constantes.COLUMNA_PRECIO].Value);
+                  
+                    Constantes.detaPedidosVenta_TA.Insert(cod_Factura, num_detalle, cantidad,precio, articulo);
                     num_detalle += 1;
                 }
-                DataTable compra = Constantes.detaPedidosVenta_TA.GetDetalleDeFactura(cod_Factura);
+                DataTable compra = Constantes.detaPedidosVenta_TA.GetDetallePedido(cod_Factura);
                 String CadenaCompra = "";
                 float total_factura = 0.00f;
 
                 foreach (DataRow row in compra.Rows)
                 {
                     float total = 0.00f;
-                    string nom_Producto = "";
-                    if (row[Constantes.COLUMNA_NOMBRE].Equals("Descuento"))
-                    {
-                        nom_Producto = "Descuento";
-                    }
-                    else if (row[Constantes.COLUMNA_NOMBRE].Equals("Extra"))
-                    {
-                        nom_Producto = "Extra";
-                    }
-                    else
-                    {
-                        nom_Producto = Constantes.productos_TA.GetNombreProducto(Convert.ToInt32(row["Cod_Producto"]));
-                    }
-                    int unidades = Convert.ToInt32(row["Cantidad"]);
-                    float precio = Convert.ToSingle(Constantes.preciosVenta_TA.GetPrecioVenta(Convert.ToInt32( row["Cod_Precios_Venta"])));
+                   
+                    string nom_Producto = Convert.ToString(row["Articulo"]);
                     
-                    total = precio * (Convert.ToSingle(unidades));
+                    int unidades = Convert.ToInt32(row["Cantidad"]);
+                    float precio_detalle = Convert.ToSingle( row["Precio"]);
+                    
+                    total = precio_detalle * (Convert.ToSingle(unidades));
                     
                     //Evaluamos que el nombre del producto sea mayor que 28 caracteres para acortarlo en la factura
                     if (nom_Producto.Length > 28)
                     {
-                        CadenaCompra += String.Format("{0,-28}{1,8}{2,8}{3,12}\r\n", nom_Producto.Substring(0, 28), unidades, precio + " €", total.ToString("#,##0.##") + " €") + "\r\n"; //Para aplicar formato de columnas
+                        CadenaCompra += String.Format("{0,-28}{1,8}{2,8}{3,12}\r\n", nom_Producto.Substring(0, 28), unidades, precio_detalle + " €", total.ToString("#,##0.##") + " €") + "\r\n"; //Para aplicar formato de columnas
                     }
                     else
                     {
-                        CadenaCompra += String.Format("{0,-28}{1,8}{2,8}{3,12}\r\n", nom_Producto, unidades, precio + " €", total.ToString("#,##0.##") + " €") + "\r\n"; //Para aplicar formato de columnas
+                        CadenaCompra += String.Format("{0,-28}{1,8}{2,8}{3,12}\r\n", nom_Producto, unidades, precio_detalle + " €", total.ToString("#,##0.##") + " €") + "\r\n"; //Para aplicar formato de columnas
                     }
                     total_factura += total;
                 }
@@ -163,6 +137,8 @@ namespace GarTor
                 this.listView1.Items.Clear();
                 this.imageList1.Images.Clear();
                 btAtrasVTienda.Visible = false;
+                lFlecha.Visible = false;
+                lCategoria.Text = "";
                 cargarListaVenta();
                 cesta.Rows.Clear();
                 listaCategoria = true;
@@ -237,6 +213,8 @@ namespace GarTor
         {
             btAtrasVTienda.Visible = false;
             listaCategoria = true;
+            lFlecha.Visible = false;
+            lCategoria.Text = "";
 
             DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
             int j = 0;
@@ -277,6 +255,7 @@ namespace GarTor
                 foreach (int index in seleccionado)
                 {
                     DirectoryInfo dir = new DirectoryInfo(Constantes.PRODUCTOS_RUTA + "/" + this.listView1.Items[index].Text);
+                    lCategoria.Text = this.listView1.Items[index].Text.ToString();
                     int j = 0;
                     this.listView1.Items.Clear();
                     this.imageList1.Images.Clear();
@@ -298,15 +277,21 @@ namespace GarTor
                             Console.WriteLine("No es un archivo de imagen");
                         }
                         this.listView1.LargeImageList = this.imageList1;
+                        lFlecha.Visible = true;
+                        
                     }
+                   
                 }
                 btAtrasVTienda.Visible = true;
                 listaCategoria = false;
+                
             }
             else
             {
                 try
                 {
+                    
+
                     if (!introducidoCantidad)
                     {
                         Intro_Peso_UD panel1 = new Intro_Peso_UD();
@@ -326,7 +311,8 @@ namespace GarTor
                             cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = this.listView1.Items[index].Text;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = Constantes.PESO_UD_PRODUCTO;
-                            if (this.listView1.Items[index].Text.Equals("Suplementos"))
+                           
+                            if (lCategoria.Text.Equals("Suplementos"))
                             {
                                 cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.suplemento_TA.getPreSupleNombre(this.listView1.Items[index].Text);
                             }

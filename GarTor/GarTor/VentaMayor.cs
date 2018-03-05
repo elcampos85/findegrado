@@ -20,6 +20,7 @@ namespace GarTor
         public VentaMayor()
         {
             InitializeComponent();
+            lFlecha.Visible = false;
             Total();
         }
 
@@ -72,6 +73,7 @@ namespace GarTor
             // Escribimos el encabezamiento en el documento
             doc.Add(new Paragraph("Factura"));
             doc.Add(Chunk.NEWLINE);
+            //doc.Add(new Paragraph(cbClientesMayor.SelectedValue));
 
             // Creamos una tabla 
             PdfPTable tblPrueba = new PdfPTable(3);
@@ -136,6 +138,8 @@ namespace GarTor
                 this.listView1.Items.Clear();
                 this.imageList1.Images.Clear();
                 btAtrasVTienda.Visible = false;
+                lFlecha.Visible = false;
+                lCategoria.Text = "";
                 cargarListaVenta();
                 cesta.Rows.Clear();
                 listaCategoria = true;
@@ -204,12 +208,17 @@ namespace GarTor
         private void VentaTienda_Load(object sender, EventArgs e)
         {
             cargarListaVenta();
+            cbClientesMayor.DisplayMember = "Nombre_Cliente";
+            cbClientesMayor.ValueMember = "Cod_Cliente";
+            cbClientesMayor.DataSource = Constantes.clientesMayor_TA.GetData();
         }
 
         private void volverACategoria(object sender, EventArgs e)
         {
             btAtrasVTienda.Visible = false;
             listaCategoria = true;
+            lFlecha.Visible = false;
+            lCategoria.Text = "";
 
             DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
             int j = 0;
@@ -250,6 +259,7 @@ namespace GarTor
                 foreach (int index in seleccionado)
                 {
                     DirectoryInfo dir = new DirectoryInfo(Constantes.PRODUCTOS_RUTA + "/" + this.listView1.Items[index].Text);
+                    lCategoria.Text = this.listView1.Items[index].Text.ToString();
                     int j = 0;
                     this.listView1.Items.Clear();
                     this.imageList1.Images.Clear();
@@ -271,6 +281,7 @@ namespace GarTor
                             Console.WriteLine("No es un archivo de imagen");
                         }
                         this.listView1.LargeImageList = this.imageList1;
+                        lFlecha.Visible = true;
                     }
                 }
                 btAtrasVTienda.Visible = true;
@@ -299,7 +310,14 @@ namespace GarTor
                             cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = this.listView1.Items[index].Text;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = Constantes.PESO_UD_PRODUCTO;
-                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.preciosMayor_TA.getPrecioMayor((int)Constantes.productos_TA.GetCodProducto(this.listView1.Items[index].Text));
+                            if (lCategoria.Text.Equals("Suplementos"))
+                            {
+                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.suplemento_TA.getPreSupleNombre(this.listView1.Items[index].Text);
+                            }
+                            else
+                            {
+                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.preciosVenta_TA.GetPrecioVenta((int)Constantes.productos_TA.GetCodProducto(this.listView1.Items[index].Text));
+                            }
                             cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
                             Total();
                         }

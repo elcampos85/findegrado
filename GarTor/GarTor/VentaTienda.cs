@@ -311,7 +311,6 @@ namespace GarTor
                             cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = this.listView1.Items[index].Text;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = Constantes.PESO_UD_PRODUCTO;
-                           
                             if (lCategoria.Text.Equals("Suplementos"))
                             {
                                 cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.suplemento_TA.getPreSupleNombre(this.listView1.Items[index].Text);

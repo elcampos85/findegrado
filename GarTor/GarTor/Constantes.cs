@@ -21,6 +21,7 @@ namespace GarTor
         public static DSProductosTableAdapters.PedidosTableAdapter pedidos_TA = new DSProductosTableAdapters.PedidosTableAdapter();
         public static DSProductosTableAdapters.FacturasVentaTableAdapter factVenta_TA = new DSProductosTableAdapters.FacturasVentaTableAdapter();
         public static DSProductosTableAdapters.DetallePedidosTableAdapter detaPedidosVenta_TA = new DSProductosTableAdapters.DetallePedidosTableAdapter();
+        public static DSProductosTableAdapters.ClientesMayorTableAdapter clientesMayor_TA = new DSProductosTableAdapters.ClientesMayorTableAdapter();
         #endregion
 
         #region DS_DATASET1

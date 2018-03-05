@@ -172,6 +172,7 @@
             // tbNombre
             // 
             this.tbNombre.Location = new System.Drawing.Point(122, 26);
+            this.tbNombre.MaxLength = 50;
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.Size = new System.Drawing.Size(439, 20);
             this.tbNombre.TabIndex = 6;
@@ -303,7 +304,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(9, 673);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 16);
+            this.label2.Size = new System.Drawing.Size(103, 16);
             this.label2.TabIndex = 17;
             this.label2.Text = "Precio Mayor";
             // 
@@ -314,7 +315,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(243, 673);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 16);
+            this.label3.Size = new System.Drawing.Size(108, 16);
             this.label3.TabIndex = 18;
             this.label3.Text = "Precio Tienda";
             // 

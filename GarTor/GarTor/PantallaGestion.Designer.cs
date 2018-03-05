@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaGestion));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.preciosProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.añadirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingredientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.añadirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,24 +69,10 @@
             // 
             this.preciosProveedoresToolStripMenuItem.Checked = true;
             this.preciosProveedoresToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.preciosProveedoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.añadirToolStripMenuItem,
-            this.modificarToolStripMenuItem});
             this.preciosProveedoresToolStripMenuItem.Name = "preciosProveedoresToolStripMenuItem";
             this.preciosProveedoresToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.preciosProveedoresToolStripMenuItem.Text = "Proveedores";
-            // 
-            // añadirToolStripMenuItem
-            // 
-            this.añadirToolStripMenuItem.Name = "añadirToolStripMenuItem";
-            this.añadirToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.añadirToolStripMenuItem.Text = "Añadir";
-            // 
-            // modificarToolStripMenuItem
-            // 
-            this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.modificarToolStripMenuItem.Text = "Modificar";
+            this.preciosProveedoresToolStripMenuItem.Click += new System.EventHandler(this.preciosProveedoresToolStripMenuItem_Click);
             // 
             // ingredientesToolStripMenuItem
             // 
@@ -245,8 +229,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem preciosProveedoresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem añadirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
         private System.Windows.Forms.StatusStrip ssEstado;
         private System.Windows.Forms.ToolStripStatusLabel cierre;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;

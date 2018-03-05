@@ -19,7 +19,7 @@ namespace GarTor
 
         private void Agregar_Click(object sender, EventArgs e)
         {
-            if (verificar(tbNombre.Text))
+            if ((tbNombre.Text==null) && verificar(tbNombre.Text))
             {
                 Constantes.proveedores_TA.Insert(tbNombre.Text);
                 MessageBox.Show("Proveedor agregado correctamente");

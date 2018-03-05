@@ -51,6 +51,7 @@
             // 
             this.tbNuevoNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNuevoNombre.Location = new System.Drawing.Point(185, 74);
+            this.tbNuevoNombre.MaxLength = 50;
             this.tbNuevoNombre.Name = "tbNuevoNombre";
             this.tbNuevoNombre.Size = new System.Drawing.Size(491, 24);
             this.tbNuevoNombre.TabIndex = 37;

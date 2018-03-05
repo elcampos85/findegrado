@@ -50,6 +50,7 @@
             this.tbUser.AcceptsTab = true;
             this.tbUser.BackColor = System.Drawing.SystemColors.Window;
             this.tbUser.Location = new System.Drawing.Point(107, 57);
+            this.tbUser.MaxLength = 50;
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(119, 20);
             this.tbUser.TabIndex = 1;
@@ -58,7 +59,7 @@
             // 
             this.tbPass.AcceptsTab = true;
             this.tbPass.Location = new System.Drawing.Point(107, 95);
-            this.tbPass.MaxLength = 16;
+            this.tbPass.MaxLength = 50;
             this.tbPass.Name = "tbPass";
             this.tbPass.PasswordChar = '★';
             this.tbPass.Size = new System.Drawing.Size(119, 20);

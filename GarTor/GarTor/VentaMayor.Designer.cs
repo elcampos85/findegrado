@@ -205,10 +205,11 @@
             // cbClientesMayor
             // 
             this.cbClientesMayor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbClientesMayor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbClientesMayor.FormattingEnabled = true;
-            this.cbClientesMayor.Location = new System.Drawing.Point(833, 9);
+            this.cbClientesMayor.Location = new System.Drawing.Point(766, 6);
             this.cbClientesMayor.Name = "cbClientesMayor";
-            this.cbClientesMayor.Size = new System.Drawing.Size(121, 21);
+            this.cbClientesMayor.Size = new System.Drawing.Size(188, 28);
             this.cbClientesMayor.TabIndex = 4;
             // 
             // lFlecha
@@ -339,7 +340,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentaMayor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.VentaTienda_Load);
+            this.Load += new System.EventHandler(this.VentaMayor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).EndInit();
             this.panelProdVentaTienda.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

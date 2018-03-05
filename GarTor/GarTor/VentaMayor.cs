@@ -67,10 +67,21 @@ namespace GarTor
             iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Constantes.MAIN_RUTA + "/Logo.PNG");
             logo.ScaleAbsoluteWidth(100);
             logo.ScaleAbsoluteHeight(100);
+            logo.BorderWidth = 0;
 
-            doc.Add(logo);
+            PdfPCell texto = new PdfPCell(new Phrase("Pasteleria Marco" + "\r\nPaseo de los Jesuitas 18, Madrid" + "\r\nTelf. 91 463 99 82" + "\r\nN.I.F. 07487245D"));
+            texto.BorderWidth = 0;
+
+            PdfPTable tblEncab = new PdfPTable(2);
+            tblEncab.WidthPercentage = 100;
+
+            tblEncab.AddCell(logo);
+            tblEncab.AddCell(texto);
+
+            doc.Add(tblEncab);
 
             // Escribimos el encabezamiento en el documento
+            doc.Add(new Paragraph("Factura Nº: " + (Constantes.facturasMayor_TA.GetUltimaFactura() + 1)));
             doc.Add(new Paragraph("Fecha: " + System.DateTime.Now.ToString("dd - MM - yyyy")));
             doc.Add(new Paragraph("Cliente: " + Constantes.clientesMayor_TA.GetNomClienteMayor(Convert.ToInt32(cbClientesMayor.SelectedValue))));
             doc.Add(new Paragraph("CIF/NIF: " + Constantes.clientesMayor_TA.GetCifClienteMayor(Convert.ToInt32(cbClientesMayor.SelectedValue))));
@@ -153,10 +164,10 @@ namespace GarTor
                 cantidad = new PdfPCell(new Phrase(unidades.ToString(), _standardFont));
                 cantidad.BorderWidth = 0;
 
-                precio = new PdfPCell(new Phrase(precio_detalle.ToString() + "€", _standardFont));
+                precio = new PdfPCell(new Phrase(Math.Round(precio_detalle,2).ToString() + "€", _standardFont));
                 precio.BorderWidth = 0;
 
-                total = new PdfPCell(new Phrase(tot.ToString() + "€", _standardFont));
+                total = new PdfPCell(new Phrase(Math.Round(tot,2).ToString() + "€", _standardFont));
                 total.BorderWidth = 0;
 
                 total_factura += tot;
@@ -172,18 +183,43 @@ namespace GarTor
             vacio.BorderWidth = 0;
             vacio.BorderWidthTop = 0.75f;
 
-            PdfPCell toti = new PdfPCell(new Phrase("TOTAL:", _standardFont));
-            toti.BorderWidth = 0;
-            toti.BorderWidthTop = 0.75f;
+            PdfPCell subtotal = new PdfPCell(new Phrase("SUBTOTAL:", _standardFont));
+            subtotal.BorderWidth = 0;
+            subtotal.BorderWidthTop = 0.75f;
 
-            PdfPCell tota = new PdfPCell(new Phrase(total_factura + "€", _standardFont));
+            PdfPCell subtota = new PdfPCell(new Phrase(total_factura + "€", _standardFont));
+            subtota.BorderWidth = 0;
+            subtota.BorderWidthTop = 0.75f;
+
+            tblPrueba.AddCell(vacio);
+            tblPrueba.AddCell(vacio);
+            tblPrueba.AddCell(subtotal);
+            tblPrueba.AddCell(subtota);
+
+            PdfPCell vacio2 = new PdfPCell(new Phrase("", _standardFont));
+            vacio2.BorderWidth = 0;
+
+            PdfPCell iva = new PdfPCell(new Phrase("IVA 21%:", _standardFont));
+            iva.BorderWidth = 0;
+
+            PdfPCell ivapre = new PdfPCell(new Phrase(Math.Round(((total_factura * 21) / 100), 2) + "€", _standardFont));
+            ivapre.BorderWidth = 0;
+
+            tblPrueba.AddCell(vacio2);
+            tblPrueba.AddCell(vacio2);
+            tblPrueba.AddCell(iva);
+            tblPrueba.AddCell(ivapre);
+
+            PdfPCell tota = new PdfPCell(new Phrase("TOTAL:", _standardFont));
             tota.BorderWidth = 0;
-            tota.BorderWidthTop = 0.75f;
 
-            tblPrueba.AddCell(vacio);
-            tblPrueba.AddCell(vacio);
-            tblPrueba.AddCell(toti);
+            PdfPCell totaliva = new PdfPCell(new Phrase(Math.Round(((total_factura * 21) / 100), 2) + total_factura + "€", _standardFont));
+            totaliva.BorderWidth = 0;
+
+            tblPrueba.AddCell(vacio2);
+            tblPrueba.AddCell(vacio2);
             tblPrueba.AddCell(tota);
+            tblPrueba.AddCell(totaliva);
 
             // Finalmente, añadimos la tabla al documento PDF y cerramos el documento
             doc.Add(tblPrueba);
@@ -278,7 +314,7 @@ namespace GarTor
             }
         }
 
-        private void VentaTienda_Load(object sender, EventArgs e)
+        private void VentaMayor_Load(object sender, EventArgs e)
         {
             cargarListaVenta();
             cbClientesMayor.DisplayMember = "Nombre_Cliente";
@@ -389,7 +425,7 @@ namespace GarTor
                             }
                             else
                             {
-                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.preciosVenta_TA.GetPrecioVenta((int)Constantes.productos_TA.GetCodProducto(this.listView1.Items[index].Text));
+                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.preciosMayor_TA.getPrecioMayor((int)Constantes.productos_TA.GetCodProducto(this.listView1.Items[index].Text));
                             }
                             cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
                             Total();

@@ -53,6 +53,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btAtrasVTienda = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.cbIVA = new System.Windows.Forms.ComboBox();
+            this.lIVA = new System.Windows.Forms.Label();
+            this.lporcentaje = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.panelProdVentaTienda.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -191,6 +194,9 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.lporcentaje);
+            this.panel4.Controls.Add(this.lIVA);
+            this.panel4.Controls.Add(this.cbIVA);
             this.panel4.Controls.Add(this.cbClientesMayor);
             this.panel4.Controls.Add(this.lFlecha);
             this.panel4.Controls.Add(this.lCategoria);
@@ -327,6 +333,42 @@
             this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
             this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
             // 
+            // cbIVA
+            // 
+            this.cbIVA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbIVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIVA.FormattingEnabled = true;
+            this.cbIVA.Items.AddRange(new object[] {
+            "0",
+            "4",
+            "10",
+            "21"});
+            this.cbIVA.Location = new System.Drawing.Point(652, 6);
+            this.cbIVA.Name = "cbIVA";
+            this.cbIVA.Size = new System.Drawing.Size(81, 28);
+            this.cbIVA.TabIndex = 5;
+            this.cbIVA.SelectedIndexChanged += new System.EventHandler(this.ivaSeleccionado);
+            // 
+            // lIVA
+            // 
+            this.lIVA.AutoSize = true;
+            this.lIVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lIVA.Location = new System.Drawing.Point(610, 9);
+            this.lIVA.Name = "lIVA";
+            this.lIVA.Size = new System.Drawing.Size(36, 20);
+            this.lIVA.TabIndex = 6;
+            this.lIVA.Text = "IVA";
+            // 
+            // lporcentaje
+            // 
+            this.lporcentaje.AutoSize = true;
+            this.lporcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lporcentaje.Location = new System.Drawing.Point(737, 10);
+            this.lporcentaje.Name = "lporcentaje";
+            this.lporcentaje.Size = new System.Drawing.Size(23, 20);
+            this.lporcentaje.TabIndex = 7;
+            this.lporcentaje.Text = "%";
+            // 
             // VentaMayor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,5 +420,8 @@
         private System.Windows.Forms.Button btEstrella;
         private System.Windows.Forms.Label lbTitulo;
         private System.Windows.Forms.ComboBox cbClientesMayor;
+        private System.Windows.Forms.ComboBox cbIVA;
+        private System.Windows.Forms.Label lporcentaje;
+        private System.Windows.Forms.Label lIVA;
     }
 }

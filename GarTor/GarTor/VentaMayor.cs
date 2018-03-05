@@ -17,6 +17,7 @@ namespace GarTor
     {
         private bool listaCategoria = true;
         private bool introducidoCantidad = false;
+        private string ivacb = "";
         public VentaMayor()
         {
             InitializeComponent();
@@ -199,10 +200,10 @@ namespace GarTor
             PdfPCell vacio2 = new PdfPCell(new Phrase("", _standardFont));
             vacio2.BorderWidth = 0;
 
-            PdfPCell iva = new PdfPCell(new Phrase("IVA 21%:", _standardFont));
+            PdfPCell iva = new PdfPCell(new Phrase("IVA " + ivacb + "%", _standardFont));
             iva.BorderWidth = 0;
 
-            PdfPCell ivapre = new PdfPCell(new Phrase(Math.Round(((total_factura * 21) / 100), 2) + "€", _standardFont));
+            PdfPCell ivapre = new PdfPCell(new Phrase(Math.Round(((total_factura * Convert.ToInt32(ivacb)) / 100), 2) + "€", _standardFont));
             ivapre.BorderWidth = 0;
 
             tblPrueba.AddCell(vacio2);
@@ -213,7 +214,7 @@ namespace GarTor
             PdfPCell tota = new PdfPCell(new Phrase("TOTAL:", _standardFont));
             tota.BorderWidth = 0;
 
-            PdfPCell totaliva = new PdfPCell(new Phrase(Math.Round(((total_factura * 21) / 100), 2) + total_factura + "€", _standardFont));
+            PdfPCell totaliva = new PdfPCell(new Phrase(Math.Round(((total_factura * Convert.ToInt32(ivacb)) / 100) + total_factura, 2) + "€", _standardFont));
             totaliva.BorderWidth = 0;
 
             tblPrueba.AddCell(vacio2);
@@ -475,6 +476,11 @@ namespace GarTor
                 Total();
             }
             Constantes.PRECIO_ESTRELLA = "0";
+        }
+
+        private void ivaSeleccionado(object sender, EventArgs e)
+        {
+            ivacb = cbIVA.SelectedValue.ToString();
         }
     }
 }

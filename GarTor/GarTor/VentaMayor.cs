@@ -321,6 +321,7 @@ namespace GarTor
             cbClientesMayor.DisplayMember = "Nombre_Cliente";
             cbClientesMayor.ValueMember = "Cod_Cliente";
             cbClientesMayor.DataSource = Constantes.clientesMayor_TA.GetData();
+            cbIVA.SelectedIndex = 0;
         }
 
         private void volverACategoria(object sender, EventArgs e)
@@ -480,7 +481,7 @@ namespace GarTor
 
         private void ivaSeleccionado(object sender, EventArgs e)
         {
-            ivacb = cbIVA.SelectedValue.ToString();
+            ivacb =  cbIVA.SelectedItem.ToString();
         }
     }
 }

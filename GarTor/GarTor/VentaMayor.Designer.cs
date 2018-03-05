@@ -41,25 +41,25 @@
             this.lPrecio = new System.Windows.Forms.Label();
             this.panelSeparadorVTienda = new System.Windows.Forms.Panel();
             this.panelToolboxVTienda = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.cbClientesMayor = new System.Windows.Forms.ComboBox();
+            this.lFlecha = new System.Windows.Forms.Label();
+            this.lCategoria = new System.Windows.Forms.Label();
+            this.btEstrella = new System.Windows.Forms.Button();
+            this.lbTitulo = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btEliminarCesta = new System.Windows.Forms.Button();
             this.Comprar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btAtrasVTienda = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lFlecha = new System.Windows.Forms.Label();
-            this.lCategoria = new System.Windows.Forms.Label();
-            this.btEstrella = new System.Windows.Forms.Button();
-            this.lbTitulo = new System.Windows.Forms.Label();
-            this.cbClientesMayor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
             this.panelProdVentaTienda.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelToolboxVTienda.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // cesta
@@ -189,6 +189,72 @@
             this.panelToolboxVTienda.Size = new System.Drawing.Size(1234, 42);
             this.panelToolboxVTienda.TabIndex = 1;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.cbClientesMayor);
+            this.panel4.Controls.Add(this.lFlecha);
+            this.panel4.Controls.Add(this.lCategoria);
+            this.panel4.Controls.Add(this.btEstrella);
+            this.panel4.Controls.Add(this.lbTitulo);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(63, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1022, 42);
+            this.panel4.TabIndex = 4;
+            // 
+            // cbClientesMayor
+            // 
+            this.cbClientesMayor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbClientesMayor.FormattingEnabled = true;
+            this.cbClientesMayor.Location = new System.Drawing.Point(833, 9);
+            this.cbClientesMayor.Name = "cbClientesMayor";
+            this.cbClientesMayor.Size = new System.Drawing.Size(121, 21);
+            this.cbClientesMayor.TabIndex = 4;
+            // 
+            // lFlecha
+            // 
+            this.lFlecha.AutoSize = true;
+            this.lFlecha.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lFlecha.ForeColor = System.Drawing.Color.Red;
+            this.lFlecha.Location = new System.Drawing.Point(222, 9);
+            this.lFlecha.Name = "lFlecha";
+            this.lFlecha.Size = new System.Drawing.Size(37, 23);
+            this.lFlecha.TabIndex = 3;
+            this.lFlecha.Text = "-->";
+            // 
+            // lCategoria
+            // 
+            this.lCategoria.AutoSize = true;
+            this.lCategoria.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lCategoria.ForeColor = System.Drawing.Color.Red;
+            this.lCategoria.Location = new System.Drawing.Point(265, 11);
+            this.lCategoria.Name = "lCategoria";
+            this.lCategoria.Size = new System.Drawing.Size(0, 23);
+            this.lCategoria.TabIndex = 2;
+            // 
+            // btEstrella
+            // 
+            this.btEstrella.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btEstrella.BackgroundImage = global::GarTor.Properties.Resources.Descuento;
+            this.btEstrella.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btEstrella.Location = new System.Drawing.Point(960, 3);
+            this.btEstrella.Name = "btEstrella";
+            this.btEstrella.Size = new System.Drawing.Size(42, 36);
+            this.btEstrella.TabIndex = 1;
+            this.btEstrella.UseVisualStyleBackColor = true;
+            this.btEstrella.Click += new System.EventHandler(this.descuentoExtra);
+            // 
+            // lbTitulo
+            // 
+            this.lbTitulo.AutoSize = true;
+            this.lbTitulo.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitulo.ForeColor = System.Drawing.Color.Red;
+            this.lbTitulo.Location = new System.Drawing.Point(6, 7);
+            this.lbTitulo.Name = "lbTitulo";
+            this.lbTitulo.Size = new System.Drawing.Size(208, 29);
+            this.lbTitulo.TabIndex = 0;
+            this.lbTitulo.Text = "VENTA MAYOR";
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btEliminarCesta);
@@ -260,71 +326,6 @@
             this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
             this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.cbClientesMayor);
-            this.panel4.Controls.Add(this.lFlecha);
-            this.panel4.Controls.Add(this.lCategoria);
-            this.panel4.Controls.Add(this.btEstrella);
-            this.panel4.Controls.Add(this.lbTitulo);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(63, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1022, 42);
-            this.panel4.TabIndex = 4;
-            // 
-            // lFlecha
-            // 
-            this.lFlecha.AutoSize = true;
-            this.lFlecha.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lFlecha.ForeColor = System.Drawing.Color.Red;
-            this.lFlecha.Location = new System.Drawing.Point(222, 9);
-            this.lFlecha.Name = "lFlecha";
-            this.lFlecha.Size = new System.Drawing.Size(37, 23);
-            this.lFlecha.TabIndex = 3;
-            this.lFlecha.Text = "-->";
-            // 
-            // lCategoria
-            // 
-            this.lCategoria.AutoSize = true;
-            this.lCategoria.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lCategoria.ForeColor = System.Drawing.Color.Red;
-            this.lCategoria.Location = new System.Drawing.Point(265, 11);
-            this.lCategoria.Name = "lCategoria";
-            this.lCategoria.Size = new System.Drawing.Size(0, 23);
-            this.lCategoria.TabIndex = 2;
-            // 
-            // btEstrella
-            // 
-            this.btEstrella.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btEstrella.BackgroundImage = global::GarTor.Properties.Resources.Descuento;
-            this.btEstrella.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btEstrella.Location = new System.Drawing.Point(960, 3);
-            this.btEstrella.Name = "btEstrella";
-            this.btEstrella.Size = new System.Drawing.Size(42, 36);
-            this.btEstrella.TabIndex = 1;
-            this.btEstrella.UseVisualStyleBackColor = true;
-            // 
-            // lbTitulo
-            // 
-            this.lbTitulo.AutoSize = true;
-            this.lbTitulo.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitulo.ForeColor = System.Drawing.Color.Red;
-            this.lbTitulo.Location = new System.Drawing.Point(6, 7);
-            this.lbTitulo.Name = "lbTitulo";
-            this.lbTitulo.Size = new System.Drawing.Size(208, 29);
-            this.lbTitulo.TabIndex = 0;
-            this.lbTitulo.Text = "VENTA MAYOR";
-            // 
-            // cbClientesMayor
-            // 
-            this.cbClientesMayor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbClientesMayor.FormattingEnabled = true;
-            this.cbClientesMayor.Location = new System.Drawing.Point(833, 9);
-            this.cbClientesMayor.Name = "cbClientesMayor";
-            this.cbClientesMayor.Size = new System.Drawing.Size(121, 21);
-            this.cbClientesMayor.TabIndex = 4;
-            // 
             // VentaMayor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,10 +345,10 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelToolboxVTienda.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

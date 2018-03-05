@@ -114,12 +114,6 @@ namespace GarTor
                     }
                     total_factura += total;
                 }
-                //
-                //
-                //NO FUNCIONAN LOS DESCUENTOS ROMPEN LA APLICACION
-                //
-                //
-                //
                 StreamWriter sw = new StreamWriter(factura);
                 texto = "FACTURA SIMPLIFICADA" +
                     "\r\nPasteleria MARCO" +
@@ -128,8 +122,9 @@ namespace GarTor
                     "\r\nN.I.F. 07487245D\r\n\r\n" +
                     String.Format("\r\n{0,-28}{1,8}{2,8}{3,12}\r\n", "Nombre Articulo", "Unidades", "Precio", "Total") + //Para aplicar formato de columnas
                     "\r\n" + CadenaCompra +
-                    "\r\n TOTAL DE LA COMPRA: " + total_factura + " €\r\n" +
-                    "\r\n" + "Factura: "+Constantes.factVenta_TA.getCodigoFactura(cod_Pedido).ToString();
+                    "\r\n TOTAL DE LA COMPRA: " + total_factura + " €\r\n"+
+                    "\r\n IVA incluido" +
+                    "\r\n Factura: " + Constantes.factVenta_TA.getCodigoFactura(cod_Pedido).ToString() ;
                 sw.WriteLine(texto);
                 sw.Close();
                 #endregion

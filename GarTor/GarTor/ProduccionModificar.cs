@@ -29,15 +29,8 @@ namespace GarTor
             stringConexion = ConfigurationManager.ConnectionStrings["GarTor.Properties.Settings.PasteleriaConnectionString"].ConnectionString;//Se crea la conexion de configuracion del proyecto para utilizar la base de datos
         }
 
-        private void ProduccionModificar_Load(object sender, EventArgs e)
+        private void rellenarCbTipo()
         {
-            cbTipo.DisplayMember = "Categoria_Producto";
-            cbTipo.ValueMember = "Categoria_Producto";
-
-            // cbGrupo.DataSource = producTA.GetCategoria();
-
-
-
             using (conexion = new SqlConnection(stringConexion))//Se crea la conexion a la base de datos y se realiza la consulta de las distintas categorias
             using (SqlDataAdapter adaptador = new SqlDataAdapter(Constantes.QUERY_CONSULTA_CATEGORIAS, conexion))//Se almacena el resultado en un adaptador
             {
@@ -45,6 +38,13 @@ namespace GarTor
                 adaptador.Fill(dt);//Rellenamos el DataTable con las filas de la consulta en una unica columna
                 cbTipo.DataSource = dt;
             }
+        }
+        private void ProduccionModificar_Load(object sender, EventArgs e)
+        {
+            cbTipo.DisplayMember = "Categoria_Producto";
+            cbTipo.ValueMember = "Categoria_Producto";
+
+            rellenarCbTipo();
 
             cbProducto.DisplayMember = "Nombre_Producto";
             cbProducto.ValueMember = "Nombre_Producto";
@@ -111,22 +111,22 @@ namespace GarTor
         {
             try
             {
-                if (verificar(tbNuevoNombre.Text))
+                string ruta = Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + cbProducto.SelectedValue + Constantes.EXTENSION;
+                if (verificar(tbNuevoNombre.Text) || File.Exists(ruta) || !File.Exists(ruta))
                 {
                     int codProd = Convert.ToInt32(Constantes.productos_TA.GetCodProducto(cbProducto.SelectedValue.ToString()));
-                    string path = Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + cbProducto.SelectedValue + Constantes.EXTENSION;
-                    MessageBox.Show(path);
-                   // imagen.Image.Dispose();
-                   // imagen.Image = null;
-                    File.Delete(path);
+                    
+                    File.Delete(ruta);
                     imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + tbNuevoNombre.Text + Constantes.EXTENSION, ImageFormat.Png);
 
                     Constantes.productos_TA.UpdateProducto(tbNuevoNombre.Text, cbTipo.Text,codProd);
                     Constantes.preciosMayor_TA.UpdatePreciosMayor((Double)precioMayor.Value,Convert.ToInt32(Constantes.preciosMayor_TA.getCodPrecioMayor(codProd)));
                     Constantes.preciosVenta_TA.UpdatePreciosVenta((Double)precioTienda.Value,Convert.ToInt32(Constantes.preciosVenta_TA.getCodPrecioVenta(codProd)));
-                    Constantes.preciosVenta_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNuevoNombre.Text), (Double)precioTienda.Value);
+                   
 
                     MessageBox.Show("Producto Modificado correctamente");
+                    cbProducto.DataSource = Constantes.productos_TA.GetProductosOrdenados();
+                    rellenarCbTipo();
                 }
                 else
                 {
@@ -136,6 +136,7 @@ namespace GarTor
             {
                 MessageBox.Show("Error al modificar un producto");
             }
+
             
         }
     }

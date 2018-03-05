@@ -109,10 +109,6 @@ namespace GarTor
             cbGrupo.DisplayMember = "Categoria_Producto";
             cbGrupo.ValueMember = "Categoria_Producto";
 
-            // cbGrupo.DataSource = producTA.GetCategoria();
-
-
-
             using (conexion = new SqlConnection(stringConexion))//Se crea la conexion a la base de datos y se realiza la consulta de las distintas categorias
             using (SqlDataAdapter adaptador = new SqlDataAdapter(Constantes.QUERY_CONSULTA_CATEGORIAS, conexion))//Se almacena el resultado en un adaptador
             {

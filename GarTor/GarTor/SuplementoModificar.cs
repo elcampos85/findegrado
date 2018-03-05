@@ -59,8 +59,8 @@ namespace GarTor
                     Constantes.suplemento_TA.UpdateSuplemento(nombreNuevo, Convert.ToDouble(precio), codSuplemento, nombre);
 
                     MessageBox.Show("Suplemento modificado correctamente");
-                    
-                    
+
+                    cbSuplemento.DataSource = Constantes.suplemento_TA.GetData();
                 }
                 else
                 {

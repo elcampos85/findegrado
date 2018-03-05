@@ -101,6 +101,12 @@
     <Compile Include="AñadirIngrediente.Designer.cs">
       <DependentUpon>AñadirIngrediente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClienteMayorAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClienteMayorAgregar.Designer.cs">
+      <DependentUpon>ClienteMayorAgregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Constantes.cs" />
     <Compile Include="DSIngredientes.cs">
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
@@ -248,6 +254,9 @@
     </Compile>
     <EmbeddedResource Include="AñadirIngrediente.resx">
       <DependentUpon>AñadirIngrediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClienteMayorAgregar.resx">
+      <DependentUpon>ClienteMayorAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultaDia.resx">
       <DependentUpon>ConsultaDia.cs</DependentUpon>

@@ -71,18 +71,16 @@ namespace GarTor
             doc.Add(logo);
 
             // Escribimos el encabezamiento en el documento
-            doc.Add(new Paragraph("Factura"));
+            doc.Add(new Paragraph("Fecha: " + System.DateTime.Now.ToString("dd - MM - yyyy")));
+            doc.Add(new Paragraph("Cliente: " + Constantes.clientesMayor_TA.GetNomClienteMayor(Convert.ToInt32(cbClientesMayor.SelectedValue))));
+            doc.Add(new Paragraph("CIF/NIF: " + Constantes.clientesMayor_TA.GetCifClienteMayor(Convert.ToInt32(cbClientesMayor.SelectedValue))));
             doc.Add(Chunk.NEWLINE);
-            //doc.Add(new Paragraph(cbClientesMayor.SelectedValue));
 
             // Creamos una tabla 
-            PdfPTable tblPrueba = new PdfPTable(3);
+            PdfPTable tblPrueba = new PdfPTable(4);
             tblPrueba.WidthPercentage = 100;
 
             // Configuramos el título de las columnas de la tabla
-            PdfPCell detalle = new PdfPCell(new Phrase("Detalle", _standardFont));
-            detalle.BorderWidth = 0;
-            detalle.BorderWidthBottom = 0.75f;
 
             PdfPCell nombre = new PdfPCell(new Phrase("Nombre Producto", _standardFont));
             nombre.BorderWidth = 0;
@@ -92,25 +90,100 @@ namespace GarTor
             cantidad.BorderWidth = 0;
             cantidad.BorderWidthBottom = 0.75f;
 
+            PdfPCell precio = new PdfPCell(new Phrase("Precio", _standardFont));
+            precio.BorderWidth = 0;
+            precio.BorderWidthBottom = 0.75f;
+
+            PdfPCell total = new PdfPCell(new Phrase("Total", _standardFont));
+            total.BorderWidth = 0;
+            total.BorderWidthBottom = 0.75f;
+
             // Añadimos las celdas a la tabla
-            tblPrueba.AddCell(detalle);
             tblPrueba.AddCell(nombre);
             tblPrueba.AddCell(cantidad);
+            tblPrueba.AddCell(precio);
+            tblPrueba.AddCell(total);
+
+            //Guardamos en la base de datos la factura
+            DateTime fecha_dia = DateTime.Now.Date;
+            DateTime fechaHora_dia = DateTime.Now;
+            int num_Pedido = Convert.ToInt32(Constantes.pedidosMayor_TA.getPedidosDia(fecha_dia));
+            int cod_Pedido = 0;
+            int num_detalle = 1;
+            int cod_Factura = 0;
+            float cant = 0;
+            float pre = 0.00f;
+            string articulo = "";
+
+            Constantes.pedidosMayor_TA.Insert(fecha_dia, num_Pedido, Convert.ToInt32(cbClientesMayor.SelectedValue));
+            cod_Pedido = Convert.ToInt32(Constantes.pedidosMayor_TA.getCodigoPedido(num_Pedido, fecha_dia));//Cod pedido introducido
+            Constantes.facturasMayor_TA.Insert(cod_Pedido, fechaHora_dia);
+
+
+
+            cod_Factura = Convert.ToInt32(Constantes.facturasMayor_TA.getCodigoFactura(cod_Pedido));
+            foreach (DataGridViewRow row in cesta.Rows)
+            {
+
+                cant = Convert.ToSingle(row.Cells[Constantes.COLUMNA_UNIDADES].Value);
+                articulo = Convert.ToString(row.Cells[Constantes.COLUMNA_NOMBRE].Value);
+                pre = Convert.ToSingle(row.Cells[Constantes.COLUMNA_PRECIO].Value);
+
+                Constantes.detalleFacMayor_TA.Insert(cod_Factura, num_detalle, cant, pre, articulo);
+                num_detalle += 1;
+            }
+            DataTable compra = Constantes.detalleFacMayor_TA.GetDetallePedido(cod_Factura);
+            float total_factura = 0.00f;
 
             // Llenamos la tabla con información
-            detalle = new PdfPCell(new Phrase("1", _standardFont));
-            detalle.BorderWidth = 0;
+            foreach (DataRow row in compra.Rows)
+            {
+                float tot = 0.00f;
 
-            nombre = new PdfPCell(new Phrase("Tortel", _standardFont));
-            nombre.BorderWidth = 0;
+                string nom_Producto = Convert.ToString(row["Articulo"]);
 
-            cantidad = new PdfPCell(new Phrase("10", _standardFont));
-            cantidad.BorderWidth = 0;
+                int unidades = Convert.ToInt32(row["Cantidad"]);
+                float precio_detalle = Convert.ToSingle(row["Precio"]);
 
-            // Añadimos las celdas a la tabla
-            tblPrueba.AddCell(detalle);
-            tblPrueba.AddCell(nombre);
-            tblPrueba.AddCell(cantidad);
+                tot = precio_detalle * (Convert.ToSingle(unidades));
+
+                nombre = new PdfPCell(new Phrase(nom_Producto, _standardFont));
+                nombre.BorderWidth = 0;
+
+                cantidad = new PdfPCell(new Phrase(unidades.ToString(), _standardFont));
+                cantidad.BorderWidth = 0;
+
+                precio = new PdfPCell(new Phrase(precio_detalle.ToString() + "€", _standardFont));
+                precio.BorderWidth = 0;
+
+                total = new PdfPCell(new Phrase(tot.ToString() + "€", _standardFont));
+                total.BorderWidth = 0;
+
+                total_factura += tot;
+
+                // Añadimos las celdas a la tabla
+                tblPrueba.AddCell(nombre);
+                tblPrueba.AddCell(cantidad);
+                tblPrueba.AddCell(precio);
+                tblPrueba.AddCell(total);
+
+            }
+            PdfPCell vacio = new PdfPCell(new Phrase("", _standardFont));
+            vacio.BorderWidth = 0;
+            vacio.BorderWidthTop = 0.75f;
+
+            PdfPCell toti = new PdfPCell(new Phrase("TOTAL:", _standardFont));
+            toti.BorderWidth = 0;
+            toti.BorderWidthTop = 0.75f;
+
+            PdfPCell tota = new PdfPCell(new Phrase(total_factura + "€", _standardFont));
+            tota.BorderWidth = 0;
+            tota.BorderWidthTop = 0.75f;
+
+            tblPrueba.AddCell(vacio);
+            tblPrueba.AddCell(vacio);
+            tblPrueba.AddCell(toti);
+            tblPrueba.AddCell(tota);
 
             // Finalmente, añadimos la tabla al documento PDF y cerramos el documento
             doc.Add(tblPrueba);

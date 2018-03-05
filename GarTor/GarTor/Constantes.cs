@@ -19,8 +19,11 @@ namespace GarTor
         public static DSProductosTableAdapters.PreciosVentaTableAdapter preciosVenta_TA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
         public static DSProductosTableAdapters.ProductosTableAdapter productos_TA = new DSProductosTableAdapters.ProductosTableAdapter();
         public static DSProductosTableAdapters.PedidosTableAdapter pedidos_TA = new DSProductosTableAdapters.PedidosTableAdapter();
-        public static DSProductosTableAdapters.FacturasVentaTableAdapter factVenta_TA = new DSProductosTableAdapters.FacturasVentaTableAdapter();
         public static DSProductosTableAdapters.DetallePedidosTableAdapter detaPedidosVenta_TA = new DSProductosTableAdapters.DetallePedidosTableAdapter();
+        public static DSProductosTableAdapters.FacturasVentaTableAdapter factVenta_TA = new DSProductosTableAdapters.FacturasVentaTableAdapter();
+        public static DSProductosTableAdapters.FacturasMayorTableAdapter facturasMayor_TA = new DSProductosTableAdapters.FacturasMayorTableAdapter();
+        public static DSProductosTableAdapters.PedidosMayorTableAdapter pedidosMayor_TA = new DSProductosTableAdapters.PedidosMayorTableAdapter();
+        public static DSProductosTableAdapters.DetalleFacMayorTableAdapter detalleFacMayor_TA = new DSProductosTableAdapters.DetalleFacMayorTableAdapter();
         public static DSProductosTableAdapters.ClientesMayorTableAdapter clientesMayor_TA = new DSProductosTableAdapters.ClientesMayorTableAdapter();
         #endregion
 

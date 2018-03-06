@@ -42,9 +42,9 @@
             this.miCalcularCosteProduccion = new System.Windows.Forms.ToolStripMenuItem();
             this.miGestion = new System.Windows.Forms.ToolStripMenuItem();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
+            this.tslbFechayHora = new System.Windows.Forms.ToolStripStatusLabel();
             this.pPanelContenedor = new System.Windows.Forms.Panel();
             this.timFechayHora = new System.Windows.Forms.Timer(this.components);
-            this.tslbFechayHora = new System.Windows.Forms.ToolStripStatusLabel();
             this.msMenu.SuspendLayout();
             this.ssEstado.SuspendLayout();
             this.SuspendLayout();
@@ -101,28 +101,28 @@
             // miBalanceDiario
             // 
             this.miBalanceDiario.Name = "miBalanceDiario";
-            this.miBalanceDiario.Size = new System.Drawing.Size(173, 22);
+            this.miBalanceDiario.Size = new System.Drawing.Size(163, 22);
             this.miBalanceDiario.Text = "Balance Diario";
             this.miBalanceDiario.Click += new System.EventHandler(this.miBalanceDiario_Click);
             // 
             // miConsultaDia
             // 
             this.miConsultaDia.Name = "miConsultaDia";
-            this.miConsultaDia.Size = new System.Drawing.Size(173, 22);
-            this.miConsultaDia.Text = "Consulta de un dia";
+            this.miConsultaDia.Size = new System.Drawing.Size(163, 22);
+            this.miConsultaDia.Text = "Consulta diaria";
             this.miConsultaDia.Click += new System.EventHandler(this.miConsultaDia_Click);
             // 
             // miBalanceMensual
             // 
             this.miBalanceMensual.Name = "miBalanceMensual";
-            this.miBalanceMensual.Size = new System.Drawing.Size(173, 22);
+            this.miBalanceMensual.Size = new System.Drawing.Size(163, 22);
             this.miBalanceMensual.Text = "Balance Mensual";
             this.miBalanceMensual.Click += new System.EventHandler(this.miBalanceMensual_Click);
             // 
             // miBalanceAnual
             // 
             this.miBalanceAnual.Name = "miBalanceAnual";
-            this.miBalanceAnual.Size = new System.Drawing.Size(173, 22);
+            this.miBalanceAnual.Size = new System.Drawing.Size(163, 22);
             this.miBalanceAnual.Text = "Balance Anual";
             this.miBalanceAnual.Click += new System.EventHandler(this.miBalanceAnual_Click);
             // 
@@ -150,6 +150,12 @@
             this.ssEstado.TabIndex = 1;
             this.ssEstado.Text = "statusStrip1";
             // 
+            // tslbFechayHora
+            // 
+            this.tslbFechayHora.BackColor = System.Drawing.Color.Transparent;
+            this.tslbFechayHora.Name = "tslbFechayHora";
+            this.tslbFechayHora.Size = new System.Drawing.Size(0, 17);
+            // 
             // pPanelContenedor
             // 
             this.pPanelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -168,12 +174,6 @@
             this.timFechayHora.Enabled = true;
             this.timFechayHora.Interval = 1000;
             this.timFechayHora.Tick += new System.EventHandler(this.mostrarHora);
-            // 
-            // tslbFechayHora
-            // 
-            this.tslbFechayHora.BackColor = System.Drawing.Color.Transparent;
-            this.tslbFechayHora.Name = "tslbFechayHora";
-            this.tslbFechayHora.Size = new System.Drawing.Size(0, 17);
             // 
             // Inicio
             // 

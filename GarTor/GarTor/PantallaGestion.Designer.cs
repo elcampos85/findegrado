@@ -162,14 +162,16 @@
             // añadirToolStripMenuItem3
             // 
             this.añadirToolStripMenuItem3.Name = "añadirToolStripMenuItem3";
-            this.añadirToolStripMenuItem3.Size = new System.Drawing.Size(125, 22);
+            this.añadirToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.añadirToolStripMenuItem3.Text = "Añadir";
+            this.añadirToolStripMenuItem3.Click += new System.EventHandler(this.añadirToolStripMenuItem3_Click);
             // 
             // modificarToolStripMenuItem4
             // 
             this.modificarToolStripMenuItem4.Name = "modificarToolStripMenuItem4";
-            this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(125, 22);
+            this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.modificarToolStripMenuItem4.Text = "Modificar";
+            this.modificarToolStripMenuItem4.Click += new System.EventHandler(this.modificarToolStripMenuItem4_Click);
             // 
             // ssEstado
             // 

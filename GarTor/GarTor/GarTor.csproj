@@ -101,11 +101,18 @@
     <Compile Include="AñadirIngrediente.Designer.cs">
       <DependentUpon>AñadirIngrediente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clases\Encriptacion.cs" />
     <Compile Include="ClienteMayorAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClienteMayorAgregar.Designer.cs">
       <DependentUpon>ClienteMayorAgregar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClienteMayorModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClienteMayorModificar.Designer.cs">
+      <DependentUpon>ClienteMayorModificar.cs</DependentUpon>
     </Compile>
     <Compile Include="Constantes.cs" />
     <Compile Include="DSIngredientes.cs">
@@ -257,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClienteMayorAgregar.resx">
       <DependentUpon>ClienteMayorAgregar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClienteMayorModificar.resx">
+      <DependentUpon>ClienteMayorModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultaDia.resx">
       <DependentUpon>ConsultaDia.cs</DependentUpon>

@@ -38,7 +38,7 @@ namespace GarTor
         /// <param name="e"></param>
         private void Eliminar(object sender, DataGridViewCellEventArgs e)
         {
-            if (cesta.CurrentCell.ColumnIndex == 0)
+            if (cesta.CurrentCell.ColumnIndex == 0)//Evaluamos que se haga click en la primera columna
             {
                 int num_fila = cesta.CurrentRow.Index;
                 DialogResult result;

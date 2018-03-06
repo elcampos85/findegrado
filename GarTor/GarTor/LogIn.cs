@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GarTor.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,14 +28,16 @@ namespace GarTor
         }
         private void Verificacion()
         {
-            string user = tbUser.Text.ToString();
-            string pass = tbPass.Text.ToString();
+            string user = Encriptacion.Encriptar(tbUser.Text.ToString());
+            string pass = Encriptacion.Encriptar(tbPass.Text.ToString());
 
             
+            
 
-            String a = Constantes.acceso_TA.GetUser(user);
+            string userBBDD =Convert.ToString(Constantes.acceso_TA.GetUser(user));
+            string passBBDD =Convert.ToString(Constantes.acceso_TA.GetPass(pass));
 
-            if (user.Equals(Constantes.acceso_TA.GetUser(user)) && pass.Equals(Constantes.acceso_TA.GetPass(pass)))
+            if (user.Equals(userBBDD) && pass.Equals(passBBDD))
             {
                 MessageBoxTemporal.Show("Usuario y contraseña correctos", "Acceso Permitido", 2, true);
                 this.Close();

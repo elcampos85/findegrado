@@ -147,7 +147,7 @@ namespace GarTor
         private void miCalcularCosteProduccion_Click(object sender, EventArgs e)
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
-            Produccion panel1 = new Produccion();
+            AgregarUsuario panel1 = new AgregarUsuario();
             panel1.TopLevel = false;
             panel1.FormBorderStyle = FormBorderStyle.None;
             panel1.Dock = DockStyle.Fill;

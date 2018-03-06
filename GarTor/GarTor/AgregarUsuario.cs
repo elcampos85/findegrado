@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GarTor.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,10 @@ namespace GarTor
 
         private void AgregarUsuarioNuevo(object sender, EventArgs e)
         {
-            Constantes.acceso_TA.Insert(tbUsuario.Text, tbPass.Text);
+            string user =Encriptacion.Encriptar(tbUsuario.Text);
+            string pass =Encriptacion.Encriptar(tbPass.Text);
+            MessageBox.Show(user+"   "+pass);
+            Constantes.acceso_TA.Insert(user, pass);
         }
     }
 }

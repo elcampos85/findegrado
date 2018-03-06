@@ -95,6 +95,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarUsuario.Designer.cs">
+      <DependentUpon>AgregarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="AñadirIngrediente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +258,9 @@
     <Compile Include="VentaTienda.Designer.cs">
       <DependentUpon>VentaTienda.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AgregarUsuario.resx">
+      <DependentUpon>AgregarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AñadirIngrediente.resx">
       <DependentUpon>AñadirIngrediente.cs</DependentUpon>
     </EmbeddedResource>

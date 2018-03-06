@@ -368,32 +368,41 @@ namespace GarTor
         /// <param name="e"></param>
         private void descuentoExtra(object sender, EventArgs e)
         {
-            DescuentoExtra panel1 = new DescuentoExtra();
-            panel1.MinimizeBox = false;
-            panel1.MaximizeBox = false;
-            panel1.ShowIcon = false;
-            panel1.ShowInTaskbar = false;
-            panel1.ShowDialog();
-            if (Constantes.PRECIO_ESTRELLA != null && Convert.ToDouble(Constantes.PRECIO_ESTRELLA) != 0)//Evaluamos que hayamos introducido un descuento o extra y que el precio no este vacio
+            try
             {
-                String concepto = "";
-                if(Convert.ToInt32(Constantes.PRECIO_ESTRELLA) < 0)//Si el precio es positivo sera un extra mientras que si es negativo sera un descuento
+                DescuentoExtra panel1 = new DescuentoExtra();
+                panel1.MinimizeBox = false;
+                panel1.MaximizeBox = false;
+                panel1.ShowIcon = false;
+                panel1.ShowInTaskbar = false;
+                panel1.ShowDialog();
+                if (Constantes.PRECIO_ESTRELLA != null && Convert.ToDouble(Constantes.PRECIO_ESTRELLA) != 0)//Evaluamos que hayamos introducido un descuento o extra y que el precio no este vacio
                 {
-                    concepto = "Descuento";
+                    String concepto = "";
+                    if (Convert.ToInt32(Constantes.PRECIO_ESTRELLA) < 0)//Si el precio es positivo sera un extra mientras que si es negativo sera un descuento
+                    {
+                        concepto = "Descuento";
+                    }
+                    else
+                    {
+                        concepto = "Extra";
+                    }
+                    cesta.Rows.Add(1);
+                    cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
+                    cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = concepto;
+                    cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = "1";
+                    cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = Convert.ToDouble(Constantes.PRECIO_ESTRELLA);
+                    cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
+                    Total();
                 }
-                else
-                {
-                    concepto = "Extra";
-                }
-                cesta.Rows.Add(1);
-                cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
-                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = concepto;
-                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = "1";
-                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = Convert.ToDouble(Constantes.PRECIO_ESTRELLA);
-                cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
-                Total();
+            }catch (Exception ex)
+            {
+                MessageBox.Show("No se admite ese precio y no se introdujo");
             }
-            Constantes.PRECIO_ESTRELLA = "0";//Volvemos a poner el precio a 0 para que no queden residuos
+            finally
+            {
+                Constantes.PRECIO_ESTRELLA = "0";//Volvemos a poner el precio a 0 para que no queden residuos
+            }
         }
     }    
 }

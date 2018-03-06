@@ -100,7 +100,7 @@
             // 
             this.miConsultaDia.Name = "miConsultaDia";
             this.miConsultaDia.Size = new System.Drawing.Size(163, 22);
-            this.miConsultaDia.Text = "Consulta diaria";
+            this.miConsultaDia.Text = "Consulta Diaria";
             this.miConsultaDia.Click += new System.EventHandler(this.miConsultaDia_Click);
             // 
             // miBalanceMensual

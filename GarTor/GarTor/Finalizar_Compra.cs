@@ -24,8 +24,6 @@ namespace GarTor
             lbImporte.Text = Constantes.IMPORTE + "€";
             lbEntregado.Text = "";
             lbCambio.Text = "";
-
-
         }
 
         private void finalizarCompra(object sender, EventArgs e)

@@ -30,8 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbNombre = new System.Windows.Forms.TextBox();
+            this.tbCif = new System.Windows.Forms.TextBox();
             this.Agregar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -57,23 +57,23 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "CIF/NIF: ";
             // 
-            // textBox1
+            // tbNombre
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(203, 46);
-            this.textBox1.MaxLength = 50;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(494, 24);
-            this.textBox1.TabIndex = 2;
+            this.tbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNombre.Location = new System.Drawing.Point(203, 46);
+            this.tbNombre.MaxLength = 50;
+            this.tbNombre.Name = "tbNombre";
+            this.tbNombre.Size = new System.Drawing.Size(494, 24);
+            this.tbNombre.TabIndex = 2;
             // 
-            // textBox2
+            // tbCif
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(203, 78);
-            this.textBox2.MaxLength = 9;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 24);
-            this.textBox2.TabIndex = 3;
+            this.tbCif.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCif.Location = new System.Drawing.Point(203, 78);
+            this.tbCif.MaxLength = 9;
+            this.tbCif.Name = "tbCif";
+            this.tbCif.Size = new System.Drawing.Size(125, 24);
+            this.tbCif.TabIndex = 3;
             // 
             // Agregar
             // 
@@ -84,6 +84,7 @@
             this.Agregar.TabIndex = 4;
             this.Agregar.Text = "Agregar";
             this.Agregar.UseVisualStyleBackColor = true;
+            this.Agregar.Click += new System.EventHandler(this.Agregar_Click);
             // 
             // ClienteMayorAgregar
             // 
@@ -92,8 +93,8 @@
             this.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
             this.ClientSize = new System.Drawing.Size(943, 510);
             this.Controls.Add(this.Agregar);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbCif);
+            this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ClienteMayorAgregar";
@@ -107,8 +108,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbNombre;
+        private System.Windows.Forms.TextBox tbCif;
         private System.Windows.Forms.Button Agregar;
     }
 }

@@ -39,6 +39,7 @@ namespace GarTor
                 cbTipo.DataSource = dt;
             }
         }
+
         private void ProduccionModificar_Load(object sender, EventArgs e)
         {
             cbTipo.DisplayMember = "Categoria_Producto";

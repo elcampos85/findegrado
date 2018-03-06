@@ -16,5 +16,17 @@ namespace GarTor
         {
             InitializeComponent();
         }
+
+        private void bBuscar_Click(object sender, EventArgs e)
+        {
+            if(dtDia.Value <= DateTime.Now)
+            {
+                MessageBox.Show("Menor o igual");
+            }
+            else
+            {
+                MessageBox.Show("Mayor");
+            }
+        }
     }
 }

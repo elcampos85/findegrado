@@ -206,7 +206,7 @@ namespace GarTor
 
         private void IngreGastos(object sender, EventArgs e)
         {
-
+            DateTime.Today.ToShortDateString();//Usarlo para la fecha de los gastos
         }
     }
 }

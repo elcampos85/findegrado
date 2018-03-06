@@ -210,7 +210,7 @@
             this.agregarUsuarioToolStripMenuItem.Name = "agregarUsuarioToolStripMenuItem";
             this.agregarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             this.agregarUsuarioToolStripMenuItem.Text = "Agregar Usuario";
-            this.agregarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.AgregarUsuario);
+            this.agregarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.AgregarUser);
             // 
             // PantallaGestion
             // 

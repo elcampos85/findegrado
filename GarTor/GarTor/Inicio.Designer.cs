@@ -35,16 +35,15 @@
             this.ventaEnTiendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miVentaMayor = new System.Windows.Forms.ToolStripMenuItem();
             this.contabilidadCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miBalanceDiario = new System.Windows.Forms.ToolStripMenuItem();
             this.miConsultaDia = new System.Windows.Forms.ToolStripMenuItem();
             this.miBalanceMensual = new System.Windows.Forms.ToolStripMenuItem();
             this.miBalanceAnual = new System.Windows.Forms.ToolStripMenuItem();
-            this.miCalcularCosteProduccion = new System.Windows.Forms.ToolStripMenuItem();
             this.miGestion = new System.Windows.Forms.ToolStripMenuItem();
             this.ssEstado = new System.Windows.Forms.StatusStrip();
+            this.tslbFechayHora = new System.Windows.Forms.ToolStripStatusLabel();
             this.pPanelContenedor = new System.Windows.Forms.Panel();
             this.timFechayHora = new System.Windows.Forms.Timer(this.components);
-            this.tslbFechayHora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.insertarGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenu.SuspendLayout();
             this.ssEstado.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +53,6 @@
             this.msMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ventaToolStripMenuItem,
             this.contabilidadCajaToolStripMenuItem,
-            this.miCalcularCosteProduccion,
             this.miGestion});
             this.msMenu.Location = new System.Drawing.Point(0, 0);
             this.msMenu.Name = "msMenu";
@@ -90,48 +88,34 @@
             // contabilidadCajaToolStripMenuItem
             // 
             this.contabilidadCajaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miBalanceDiario,
             this.miConsultaDia,
             this.miBalanceMensual,
-            this.miBalanceAnual});
+            this.miBalanceAnual,
+            this.insertarGastosToolStripMenuItem});
             this.contabilidadCajaToolStripMenuItem.Name = "contabilidadCajaToolStripMenuItem";
             this.contabilidadCajaToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
             this.contabilidadCajaToolStripMenuItem.Text = "Contabilidad/Caja";
             // 
-            // miBalanceDiario
-            // 
-            this.miBalanceDiario.Name = "miBalanceDiario";
-            this.miBalanceDiario.Size = new System.Drawing.Size(173, 22);
-            this.miBalanceDiario.Text = "Balance Diario";
-            this.miBalanceDiario.Click += new System.EventHandler(this.miBalanceDiario_Click);
-            // 
             // miConsultaDia
             // 
             this.miConsultaDia.Name = "miConsultaDia";
-            this.miConsultaDia.Size = new System.Drawing.Size(173, 22);
-            this.miConsultaDia.Text = "Consulta de un dia";
+            this.miConsultaDia.Size = new System.Drawing.Size(163, 22);
+            this.miConsultaDia.Text = "Consulta diaria";
             this.miConsultaDia.Click += new System.EventHandler(this.miConsultaDia_Click);
             // 
             // miBalanceMensual
             // 
             this.miBalanceMensual.Name = "miBalanceMensual";
-            this.miBalanceMensual.Size = new System.Drawing.Size(173, 22);
+            this.miBalanceMensual.Size = new System.Drawing.Size(163, 22);
             this.miBalanceMensual.Text = "Balance Mensual";
             this.miBalanceMensual.Click += new System.EventHandler(this.miBalanceMensual_Click);
             // 
             // miBalanceAnual
             // 
             this.miBalanceAnual.Name = "miBalanceAnual";
-            this.miBalanceAnual.Size = new System.Drawing.Size(173, 22);
+            this.miBalanceAnual.Size = new System.Drawing.Size(163, 22);
             this.miBalanceAnual.Text = "Balance Anual";
             this.miBalanceAnual.Click += new System.EventHandler(this.miBalanceAnual_Click);
-            // 
-            // miCalcularCosteProduccion
-            // 
-            this.miCalcularCosteProduccion.Name = "miCalcularCosteProduccion";
-            this.miCalcularCosteProduccion.Size = new System.Drawing.Size(159, 20);
-            this.miCalcularCosteProduccion.Text = "Calcular Coste Produccion";
-            this.miCalcularCosteProduccion.Click += new System.EventHandler(this.miCalcularCosteProduccion_Click);
             // 
             // miGestion
             // 
@@ -149,6 +133,12 @@
             this.ssEstado.Size = new System.Drawing.Size(1096, 22);
             this.ssEstado.TabIndex = 1;
             this.ssEstado.Text = "statusStrip1";
+            // 
+            // tslbFechayHora
+            // 
+            this.tslbFechayHora.BackColor = System.Drawing.Color.Transparent;
+            this.tslbFechayHora.Name = "tslbFechayHora";
+            this.tslbFechayHora.Size = new System.Drawing.Size(0, 17);
             // 
             // pPanelContenedor
             // 
@@ -169,11 +159,12 @@
             this.timFechayHora.Interval = 1000;
             this.timFechayHora.Tick += new System.EventHandler(this.mostrarHora);
             // 
-            // tslbFechayHora
+            // insertarGastosToolStripMenuItem
             // 
-            this.tslbFechayHora.BackColor = System.Drawing.Color.Transparent;
-            this.tslbFechayHora.Name = "tslbFechayHora";
-            this.tslbFechayHora.Size = new System.Drawing.Size(0, 17);
+            this.insertarGastosToolStripMenuItem.Name = "insertarGastosToolStripMenuItem";
+            this.insertarGastosToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.insertarGastosToolStripMenuItem.Text = "Insertar Gastos";
+            this.insertarGastosToolStripMenuItem.Click += new System.EventHandler(this.IngreGastos);
             // 
             // Inicio
             // 
@@ -208,16 +199,15 @@
         private System.Windows.Forms.ToolStripMenuItem ventaEnTiendaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem miVentaMayor;
         private System.Windows.Forms.ToolStripMenuItem contabilidadCajaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem miBalanceDiario;
         private System.Windows.Forms.ToolStripMenuItem miBalanceMensual;
         private System.Windows.Forms.ToolStripMenuItem miBalanceAnual;
-        private System.Windows.Forms.ToolStripMenuItem miCalcularCosteProduccion;
         private System.Windows.Forms.ToolStripMenuItem miGestion;
         private System.Windows.Forms.StatusStrip ssEstado;
         private System.Windows.Forms.Panel pPanelContenedor;
         private System.Windows.Forms.ToolStripMenuItem miConsultaDia;
         private System.Windows.Forms.Timer timFechayHora;
         private System.Windows.Forms.ToolStripStatusLabel tslbFechayHora;
+        private System.Windows.Forms.ToolStripMenuItem insertarGastosToolStripMenuItem;
     }
 }
 

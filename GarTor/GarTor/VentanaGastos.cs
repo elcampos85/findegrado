@@ -55,7 +55,7 @@ namespace GarTor
                     float gastos = Convert.ToSingle(Constantes.contabilidad_TA.getGastos(DateTime.Now));
                     Constantes.contabilidad_TA.UpdateGastos((gastos + Convert.ToSingle(tbGasto.Text.ToString())), id);
                     this.Close();
-                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ modificando el registro del dia " + DateTime.Today.ToShortDateString());
+                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ modificando el registro del dia " + DateTime.Today.ToShortDateString() + " con unos gastos actuales de " + (gastos + Convert.ToSingle(tbGasto.Text.ToString())).ToString() + "€");
                 }
             }
         }

@@ -245,6 +245,19 @@ namespace GarTor
                 //Se genera una factura con la compra realizada y la guarda en su carpeta correspondiente
                 facturaPDF();
 
+                float importeIVA = ((Convert.ToSingle(Constantes.IMPORTE) * Convert.ToInt32(ivacb)) / 100) + Convert.ToSingle(Constantes.IMPORTE);
+
+                if (Constantes.contabilidad_TA.getRegistros(DateTime.Today.ToShortDateString()) == 0)
+                {
+                    Constantes.contabilidad_TA.Insert(DateTime.Now.ToShortDateString(), 0, Math.Round(importeIVA, 2));
+                }
+                else
+                {
+                    int id = Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now.ToShortDateString()));
+                    float ingresos = Convert.ToSingle(Constantes.contabilidad_TA.getIngresos(DateTime.Now.ToShortDateString()));
+
+                    Constantes.contabilidad_TA.UpdateGastos(Convert.ToDouble(ingresos + Math.Round(importeIVA, 2)), id);
+                }
                 this.listView1.Items.Clear();
                 this.imageList1.Images.Clear();
                 btAtrasVTienda.Visible = false;

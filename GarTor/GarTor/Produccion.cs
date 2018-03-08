@@ -168,6 +168,7 @@ namespace GarTor
                         Constantes.productos_TA.Insert(tbNombre.Text, cbGrupo.Text);
                         Constantes.preciosMayor_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text), (Double)nMayor.Value);
                         Constantes.preciosVenta_TA.Insert((int)Constantes.productos_TA.GetCodProducto(tbNombre.Text), (Double)nTienda.Value);
+                       
                         MessageBox.Show("Producto agregado correctamente");
                     }
                     catch (Exception ex)

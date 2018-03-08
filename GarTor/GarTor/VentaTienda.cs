@@ -78,8 +78,8 @@ namespace GarTor
                 #region Generar Factura
                 string factura = @"C:\GarTor\Facturas\VentasTienda\Factura" + DateTime.Now.ToString("dd-MM-yyyy_H.mm.ss") + ".txt";
                 string texto = null;
-                DateTime fecha_dia = DateTime.Now.Date;
-                DateTime fechaHora_dia = DateTime.Now;
+                string fecha_dia = DateTime.Now.ToShortDateString();
+                string fechaHora_dia = DateTime.Now.ToString();
                 int num_Pedido = Convert.ToInt32(Constantes.pedidos_TA.getPedidosDia(fecha_dia));
                 int cod_Pedido = 0;
                 int num_detalle = 1;

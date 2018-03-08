@@ -117,8 +117,8 @@ namespace GarTor
             tblPrueba.AddCell(total);
 
             //Guardamos en la base de datos la factura
-            DateTime fecha_dia = DateTime.Now.Date;
-            DateTime fechaHora_dia = DateTime.Now;
+            string fecha_dia = DateTime.Now.ToShortDateString();
+            string fechaHora_dia = DateTime.Now.ToString();
             int num_Pedido = Convert.ToInt32(Constantes.pedidosMayor_TA.getPedidosDia(fecha_dia));
             int cod_Pedido = 0;
             int num_detalle = 1;

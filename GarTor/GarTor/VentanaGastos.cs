@@ -43,15 +43,19 @@ namespace GarTor
             }
             else
             {
-                if(Constantes.contabilidad_TA.getRegistros(DateTime.Today.ToShortDateString()) == 0)
+                if(Constantes.contabilidad_TA.getRegistros(Convert.ToDateTime(DateTime.Today.ToShortDateString())) == 0)
                 {
-                    Constantes.contabilidad_TA.Insert(DateTime.Now,Convert.ToDouble(tbGasto.Text),0);
+                    Constantes.contabilidad_TA.Insert(DateTime.Now,Convert.ToSingle(tbGasto.Text),0);
                     this.Close();
+                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ en un nuevo registro del dia " + DateTime.Today.ToShortDateString());
                 }
                 else
                 {
                     int id = Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now));
-                    Constantes.contabilidad_TA.UpdateGastos(Convert.ToDouble(tbGasto.Text), id);
+                    float gastos = Convert.ToSingle(Constantes.contabilidad_TA.getGastos(DateTime.Now));
+                    Constantes.contabilidad_TA.UpdateGastos((gastos + Convert.ToSingle(tbGasto.Text.ToString())), id);
+                    this.Close();
+                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ modificando el registro del dia " + DateTime.Today.ToShortDateString() + " con unos gastos actuales de " + (gastos + Convert.ToSingle(tbGasto.Text.ToString())).ToString() + "€");
                 }
             }
         }

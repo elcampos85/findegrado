@@ -2630,7 +2630,7 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT COUNT(*) FROM Contabilidad where Fecha = @fecha";
+            this._commandCollection[2].CommandText = "SELECT Gastos FROM Contabilidad where Fecha = @fecha";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -2862,7 +2862,7 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> getGastos(string fecha) {
+        public virtual object getGastos(string fecha) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             if ((fecha == null)) {
                 throw new global::System.ArgumentNullException("fecha");
@@ -2886,10 +2886,10 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
             }
             if (((returnValue == null) 
                         || (returnValue.GetType() == typeof(global::System.DBNull)))) {
-                return new global::System.Nullable<int>();
+                return null;
             }
             else {
-                return new global::System.Nullable<int>(((int)(returnValue)));
+                return ((object)(returnValue));
             }
         }
         

@@ -164,17 +164,15 @@ namespace GarTor
             int facturas = Convert.ToInt32(Constantes.factVenta_TA.UltimaFactura());
             float gastos = 0.00f;
             float ingresos =Convert.ToSingle(Constantes.IMPORTE);
+            ingresos =Convert.ToSingle(Math.Round(ingresos, 2));
             if (Convert.ToInt32(Constantes.contabilidad_TA.ComprobarFechaFactura(DateTime.Now.ToShortDateString())) == 0)
             {
-                Constantes.contabilidad_TA.Insert(DateTime.Now.ToShortDateString(), gastos, ingresos);
-                MessageBox.Show("Insertado");
+                Constantes.contabilidad_TA.Insert(DateTime.Now.ToShortDateString(), gastos, Math.Round(ingresos, 2));
             }
             else
             {
                 float actual_ingresos = Convert.ToSingle(Constantes.contabilidad_TA.getIngresos(DateTime.Now.ToShortDateString()));
-                MessageBox.Show("Actualizando " + actual_ingresos.ToString());
                 Constantes.contabilidad_TA.UpdateIngresos(Convert.ToDouble(ingresos + actual_ingresos), Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now.ToShortDateString())));
-               
             }
                 
         }

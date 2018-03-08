@@ -50,8 +50,10 @@
             this.dgvDatos.BackgroundColor = System.Drawing.Color.Green;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Location = new System.Drawing.Point(37, 109);
+            this.dgvDatos.MultiSelect = false;
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
+            this.dgvDatos.RowHeadersVisible = false;
             this.dgvDatos.Size = new System.Drawing.Size(839, 388);
             this.dgvDatos.TabIndex = 1;
             // 

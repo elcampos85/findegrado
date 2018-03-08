@@ -162,7 +162,7 @@ namespace GarTor
             float gastos = 0.00f;
             float ingresos = 0.00f;
 
-            if (Constantes.factVenta_TA.ComprobarFechaFactura(DateTime.Now)==0)
+            if (Constantes.factVenta_TA.ComprobarFechaFactura(DateTime.Now.ToShortDateString())==0)
             {
                 DataTable compra = Constantes.detaPedidosVenta_TA.GetDetallePedido(facturas);//Creamos un datatable con el detalle del pedido de la factura introducida para recorrerlo
                 

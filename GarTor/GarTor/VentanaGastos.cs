@@ -54,7 +54,9 @@ namespace GarTor
                 {
                     int id = Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now.ToShortDateString()));
                     float gastos = Convert.ToSingle(Constantes.contabilidad_TA.getGastos(DateTime.Now.ToShortDateString()));
-                    Constantes.contabilidad_TA.UpdateGastos((gastos + Convert.ToSingle(tbGasto.Text.ToString())), id);
+                    float nuevoGasto = Convert.ToSingle(tbGasto.Text);
+
+                    Constantes.contabilidad_TA.UpdateGastos(Convert.ToDouble(gastos+nuevoGasto), id);
                     this.Close();
                     MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ modificando el registro del dia " + DateTime.Today.ToShortDateString() + " con unos gastos actuales de " + (gastos + Convert.ToSingle(tbGasto.Text.ToString())).ToString() + "€");
                 }

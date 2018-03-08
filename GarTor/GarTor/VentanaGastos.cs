@@ -48,7 +48,7 @@ namespace GarTor
                 {
                     Constantes.contabilidad_TA.Insert(dia_actual, Convert.ToSingle(tbGasto.Text.ToString()),0);
                     this.Close();
-                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ en un nuevo registro del dia " + "0" + dia_actual);
+                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ en un nuevo registro del dia "  + dia_actual);
                 }
                 else
                 {
@@ -58,7 +58,7 @@ namespace GarTor
 
                     Constantes.contabilidad_TA.UpdateGastos(Convert.ToDouble(gastos+nuevoGasto), id);
                     this.Close();
-                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ modificando el registro del dia " + "0" + dia_actual + " con unos gastos actuales de " + (gastos + Convert.ToSingle(tbGasto.Text.ToString())).ToString() + "€");
+                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ modificando el registro del dia " + dia_actual + " con unos gastos actuales de " + (gastos + Convert.ToSingle(tbGasto.Text.ToString())).ToString() + "€");
                 }
             }
         }

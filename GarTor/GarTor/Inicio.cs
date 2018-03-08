@@ -206,7 +206,12 @@ namespace GarTor
 
         private void IngreGastos(object sender, EventArgs e)
         {
-            DateTime.Today.ToShortDateString();//Usarlo para la fecha de los gastos
+            VentanaGastos panel1 = new VentanaGastos();
+            panel1.MinimizeBox = false;
+            panel1.MaximizeBox = false;
+            panel1.ShowIcon = false;
+            panel1.ShowInTaskbar = false;
+            panel1.ShowDialog();
         }
     }
 }

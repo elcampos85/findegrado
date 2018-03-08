@@ -47,7 +47,7 @@ namespace GarTor
         public static string PRECIO_ESTRELLA = "0";
         public static string IMPORTE = "0";
         public static bool VENTA_HECHA = false;
-        public static int Num_Pedido = 0;
+        public static int Num_Pedido = 0;       
 
         public const string MAIN_RUTA= "C:/GarTor";
         public const string FACTURAS_RUTA = "C:/GarTor/Facturas";

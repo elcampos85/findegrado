@@ -21,6 +21,7 @@ namespace GarTor
         {
             if(dtDia.Value <= DateTime.Now)
             {
+
                 dgvDatos.DataSource = Constantes.contabilidad_TA.GetConsultaDia(dtDia.Value);
                 //MessageBox.Show(dtDia.Value.ToShortDateString());
             }

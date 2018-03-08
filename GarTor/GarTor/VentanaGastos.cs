@@ -43,21 +43,22 @@ namespace GarTor
             }
             else
             {
-                if(Constantes.contabilidad_TA.getRegistros(DateTime.Today.ToShortDateString()) == 0)
+                string dia_actual = DateTime.Now.ToString("dd/MM/yyyy");
+                if(Constantes.contabilidad_TA.getRegistros(dia_actual) == 0)
                 {
-                    Constantes.contabilidad_TA.Insert(DateTime.Now.ToShortDateString(),Convert.ToSingle(tbGasto.Text.ToString()),0);
+                    Constantes.contabilidad_TA.Insert(dia_actual, Convert.ToSingle(tbGasto.Text.ToString()),0);
                     this.Close();
-                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ en un nuevo registro del dia " + DateTime.Today.ToShortDateString());
+                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ en un nuevo registro del dia " + "0" + dia_actual);
                 }
                 else
                 {
-                    int id = Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now.ToShortDateString()));
-                    float gastos = Convert.ToSingle(Constantes.contabilidad_TA.getGastos(DateTime.Now.ToShortDateString()));
+                    int id = Convert.ToInt32(Constantes.contabilidad_TA.GetId(dia_actual));
+                    float gastos = Convert.ToSingle(Constantes.contabilidad_TA.getGastos(dia_actual));
                     float nuevoGasto = Convert.ToSingle(tbGasto.Text);
 
                     Constantes.contabilidad_TA.UpdateGastos(Convert.ToDouble(gastos+nuevoGasto), id);
                     this.Close();
-                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ modificando el registro del dia " + DateTime.Today.ToShortDateString() + " con unos gastos actuales de " + (gastos + Convert.ToSingle(tbGasto.Text.ToString())).ToString() + "€");
+                    MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ modificando el registro del dia " + "0" + dia_actual + " con unos gastos actuales de " + (gastos + Convert.ToSingle(tbGasto.Text.ToString())).ToString() + "€");
                 }
             }
         }

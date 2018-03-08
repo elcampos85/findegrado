@@ -21,7 +21,6 @@ namespace GarTor
         {
             if(dtAnyo.Value <= DateTime.Now)
             {
-                MessageBox.Show(dtAnyo.Value.Year.ToString());
                 dgvDatos.DataSource = Constantes.contabilidad_TA.GetConsultaAnyo(dtAnyo.Value.Year.ToString());
             }
             else

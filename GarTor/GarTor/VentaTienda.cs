@@ -151,6 +151,7 @@ namespace GarTor
                 cesta.Rows.Clear();
                 listaCategoria = true;
                 Total();
+                AddIngresos();
             }
         }
 
@@ -174,8 +175,9 @@ namespace GarTor
                     
                     ingresos += total;
                 }
-
+                MessageBox.Show("Ingresos: "+ingresos.ToString());
                 Constantes.contabilidad_TA.Insert(DateTime.Now,gastos,ingresos);
+                MessageBox.Show("Insertado");
             }
             else
             {

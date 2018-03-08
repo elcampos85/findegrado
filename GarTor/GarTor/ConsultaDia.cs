@@ -22,7 +22,10 @@ namespace GarTor
             if(dtDia.Value <= DateTime.Now)
             {
 
+                MessageBox.Show(dtDia.Value.ToString());
                 dgvDatos.DataSource = Constantes.contabilidad_TA.GetConsultaDia(dtDia.Value);
+                //dgvDatos.DataSource = Constantes.contabilidad_TA.GetData();
+                MessageBox.Show(DateTime.Now.ToString());
                 //MessageBox.Show(dtDia.Value.ToShortDateString());
             }
             else

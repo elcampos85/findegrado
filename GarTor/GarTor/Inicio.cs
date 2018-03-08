@@ -23,7 +23,7 @@ namespace GarTor
         public Inicio()
         {
             InitializeComponent();
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");//Cambia el uso de , y . para millar y decimas
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-AU");//Cambia el uso de , y . para millar y decimas
             stringConexion = ConfigurationManager.ConnectionStrings["GarTor.Properties.Settings.PasteleriaConnectionString"].ConnectionString;//Se crea la conexion de configuracion del proyecto para utilizar la base de datos
             try
             {

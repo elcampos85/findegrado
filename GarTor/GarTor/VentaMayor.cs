@@ -256,7 +256,7 @@ namespace GarTor
                     int id = Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now.ToShortDateString()));
                     float ingresos = Convert.ToSingle(Constantes.contabilidad_TA.getIngresos(DateTime.Now.ToShortDateString()));
 
-                    Constantes.contabilidad_TA.UpdateGastos(Convert.ToDouble(ingresos + Math.Round(importeIVA, 2)), id);
+                    Constantes.contabilidad_TA.UpdateIngresos(Convert.ToDouble(ingresos + Math.Round(importeIVA, 2)), id);
                 }
                 this.listView1.Items.Clear();
                 this.imageList1.Images.Clear();

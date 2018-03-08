@@ -50,7 +50,7 @@ namespace GarTor
                 }
                 else
                 {
-                    int id = Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Today.ToShortDateString()));
+                    int id = Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now));
                     Constantes.contabilidad_TA.UpdateGastos(Convert.ToDouble(tbGasto.Text), id);
                 }
             }

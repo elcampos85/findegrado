@@ -157,9 +157,9 @@ namespace GarTor
         private void AddIngresos()
         {
 
-            int facturas = Constantes.factVenta_TA.UltimaFactura();
-            int gastos = 0;
-            int ingresos = 0;
+            int facturas = Convert.ToInt32(Constantes.factVenta_TA.UltimaFactura());
+            float gastos = 0.00f;
+            float ingresos = 0.00f;
 
             if (Constantes.factVenta_TA.ComprobarFechaFactura(DateTime.Now)==0)
             {
@@ -193,7 +193,7 @@ namespace GarTor
                     ingresos += total;
                 }
 
-                Constantes.contabilidad_TA.UpdateIngresos(DateTime.Now, ingresos);
+                Constantes.contabilidad_TA.UpdateIngresos(Convert.ToDouble(ingresos),Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now)));
             }
         }
 

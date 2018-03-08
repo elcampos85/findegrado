@@ -2631,7 +2631,7 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT        Id\r\nFROM            Contabilidad\r\nWHERE        (Fecha = @fecha)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.DateTime, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT COUNT(*) FROM Contabilidad where Fecha = @fecha";
@@ -2821,14 +2821,9 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> GetId(string fecha) {
+        public virtual global::System.Nullable<int> GetId(System.DateTime fecha) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            if ((fecha == null)) {
-                throw new global::System.ArgumentNullException("fecha");
-            }
-            else {
-                command.Parameters[0].Value = ((string)(fecha));
-            }
+            command.Parameters[0].Value = ((System.DateTime)(fecha));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

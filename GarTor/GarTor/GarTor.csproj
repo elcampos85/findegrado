@@ -121,6 +121,12 @@
       <DependentUpon>ClienteMayorModificar.cs</DependentUpon>
     </Compile>
     <Compile Include="Constantes.cs" />
+    <Compile Include="ConsultaAnyo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaAnyo.Designer.cs">
+      <DependentUpon>ConsultaAnyo.cs</DependentUpon>
+    </Compile>
     <Compile Include="DSIngredientes.cs">
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
     </Compile>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClienteMayorModificar.resx">
       <DependentUpon>ClienteMayorModificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaAnyo.resx">
+      <DependentUpon>ConsultaAnyo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultaDia.resx">
       <DependentUpon>ConsultaDia.cs</DependentUpon>

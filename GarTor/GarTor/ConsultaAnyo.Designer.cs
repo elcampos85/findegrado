@@ -1,6 +1,6 @@
 ﻿namespace GarTor
 {
-    partial class ConsultaDia
+    partial class ConsultaAnyo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtDia = new System.Windows.Forms.DateTimePicker();
+            this.dtAnyo = new System.Windows.Forms.DateTimePicker();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.bBuscar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
-            // dtDia
+            // dtAnyo
             // 
-            this.dtDia.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtDia.Location = new System.Drawing.Point(96, 31);
-            this.dtDia.Name = "dtDia";
-            this.dtDia.Size = new System.Drawing.Size(188, 20);
-            this.dtDia.TabIndex = 0;
+            this.dtAnyo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtAnyo.CustomFormat = "yyyy";
+            this.dtAnyo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtAnyo.Location = new System.Drawing.Point(96, 31);
+            this.dtAnyo.Name = "dtAnyo";
+            this.dtAnyo.Size = new System.Drawing.Size(188, 20);
+            this.dtAnyo.TabIndex = 0;
             // 
             // dgvDatos
             // 
@@ -71,16 +73,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Image = global::GarTor.Properties.Resources.Fondo;
-            this.label1.Location = new System.Drawing.Point(34, 33);
+            this.label1.Location = new System.Drawing.Point(52, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 18);
+            this.label1.Size = new System.Drawing.Size(38, 18);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Fecha:";
+            this.label1.Text = "Año:";
             // 
-            // ConsultaDia
+            // ConsultaAnyo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -90,9 +91,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.dgvDatos);
-            this.Controls.Add(this.dtDia);
-            this.Name = "ConsultaDia";
-            this.Text = "ConsultaDia";
+            this.Controls.Add(this.dtAnyo);
+            this.Name = "ConsultaAnyo";
+            this.Text = "ConsultaAño";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -101,7 +102,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dtDia;
+        private System.Windows.Forms.DateTimePicker dtAnyo;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.Label label1;

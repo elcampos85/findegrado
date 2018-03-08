@@ -90,7 +90,7 @@ namespace GarTor
 
                 Constantes.pedidos_TA.Insert(num_Pedido, fecha_dia);
                 cod_Pedido = Convert.ToInt32(Constantes.pedidos_TA.getCodigoPedido(num_Pedido, fecha_dia));//Cod pedido introducido
-                Constantes.factVenta_TA.Insert(cod_Pedido,fechaHora_dia);
+                Constantes.factVenta_TA.Insert(cod_Pedido,fecha_dia);
                 cod_Factura = Convert.ToInt32(Constantes.factVenta_TA.getCodigoFactura(cod_Pedido));
 
                 foreach (DataGridViewRow row in cesta.Rows)
@@ -140,7 +140,8 @@ namespace GarTor
                 sw.WriteLine(texto);
                 sw.Close();
                 #endregion
-                
+
+                AddIngresos();
                 //Recargamos la lista de los articulos para que cargue las imagenes de categorias y ponga las flechas de menus superiores y la cesta por defecto
                 this.listView1.Items.Clear();
                 this.imageList1.Images.Clear();
@@ -151,52 +152,28 @@ namespace GarTor
                 cesta.Rows.Clear();
                 listaCategoria = true;
                 Total();
-                AddIngresos();
+                
             }
         }
 
         private void AddIngresos()
         {
-
             int facturas = Convert.ToInt32(Constantes.factVenta_TA.UltimaFactura());
             float gastos = 0.00f;
-            float ingresos = 0.00f;
-
-            if (Constantes.factVenta_TA.ComprobarFechaFactura(DateTime.Now.ToShortDateString())==0)
+            float ingresos =Convert.ToSingle(Constantes.IMPORTE);
+            if (Convert.ToInt32(Constantes.contabilidad_TA.ComprobarFechaFactura(DateTime.Now.ToShortDateString())) == 0)
             {
-                DataTable compra = Constantes.detaPedidosVenta_TA.GetDetallePedido(facturas);//Creamos un datatable con el detalle del pedido de la factura introducida para recorrerlo
-                
-                foreach (DataRow row in compra.Rows)
-                {
-                    float total = 0.00f;
-                    int unidades = Convert.ToInt32(row["Cantidad"]);
-                    float precio_detalle = Convert.ToSingle(row["Precio"]);
-                    total = precio_detalle * (Convert.ToSingle(unidades));
-                    
-                    ingresos += total;
-                }
-                MessageBox.Show("Ingresos: "+ingresos.ToString());
-                Constantes.contabilidad_TA.Insert(DateTime.Now.ToShortDateString(),gastos,ingresos);
+                Constantes.contabilidad_TA.Insert(DateTime.Now.ToShortDateString(), gastos, ingresos);
                 MessageBox.Show("Insertado");
             }
             else
             {
-
-
-                DataTable compra = Constantes.detaPedidosVenta_TA.GetDetallePedido(facturas);//Creamos un datatable con el detalle del pedido de la factura introducida para recorrerlo
-
-                foreach (DataRow row in compra.Rows)
-                {
-                    float total = 0.00f;
-                    int unidades = Convert.ToInt32(row["Cantidad"]);
-                    float precio_detalle = Convert.ToSingle(row["Precio"]);
-                    total = precio_detalle * (Convert.ToSingle(unidades));
-
-                    ingresos += total;
-                }
-
-                Constantes.contabilidad_TA.UpdateIngresos(Convert.ToDouble(ingresos),Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now.ToShortDateString())));
+                float actual_ingresos = Convert.ToSingle(Constantes.contabilidad_TA.getIngresos(DateTime.Now.ToShortDateString()));
+                MessageBox.Show("Actualizando " + actual_ingresos.ToString());
+                Constantes.contabilidad_TA.UpdateIngresos(Convert.ToDouble(ingresos + actual_ingresos), Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now.ToShortDateString())));
+               
             }
+                
         }
 
         /// <summary>

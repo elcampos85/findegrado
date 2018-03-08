@@ -2635,17 +2635,17 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT Fecha, Gastos, Ingresos FROM dbo.Contabilidad WHERE Fecha BETWEEN 01/01/@a" +
-                "nyo and 31/12/@anyo";
+            this._commandCollection[3].CommandText = "SELECT Fecha, Gastos, Ingresos \r\nFROM dbo.Contabilidad \r\nWHERE Fecha = \'%/\'+\'%/\'+" +
+                "@anyo ";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@anyo", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT Fecha, Gastos, Ingresos FROM dbo.Contabilidad WHERE Fecha BETWEEN 01/@mes/" +
-                "@anyo and 31/@mes/@anyo";
+            this._commandCollection[4].CommandText = "SELECT        Fecha, Gastos, Ingresos\r\nFROM            Contabilidad\r\nWHERE       " +
+                " Fecha >= \'%/\'+@mes+\'/\'+@anio";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mes", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@anyo", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@anio", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
             this._commandCollection[5].CommandText = "SELECT Gastos FROM Contabilidad where Fecha = @fecha";
@@ -2782,7 +2782,7 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy2(DataSet1.ContabilidadDataTable dataTable, string mes, string anyo) {
+        public virtual int FillBy2(DataSet1.ContabilidadDataTable dataTable, string mes, string anio) {
             this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((mes == null)) {
                 throw new global::System.ArgumentNullException("mes");
@@ -2790,11 +2790,11 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(mes));
             }
-            if ((anyo == null)) {
-                throw new global::System.ArgumentNullException("anyo");
+            if ((anio == null)) {
+                throw new global::System.ArgumentNullException("anio");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(anyo));
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(anio));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2807,7 +2807,7 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSet1.ContabilidadDataTable GetConsultaMes(string mes, string anyo) {
+        public virtual DataSet1.ContabilidadDataTable GetConsultaMes(string mes, string anio) {
             this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((mes == null)) {
                 throw new global::System.ArgumentNullException("mes");
@@ -2815,11 +2815,11 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(mes));
             }
-            if ((anyo == null)) {
-                throw new global::System.ArgumentNullException("anyo");
+            if ((anio == null)) {
+                throw new global::System.ArgumentNullException("anio");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(anyo));
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(anio));
             }
             DataSet1.ContabilidadDataTable dataTable = new DataSet1.ContabilidadDataTable();
             this.Adapter.Fill(dataTable);

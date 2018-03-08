@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:Acceso" ZOrder="3" X="70" Y="70" Height="210" Width="185" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:Suplemento" ZOrder="2" X="325" Y="70" Height="286" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:Contabilidad" ZOrder="1" X="695" Y="70" Height="305" Width="250" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
+    <Shape ID="DesignTable:Contabilidad" ZOrder="1" X="804" Y="59" Height="324" Width="250" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

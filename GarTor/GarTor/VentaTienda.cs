@@ -176,7 +176,7 @@ namespace GarTor
                     ingresos += total;
                 }
                 MessageBox.Show("Ingresos: "+ingresos.ToString());
-                Constantes.contabilidad_TA.Insert(DateTime.Now,gastos,ingresos);
+                Constantes.contabilidad_TA.Insert(DateTime.Now.ToShortDateString(),gastos,ingresos);
                 MessageBox.Show("Insertado");
             }
             else
@@ -195,7 +195,7 @@ namespace GarTor
                     ingresos += total;
                 }
 
-                Constantes.contabilidad_TA.UpdateIngresos(Convert.ToDouble(ingresos),Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now)));
+                Constantes.contabilidad_TA.UpdateIngresos(Convert.ToDouble(ingresos),Convert.ToInt32(Constantes.contabilidad_TA.GetId(DateTime.Now.ToShortDateString())));
             }
         }
 

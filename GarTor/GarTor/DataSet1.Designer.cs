@@ -1046,7 +1046,7 @@ namespace GarTor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ContabilidadRow AddContabilidadRow(System.DateTime Fecha, double Gastos, double Ingresos) {
+            public ContabilidadRow AddContabilidadRow(string Fecha, double Gastos, double Ingresos) {
                 ContabilidadRow rowContabilidadRow = ((ContabilidadRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1093,7 +1093,7 @@ namespace GarTor {
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
-                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFecha);
                 this.columnGastos = new global::System.Data.DataColumn("Gastos", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGastos);
@@ -1108,6 +1108,7 @@ namespace GarTor {
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnFecha.AllowDBNull = false;
+                this.columnFecha.MaxLength = 50;
                 this.columnGastos.AllowDBNull = false;
                 this.columnIngresos.AllowDBNull = false;
             }
@@ -1359,9 +1360,9 @@ namespace GarTor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime Fecha {
+            public string Fecha {
                 get {
-                    return ((global::System.DateTime)(this[this.tableContabilidad.FechaColumn]));
+                    return ((string)(this[this.tableContabilidad.FechaColumn]));
                 }
                 set {
                     this[this.tableContabilidad.FechaColumn] = value;
@@ -2579,7 +2580,7 @@ SELECT Cod_Suplemento, Nom_Suplemento, Precio_Suplemento FROM Suplemento WHERE (
                 "sos))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Fecha", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Fecha", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gastos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gastos", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ingresos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingresos", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
@@ -2588,7 +2589,7 @@ SELECT Cod_Suplemento, Nom_Suplemento, Precio_Suplemento FROM Suplemento WHERE (
                 "@Gastos, @Ingresos);\r\nSELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE" +
                 " (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Fecha", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Fecha", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gastos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gastos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ingresos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingresos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
@@ -2596,11 +2597,11 @@ SELECT Cod_Suplemento, Nom_Suplemento, Precio_Suplemento FROM Suplemento WHERE (
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Contabilidad] SET [Fecha] = @Fecha, [Gastos] = @Gastos, [Ingresos] = @Ingresos WHERE (([Id] = @Original_Id) AND ([Fecha] = @Original_Fecha) AND ([Gastos] = @Original_Gastos) AND ([Ingresos] = @Original_Ingresos));
 SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Fecha", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Fecha", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gastos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gastos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ingresos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingresos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Fecha", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Fecha", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gastos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gastos", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ingresos", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingresos", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2626,27 +2627,27 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
             this._commandCollection[1].CommandText = "SELECT        Fecha, Gastos, Ingresos\r\nFROM            Contabilidad\r\nWHERE       " +
                 " (Fecha = @fecha)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.DateTime, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT Gastos FROM Contabilidad where Fecha = @fecha";
+            this._commandCollection[2].CommandText = "SELECT COUNT(*) FROM Contabilidad where Fecha = @fecha";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.DateTime, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT        Id\r\nFROM            Contabilidad\r\nWHERE        (Fecha = @fecha)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.DateTime, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
             this._commandCollection[4].CommandText = "SELECT Ingresos FROM Contabilidad where Fecha = @fecha";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.DateTime, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
             this._commandCollection[5].CommandText = "SELECT COUNT(*) FROM Contabilidad where Fecha = @fecha";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.DateTime, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
             this._commandCollection[6].CommandText = "UPDATE       Contabilidad\r\nSET                Gastos = @Gastos\r\nWHERE        (Id " +
@@ -2691,9 +2692,14 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(DataSet1.ContabilidadDataTable dataTable, System.DateTime fecha) {
+        public virtual int FillBy(DataSet1.ContabilidadDataTable dataTable, string fecha) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(fecha));
+            if ((fecha == null)) {
+                throw new global::System.ArgumentNullException("fecha");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(fecha));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -2705,9 +2711,14 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSet1.ContabilidadDataTable GetConsultaDia(System.DateTime fecha) {
+        public virtual DataSet1.ContabilidadDataTable GetConsultaDia(string fecha) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(fecha));
+            if ((fecha == null)) {
+                throw new global::System.ArgumentNullException("fecha");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(fecha));
+            }
             DataSet1.ContabilidadDataTable dataTable = new DataSet1.ContabilidadDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -2746,9 +2757,14 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, System.DateTime Original_Fecha, double Original_Gastos, double Original_Ingresos) {
+        public virtual int Delete(int Original_Id, string Original_Fecha, double Original_Gastos, double Original_Ingresos) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_Fecha));
+            if ((Original_Fecha == null)) {
+                throw new global::System.ArgumentNullException("Original_Fecha");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Fecha));
+            }
             this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_Gastos));
             this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_Ingresos));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
@@ -2771,8 +2787,13 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.DateTime Fecha, double Gastos, double Ingresos) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(Fecha));
+        public virtual int Insert(string Fecha, double Gastos, double Ingresos) {
+            if ((Fecha == null)) {
+                throw new global::System.ArgumentNullException("Fecha");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Fecha));
+            }
             this.Adapter.InsertCommand.Parameters[1].Value = ((double)(Gastos));
             this.Adapter.InsertCommand.Parameters[2].Value = ((double)(Ingresos));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
@@ -2795,12 +2816,22 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime Fecha, double Gastos, double Ingresos, int Original_Id, System.DateTime Original_Fecha, double Original_Gastos, double Original_Ingresos, int Id) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(Fecha));
+        public virtual int Update(string Fecha, double Gastos, double Ingresos, int Original_Id, string Original_Fecha, double Original_Gastos, double Original_Ingresos, int Id) {
+            if ((Fecha == null)) {
+                throw new global::System.ArgumentNullException("Fecha");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Fecha));
+            }
             this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(Gastos));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(Ingresos));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Original_Fecha));
+            if ((Original_Fecha == null)) {
+                throw new global::System.ArgumentNullException("Original_Fecha");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Fecha));
+            }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(Original_Gastos));
             this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(Original_Ingresos));
             this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Id));
@@ -2824,45 +2855,21 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime Fecha, double Gastos, double Ingresos, int Original_Id, System.DateTime Original_Fecha, double Original_Gastos, double Original_Ingresos) {
+        public virtual int Update(string Fecha, double Gastos, double Ingresos, int Original_Id, string Original_Fecha, double Original_Gastos, double Original_Ingresos) {
             return this.Update(Fecha, Gastos, Ingresos, Original_Id, Original_Fecha, Original_Gastos, Original_Ingresos, Original_Id);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<double> getGastos(System.DateTime fecha) {
+        public virtual global::System.Nullable<int> getGastos(string fecha) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            command.Parameters[0].Value = ((System.DateTime)(fecha));
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            object returnValue;
-            try {
-                returnValue = command.ExecuteScalar();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            if (((returnValue == null) 
-                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
-                return new global::System.Nullable<double>();
+            if ((fecha == null)) {
+                throw new global::System.ArgumentNullException("fecha");
             }
             else {
-                return new global::System.Nullable<double>(((double)(returnValue)));
+                command.Parameters[0].Value = ((string)(fecha));
             }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> GetId(System.DateTime fecha) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
-            command.Parameters[0].Value = ((System.DateTime)(fecha));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2889,9 +2896,48 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<double> getIngresos(System.DateTime fecha) {
+        public virtual global::System.Nullable<int> GetId(string fecha) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            if ((fecha == null)) {
+                throw new global::System.ArgumentNullException("fecha");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(fecha));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<int>();
+            }
+            else {
+                return new global::System.Nullable<int>(((int)(returnValue)));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<double> getIngresos(string fecha) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
-            command.Parameters[0].Value = ((System.DateTime)(fecha));
+            if ((fecha == null)) {
+                throw new global::System.ArgumentNullException("fecha");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(fecha));
+            }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2918,9 +2964,14 @@ SELECT Id, Fecha, Gastos, Ingresos FROM Contabilidad WHERE (Id = @Id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> getRegistros(System.DateTime fecha) {
+        public virtual global::System.Nullable<int> getRegistros(string fecha) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
-            command.Parameters[0].Value = ((System.DateTime)(fecha));
+            if ((fecha == null)) {
+                throw new global::System.ArgumentNullException("fecha");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(fecha));
+            }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

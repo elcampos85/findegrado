@@ -45,8 +45,7 @@ namespace GarTor
             {
                 if(Constantes.contabilidad_TA.getRegistros(DateTime.Today.ToShortDateString()) == 0)
                 {
-                    Constantes.contabilidad_TA.Insert(DateTime.Now.ToShortDateString(),Convert.ToDouble(tbGasto.Text.ToString()),0);
-                    MessageBox.Show(Convert.ToDouble(tbGasto.Text.ToString()).ToString());
+                    Constantes.contabilidad_TA.Insert(DateTime.Now.ToShortDateString(),Convert.ToSingle(tbGasto.Text.ToString()),0);
                     this.Close();
                     MessageBox.Show("Se introdujo correctamente el gasto de " + tbGasto.Text.ToString() + "€ en un nuevo registro del dia " + DateTime.Today.ToShortDateString());
                 }

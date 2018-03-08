@@ -149,6 +149,12 @@
     <Compile Include="DescuentoExtra.Designer.cs">
       <DependentUpon>DescuentoExtra.cs</DependentUpon>
     </Compile>
+    <Compile Include="VentanaGastos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaGastos.Designer.cs">
+      <DependentUpon>VentanaGastos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Intro_Peso_UD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DescuentoExtra.resx">
       <DependentUpon>DescuentoExtra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaGastos.resx">
+      <DependentUpon>VentanaGastos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Intro_Peso_UD.resx">
       <DependentUpon>Intro_Peso_UD.cs</DependentUpon>

@@ -152,7 +152,6 @@ namespace GarTor
                 cesta.Rows.Clear();
                 listaCategoria = true;
                 Total();
-                
             }
         }
 

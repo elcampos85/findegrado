@@ -28,7 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
+            this.bBuscar = new System.Windows.Forms.Button();
+            this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.dtDia = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Image = global::GarTor.Properties.Resources.Fondo;
+            this.label1.Location = new System.Drawing.Point(9, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 18);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Fecha:";
+            // 
+            // bBuscar
+            // 
+            this.bBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscar.Location = new System.Drawing.Point(345, 15);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(77, 27);
+            this.bBuscar.TabIndex = 6;
+            this.bBuscar.Text = "Buscar";
+            this.bBuscar.UseVisualStyleBackColor = true;
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
+            // 
+            // dgvDatos
+            // 
+            this.dgvDatos.AllowUserToAddRows = false;
+            this.dgvDatos.AllowUserToDeleteRows = false;
+            this.dgvDatos.BackgroundColor = System.Drawing.Color.Green;
+            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatos.Location = new System.Drawing.Point(12, 95);
+            this.dgvDatos.MultiSelect = false;
+            this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.ReadOnly = true;
+            this.dgvDatos.RowHeadersVisible = false;
+            this.dgvDatos.Size = new System.Drawing.Size(869, 388);
+            this.dgvDatos.TabIndex = 5;
+            // 
+            // dtDia
+            // 
+            this.dtDia.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtDia.CustomFormat = "MMMMMM yyyy";
+            this.dtDia.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtDia.Location = new System.Drawing.Point(71, 17);
+            this.dtDia.Name = "dtDia";
+            this.dtDia.Size = new System.Drawing.Size(188, 20);
+            this.dtDia.TabIndex = 4;
             // 
             // IngreMen
             // 
@@ -36,13 +87,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
-            this.ClientSize = new System.Drawing.Size(641, 363);
+            this.ClientSize = new System.Drawing.Size(976, 495);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.bBuscar);
+            this.Controls.Add(this.dgvDatos);
+            this.Controls.Add(this.dtDia);
             this.Name = "IngreMen";
             this.Text = "IngreMen";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bBuscar;
+        private System.Windows.Forms.DataGridView dgvDatos;
+        private System.Windows.Forms.DateTimePicker dtDia;
     }
 }

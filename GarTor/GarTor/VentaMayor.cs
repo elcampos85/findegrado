@@ -481,7 +481,7 @@ namespace GarTor
 
         private void ivaSeleccionado(object sender, EventArgs e)
         {
-            ivacb =  cbIVA.SelectedItem.ToString();
+        ivacb =  cbIVA.SelectedItem.ToString();
         }
     }
 }

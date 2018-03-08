@@ -21,11 +21,12 @@ namespace GarTor
         {
             if(dtDia.Value <= DateTime.Now)
             {
-                MessageBox.Show("Menor o igual");
+                dgvDatos.DataSource = Constantes.contabilidad_TA.GetConsultaDia(dtDia.Value);
+                //MessageBox.Show(dtDia.Value.ToShortDateString());
             }
             else
             {
-                MessageBox.Show("Mayor");
+                MessageBox.Show("No puede seleccionar un dia superior al actual");
             }
         }
     }

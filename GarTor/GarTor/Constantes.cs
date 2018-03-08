@@ -30,6 +30,7 @@ namespace GarTor
         #region DS_DATASET1
         public static DataSet1TableAdapters.SuplementoTableAdapter suplemento_TA = new DataSet1TableAdapters.SuplementoTableAdapter();
         public static DataSet1TableAdapters.AccesoTableAdapter acceso_TA = new DataSet1TableAdapters.AccesoTableAdapter();
+        public static DataSet1TableAdapters.ContabilidadTableAdapter contabilidad_TA = new DataSet1TableAdapters.ContabilidadTableAdapter();
         #endregion
 
 

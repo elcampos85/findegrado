@@ -121,6 +121,12 @@
       <DependentUpon>ClienteMayorModificar.cs</DependentUpon>
     </Compile>
     <Compile Include="Constantes.cs" />
+    <Compile Include="ConsultaAnyo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaAnyo.Designer.cs">
+      <DependentUpon>ConsultaAnyo.cs</DependentUpon>
+    </Compile>
     <Compile Include="DSIngredientes.cs">
       <DependentUpon>DSIngredientes.xsd</DependentUpon>
     </Compile>
@@ -183,12 +189,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="IngreAnu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IngreAnu.Designer.cs">
-      <DependentUpon>IngreAnu.cs</DependentUpon>
     </Compile>
     <Compile Include="IngreMen.cs">
       <SubType>Form</SubType>
@@ -283,6 +283,9 @@
     <EmbeddedResource Include="ClienteMayorModificar.resx">
       <DependentUpon>ClienteMayorModificar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaAnyo.resx">
+      <DependentUpon>ConsultaAnyo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsultaDia.resx">
       <DependentUpon>ConsultaDia.cs</DependentUpon>
     </EmbeddedResource>
@@ -303,9 +306,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CierreCaja.resx">
       <DependentUpon>CierreCaja.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IngreAnu.resx">
-      <DependentUpon>IngreAnu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IngreMen.resx">
       <DependentUpon>IngreMen.cs</DependentUpon>

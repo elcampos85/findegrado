@@ -156,6 +156,9 @@ namespace GarTor
             }
         }
 
+        /// <summary>
+        /// Agrega los ingresos del dia
+        /// </summary>
         private void AddIngresos()
         {
             int facturas = Convert.ToInt32(Constantes.factVenta_TA.UltimaFactura());

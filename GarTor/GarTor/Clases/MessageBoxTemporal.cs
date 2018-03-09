@@ -7,6 +7,10 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+
+    /// <summary>
+    /// Clase que muestra un MessageBox X segundos y desaparece cuando se realiza el login correctamente
+    /// </summary>
     class MessageBoxTemporal
     {
         System.Threading.Timer IntervaloTiempo;

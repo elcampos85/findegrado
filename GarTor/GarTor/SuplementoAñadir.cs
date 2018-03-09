@@ -11,18 +11,28 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Clase para añadir suplementos a la BBDD
+    /// </summary>
     public partial class SuplementoAñadir : Form
     {
+        private string grupo = "Suplementos";
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
         public SuplementoAñadir()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Metodo para agregar el suplemento a la BBDD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bAgregar_Click(object sender, EventArgs e)
         {
             try
             {
-                string grupo = "Suplementos";
                 if (verificar(tbNombre.Text))
                 {
                     Constantes.suplemento_TA.Insert(tbNombre.Text, Convert.ToDouble(NPrecio.Value));
@@ -40,6 +50,11 @@ namespace GarTor
                 MessageBox.Show("El suplemento no se agregó");
             }
         }
+        /// <summary>
+        /// Verifica si el nuevo nombre a introducir existe en la BBDD
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>True si no existe, False si existe</returns>
         public bool verificar(string nombre)
         {
             if (Constantes.suplemento_TA.Verificacion(nombre) == 0)
@@ -52,7 +67,11 @@ namespace GarTor
             }
 
         }
-
+        /// <summary>
+        /// Boton que abre el explorador de archivos para seleccionar la imagen que tendra el suplemento
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bImage_Click(object sender, EventArgs e)
         {
             try

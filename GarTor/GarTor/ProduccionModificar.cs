@@ -14,6 +14,9 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Formulario para modificar productos
+    /// </summary>
     public partial class ProduccionModificar : Form
     {
         #region VARIABLES
@@ -22,13 +25,18 @@ namespace GarTor
         private SqlConnection conexion;
         private string stringConexion;
         #endregion
-
+        /// <summary>
+        /// Constructor de la clase.
+        /// Establece una conexion con la BBDD para realizar consultas
+        /// </summary>
         public ProduccionModificar()
         {
             InitializeComponent();
             stringConexion = ConfigurationManager.ConnectionStrings["GarTor.Properties.Settings.PasteleriaConnectionString"].ConnectionString;//Se crea la conexion de configuracion del proyecto para utilizar la base de datos
         }
-
+        /// <summary>
+        /// Rellena el comboBox de categoria 
+        /// </summary>
         private void rellenarCbTipo()
         {
             using (conexion = new SqlConnection(stringConexion))//Se crea la conexion a la base de datos y se realiza la consulta de las distintas categorias
@@ -39,7 +47,11 @@ namespace GarTor
                 cbTipo.DataSource = dt;
             }
         }
-
+        /// <summary>
+        /// Metodo para rellenar los comboBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ProduccionModificar_Load(object sender, EventArgs e)
         {
             cbTipo.DisplayMember = "Categoria_Producto";
@@ -53,7 +65,11 @@ namespace GarTor
             cbProducto.DataSource = Constantes.productos_TA.GetProductosOrdenados();
             
         }
-
+        /// <summary>
+        /// Rellena con los datos del producto seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbProducto_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cbProducto.SelectedItem != null)
@@ -76,7 +92,11 @@ namespace GarTor
                 
             }
         }
-
+        /// <summary>
+        /// Abre el explorador de archivos para seleccionar la nueva imagen del producto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -94,7 +114,11 @@ namespace GarTor
                 MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
             }
         }
-
+        /// <summary>
+        /// Verifica si el nuevo nombre a introducir existe en la BBDD
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>True si no existe, False si existe</returns>
         public bool verificar(string nombre)
         {
             if (Constantes.productos_TA.Verificacion(nombre) == 0)
@@ -107,7 +131,11 @@ namespace GarTor
             }
 
         }
-
+        /// <summary>
+        /// Modifica el producto con los datos agregados
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Modificar_Click(object sender, EventArgs e)
         {
             try

@@ -13,18 +13,30 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Formulario para la venta al por mayor
+    /// </summary>
     public partial class VentaMayor : Form
     {
-        private bool listaCategoria = true;
-        private bool introducidoCantidad = false;
+
+        private bool listaCategoria = true;//Boolean para saber si estamos en la lista de categorias en el menu de imagenes
+        private bool introducidoCantidad = false;//Boolean para saber si hemos introducido la cantidad o el peso o si hemos cerrado solo la ventana sin introducirlo
         private string ivacb = "";
+
+        /// <summary>
+        /// Contructor de VentaMayor
+        /// </summary>
         public VentaMayor()
         {
             InitializeComponent();
             lFlecha.Visible = false;
             Total();
         }
-
+        /// <summary>
+        /// Evento onClick para eliminar productos de la cesta de la compra
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Eliminar(object sender, DataGridViewCellEventArgs e)
         {
             if (cesta.CurrentCell.ColumnIndex == 0)
@@ -45,6 +57,9 @@ namespace GarTor
             }
         }
 
+        /// <summary>
+        /// Metodo para generarla factura en pdf
+        /// </summary>
         #region FACTURA PDF
         private void facturaPDF()
         {
@@ -230,7 +245,11 @@ namespace GarTor
 
         }
         #endregion
-
+        /// <summary>
+        /// Evento onClick para finalizar la compra
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FinalizarCompra(object sender, EventArgs e)
         {
             Finalizar_Compra panel1 = new Finalizar_Compra();
@@ -269,7 +288,9 @@ namespace GarTor
                 Total();
             }
         }
-
+        /// <summary>
+        /// Metodo que calcula el total del precio de los productos
+        /// </summary>
         private void Total()
         {
             float suma = 0;
@@ -287,7 +308,11 @@ namespace GarTor
             lPrecio.Text = "Total: " + Math.Round(suma, 2).ToString() + " €";
             Constantes.IMPORTE = Math.Round(suma, 2).ToString();
         }
-
+        /// <summary>
+        /// Método onClick para eliminar la cesta de la compra completa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EliminarCestaCompleta(object sender, EventArgs e)
         {
             DialogResult result;
@@ -302,7 +327,9 @@ namespace GarTor
             {
             }
         }
-
+        /// <summary>
+        /// Metodo que carga la lista de Venta con las imagenes de las categorias desde su path
+        /// </summary>
         private void cargarListaVenta()
         {
             DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
@@ -327,7 +354,11 @@ namespace GarTor
                 this.listView1.LargeImageList = this.imageList1;
             }
         }
-
+        /// <summary>
+        /// Metodo que se ejecuta al cargarse la VentaTienda y que cargamos la lista
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VentaMayor_Load(object sender, EventArgs e)
         {
             cargarListaVenta();
@@ -336,7 +367,11 @@ namespace GarTor
             cbClientesMayor.DataSource = Constantes.clientesMayor_TA.GetData();
             cbIVA.SelectedIndex = 0;
         }
-
+        /// <summary>
+        /// Metodo que vuelve a cargar la lista de categorias si nos encontramos en una categoria
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void volverACategoria(object sender, EventArgs e)
         {
             btAtrasVTienda.Visible = false;
@@ -368,12 +403,21 @@ namespace GarTor
                 this.listView1.LargeImageList = this.imageList1;
             }
         }
-
+        /// <summary>
+        /// Metodo que calcula el total de la cesta si se cambia un precio desde la tabla de la cesta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cambioPrecio(object sender, DataGridViewCellEventArgs e)
         {
             Total();
         }
-
+        /// <summary>
+        /// Metodo que evalua las selecciones de la lista, si estamos en categorias carga los articulos de esa categoria
+        /// y si estamos en una categoria y clicamos un articulo abre una ventana para introducir las unidades o el peso y agrega ese articulo a la cesta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Seleccion(object sender, MouseEventArgs e)
         {
             introducidoCantidad = false;
@@ -461,7 +505,11 @@ namespace GarTor
                 }
             }
         }
-
+        /// <summary>
+        /// Metodo que abre la ventana de descuentos o extras a introducir
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void descuentoExtra(object sender, EventArgs e)
         {
             DescuentoExtra panel1 = new DescuentoExtra();
@@ -491,10 +539,14 @@ namespace GarTor
             }
             Constantes.PRECIO_ESTRELLA = "0";
         }
-
+        /// <summary>
+        /// Método para calcular el iva que se va a aplicar dependiendo de la seleccion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ivaSeleccionado(object sender, EventArgs e)
         {
-        ivacb =  cbIVA.SelectedItem.ToString();
+            ivacb =  cbIVA.SelectedItem.ToString();
         }
     }
 }

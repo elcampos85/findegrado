@@ -13,8 +13,9 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
-    
-
+    /// <summary>
+    /// Formulario para agregar un producto y calcular el precio de un nuevo producto
+    /// </summary>
     public partial class Produccion : Form
     {
         #region
@@ -23,20 +24,23 @@ namespace GarTor
             private SqlConnection conexion;
             private string stringConexion;
         #endregion
-
-
+        /// <summary>
+        /// Constructor de la clase.
+        /// Se abre una conexion con la BBDD
+        /// </summary>
         public Produccion()
         {
             InitializeComponent();
             stringConexion = ConfigurationManager.ConnectionStrings["GarTor.Properties.Settings.PasteleriaConnectionString"].ConnectionString;//Se crea la conexion de configuracion del proyecto para utilizar la base de datos
         }
-
+        /// <summary>
+        /// Añade ingredientes a DataGridView para calcular el coste del producto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            float precio; 
-
-            
-            precio = (float)(Math.Round((double)Convert.ToSingle(units.Value) * (float) Convert.ToSingle(Constantes.precioIngredientes_TA.PrecioIngrediente(cbIngredientes.SelectedValue.ToString())), 2));
+            float precio = precio = (float)(Math.Round((double)Convert.ToSingle(units.Value) * (float) Convert.ToSingle(Constantes.precioIngredientes_TA.PrecioIngrediente(cbIngredientes.SelectedValue.ToString())), 2));
 
             switch (cbMedidas.SelectedIndex)
             {
@@ -54,7 +58,6 @@ namespace GarTor
                     break;
 
             }
-            //(float)(Math.Round((double)float, 2);
             if ((float)(Math.Round((double)precio, 2))>0)
             {
                 lista.Rows.Add(1);
@@ -65,13 +68,13 @@ namespace GarTor
                 lista.Rows[lista.RowCount - 1].Cells[3].Value = (float)(Math.Round((double)precio, 2));
                 lista.FirstDisplayedScrollingRowIndex = lista.RowCount - 1;
             }
-            
-
-
-
             Total();
         }
-
+        /// <summary>
+        /// Elimina un producto de la cesta previa confirmacion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Eliminar(object sender, DataGridViewCellEventArgs e)
         {
             if (lista.CurrentCell.ColumnIndex == 0)
@@ -88,9 +91,15 @@ namespace GarTor
                 }
             }
         }
+        /// <summary>
+        /// Calcula el coste del producto y lo agrega para para precio de venta o al por mayor
+        /// </summary>
         private void Total()
         {
             float suma = 0;
+            float pTienda = 10;
+            float pMayor = 20;
+
             foreach (DataGridViewRow row in lista.Rows)
             {
                 suma += Convert.ToSingle(row.Cells[COLUMNA_PRECIO].Value.ToString());
@@ -98,14 +107,17 @@ namespace GarTor
 
             lPrecio.Text = suma.ToString("#,##0.##")+" €";
 
-            nMayor.Value = (decimal)suma +10;
-            nTienda.Value= (decimal)suma +20;
+            nMayor.Value = (decimal)suma + (decimal)pTienda;
+            nTienda.Value= (decimal)suma + (decimal)pMayor;
         }
-
+        /// <summary>
+        /// Rellena los datos de categoria e ingredientes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnLoad(object sender, EventArgs e)
         {
             
-
             cbGrupo.DisplayMember = "Categoria_Producto";
             cbGrupo.ValueMember = "Categoria_Producto";
 
@@ -125,7 +137,11 @@ namespace GarTor
             cbMedidas.SelectedIndex = 0;
             Total();
         }
-
+        /// <summary>
+        /// Abre el explorador de archivos para elegir una foto para el producto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bImage_Click(object sender, EventArgs e)
         {
             try
@@ -143,11 +159,13 @@ namespace GarTor
                 MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
             }
         }
-
+        /// <summary>
+        /// Agrega el producto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bAgregar_Click(object sender, EventArgs e)
         {
-
-
             if (verificar(tbNombre.Text))
             {
                 if (tbNombre.Text.Length <= 0)
@@ -186,7 +204,11 @@ namespace GarTor
             
                 
         }
-
+        /// <summary>
+        /// Verifica si el nuevo nombre a introducir existe en la BBDD
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>True si no existe, False si existe</returns>
         public bool verificar(string nombre)
         {
             if (Constantes.productos_TA.Verificacion(nombre)==0)
@@ -197,7 +219,6 @@ namespace GarTor
             {
                 return false;
             }
-
         }
     }
 }

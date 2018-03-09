@@ -156,7 +156,7 @@ namespace GarTor
         }
 
         /// <summary>
-        /// Agrega los ingresos del dia
+        /// Agrega los ingresos del dia a la tabla contabilidad
         /// </summary>
         private void AddIngresos()
         {

@@ -13,6 +13,9 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Clase para modificar suplementos
+    /// </summary>
     public partial class SuplementoModificar : Form
     {
         private string ruta = "";
@@ -20,6 +23,10 @@ namespace GarTor
         private string ruta_foto="";
         private bool cambio = false;
         private string grupo = "Suplementos";
+        /// <summary>
+        /// Constructor de la clase.
+        /// Se rellena el comboBox de suplementos
+        /// </summary>
         public SuplementoModificar()
         {
             InitializeComponent();
@@ -30,7 +37,11 @@ namespace GarTor
             cbSuplemento.DataSource = Constantes.suplemento_TA.GetData();
 
         }
-
+        /// <summary>
+        /// Metodo para actualizar los datos de cada suplemento cuando es seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbSuplemento_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cbSuplemento.SelectedItem != null)
@@ -44,7 +55,11 @@ namespace GarTor
                 this.imagen.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
-
+        /// <summary>
+        /// Metodo para modificar el suplemento
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bModificar_Click(object sender, EventArgs e)
         {
             try
@@ -108,17 +123,11 @@ namespace GarTor
                 MessageBox.Show(ex.StackTrace);
             }
         }
-
-        public void BorrarImagen()
-        {
-            File.Delete(ruta);
-        }
-
-        public void GuardarImagen()
-        {
-            imagen.Image.Save(nuevaRuta, ImageFormat.Png);
-        }
-
+        /// <summary>
+        /// Verifica si el nuevo nombre a introducir existe en la BBDD
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>True si no existe, False si existe</returns>
         public bool verificar(string nombre)
         {
             if (Constantes.suplemento_TA.Verificacion(nombre) == 0)
@@ -131,7 +140,11 @@ namespace GarTor
             }
 
         }
-
+        /// <summary>
+        /// Metodo para elegir una nueva imagen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             try

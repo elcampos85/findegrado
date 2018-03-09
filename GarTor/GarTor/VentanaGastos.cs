@@ -12,13 +12,24 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Formulario para introducir gastos
+    /// 
+    /// </summary>
     public partial class VentanaGastos : Form
     {
+        /// <summary>
+        /// Contructor de la ventana gastos
+        /// </summary>
         public VentanaGastos()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Metodo onClick del boton para introducir gastos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void intro_Gasto(object sender, EventArgs e)
         {
             try
@@ -32,6 +43,9 @@ namespace GarTor
             
         }
 
+        /// <summary>
+        /// Funcion para introducir el gasto o actualizarlo en la tabla contabilidad
+        /// </summary>
         private void introducir()
         {
             string gasto = tbGasto.Text.ToString();
@@ -62,7 +76,11 @@ namespace GarTor
                 }
             }
         }
-
+        /// <summary>
+        /// Evento KeyPress del textbox para evitar que se escriban letras
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
@@ -77,12 +95,24 @@ namespace GarTor
                 e.Handled = true;
             }
         }
-
+        /// <summary>
+        /// Evento KeyDown del botón para que al darle a la tecla enter se ejecute lo mismo que al hacer click en el botón
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbGasto_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                introducir();
+                try
+                {
+                    introducir();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Introduzca un gasto válido");
+                    tbGasto.Select();
+                }
             }
         }
     }

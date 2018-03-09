@@ -11,6 +11,10 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+
+    /// <summary>
+    /// Clase para agregar usuarios administradores
+    /// </summary>
     public partial class AgregarUsuario : Form
     {
         public AgregarUsuario()
@@ -20,10 +24,10 @@ namespace GarTor
 
         private void AgregarUsuarioNuevo(object sender, EventArgs e)
         {
-            string user =Encriptacion.Encriptar(tbUsuario.Text);
-            string pass =Encriptacion.Encriptar(tbPass.Text);
-            MessageBox.Show(user+"   "+pass);
-            Constantes.acceso_TA.Insert(user, pass);
+            string user = Encriptacion.Encriptar(tbUsuario.Text);//Encriptamos el usuario y lo guardamos en variable
+            string pass = Encriptacion.Encriptar(tbPass.Text);//Encriptamos la contraseña y la guardamos en variable
+            MessageBox.Show(user+"   "+pass);//Mostramos el usuario y contraseña introducidos para que el administrador compruebe que son correctos
+            Constantes.acceso_TA.Insert(user, pass);//Insertamos el usuario encriptado
         }
     }
 }

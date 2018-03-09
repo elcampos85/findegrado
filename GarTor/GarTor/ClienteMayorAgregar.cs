@@ -10,17 +10,21 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Clase para agregar clientes Mayor a la BBDD
+    /// </summary>
     public partial class ClienteMayorAgregar : Form
     {
-
-        /// <summary>
-        /// Clase para agregar clientes al por mayor en la BBDD
-        /// </summary>
         public ClienteMayorAgregar()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Metodo que verifica si el nuevo nombre a introducir existe en la BBDD
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>True si no existe y False si existe</returns>
         public bool verificar(string nombre)
         {
             if (Constantes.clientesMayor_TA.Verificacion(nombre) == 0)
@@ -31,9 +35,13 @@ namespace GarTor
             {
                 return false;
             }
-
         }
 
+        /// <summary>
+        /// Metodo que agrega un cliente Mayor a la BBDD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Agregar_Click(object sender, EventArgs e)
         {
             try
@@ -53,9 +61,6 @@ namespace GarTor
             {
                 MessageBox.Show("Se produjo un error al agregar");
             }
-           
-
-
         }
     }
 }

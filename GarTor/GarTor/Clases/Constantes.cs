@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 
 namespace GarTor
 {
+
+    /// <summary>
+    /// Clase que contiene las constantes que usamos en la aplicacion
+    /// </summary>
     class Constantes
     {
+        //Constantes del DataSetIngredientes
         #region DS_INGREDIENTES
         public static DSIngredientesTableAdapters.IngredientesTableAdapter ingredientes_TA = new DSIngredientesTableAdapters.IngredientesTableAdapter();
         public static DSIngredientesTableAdapters.ProveedoresTableAdapter proveedores_TA = new DSIngredientesTableAdapters.ProveedoresTableAdapter();
         public static DSIngredientesTableAdapters.PrecioIngredientesTableAdapter precioIngredientes_TA = new DSIngredientesTableAdapters.PrecioIngredientesTableAdapter();
         #endregion
 
+        //Constantes del DataSetProductos
         #region DS_PRODUCTOS
         public static DSProductosTableAdapters.PreciosMayorTableAdapter preciosMayor_TA = new DSProductosTableAdapters.PreciosMayorTableAdapter();
         public static DSProductosTableAdapters.PreciosVentaTableAdapter preciosVenta_TA = new DSProductosTableAdapters.PreciosVentaTableAdapter();
@@ -27,18 +33,19 @@ namespace GarTor
         public static DSProductosTableAdapters.ClientesMayorTableAdapter clientesMayor_TA = new DSProductosTableAdapters.ClientesMayorTableAdapter();
         #endregion
 
+        //Constantes del DataSet1 (El Principal)
         #region DS_DATASET1
         public static DataSet1TableAdapters.SuplementoTableAdapter suplemento_TA = new DataSet1TableAdapters.SuplementoTableAdapter();
         public static DataSet1TableAdapters.AccesoTableAdapter acceso_TA = new DataSet1TableAdapters.AccesoTableAdapter();
         public static DataSet1TableAdapters.ContabilidadTableAdapter contabilidad_TA = new DataSet1TableAdapters.ContabilidadTableAdapter();
         #endregion
 
-
+        //Querys de la aplicacion 
         #region QUERYS
         public const string QUERY_CONSULTA_CATEGORIAS = "SELECT DISTINCT Categoria_Producto FROM Productos";
         #endregion
 
-
+        //Constantes y variables Globales
         public const int COLUMNA_PRECIO = 3;
         public const int COLUMNA_UNIDADES = 2;
         public const int COLUMNA_NOMBRE = 1;
@@ -49,6 +56,7 @@ namespace GarTor
         public static bool VENTA_HECHA = false;
         public static int Num_Pedido = 0;       
 
+        //Constantes de las rutas y extensiones
         public const string MAIN_RUTA= "C:/GarTor";
         public const string FACTURAS_RUTA = "C:/GarTor/Facturas";
         public const string FACTURAS_VT = "C:/GarTor/Facturas/VentasTienda";
@@ -56,7 +64,5 @@ namespace GarTor
         public const string PRODUCTOS_RUTA = "C:/GarTor/Productos";
         public const string CATEGORIAS_RUTA = "C:/GarTor/Productos/Categorias";
         public const string EXTENSION = ".png";
-        
-        
     }
 }

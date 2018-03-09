@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Clase que consulta la contabilidad de un dia
+    /// </summary>
     public partial class ConsultaDia : Form
     {
         public ConsultaDia()
@@ -17,6 +20,11 @@ namespace GarTor
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Metodo que rellena la tabla con los datos de contabilidad del dia seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bBuscar_Click(object sender, EventArgs e)
         {
             if(dtDia.Value <= DateTime.Now)

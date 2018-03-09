@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Clase que muestra una ventana para introducir un extra o un descuento a la cesta
+    /// </summary>
     public partial class DescuentoExtra : Form
     {
         public DescuentoExtra()
@@ -19,11 +22,19 @@ namespace GarTor
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Metodo que introduce el extra o el descuento
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void intro(object sender, EventArgs e)
         {
             introducirExtra();
         }
 
+        /// <summary>
+        /// Metodo que calcula el precio introducido y evalua si es valido y lo introduce a la cesta
+        /// </summary>
         private void introducirExtra()
         {
             string precio = tbPrecio.Text.ToString();
@@ -36,8 +47,8 @@ namespace GarTor
                 }
                 else
                 {
-                    Constantes.PRECIO_ESTRELLA = precio;
-                    this.Close();
+                    Constantes.PRECIO_ESTRELLA = precio;//Guardamos el precio en una constante para pasarlo a la cesta
+                    this.Close();//Cerramos esta ventana
                 }
             }catch (Exception ex)
             {
@@ -45,6 +56,11 @@ namespace GarTor
             }
         }
 
+        /// <summary>
+        /// Metodo que evalua las teclas presionadas y que solo te permite introducir numeros con decimales y borrar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;

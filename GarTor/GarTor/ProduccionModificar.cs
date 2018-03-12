@@ -141,11 +141,11 @@ namespace GarTor
         {
             try
             {
+                int codProd = Convert.ToInt32(Constantes.productos_TA.GetCodProducto(cbProducto.SelectedValue.ToString()));
                 string nombre = cbProducto.SelectedValue.ToString();
                 string nombreNuevo = tbNuevoNombre.Text;
-                string ruta = Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + nombre + Constantes.EXTENSION;
+                string ruta = Constantes.PRODUCTOS_RUTA + "/" + Constantes.productos_TA.GetCategoria(codProd).ToString() + "/" + nombre + Constantes.EXTENSION;
                 string nuevaRuta = Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + nombreNuevo + Constantes.EXTENSION;
-                int codProd = Convert.ToInt32(Constantes.productos_TA.GetCodProducto(cbProducto.SelectedValue.ToString()));
                 
                 if (!nombre.Equals(nombreNuevo))
                 {

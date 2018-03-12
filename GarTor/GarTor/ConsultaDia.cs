@@ -15,6 +15,9 @@ namespace GarTor
     /// </summary>
     public partial class ConsultaDia : Form
     {
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
         public ConsultaDia()
         {
             InitializeComponent();

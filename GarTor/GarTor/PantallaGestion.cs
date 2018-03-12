@@ -10,23 +10,37 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Formulario principal para la pantalla de gestion
+    /// </summary>
     public partial class PantallaGestion : Form
     {
+        /// <summary>
+        /// Constructor de la clase
+        /// Ajusta la ventana al tamaño de la pantalla
+        /// </summary>
         public PantallaGestion()
         {
             InitializeComponent();
             this.Height = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height; //Ajusta al alto de la pantalla
             this.Width = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width; //Ajusta al ancho de la pantalla
-
-
         }
-
+        /// <summary>
+        /// Metodo para impedir que la ventana se pueda mover
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Mantener(object sender, EventArgs e)
         {
             this.Location = new Point(0, 0);
         }
 
         //AÑADIR INGREDIENTE
+        /// <summary>
+        /// Boton para añadir ingrediente, te abre el formulario indicado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void añadirToolStripMenuItem1_Click(object sender, EventArgs e)//Añadir Ingrediente
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -38,7 +52,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Boton para modificar ingrediente, te abre el formulario indicado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void modificarToolStripMenuItem2_Click(object sender, EventArgs e)//Modificar Ingrediente
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -50,7 +68,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Boton para añadir un producto, te abre el formulario indicado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)//Agregar Producto
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -62,7 +84,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Boton para añadir suplementos, te abre el formulario indicado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void añadirToolStripMenuItem2_Click(object sender, EventArgs e)//Añadir suplemento
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -74,7 +100,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Boton para modificar suplemento, te abre el formulario indicado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void modificarToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -86,7 +116,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Boton para modificar productos, te abre el formulario indicado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void modificarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -98,7 +132,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Boton para añadir proveedores, te abre el formulario indicado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void preciosProveedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -110,7 +148,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Boton para añadir clientes al por mayor, te abre el formulario indicado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void añadirToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -122,7 +164,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Boton para modificar clientes al por mayor, te abre el formulario indicado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void modificarToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -134,7 +180,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Boton para agregar usuarios de acceso, te abre el formulario indicado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void agregarUsuarioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);

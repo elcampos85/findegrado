@@ -10,13 +10,23 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Formulario para ver el balance mensual
+    /// </summary>
     public partial class IngreMen : Form
     {
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
         public IngreMen()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Metodo para buscar el balance del mes seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bBuscar_Click(object sender, EventArgs e)
         {
             if (dtDia.Value <= DateTime.Now)

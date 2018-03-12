@@ -15,6 +15,9 @@ namespace GarTor
     /// </summary>
     public partial class ClienteMayorAgregar : Form
     {
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
         public ClienteMayorAgregar()
         {
             InitializeComponent();

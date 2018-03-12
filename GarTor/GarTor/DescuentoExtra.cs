@@ -17,6 +17,9 @@ namespace GarTor
     /// </summary>
     public partial class DescuentoExtra : Form
     {
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
         public DescuentoExtra()
         {
             InitializeComponent();

@@ -15,6 +15,9 @@ namespace GarTor
     /// </summary>
     public partial class ConsultaAnyo : Form
     {
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
         public ConsultaAnyo()
         {
             InitializeComponent();

@@ -12,11 +12,17 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Formulario para cuando se finaliza la compra
+    /// </summary>
     public partial class Finalizar_Compra : Form
     {
         private bool acabado = false;
         private float entregado = 0;
         private float importe = Convert.ToSingle(Constantes.IMPORTE);
+        /// <summary>
+        /// Constructor de la clase.
+        /// </summary>
         public Finalizar_Compra()
         {
             Constantes.VENTA_HECHA = false;
@@ -25,12 +31,19 @@ namespace GarTor
             lbEntregado.Text = "";
             lbCambio.Text = "";
         }
-
+        /// <summary>
+        /// Metodo onClick que llama al metodo introducir
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void finalizarCompra(object sender, EventArgs e)
         {
             introducir();
         }
-
+        /// <summary>
+        /// Metodo para calcular la diferencia entre el precio y lo entregado.
+        /// Cuando esta pagado finaliza la compra.
+        /// </summary>
         private void introducir()
         {
             if (acabado)
@@ -61,7 +74,11 @@ namespace GarTor
             }
             
         }
-
+        /// <summary>
+        /// Metodo para evaluar la introduccion de datos del textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
@@ -76,7 +93,11 @@ namespace GarTor
                 e.Handled = true;
             }
         }
-
+        /// <summary>
+        /// Metodo para que el "enter" llame al metodo introducir
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbEntrega_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

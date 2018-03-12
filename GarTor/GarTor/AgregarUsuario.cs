@@ -17,6 +17,9 @@ namespace GarTor
     /// </summary>
     public partial class AgregarUsuario : Form
     {
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
         public AgregarUsuario()
         {
             InitializeComponent();

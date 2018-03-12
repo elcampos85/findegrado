@@ -10,8 +10,14 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Formulario para la portada
+    /// </summary>
     public partial class Portada : Form
     {
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
         public Portada()
         {
             InitializeComponent();

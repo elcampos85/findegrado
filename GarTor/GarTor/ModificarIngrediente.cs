@@ -10,8 +10,15 @@ using System.Windows.Forms;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Formulario para modificar ingredientes
+    /// </summary>
     public partial class ModificarIngrediente : Form
     {
+        /// <summary>
+        /// Constructor de la clase.
+        /// Rellenar los comboBox de proveedores y de ingredientes
+        /// </summary>
         public ModificarIngrediente()
         {
             InitializeComponent();
@@ -29,7 +36,11 @@ namespace GarTor
             cbIngrediente.DataSource = Constantes.ingredientes_TA.ComboboxIngredientes();
 
         }
-
+        /// <summary>
+        /// Rellena los datos necesarios, ya sabidos por el programa, del ingrediente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbIngrediente_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cbIngrediente.SelectedItem != null)
@@ -42,8 +53,11 @@ namespace GarTor
                 cbProveedores.SelectedIndex = Convert.ToInt32(Constantes.precioIngredientes_TA.GetCodProveedor(Convert.ToInt32(Constantes.ingredientes_TA.GetCodIngrediente(cbIngrediente.SelectedValue.ToString())))) - 1;
             }
         }
-
-
+        /// <summary>
+        /// Boton para modificar el ingrediente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Modificar_Click(object sender, EventArgs e)
         {
             try
@@ -101,7 +115,11 @@ namespace GarTor
                 MessageBox.Show("Error al modificar el ingrediente");
             }
         }
-            
+        /// <summary>
+        /// Verifica si el nuevo nombre a introducir existe en la BBDD
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>True si no existe, False si existe</returns>
         public bool verificar(string nombre)
         {
             if (Constantes.ingredientes_TA.Verificacion(nombre) == 0)

@@ -14,12 +14,23 @@ using System.Data.SqlClient;
 
 namespace GarTor
 {
+    /// <summary>
+    /// Formulario principal de la aplicacion
+    /// </summary>
     public partial class Inicio : Form
     {
         #region DECLARACION DE VARIABLES
             private SqlConnection conexion;
             private string stringConexion;
         #endregion
+        /// <summary>
+        /// Constructor de la clase.
+        /// Cambia el idioma de introduccion de datos para que la "," sea un ".".
+        /// Realiza una conexion con la BBDD.
+        /// Ajusta la ventana a la pantalla.
+        /// Llama la metodo para crear los directorios de la aplicacion.
+        /// Cambia de panel para que se muestre la portada desde el inicio.
+        /// </summary>
         public Inicio()
         {
             InitializeComponent();
@@ -49,7 +60,11 @@ namespace GarTor
 
            
         }
-
+        /// <summary>
+        /// Boton para abrir el LogIn y acceder a la pantalla de gestion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gestionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LogIn panel1 = new LogIn();
@@ -59,7 +74,11 @@ namespace GarTor
             panel1.ShowInTaskbar = false;
             panel1.ShowDialog();
         }
-
+        /// <summary>
+        /// Abre el formulario de ventaTienda
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ventaEnTiendaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.pPanelContenedor.Controls.Count > 0)this.pPanelContenedor.Controls.RemoveAt(0);
@@ -71,12 +90,20 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Metodo para que no se pueda mover la ventana
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mantener(object sender, EventArgs e)
         {
             this.Location = new Point(0, 0);
         }
-
+        /// <summary>
+        /// Boton para abrir el formulario de ventaMayor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void miVentaMayor_Click(object sender, EventArgs e)
         {
             if (this.pPanelContenedor.Controls.Count > 0)this.pPanelContenedor.Controls.RemoveAt(0);
@@ -88,19 +115,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
-        private void miBalanceDiario_Click(object sender, EventArgs e)
-        {
-            if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
-            CierreCaja panel1 = new CierreCaja();
-            panel1.TopLevel = false;
-            panel1.FormBorderStyle = FormBorderStyle.None;
-            panel1.Dock = DockStyle.Fill;
-            this.pPanelContenedor.Controls.Add(panel1);
-            this.pPanelContenedor.Tag = panel1;
-            panel1.Show();
-        }
-
+        /// <summary>
+        /// Boton para abrir el formulario para la consulta del dia
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void miConsultaDia_Click(object sender, EventArgs e)
         {
             if(this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -112,7 +131,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Boton para abrir el formulario para la consulta por mes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void miBalanceMensual_Click(object sender, EventArgs e)
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -124,7 +147,11 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
+        /// <summary>
+        /// Boton para abrir el formulario para la consulta por año
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void miBalanceAnual_Click(object sender, EventArgs e)
         {
             if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
@@ -136,19 +163,9 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
-
-        private void miCalcularCosteProduccion_Click(object sender, EventArgs e)
-        {
-            if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
-            AgregarUsuario panel1 = new AgregarUsuario();
-            panel1.TopLevel = false;
-            panel1.FormBorderStyle = FormBorderStyle.None;
-            panel1.Dock = DockStyle.Fill;
-            this.pPanelContenedor.Controls.Add(panel1);
-            this.pPanelContenedor.Tag = panel1;
-            panel1.Show();
-        }
-        
+        /// <summary>
+        /// Metodo que comprueba si existe los directorios de la aplicacion, si no existen los crea
+        /// </summary>
         private void crearDirectorios()
         {
             string rutaPrincipal = Constantes.MAIN_RUTA;
@@ -198,12 +215,20 @@ namespace GarTor
                 }
             }
         }
-
+        /// <summary>
+        /// Metodo para que se actualice la hora
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mostrarHora(object sender, EventArgs e)
         {
             tslbFechayHora.Text = DateTime.Now.ToString();
         }
-
+        /// <summary>
+        /// Abre el formulario para agregar gastos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void IngreGastos(object sender, EventArgs e)
         {
             VentanaGastos panel1 = new VentanaGastos();

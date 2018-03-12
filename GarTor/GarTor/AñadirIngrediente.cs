@@ -16,6 +16,10 @@ namespace GarTor
     /// Clase para introducir nuevos ingredientes a la base de datos
     /// </summary>
     public partial class AñadirIngrediente : Form {
+        /// <summary>
+        /// Constructor de la clase.
+        /// Rellena el comboBox de proveedores.
+        /// </summary>
         public AñadirIngrediente()
         {
             InitializeComponent();

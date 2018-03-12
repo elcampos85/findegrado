@@ -171,7 +171,7 @@ namespace GarTor
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo modificar");
+                        MessageBox.Show("Se debe modificar el nombre tambien");
                     }
                     cbProducto.DataSource = Constantes.productos_TA.GetProductosOrdenados();
                 }

@@ -81,12 +81,11 @@ namespace GarTor
                 //Rellena el precio de venta en tienda
                 precioTienda.Value = Convert.ToDecimal(Constantes.preciosVenta_TA.GetPrecioVenta(cod));
                 //Rellena el precio de venta al mayor
-                //precioMayor.Value = Convert.ToDecimal(Constantes.preciosMayor_TA.GetPrecioMayor(cod));
+                precioMayor.Value = Convert.ToDecimal(Constantes.preciosMayor_TA.getPrecioMayor(cod));
                 //Rellena categoria del producto
                 cbTipo.SelectedValue = Constantes.productos_TA.GetCategoria(cod);
 
                 //Rellena la imagen
-                //MessageBox.Show(Constantes.PRODUCTOS_RUTA + "/" + cbTipo.SelectedValue + "/" + cbProducto.SelectedValue + Constantes.EXTENSION);
                 this.imagen.Image = Image.FromFile(Constantes.PRODUCTOS_RUTA+"/"+cbTipo.SelectedValue+"/"+cbProducto.SelectedValue+Constantes.EXTENSION);
                 this.imagen.SizeMode = PictureBoxSizeMode.Zoom;
 

@@ -24,6 +24,7 @@ namespace GarTor
         private const int COLUMNA_PRECIO = 3;
         private SqlConnection conexion;
         private string stringConexion;
+        private bool cambio = false;
         #endregion
         /// <summary>
         /// Constructor de la clase.
@@ -140,22 +141,39 @@ namespace GarTor
         {
             try
             {
-                string ruta = Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + cbProducto.SelectedValue + Constantes.EXTENSION;
-                if (verificar(tbNuevoNombre.Text) || File.Exists(ruta) || !File.Exists(ruta))
+                string nombre = cbProducto.SelectedValue.ToString();
+                string nombreNuevo = tbNuevoNombre.Text;
+                string ruta = Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + nombre + Constantes.EXTENSION;
+                string nuevaRuta = Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + nombreNuevo + Constantes.EXTENSION;
+                int codProd = Convert.ToInt32(Constantes.productos_TA.GetCodProducto(cbProducto.SelectedValue.ToString()));
+                
+                if (!nombre.Equals(nombreNuevo))
                 {
-                    int codProd = Convert.ToInt32(Constantes.productos_TA.GetCodProducto(cbProducto.SelectedValue.ToString()));
-                    
-                    File.Delete(ruta);
-                    imagen.Image.Save(Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + tbNuevoNombre.Text + Constantes.EXTENSION, ImageFormat.Png);
+                    cambio = true;
+                }
 
-                    Constantes.productos_TA.UpdateProducto(tbNuevoNombre.Text, cbTipo.Text,codProd);
-                    Constantes.preciosMayor_TA.UpdatePreciosMayor((Double)precioMayor.Value,Convert.ToInt32(Constantes.preciosMayor_TA.getCodPrecioMayor(codProd)));
-                    Constantes.preciosVenta_TA.UpdatePreciosVenta((Double)precioTienda.Value,Convert.ToInt32(Constantes.preciosVenta_TA.getCodPrecioVenta(codProd)));
-                   
+                if (verificar(nombreNuevo) || File.Exists(ruta) || !File.Exists(ruta))
+                {
+                    if (!ruta.Equals(nuevaRuta))
+                    {
+                        if (cambio)
+                        {
+                            this.imagen.Image.Save(nuevaRuta, ImageFormat.Png);
+                            this.imagen.Image.Dispose();
+                            this.imagen.Image = null;
+                            File.Delete(ruta);
 
-                    MessageBox.Show("Producto Modificado correctamente");
+                            Constantes.productos_TA.UpdateProducto(nombreNuevo, cbTipo.Text, codProd);
+                            Constantes.preciosMayor_TA.UpdatePreciosMayor((Double)precioMayor.Value, Convert.ToInt32(Constantes.preciosMayor_TA.getCodPrecioMayor(codProd)));
+                            Constantes.preciosVenta_TA.UpdatePreciosVenta((Double)precioTienda.Value, Convert.ToInt32(Constantes.preciosVenta_TA.getCodPrecioVenta(codProd)));
+                            MessageBox.Show("Producto modificado correctamente");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo modificar");
+                    }
                     cbProducto.DataSource = Constantes.productos_TA.GetProductosOrdenados();
-                    rellenarCbTipo();
                 }
                 else
                 {

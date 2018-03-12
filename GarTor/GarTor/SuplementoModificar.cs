@@ -64,50 +64,41 @@ namespace GarTor
         {
             try
             {
-                String nombre=Constantes.suplemento_TA.GetNombreSuplemento(Convert.ToInt32(cbSuplemento.SelectedValue));
+                String nombre=Convert.ToString(Constantes.suplemento_TA.GetNombreSuplemento(Convert.ToInt32(cbSuplemento.SelectedValue)));
                 String nombreNuevo= tbNombre.Text;
                 float precio=Convert.ToSingle(NPrecio.Value);
                 int codSuplemento= Convert.ToInt32(cbSuplemento.SelectedValue);
-
                 
                 ruta = Constantes.PRODUCTOS_RUTA + "/" + grupo + "/" + nombre + Constantes.EXTENSION;
                 nuevaRuta = Constantes.PRODUCTOS_RUTA + "/" + grupo + "/" + nombreNuevo + Constantes.EXTENSION;
 
+                if (!nombre.Equals(nombreNuevo))
+                {
+                    cambio = true;
+                }
+
                 if (verificar(nombreNuevo)|| File.Exists(ruta)|| !File.Exists(ruta))
                 {
                     
-                    if (cambio)
-                    {
-                        imagen.Image.Dispose();
-                        imagen.Image =null;
-
-                        File.Delete(ruta);
-                        imagen.Image = Image.FromFile(ruta_foto);
-                        cambio = false;
-                    }
-                    
-                    
-                    imagen.Image.Save(nuevaRuta, ImageFormat.Png);
-
                     if (!ruta.Equals(nuevaRuta))
                     {
-                        imagen.Image.Dispose();
-                        //imagen.Image =null;
-
-                        File.Delete(ruta);
+                        if (cambio)
+                        {
+                            this.imagen.Image.Save(nuevaRuta, ImageFormat.Png);
+                            this.imagen.Image.Dispose();
+                            this.imagen.Image = null;
+                            File.Delete(ruta);
+                            Constantes.suplemento_TA.UpdateSuplemento(nombreNuevo, Convert.ToDouble(precio), codSuplemento, nombre);
+                            MessageBox.Show("Suplemento modificado correctamente");
+                        }
                     }
-                    /*Thread hiloBorrar = new Thread(BorrarImagen);
-                    hiloBorrar.Start();
+                    else
+                    {
+                        MessageBox.Show("No se pudo modificar");
+                    }
                     
-                    Thread hiloGuardar = new Thread(GuardarImagen);
-                    hiloGuardar.Start();*/
-
-
-                    Constantes.suplemento_TA.UpdateSuplemento(nombreNuevo, Convert.ToDouble(precio), codSuplemento, nombre);
-
-                    MessageBox.Show("Suplemento modificado correctamente");
-
                     cbSuplemento.DataSource = Constantes.suplemento_TA.GetData();
+
                 }
                 else
                 {

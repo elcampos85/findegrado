@@ -429,21 +429,5 @@ namespace GarTor
                 Constantes.PRECIO_ESTRELLA = "0";//Volvemos a poner el precio a 0 para que no queden residuos
             }
         }
-
-        /// <summary>
-        /// Hace dispose de las imagenes de la lista para que no se queden cargadas en memoria
-        /// </summary>
-        public static void disposeImagenesTienda()
-        {
-            try
-            {
-                imageList1.Dispose();
-                listView1.Dispose();
-            }
-            catch (Exception exc)
-            {
-
-            }
-        }
     }    
 }

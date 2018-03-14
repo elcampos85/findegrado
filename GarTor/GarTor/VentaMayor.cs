@@ -299,6 +299,7 @@ namespace GarTor
                 try
                 {
                     suma += (float)Convert.ToSingle(row.Cells[Constantes.COLUMNA_UNIDADES].Value) * (float)Convert.ToSingle(row.Cells[Constantes.COLUMNA_PRECIO].Value);
+                    suma = ((Convert.ToSingle(suma) * Convert.ToInt32(ivacb)) / 100) + Convert.ToSingle(suma);
                 }
                 catch (Exception e)
                 {
@@ -547,22 +548,7 @@ namespace GarTor
         private void ivaSeleccionado(object sender, EventArgs e)
         {
             ivacb =  cbIVA.SelectedItem.ToString();
-        }
-
-        /// <summary>
-        /// Hace dispose de las imagenes de la lista para que no se queden cargadas en memoria
-        /// </summary>
-        public static void disposeImagenesMayor()
-        {
-            try
-            {
-                imageList1.Dispose();
-                listView1.Dispose();
-            }
-            catch (Exception exc)
-            {
-
-            }
+            Total();
         }
     }
 }

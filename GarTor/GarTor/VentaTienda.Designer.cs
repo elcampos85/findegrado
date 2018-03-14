@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentaTienda));
             this.panelProdVentaTienda = new System.Windows.Forms.Panel();
-            listView1 = new System.Windows.Forms.ListView();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lPrecio = new System.Windows.Forms.Label();
             this.cesta = new System.Windows.Forms.DataGridView();
@@ -51,7 +51,7 @@
             this.Comprar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btAtrasVTienda = new System.Windows.Forms.Button();
-            imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panelProdVentaTienda.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cesta)).BeginInit();
@@ -63,7 +63,7 @@
             // 
             // panelProdVentaTienda
             // 
-            this.panelProdVentaTienda.Controls.Add(listView1);
+            this.panelProdVentaTienda.Controls.Add(this.listView1);
             this.panelProdVentaTienda.Controls.Add(this.panel1);
             this.panelProdVentaTienda.Controls.Add(this.panelToolboxVTienda);
             this.panelProdVentaTienda.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -74,19 +74,19 @@
             // 
             // listView1
             // 
-            listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            listView1.BackColor = System.Drawing.Color.ForestGreen;
-            listView1.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
-            listView1.BackgroundImageTiled = true;
-            listView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            listView1.Location = new System.Drawing.Point(0, 42);
-            listView1.MultiSelect = false;
-            listView1.Name = "listView1";
-            listView1.Size = new System.Drawing.Size(850, 592);
-            listView1.TabIndex = 6;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Seleccion);
+            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listView1.BackColor = System.Drawing.Color.ForestGreen;
+            this.listView1.BackgroundImage = global::GarTor.Properties.Resources.Fondo;
+            this.listView1.BackgroundImageTiled = true;
+            this.listView1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Location = new System.Drawing.Point(0, 42);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(850, 592);
+            this.listView1.TabIndex = 6;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Seleccion);
             // 
             // panel1
             // 
@@ -309,15 +309,15 @@
             // 
             // imageList1
             // 
-            imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            imageList1.Images.SetKeyName(0, "2012-11-15 12.42.26.jpg");
-            imageList1.Images.SetKeyName(1, "2012-11-15 12.44.13.jpg");
-            imageList1.Images.SetKeyName(2, "2012-11-15 19.36.18.jpg");
-            imageList1.Images.SetKeyName(3, "2012-11-15 19.55.18.jpg");
-            imageList1.Images.SetKeyName(4, "2012-11-15 19.57.28.jpg");
-            imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
-            imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "2012-11-15 12.42.26.jpg");
+            this.imageList1.Images.SetKeyName(1, "2012-11-15 12.44.13.jpg");
+            this.imageList1.Images.SetKeyName(2, "2012-11-15 19.36.18.jpg");
+            this.imageList1.Images.SetKeyName(3, "2012-11-15 19.55.18.jpg");
+            this.imageList1.Images.SetKeyName(4, "2012-11-15 19.57.28.jpg");
+            this.imageList1.Images.SetKeyName(5, "2012-11-15 19.59.46.jpg");
+            this.imageList1.Images.SetKeyName(6, "2012-11-15 20.02.03.jpg");
             // 
             // VentaTienda
             // 
@@ -357,8 +357,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btEliminarCesta;
         private System.Windows.Forms.Label lPrecio;
-        private static System.Windows.Forms.ListView listView1;
-        private static System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btAtrasVTienda;
         private System.Windows.Forms.DataGridViewImageColumn Borrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
@@ -369,5 +367,7 @@
         private System.Windows.Forms.Button btEstrella;
         private System.Windows.Forms.Label lFlecha;
         private System.Windows.Forms.Label lCategoria;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

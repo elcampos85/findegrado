@@ -49,6 +49,8 @@ namespace GarTor
 
             if (user.Equals(userBBDD) && pass.Equals(passBBDD))
             {
+                VentaTienda.disposeImagenesTienda();//Llamamos al metodo dispose para descargar las imagenes en memoria y poder trabajar con ellas
+                VentaMayor.disposeImagenesMayor();//Llamamos al metodo dispose para descargar las imagenes en memoria y poder trabajar con ellas
                 MessageBoxTemporal.Show("Usuario y contraseña correctos", "Acceso Permitido", 2, true);
                 this.Close();
                 PantallaGestion panel1 = new PantallaGestion();

@@ -25,6 +25,7 @@ namespace GarTor
         private SqlConnection conexion;
         private string stringConexion;
         private bool cambio = false;
+        private bool cambioPrecio = false;
         #endregion
         /// <summary>
         /// Constructor de la clase.
@@ -84,36 +85,9 @@ namespace GarTor
                 precioMayor.Value = Convert.ToDecimal(Constantes.preciosMayor_TA.getPrecioMayor(cod));
                 //Rellena categoria del producto
                 cbTipo.SelectedValue = Constantes.productos_TA.GetCategoria(cod);
-
-                //Rellena la imagen
-                this.imagen.Image = Image.FromFile(Constantes.PRODUCTOS_RUTA+"/"+cbTipo.SelectedValue+"/"+cbProducto.SelectedValue+Constantes.EXTENSION);
-                this.imagen.SizeMode = PictureBoxSizeMode.Zoom;
-
-                
             }
         }
-        /// <summary>
-        /// Abre el explorador de archivos para seleccionar la nueva imagen del producto
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    string imagen = openFileDialog1.FileName;
-                    ruta_foto = imagen;
-                    this.imagen.Image = Image.FromFile(imagen);
-                    this.imagen.SizeMode = PictureBoxSizeMode.Zoom;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
-            }
-        }
+        
         /// <summary>
         /// Verifica si el nuevo nombre a introducir existe en la BBDD
         /// </summary>
@@ -145,32 +119,44 @@ namespace GarTor
                 string nombreNuevo = tbNuevoNombre.Text;
                 string ruta = Constantes.PRODUCTOS_RUTA + "/" + Constantes.productos_TA.GetCategoria(codProd).ToString() + "/" + nombre + Constantes.EXTENSION;
                 string nuevaRuta = Constantes.PRODUCTOS_RUTA + "/" + cbTipo.Text.ToString() + "/" + nombreNuevo + Constantes.EXTENSION;
-                
-                if (!nombre.Equals(nombreNuevo))
+
+                if (!nombre.Equals(nombreNuevo) || !cbTipo.Text.ToString().Equals(Constantes.productos_TA.GetCategoria(codProd).ToString()))
                 {
                     cambio = true;
                 }
 
+                if (precioTienda.Value != Convert.ToDecimal(Constantes.preciosVenta_TA.GetPrecioVenta(codProd)) || precioMayor.Value != Convert.ToDecimal(Constantes.preciosMayor_TA.getPrecioMayor(codProd)))
+                {
+                    cambioPrecio = true;
+                }
+
                 if (verificar(nombreNuevo) || File.Exists(ruta) || !File.Exists(ruta))
                 {
-                    if (!ruta.Equals(nuevaRuta))
+                    if (!ruta.Equals(nuevaRuta) || precioTienda.Value != Convert.ToDecimal(Constantes.preciosVenta_TA.GetPrecioVenta(codProd)) || precioMayor.Value != Convert.ToDecimal(Constantes.preciosMayor_TA.getPrecioMayor(codProd)))
                     {
                         if (cambio)
                         {
-                            this.imagen.Image.Save(nuevaRuta, ImageFormat.Png);
-                            this.imagen.Image.Dispose();
-                            this.imagen.Image = null;
-                            File.Delete(ruta);
+                            File.Move(ruta, nuevaRuta);
 
                             Constantes.productos_TA.UpdateProducto(nombreNuevo, cbTipo.Text, codProd);
                             Constantes.preciosMayor_TA.UpdatePreciosMayor((Double)precioMayor.Value, Convert.ToInt32(Constantes.preciosMayor_TA.getCodPrecioMayor(codProd)));
                             Constantes.preciosVenta_TA.UpdatePreciosVenta((Double)precioTienda.Value, Convert.ToInt32(Constantes.preciosVenta_TA.getCodPrecioVenta(codProd)));
                             MessageBox.Show("Producto modificado correctamente");
+                            cambio = false;
+                        }
+
+                        if (cambioPrecio)
+                        {
+                            Constantes.productos_TA.UpdateProducto(nombreNuevo, cbTipo.Text, codProd);
+                            Constantes.preciosMayor_TA.UpdatePreciosMayor((Double)precioMayor.Value, Convert.ToInt32(Constantes.preciosMayor_TA.getCodPrecioMayor(codProd)));
+                            Constantes.preciosVenta_TA.UpdatePreciosVenta((Double)precioTienda.Value, Convert.ToInt32(Constantes.preciosVenta_TA.getCodPrecioVenta(codProd)));
+                            MessageBox.Show("Producto modificado correctamente");
+                            cambioPrecio = false;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Se debe modificar el nombre tambien");
+                        MessageBox.Show("No se modifico el producto");
                     }
                     cbProducto.DataSource = Constantes.productos_TA.GetProductosOrdenados();
                 }
@@ -181,9 +167,9 @@ namespace GarTor
             }catch(Exception ex)
             {
                 MessageBox.Show("Error al modificar un producto");
+                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace);
             }
-
-            
         }
     }
 }

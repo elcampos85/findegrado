@@ -277,8 +277,8 @@ namespace GarTor
 
                     Constantes.contabilidad_TA.UpdateIngresos(Convert.ToDouble(ingresos + Math.Round(importeIVA, 2)), id);
                 }
-                this.listView1.Items.Clear();
-                this.imageList1.Images.Clear();
+                listView1.Items.Clear();
+                imageList1.Images.Clear();
                 btAtrasVTienda.Visible = false;
                 lFlecha.Visible = false;
                 lCategoria.Text = "";
@@ -336,22 +336,22 @@ namespace GarTor
             int j = 0;
             foreach (FileInfo file in dir.GetFiles())
             {
-                this.listView1.View = View.LargeIcon;
+                listView1.View = View.LargeIcon;
 
-                this.imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
+                imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
 
                 try
                 {
-                    this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
+                    imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
 
-                    this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
+                    listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                     j++;
                 }
                 catch
                 {
                     Console.WriteLine("No es un archivo de imagen");
                 }
-                this.listView1.LargeImageList = this.imageList1;
+                listView1.LargeImageList = imageList1;
             }
         }
         /// <summary>
@@ -381,26 +381,26 @@ namespace GarTor
 
             DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
             int j = 0;
-            this.listView1.Items.Clear();
-            this.imageList1.Images.Clear();
+            listView1.Items.Clear();
+            imageList1.Images.Clear();
             foreach (FileInfo file in dir.GetFiles())
             {
-                this.listView1.View = View.LargeIcon;
+                listView1.View = View.LargeIcon;
 
-                this.imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
+                imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
 
                 try
                 {
-                    this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
+                    imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
 
-                    this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
+                    listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                     j++;
                 }
                 catch
                 {
                     Console.WriteLine("No es un archivo de imagen");
                 }
-                this.listView1.LargeImageList = this.imageList1;
+                listView1.LargeImageList = imageList1;
             }
         }
         /// <summary>
@@ -423,32 +423,32 @@ namespace GarTor
             introducidoCantidad = false;
             if (listaCategoria)
             {
-                ListView.SelectedIndexCollection seleccionado = this.listView1.SelectedIndices;
+                ListView.SelectedIndexCollection seleccionado = listView1.SelectedIndices;
                 foreach (int index in seleccionado)
                 {
-                    DirectoryInfo dir = new DirectoryInfo(Constantes.PRODUCTOS_RUTA + "/" + this.listView1.Items[index].Text);
-                    lCategoria.Text = this.listView1.Items[index].Text.ToString();
+                    DirectoryInfo dir = new DirectoryInfo(Constantes.PRODUCTOS_RUTA + "/" + listView1.Items[index].Text);
+                    lCategoria.Text = listView1.Items[index].Text.ToString();
                     int j = 0;
-                    this.listView1.Items.Clear();
-                    this.imageList1.Images.Clear();
+                    listView1.Items.Clear();
+                    imageList1.Images.Clear();
                     foreach (FileInfo file in dir.GetFiles())
                     {
-                        this.listView1.View = View.LargeIcon;
+                        listView1.View = View.LargeIcon;
 
-                        this.imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
+                        imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
 
                         try
                         {
-                            this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
+                            imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
 
-                            this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
+                            listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                             j++;
                         }
                         catch
                         {
                             Console.WriteLine("No es un archivo de imagen");
                         }
-                        this.listView1.LargeImageList = this.imageList1;
+                        listView1.LargeImageList = imageList1;
                         lFlecha.Visible = true;
                     }
                 }
@@ -471,20 +471,20 @@ namespace GarTor
                     }
                     if (Constantes.PESO_UD_PRODUCTO != null && Convert.ToDouble(Constantes.PESO_UD_PRODUCTO) > 0 && Convert.ToDouble(Constantes.PESO_UD_PRODUCTO) > 0.000)
                     {
-                        ListView.SelectedIndexCollection seleccionado = this.listView1.SelectedIndices;
+                        ListView.SelectedIndexCollection seleccionado = listView1.SelectedIndices;
                         foreach (int index in seleccionado)
                         {
                             cesta.Rows.Add(1);
                             cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
-                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = this.listView1.Items[index].Text;
+                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = listView1.Items[index].Text;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = Constantes.PESO_UD_PRODUCTO;
                             if (lCategoria.Text.Equals("Suplementos"))
                             {
-                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.suplemento_TA.getPreSupleNombre(this.listView1.Items[index].Text);
+                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.suplemento_TA.getPreSupleNombre(listView1.Items[index].Text);
                             }
                             else
                             {
-                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.preciosMayor_TA.getPrecioMayor((int)Constantes.productos_TA.GetCodProducto(this.listView1.Items[index].Text));
+                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.preciosMayor_TA.getPrecioMayor((int)Constantes.productos_TA.GetCodProducto(listView1.Items[index].Text));
                             }
                             cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;
                             Total();
@@ -547,6 +547,22 @@ namespace GarTor
         private void ivaSeleccionado(object sender, EventArgs e)
         {
             ivacb =  cbIVA.SelectedItem.ToString();
+        }
+
+        /// <summary>
+        /// Hace dispose de las imagenes de la lista para que no se queden cargadas en memoria
+        /// </summary>
+        public static void disposeImagenesMayor()
+        {
+            try
+            {
+                imageList1.Dispose();
+                listView1.Dispose();
+            }
+            catch (Exception exc)
+            {
+
+            }
         }
     }
 }

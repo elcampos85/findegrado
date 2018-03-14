@@ -143,8 +143,8 @@ namespace GarTor
 
                 AddIngresos();
                 //Recargamos la lista de los articulos para que cargue las imagenes de categorias y ponga las flechas de menus superiores y la cesta por defecto
-                this.listView1.Items.Clear();
-                this.imageList1.Images.Clear();
+                listView1.Items.Clear();
+                imageList1.Images.Clear();
                 btAtrasVTienda.Visible = false;
                 lFlecha.Visible = false;
                 lCategoria.Text = "";
@@ -226,19 +226,19 @@ namespace GarTor
             int j = 0;//Variable para asignar un index a cada imagen diferente
             foreach (FileInfo file in dir.GetFiles())//Recorremos todas las imagenes que hay en el directorio categorias
             {
-                this.listView1.View = View.LargeIcon;
-                this.imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
+                listView1.View = View.LargeIcon;
+                imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
                 try
                 {
-                    this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
-                    this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
+                    imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
+                    listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                     j++;
                 }
                 catch
                 {
                     Console.WriteLine("No es un archivo de imagen");
                 }
-                this.listView1.LargeImageList = this.imageList1;
+                listView1.LargeImageList = imageList1;
             }
         }
 
@@ -266,23 +266,23 @@ namespace GarTor
 
             DirectoryInfo dir = new DirectoryInfo(Constantes.CATEGORIAS_RUTA);
             int j = 0;
-            this.listView1.Items.Clear();//Eliminamos la lista actual para que no se queden las imagenes que habia
-            this.imageList1.Images.Clear();//Eliminamos la lista actual para que no se queden las imagenes que habia
+            listView1.Items.Clear();//Eliminamos la lista actual para que no se queden las imagenes que habia
+            imageList1.Images.Clear();//Eliminamos la lista actual para que no se queden las imagenes que habia
             foreach (FileInfo file in dir.GetFiles())//Recorremos las categorias y las volvemos a cargar en la lista
             {
-                this.listView1.View = View.LargeIcon;
-                this.imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
+                listView1.View = View.LargeIcon;
+                imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
                 try
                 {
-                    this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
-                    this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
+                    imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
+                    listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                     j++;
                 }
                 catch
                 {
                     Console.WriteLine("No es un archivo de imagen");
                 }
-                this.listView1.LargeImageList = this.imageList1;
+                listView1.LargeImageList = imageList1;
             }
         }
 
@@ -307,29 +307,29 @@ namespace GarTor
             introducidoCantidad = false;//Establecemos que no hemos introducido la cantidad
             if (listaCategoria)//Si estamos en la lista de categoria carga los articulos referentes a la categoria seleccionada desde su directorio
             {
-                ListView.SelectedIndexCollection seleccionado = this.listView1.SelectedIndices;
+                ListView.SelectedIndexCollection seleccionado = listView1.SelectedIndices;
                 foreach (int index in seleccionado)
                 {
-                    DirectoryInfo dir = new DirectoryInfo(Constantes.PRODUCTOS_RUTA + "/" + this.listView1.Items[index].Text);
-                    lCategoria.Text = this.listView1.Items[index].Text.ToString();
+                    DirectoryInfo dir = new DirectoryInfo(Constantes.PRODUCTOS_RUTA + "/" + listView1.Items[index].Text);
+                    lCategoria.Text = listView1.Items[index].Text.ToString();
                     int j = 0;
-                    this.listView1.Items.Clear();//Eliminamos la lista actual para que no se queden las imagenes que habia
-                    this.imageList1.Images.Clear();//Eliminamos la lista actual para que no se queden las imagenes que habia
+                    listView1.Items.Clear();//Eliminamos la lista actual para que no se queden las imagenes que habia
+                    imageList1.Images.Clear();//Eliminamos la lista actual para que no se queden las imagenes que habia
                     foreach (FileInfo file in dir.GetFiles())//Agregamos las imagenes de los articulos de la categoria seleccionada
                     {
-                        this.listView1.View = View.LargeIcon;
-                        this.imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
+                        listView1.View = View.LargeIcon;
+                        imageList1.ImageSize = new Size(Constantes.TAMANO_IMAGENES, Constantes.TAMANO_IMAGENES);
                         try
                         {
-                            this.imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
-                            this.listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
+                            imageList1.Images.Add(System.Drawing.Image.FromFile(file.FullName));
+                            listView1.Items.Add(new ListViewItem { ImageIndex = j, Text = file.Name.Substring(0, file.Name.Length - 4) });
                             j++;
                         }
                         catch
                         {
                             Console.WriteLine("No es un archivo de imagen");
                         }
-                        this.listView1.LargeImageList = this.imageList1;
+                        listView1.LargeImageList = imageList1;
                         lFlecha.Visible = true;//Ponemos visible la flecha para indicar en que categoria estamos
                     }
                 }
@@ -352,20 +352,20 @@ namespace GarTor
                     }
                     if (Constantes.PESO_UD_PRODUCTO != null && Convert.ToDouble(Constantes.PESO_UD_PRODUCTO) > 0 && Convert.ToDouble(Constantes.PESO_UD_PRODUCTO) > 0.000)//Si el peso del producto no es nulo y es mayor que 0 sera que hemos introducido un peso y que no hemos cerrado la ventana porque no queriamos introducir ese articulo
                     {
-                        ListView.SelectedIndexCollection seleccionado = this.listView1.SelectedIndices;//Cogemos el articulo seleccionado para agregarlo a la cesta
+                        ListView.SelectedIndexCollection seleccionado = listView1.SelectedIndices;//Cogemos el articulo seleccionado para agregarlo a la cesta
                         foreach (int index in seleccionado)
                         {
                             cesta.Rows.Add(1);
                             cesta.Rows[cesta.RowCount - 1].Cells[0].Value = Resource1.bin;
-                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = this.listView1.Items[index].Text;
+                            cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_NOMBRE].Value = listView1.Items[index].Text;
                             cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_UNIDADES].Value = Constantes.PESO_UD_PRODUCTO;
                             if (lCategoria.Text.Equals("Suplementos"))//Evaluamos si la categoria en la que esstamos es suplementos ya que es una tabla diferente y tenemos que coger el precio con una consulta diferente
                             {
-                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.suplemento_TA.getPreSupleNombre(this.listView1.Items[index].Text);
+                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.suplemento_TA.getPreSupleNombre(listView1.Items[index].Text);
                             }
                             else
                             {
-                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.preciosVenta_TA.GetPrecioVenta((int)Constantes.productos_TA.GetCodProducto(this.listView1.Items[index].Text));
+                                cesta.Rows[cesta.RowCount - 1].Cells[Constantes.COLUMNA_PRECIO].Value = (float)Constantes.preciosVenta_TA.GetPrecioVenta((int)Constantes.productos_TA.GetCodProducto(listView1.Items[index].Text));
                             }
                             cesta.FirstDisplayedScrollingRowIndex = cesta.RowCount - 1;//Hacemos que el scroll de la cesta baje hasta el ultimo al introducir articulos si hay muchos
                             Total();
@@ -427,6 +427,22 @@ namespace GarTor
             finally
             {
                 Constantes.PRECIO_ESTRELLA = "0";//Volvemos a poner el precio a 0 para que no queden residuos
+            }
+        }
+
+        /// <summary>
+        /// Hace dispose de las imagenes de la lista para que no se queden cargadas en memoria
+        /// </summary>
+        public static void disposeImagenesTienda()
+        {
+            try
+            {
+                imageList1.Dispose();
+                listView1.Dispose();
+            }
+            catch (Exception exc)
+            {
+
             }
         }
     }    

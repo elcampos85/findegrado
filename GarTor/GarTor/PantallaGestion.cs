@@ -196,5 +196,16 @@ namespace GarTor
             this.pPanelContenedor.Tag = panel1;
             panel1.Show();
         }
+
+        private void gastosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.pPanelContenedor.Controls.Count > 0) this.pPanelContenedor.Controls.RemoveAt(0);
+            VentanaGastos panel1 = new VentanaGastos();
+            panel1.MinimizeBox = false;
+            panel1.MaximizeBox = false;
+            panel1.ShowIcon = false;
+            panel1.ShowInTaskbar = false;
+            panel1.ShowDialog();
+        }
     }
 }

@@ -51,6 +51,7 @@ namespace GarTor
             {
                 MessageBoxTemporal.Show("Usuario y contraseña correctos", "Acceso Permitido", 2, true);
                 this.Close();
+                
                 PantallaGestion panel1 = new PantallaGestion();
                 panel1.MaximizeBox = false;
                 panel1.MinimizeBox = false;

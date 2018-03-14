@@ -43,7 +43,6 @@
             this.tslbFechayHora = new System.Windows.Forms.ToolStripStatusLabel();
             this.pPanelContenedor = new System.Windows.Forms.Panel();
             this.timFechayHora = new System.Windows.Forms.Timer(this.components);
-            this.insertarGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenu.SuspendLayout();
             this.ssEstado.SuspendLayout();
             this.SuspendLayout();
@@ -66,14 +65,14 @@
             this.ventaEnTiendaToolStripMenuItem,
             this.miVentaMayor});
             this.ventaToolStripMenuItem.Name = "ventaToolStripMenuItem";
-            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.ventaToolStripMenuItem.Text = "Venta";
             // 
             // ventaEnTiendaToolStripMenuItem
             // 
             this.ventaEnTiendaToolStripMenuItem.Name = "ventaEnTiendaToolStripMenuItem";
             this.ventaEnTiendaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.ventaEnTiendaToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.ventaEnTiendaToolStripMenuItem.Text = "Venta en Tienda";
             this.ventaEnTiendaToolStripMenuItem.Click += new System.EventHandler(this.ventaEnTiendaToolStripMenuItem_Click);
             // 
@@ -81,7 +80,7 @@
             // 
             this.miVentaMayor.Name = "miVentaMayor";
             this.miVentaMayor.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.miVentaMayor.Size = new System.Drawing.Size(214, 22);
+            this.miVentaMayor.Size = new System.Drawing.Size(213, 22);
             this.miVentaMayor.Text = "Venta al por Mayor";
             this.miVentaMayor.Click += new System.EventHandler(this.miVentaMayor_Click);
             // 
@@ -90,8 +89,7 @@
             this.contabilidadCajaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miConsultaDia,
             this.miBalanceMensual,
-            this.miBalanceAnual,
-            this.insertarGastosToolStripMenuItem});
+            this.miBalanceAnual});
             this.contabilidadCajaToolStripMenuItem.Name = "contabilidadCajaToolStripMenuItem";
             this.contabilidadCajaToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
             this.contabilidadCajaToolStripMenuItem.Text = "Contabilidad/Caja";
@@ -99,21 +97,21 @@
             // miConsultaDia
             // 
             this.miConsultaDia.Name = "miConsultaDia";
-            this.miConsultaDia.Size = new System.Drawing.Size(163, 22);
+            this.miConsultaDia.Size = new System.Drawing.Size(180, 22);
             this.miConsultaDia.Text = "Consulta Diaria";
             this.miConsultaDia.Click += new System.EventHandler(this.miConsultaDia_Click);
             // 
             // miBalanceMensual
             // 
             this.miBalanceMensual.Name = "miBalanceMensual";
-            this.miBalanceMensual.Size = new System.Drawing.Size(163, 22);
+            this.miBalanceMensual.Size = new System.Drawing.Size(180, 22);
             this.miBalanceMensual.Text = "Balance Mensual";
             this.miBalanceMensual.Click += new System.EventHandler(this.miBalanceMensual_Click);
             // 
             // miBalanceAnual
             // 
             this.miBalanceAnual.Name = "miBalanceAnual";
-            this.miBalanceAnual.Size = new System.Drawing.Size(163, 22);
+            this.miBalanceAnual.Size = new System.Drawing.Size(180, 22);
             this.miBalanceAnual.Text = "Balance Anual";
             this.miBalanceAnual.Click += new System.EventHandler(this.miBalanceAnual_Click);
             // 
@@ -159,13 +157,6 @@
             this.timFechayHora.Interval = 1000;
             this.timFechayHora.Tick += new System.EventHandler(this.mostrarHora);
             // 
-            // insertarGastosToolStripMenuItem
-            // 
-            this.insertarGastosToolStripMenuItem.Name = "insertarGastosToolStripMenuItem";
-            this.insertarGastosToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.insertarGastosToolStripMenuItem.Text = "Insertar Gastos";
-            this.insertarGastosToolStripMenuItem.Click += new System.EventHandler(this.IngreGastos);
-            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,7 +198,6 @@
         private System.Windows.Forms.ToolStripMenuItem miConsultaDia;
         private System.Windows.Forms.Timer timFechayHora;
         private System.Windows.Forms.ToolStripStatusLabel tslbFechayHora;
-        private System.Windows.Forms.ToolStripMenuItem insertarGastosToolStripMenuItem;
     }
 }
 
